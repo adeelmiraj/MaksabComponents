@@ -1,0 +1,6 @@
+framework module MaksabComponents {
+  umbrella header "MaksabComponents-umbrella.h"
+
+  export *
+  module * { export * }
+}

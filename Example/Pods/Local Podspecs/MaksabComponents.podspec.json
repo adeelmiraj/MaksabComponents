@@ -1,0 +1,33 @@
+{
+  "name": "MaksabComponents",
+  "version": "0.1.0",
+  "summary": "A short description of MaksabComponents.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/zainincubasys/MaksabComponents",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "zainincubasys": "rehan.azhar@incubasys.us"
+  },
+  "source": {
+    "git": "https://github.com/zainincubasys/MaksabComponents.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "MaksabComponents/Classes/**/*.{h,m,swift}",
+  "resources": "MaksabComponents/Classes/**/*.{xib,ttf}",
+  "frameworks": [
+    "UIKit",
+    "MapKit"
+  ],
+  "requires_arc": true,
+  "dependencies": {
+    "StylingBoilerPlate": [
+
+    ]
+  }
+}

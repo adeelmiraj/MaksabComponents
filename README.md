@@ -22,7 +22,7 @@ pod "MaksabComponents"
 
 ## Author
 
-zainincubasys, rehan.azhar@incubasys.us
+Mansoor Ali, mali92390@gmail.com
 
 ## License
 
