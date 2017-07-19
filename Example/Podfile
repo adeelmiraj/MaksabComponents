@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'MaksabComponents_Example' do
+  pod 'MaksabComponents', :path => '../'
+
+  target 'MaksabComponents_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
