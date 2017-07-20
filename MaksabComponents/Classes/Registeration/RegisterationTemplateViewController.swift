@@ -223,10 +223,10 @@ open class RegisterationTemplateViewController: UIViewController {
     
     public func configPrimaryButton(btnTitle:String? = nil,image:UIImage? = nil){
         if let _btnTitle = btnTitle{
-            self.btnAction.setTitle(btnTitle, for: .normal)
+            self.btnAction.setTitle(_btnTitle, for: .normal)
         }
         if let _img = image{
-            self.btnAction.setImage(image, for: .normal)
+            self.btnAction.setImage(_img, for: .normal)
         }
     }
     

@@ -29,24 +29,16 @@ class ViewController: RegisterationTemplateViewController, RegisterationTemplate
         super.viewDidLoad()
         
        configViews(type: registerationViewType)
-        
-//        switch registerationViewType {
-//        case .PhoneNumber:
-//            congfigFields(title: "", subtitle: "", firstField: ["Enter Phone Number",""], secondField: [], actionButtonTitle: "", actionButtonImage: nil, showToolTip: false)
-//        case .VerificationCode:
-//            
-//        default:
-//            print("default")
-//        }
     
+        if registerationViewType == .VerificationCode{
+            configPrimaryButton(image: #imageLiteral(resourceName: "resend"))
+        }else if registerationViewType == .InviteCode || registerationViewType == .NameAndEmail{
+            configPrimaryButton(image: #imageLiteral(resourceName: "skip"))
+        }else if registerationViewType == .Password || registerationViewType == .ForgotPassword{
+            configPrimaryButton(image: #imageLiteral(resourceName: "help"))
+        }
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        let vc = RegisterationTemplateViewController.createController(_for: .PhoneNumber)
-//        vc.dataSource = self
-//        self.present(vc, animated: true, completion: nil)
-    }
+
     
     func viewType() -> RegisterationViewType{
         return registerationViewType
