@@ -59,7 +59,7 @@ class ViewController: RegisterationTemplateViewController, RegisterationTemplate
     //required
     func actionNext(sender: UIButton) {
         let vc = ViewController()
-        if registerationViewType == .InviteCode{
+        if registerationViewType == .ForgotPassword{
             print("Show Home")
             return
         }

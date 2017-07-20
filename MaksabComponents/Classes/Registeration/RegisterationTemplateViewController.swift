@@ -16,11 +16,9 @@ public enum RegisterationViewType: Int {
     case Password = 3
     case PasswordAndConfirmPassword = 4
     case InviteCode = 5
+    case ForgotPassword = 6
     
     public func next() -> RegisterationViewType? {
-        if self == .InviteCode{
-            return nil
-        }
         return RegisterationViewType(rawValue: self.rawValue+1)
     }
 }
@@ -114,17 +112,13 @@ open class RegisterationTemplateViewController: UIViewController {
         
         addTargets()
         
-        let bundle = Bundle(for: RegisterationTemplateViewController.classForCoder())
-        let img = UIImage(named: "logo", in: bundle, compatibleWith: nil)
-        
-        logo.image = img
-        
     }
     
 
     
     func config(type: RegisterationViewType, assets:RegisterationAssets)  {
-        logo.image = assets._logo
+        
+        self.logo.image = assets._logo
         btnTooltip.setImage(assets._tooltip, for: .normal)
         btnBottomTooltip.setImage(assets._tooltip, for: .normal)
         btnNext.setImage(assets._btnNext, for: .normal)
@@ -140,9 +134,11 @@ open class RegisterationTemplateViewController: UIViewController {
         }else{
             self.socialLoginsView.isHidden = false
             removeTitleView()
+        }
+        if type == .PasswordAndConfirmPassword || type == .PhoneNumber{
             removeActionButton()
         }
-        if type != .InviteCode{
+        if type != .InviteCode && type != .ForgotPassword{
             removeSubtitle()
         }
         if type == .VerificationCode{
@@ -159,14 +155,17 @@ open class RegisterationTemplateViewController: UIViewController {
             fieldSecond.placeholder = "Enter Phone Number"
         case .VerificationCode:
             labelTitle.text = "Verification Code"
-            fieldSecond.placeholder = "Enter here"
+            fieldSecond.placeholder = "Enter here..."
+            btnAction.setTitle("Resend Code", for: .normal)
         case .NameAndEmail:
             labelTitle.text = "Name & Email"
             fieldFirst.placeholder = "Name"
             fieldSecond.placeholder = "Email"
+            btnAction.setTitle("Skip", for: .normal)
         case.Password:
             labelTitle.text = "Password"
             fieldSecond.placeholder = "Password"
+            btnAction.setTitle("Forgot Password?", for: .normal)
         case .PasswordAndConfirmPassword:
             labelTitle.text = "Password"
             fieldFirst.placeholder = "Password"
@@ -175,6 +174,12 @@ open class RegisterationTemplateViewController: UIViewController {
             labelTitle.text = "Invite Code"
             labelSubtitle.text = "Enter Invite Code and earn 25% Discount on first ride"
             fieldSecond.placeholder = "Invite Code"
+            btnAction.setTitle("Skip", for: .normal)
+        case .ForgotPassword:
+            labelTitle.text = "Forgot Password"
+            labelSubtitle.text = "Enter your email to reset password"
+            fieldSecond.placeholder = "Email"
+            btnAction.setTitle("Use Phone number", for: .normal)
         }
     }
     
@@ -216,9 +221,13 @@ open class RegisterationTemplateViewController: UIViewController {
     }
     
     
-    public func configPrimaryButton(btnTitle:String,image:UIImage?){
-        self.btnAction.setImage(image, for: .normal)
-        self.btnAction.setTitle(btnTitle, for: .normal)
+    public func configPrimaryButton(btnTitle:String? = nil,image:UIImage? = nil){
+        if let _btnTitle = btnTitle{
+            self.btnAction.setTitle(btnTitle, for: .normal)
+        }
+        if let _img = image{
+            self.btnAction.setImage(image, for: .normal)
+        }
     }
     
     //MARK:- Actions

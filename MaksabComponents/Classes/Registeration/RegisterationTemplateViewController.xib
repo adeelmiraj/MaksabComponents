@@ -139,9 +139,10 @@ on first ride</string>
                             <state key="normal" title="Button"/>
                         </button>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcV-mp-s6z" customClass="SecondaryActionButton" customModule="StylingBoilerPlate">
-                            <rect key="frame" x="165" y="198" width="46" height="20"/>
+                            <rect key="frame" x="99.5" y="198" width="177" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="pF7-sD-lRb"/>
+                                <constraint firstAttribute="width" constant="177" id="rhK-7V-pyi"/>
                             </constraints>
                             <state key="normal" title="Button"/>
                         </button>
