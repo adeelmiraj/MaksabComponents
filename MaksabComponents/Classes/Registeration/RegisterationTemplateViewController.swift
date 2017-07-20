@@ -87,9 +87,13 @@ open class RegisterationTemplateViewController: UIViewController {
        
         config(type: type)
         
+        configViews(type: type)
+        
         addTargets()
         
     }
+    
+
     
     func config(type: RegisterationViewType)  {
         if type != .NameAndEmail && type != .PasswordAndConfirmPassword{
@@ -111,6 +115,31 @@ open class RegisterationTemplateViewController: UIViewController {
         self.logoView.isHidden = false
         self.fieldsView.isHidden = false
 
+    }
+    
+    public func configViews(type: RegisterationViewType)  {
+        switch type {
+        case .PhoneNumber:
+            fieldSecond.placeholder = "Enter Phone Number"
+        case .VerificationCode:
+            labelTitle.text = "Verification Code"
+            fieldSecond.placeholder = "Enter here"
+        case .NameAndEmail:
+            labelTitle.text = "Name & Email"
+            fieldFirst.placeholder = "Name"
+            fieldSecond.placeholder = "Email"
+        case.Password:
+            labelTitle.text = "Password"
+            fieldSecond.placeholder = "Password"
+        case .PasswordAndConfirmPassword:
+            labelTitle.text = "Password"
+            fieldFirst.placeholder = "Password"
+            fieldSecond.placeholder = "Confirm Password"
+        case .InviteCode:
+            labelTitle.text = "Invite Code"
+            labelSubtitle.text = "Enter Invite Code and earn 25% Discount on first ride"
+            fieldSecond.placeholder = "Invite Code"
+        }
     }
     
     func addTargets()  {
