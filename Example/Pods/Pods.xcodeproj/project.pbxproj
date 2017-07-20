@@ -41,6 +41,7 @@
 		CE17F39160768C48D8B78345BEF6648B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3030A45F014ADCA9EE20EFBDE973F44C /* MapKit.framework */; };
 		D7827CB218BC5891C76547BCB64AF6DB /* MaksabComponents-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C651C7EAAEE461EB719112DD64172C05 /* MaksabComponents-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EC8F2FB73F4836768FDF00FB041C4FB6 /* UILable+custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BB4561144442ECC7F0EDC8993EE503 /* UILable+custom.swift */; };
+		ED5305191F207A5C002620AE /* StylingBoilerPlate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93838FF9A0FF6321D14E6FF6701421BD /* StylingBoilerPlate.framework */; };
 		F034667ABF7FB986B2A93BB409A3B9D0 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620919659EE540C05F551301FF824215 /* ToggleButton.swift */; };
 		FBD9212878F0B6FB2DBC6D86BECAF7A3 /* RegisterationTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4361103A0BF3F5ED86A4217869A9D5 /* RegisterationTemplateViewController.swift */; };
 /* End PBXBuildFile section */
@@ -138,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED5305191F207A5C002620AE /* StylingBoilerPlate.framework in Frameworks */,
 				B1BAB42FBC2147D9CA1825F3E47ECFBF /* Foundation.framework in Frameworks */,
 				CE17F39160768C48D8B78345BEF6648B /* MapKit.framework in Frameworks */,
 				3FE08B95CFAE947B1685082D2CA0CFA7 /* UIKit.framework in Frameworks */,
