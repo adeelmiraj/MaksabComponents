@@ -23,17 +23,10 @@ public class AppLabel: UILabel{
     }
 }
 
-//public class BodyLabel: AppLabel {
-//    public override func awakeFromNib() {
-//        super.config(font: UIFont.appFont(font: .RubikRegular, pontSize: 12))
-//    }
-//}
-
-
 //Login/Signup
 public class HeadlineLabel: AppLabel {
     public override func awakeFromNib() {
-        super.config(font: UIFont.appFont(font: .RubikRegular, pontSize: 18))
+        super.config(font: UIFont.appFont(font: .RubikBold, pontSize: 20))
     }
 }
 
@@ -82,6 +75,7 @@ public class ShoutnoteLabel: AppLabel {
     }
 }
 
+//Timers/counters Small
 public class ShoutnoteSmallLabel: AppLabel {
     public override func awakeFromNib() {
         super.config(font: UIFont.appFont(font: .RubikMedium, pontSize: 36))

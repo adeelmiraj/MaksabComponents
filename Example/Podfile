@@ -2,7 +2,8 @@ use_frameworks!
 
 target 'MaksabComponents_Example' do
   pod 'MaksabComponents', :path => '../'
-  pod 'StylingBoilerPlate'
+  pod 'StylingBoilerPlate', '~>0.1.5'
+  pod 'IQKeyboardManagerSwift'
 
   target 'MaksabComponents_Tests' do
     inherit! :search_paths

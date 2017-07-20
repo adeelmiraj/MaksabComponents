@@ -15,6 +15,9 @@
 		AA200F3A34BC09EA5B3AC11F /* Pods_MaksabComponents_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B4378B3896E6709E83CBFE8 /* Pods_MaksabComponents_Tests.framework */; };
 		ED25FD531F1F61610037616E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		ED25FD541F1F616D0037616E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
+		ED5305571F209D7F002620AE /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED5305541F209D7F002620AE /* Rubik-Bold.ttf */; };
+		ED5305581F209D7F002620AE /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED5305551F209D7F002620AE /* Rubik-Medium.ttf */; };
+		ED5305591F209D7F002620AE /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED5305561F209D7F002620AE /* Rubik-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		A3A35ABBF5127340F79506DD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B0571D9F6A057014B5352180 /* Pods-MaksabComponents_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaksabComponents_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MaksabComponents_Tests/Pods-MaksabComponents_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E370C5039F4D6BF4781AE6E3 /* Pods_MaksabComponents_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MaksabComponents_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED5305541F209D7F002620AE /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
+		ED5305551F209D7F002620AE /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
+		ED5305561F209D7F002620AE /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
 		EED91C15C6AD0DF493FAF657 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		FAD8E7994B22EF7EB1BDC51C /* Pods-MaksabComponents_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaksabComponents_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MaksabComponents_Example/Pods-MaksabComponents_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +110,7 @@
 		607FACD21AFB9204008FA782 /* Example for MaksabComponents */ = {
 			isa = PBXGroup;
 			children = (
+				ED5305531F209D67002620AE /* Fonts */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -157,6 +164,16 @@
 				1B4378B3896E6709E83CBFE8 /* Pods_MaksabComponents_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED5305531F209D67002620AE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				ED5305541F209D7F002620AE /* Rubik-Bold.ttf */,
+				ED5305551F209D7F002620AE /* Rubik-Medium.ttf */,
+				ED5305561F209D7F002620AE /* Rubik-Regular.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,8 +266,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED25FD531F1F61610037616E /* Main.storyboard in Resources */,
+				ED5305591F209D7F002620AE /* Rubik-Regular.ttf in Resources */,
+				ED5305571F209D7F002620AE /* Rubik-Bold.ttf in Resources */,
 				ED25FD541F1F616D0037616E /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				ED5305581F209D7F002620AE /* Rubik-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

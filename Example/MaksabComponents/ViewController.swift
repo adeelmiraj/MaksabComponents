@@ -9,45 +9,83 @@
 import UIKit
 import MaksabComponents
 
-class ViewController: UIViewController, RegisterationTemplateViewControllerDataSource  {
+class ViewController: RegisterationTemplateViewController, RegisterationTemplateViewControllerDataSource, RegisterationTemplateViewControllerDelegate {
 
+    var registerationViewType = RegisterationViewType.PhoneNumber
+    
+    override open func loadView() {
+        let name = "RegisterationTemplateViewController"
+//        let bundle = Bundle(for: type(of: self))
+        let bundle = Bundle(for: RegisterationTemplateViewController.classForCoder())
+        guard let view = bundle.loadNibNamed(name, owner: self, options: nil)?.first as? UIView else {
+            fatalError("Nib not found.")
+        }
+        self.view = view
+        dataSource = self
+        delegate = self
+    }
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
-       
-//        let podBundle = Bundle(for: RegisterationTemplateViewController.classForCoder())
-//        print(podBundle.bundlePath)
-//        let podBundle = Bundle(for:UIViewController.self)
-//        if let bundleURL = podBundle.url(forResource: "MaksabComponents", withExtension: "bundle") {
-//            if let bundle = Bundle(url: bundleURL) {
-//                let cellNib = UINib(nibName: "RegisterationTemplateViewController", bundle: bundle)
-//                
-//            } else {
-//                assertionFailure("Could not load the bundle")
-//            }
-//        } else {
-//            assertionFailure("Could not create a path to the bundle")
+        
+        switch registerationViewType {
+        case .PhoneNumber:
+            fieldSecond.placeholder = "Enter Phone Number"
+        case .VerificationCode:
+            labelTitle.text = "Verification Code"
+            fieldSecond.placeholder = "Enter here"
+        case .NameAndEmail:
+            labelTitle.text = "Name & Email"
+            fieldFirst.placeholder = "Name"
+            fieldSecond.placeholder = "Email"
+        case.Password:
+            labelTitle.text = "Password"
+            fieldSecond.placeholder = "Password"
+        case .PasswordAndConfirmPassword:
+            labelTitle.text = "Password"
+            fieldFirst.placeholder = "Password"
+            fieldSecond.placeholder = "Confirm Password"
+        case .InviteCode:
+            labelTitle.text = "Invite Code"
+            labelSubtitle.text = "Enter Invite Code and earn 25% Discount on first ride"
+            fieldSecond.placeholder = "Invite Code"
+        }
+//        switch registerationViewType {
+//        case .PhoneNumber:
+//            congfigFields(title: "", subtitle: "", firstField: ["Enter Phone Number",""], secondField: [], actionButtonTitle: "", actionButtonImage: nil, showToolTip: false)
+//        case .VerificationCode:
+//            
+//        default:
+//            print("default")
 //        }
-//        let vc = RegisterationTemplateViewController.createController(for: .PhoneNumber)
-//        let vc = RegisterationTemplateViewController.secondWay(viewController: self)
-//        let vc = RegisterationTemplateViewController()
-//        let vc = AlertViewController()
-//        let nv = UINavigationController(rootViewController: vc)
-//        self.present(nv, animated: true, completion: nil)
     
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let vc = RegisterationTemplateViewController.createController(_for: .PhoneNumber)
-        vc.dataSource = self
-        self.present(vc, animated: true, completion: nil)
+//        let vc = RegisterationTemplateViewController.createController(_for: .PhoneNumber)
+//        vc.dataSource = self
+//        self.present(vc, animated: true, completion: nil)
     }
     
     func viewType() -> RegisterationViewType{
-        return RegisterationViewType.Password
-        
+        return registerationViewType
     }
 
+    //required
+    func actionNext(sender: UIButton) {
+        let vc = ViewController()
+        if registerationViewType == .InviteCode{
+            print("Show Home")
+            return
+        }
+        let type = registerationViewType.next()!
+        
+        vc.registerationViewType = type
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
 
 }
 
