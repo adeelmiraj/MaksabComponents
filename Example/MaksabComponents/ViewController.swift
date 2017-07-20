@@ -28,28 +28,8 @@ class ViewController: RegisterationTemplateViewController, RegisterationTemplate
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        switch registerationViewType {
-        case .PhoneNumber:
-            fieldSecond.placeholder = "Enter Phone Number"
-        case .VerificationCode:
-            labelTitle.text = "Verification Code"
-            fieldSecond.placeholder = "Enter here"
-        case .NameAndEmail:
-            labelTitle.text = "Name & Email"
-            fieldFirst.placeholder = "Name"
-            fieldSecond.placeholder = "Email"
-        case.Password:
-            labelTitle.text = "Password"
-            fieldSecond.placeholder = "Password"
-        case .PasswordAndConfirmPassword:
-            labelTitle.text = "Password"
-            fieldFirst.placeholder = "Password"
-            fieldSecond.placeholder = "Confirm Password"
-        case .InviteCode:
-            labelTitle.text = "Invite Code"
-            labelSubtitle.text = "Enter Invite Code and earn 25% Discount on first ride"
-            fieldSecond.placeholder = "Invite Code"
-        }
+       configViews(type: registerationViewType)
+        
 //        switch registerationViewType {
 //        case .PhoneNumber:
 //            congfigFields(title: "", subtitle: "", firstField: ["Enter Phone Number",""], secondField: [], actionButtonTitle: "", actionButtonImage: nil, showToolTip: false)
@@ -72,6 +52,10 @@ class ViewController: RegisterationTemplateViewController, RegisterationTemplate
         return registerationViewType
     }
 
+    func assests() -> RegisterationAssets {
+        return RegisterationAssets(logo:#imageLiteral(resourceName: "logo"), tooltip:#imageLiteral(resourceName: "help") , btnNext: #imageLiteral(resourceName: "arrow-thin-right"), facebook:#imageLiteral(resourceName: "facebook"),twitter: #imageLiteral(resourceName: "twitter"), google: #imageLiteral(resourceName: "google"))
+    }
+    
     //required
     func actionNext(sender: UIButton) {
         let vc = ViewController()

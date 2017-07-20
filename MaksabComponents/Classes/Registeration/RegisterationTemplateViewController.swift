@@ -25,8 +25,27 @@ public enum RegisterationViewType: Int {
     }
 }
 
+public struct RegisterationAssets {
+    var _logo:UIImage
+    var _tooltip: UIImage?
+    var _btnNext: UIImage
+    var _facebook: UIImage?
+    var _twitter: UIImage?
+    var _google: UIImage?
+    
+   public init(logo:UIImage, tooltip:UIImage?, btnNext: UIImage, facebook:UIImage?,twitter:UIImage?, google:UIImage?) {
+        _logo = logo
+        _tooltip = tooltip
+        _btnNext = btnNext
+        _facebook = facebook
+        _twitter = twitter
+        _google = google
+    }
+}
+
 public protocol RegisterationTemplateViewControllerDataSource{
     func viewType() -> RegisterationViewType
+    func assests() -> RegisterationAssets
 }
 
 @objc public protocol RegisterationTemplateViewControllerDelegate{
@@ -85,17 +104,34 @@ open class RegisterationTemplateViewController: UIViewController {
             fatalError("Missing registeration view controller datasource method viewType")
         }
        
-        config(type: type)
+        guard let assets = dataSource?.assests() else {
+            fatalError("Missing registeration view controller datasource assets")
+        }
+        
+        config(type: type, assets: assets)
         
         configViews(type: type)
         
         addTargets()
         
+        let bundle = Bundle(for: RegisterationTemplateViewController.classForCoder())
+        let img = UIImage(named: "logo", in: bundle, compatibleWith: nil)
+        
+        logo.image = img
+        
     }
     
 
     
-    func config(type: RegisterationViewType)  {
+    func config(type: RegisterationViewType, assets:RegisterationAssets)  {
+        logo.image = assets._logo
+        btnTooltip.setImage(assets._tooltip, for: .normal)
+        btnBottomTooltip.setImage(assets._tooltip, for: .normal)
+        btnNext.setImage(assets._btnNext, for: .normal)
+        btnGoogle.setImage(assets._google, for: .normal)
+        btnFacbook.setImage(assets._facebook, for: .normal)
+        btnTwitter.setImage(assets._twitter, for: .normal)
+        
         if type != .NameAndEmail && type != .PasswordAndConfirmPassword{
             removeFirstField()
         }
