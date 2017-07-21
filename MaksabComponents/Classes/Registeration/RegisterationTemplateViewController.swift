@@ -17,6 +17,8 @@ public enum RegisterationViewType: Int {
     case PasswordAndConfirmPassword = 4
     case InviteCode = 5
     case ForgotPassword = 6
+    case AddVehicleDetails = 7
+    case BasicInfo = 8
     
     public func next() -> RegisterationViewType? {
         return RegisterationViewType(rawValue: self.rawValue+1)
@@ -70,26 +72,40 @@ open class RegisterationTemplateViewController: UIViewController {
     public var dataSource: RegisterationTemplateViewControllerDataSource!
     public var delegate: RegisterationTemplateViewControllerDelegate?
     
-    @IBOutlet weak var firstFieldHeight: NSLayoutConstraint!
-    @IBOutlet weak var stackViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var stackViewReqHeight: NSLayoutConstraint!
+    
+
     @IBOutlet weak var socialLoginsView: UIView!
     @IBOutlet weak var fieldsView: UIView!
     @IBOutlet weak var logoView: UIView!
     
     @IBOutlet weak public var logo: UIImageView!
     
+    //Fields View
+    @IBOutlet weak var firstFieldHeight: NSLayoutConstraint!
+    @IBOutlet weak var thirdFieldHeight: NSLayoutConstraint!
+    @IBOutlet weak var fourthFieldHeight: NSLayoutConstraint!
+    @IBOutlet weak var stackViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var stackViewReqHeight: NSLayoutConstraint!
     @IBOutlet weak var subtitleHeight: NSLayoutConstraint!
     @IBOutlet weak var titleViewHeight: NSLayoutConstraint!
     @IBOutlet weak var actionButtonHeight: NSLayoutConstraint!
+    @IBOutlet weak var driverNationalityViewHeight: NSLayoutConstraint!
+    
     @IBOutlet weak public var labelTitle: HeadlineLabel!
     @IBOutlet weak public var labelSubtitle: CaptionLabel!
     @IBOutlet weak var btnTooltip: UIButton!
     @IBOutlet weak public var fieldFirst: BottomBorderTextField!
     @IBOutlet weak public var fieldSecond: BottomBorderTextField!
+    @IBOutlet weak public var fieldThird: BottomBorderTextField!
+    @IBOutlet weak public var fieldFourth: BottomBorderTextField!
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var btnAction: UIButton!
+    @IBOutlet weak var driverNationalitySwitch: UISwitch!
+    @IBOutlet weak var labelDriverNationality: UILabel!
+    @IBOutlet weak var driverNationalityView: UIView!
+
     
+    //Social Logins View
     @IBOutlet weak var btnFacbook: UIButton!
     @IBOutlet weak var btnGoogle: UIButton!
     @IBOutlet weak var btnTwitter: UIButton!
@@ -126,7 +142,7 @@ open class RegisterationTemplateViewController: UIViewController {
         btnFacbook.setImage(assets._facebook, for: .normal)
         btnTwitter.setImage(assets._twitter, for: .normal)
         
-        if type != .NameAndEmail && type != .PasswordAndConfirmPassword{
+        if type != .NameAndEmail && type != .PasswordAndConfirmPassword  && type != .AddVehicleDetails && type != .BasicInfo{
             removeFirstField()
         }
         if type != .PhoneNumber{
@@ -135,7 +151,7 @@ open class RegisterationTemplateViewController: UIViewController {
             self.socialLoginsView.isHidden = false
             removeTitleView()
         }
-        if type == .PasswordAndConfirmPassword || type == .PhoneNumber{
+        if type == .PasswordAndConfirmPassword || type == .PhoneNumber || type == .AddVehicleDetails || type == .BasicInfo{
             removeActionButton()
         }
         if type != .InviteCode && type != .ForgotPassword{
@@ -143,6 +159,14 @@ open class RegisterationTemplateViewController: UIViewController {
         }
         if type == .VerificationCode{
             btnTooltip.isHidden = false
+        }
+        if type == .AddVehicleDetails{
+            addThirdField()
+            addFourthField()
+        }
+        if type == .BasicInfo{
+            addThirdField()
+            addDriverNationalityView()
         }
         self.logoView.isHidden = false
         self.fieldsView.isHidden = false
@@ -180,6 +204,18 @@ open class RegisterationTemplateViewController: UIViewController {
             labelSubtitle.text = "Enter your email to reset password"
             fieldSecond.placeholder = "Email"
             btnAction.setTitle("Use Phone number", for: .normal)
+        case .AddVehicleDetails:
+            labelTitle.text = "Add Vehicle Details"
+            fieldFirst.placeholder = "Make"
+            fieldSecond.placeholder = "Model"
+            fieldThird.placeholder = "Year"
+            fieldFourth.placeholder = "License Plate"
+        case .BasicInfo:
+            labelTitle.text = "Basic Information"
+            fieldFirst.placeholder = "Name"
+            fieldSecond.placeholder = "Email"
+            fieldThird.placeholder = "City"
+            labelDriverNationality.text = "Saudi Nationality"
         }
     }
     
@@ -210,6 +246,31 @@ open class RegisterationTemplateViewController: UIViewController {
     
     func removeActionButton()  {
         actionButtonHeight.constant = 0
+    }
+    
+    func addThirdField()  {
+        thirdFieldHeight.constant = 30
+        fieldThird.isHidden = false
+        
+        stackViewHeight.constant = 76+30
+        stackViewReqHeight.constant = 64+30
+        
+    }
+    
+    func addFourthField()  {
+        fourthFieldHeight.constant = 30
+        fieldFourth.isHidden = false
+        
+        stackViewHeight.constant = 76+30+30
+        stackViewReqHeight.constant = 64+30+30
+    }
+    
+    
+    func addDriverNationalityView()  {
+        driverNationalityViewHeight.constant = 30
+        driverNationalityView.isHidden = false
+        stackViewHeight.constant = 76+30+30
+        stackViewReqHeight.constant = 64+30+30
     }
     
     func removeSocialLoginsView()  {
