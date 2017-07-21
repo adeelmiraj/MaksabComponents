@@ -9,6 +9,22 @@
 import UIKit
 import StylingBoilerPlate
 
+public extension UIViewController {
+    var isModal: Bool {
+        if let index = navigationController?.viewControllers.index(of: self), index > 0 {
+            return false
+        } else if presentingViewController != nil {
+            return true
+        } else if navigationController?.presentingViewController?.presentedViewController == navigationController  {
+            return true
+        } else if tabBarController?.presentingViewController is UITabBarController {
+            return true
+        } else {
+            return false
+        }
+    }
+}
+
 public enum RegisterationViewType: Int {
     case PhoneNumber = 0
     case VerificationCode = 1
@@ -113,6 +129,8 @@ open class RegisterationTemplateViewController: UIViewController {
     
     override open func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.topItem?.title = ""
         
         guard let type = dataSource?.viewType() else {
             fatalError("Missing registeration view controller datasource method viewType")
