@@ -18,6 +18,7 @@
 		ED5305571F209D7F002620AE /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED5305541F209D7F002620AE /* Rubik-Bold.ttf */; };
 		ED5305581F209D7F002620AE /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED5305551F209D7F002620AE /* Rubik-Medium.ttf */; };
 		ED5305591F209D7F002620AE /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED5305561F209D7F002620AE /* Rubik-Regular.ttf */; };
+		ED91AA241F25CCB400A1895C /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED91AA231F25CCB400A1895C /* TermsAndConditionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		ED5305541F209D7F002620AE /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		ED5305551F209D7F002620AE /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
 		ED5305561F209D7F002620AE /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
+		ED91AA231F25CCB400A1895C /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
 		EED91C15C6AD0DF493FAF657 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		FAD8E7994B22EF7EB1BDC51C /* Pods-MaksabComponents_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaksabComponents_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MaksabComponents_Example/Pods-MaksabComponents_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +115,7 @@
 				ED5305531F209D67002620AE /* Fonts */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				ED91AA231F25CCB400A1895C /* TermsAndConditionsViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -232,10 +235,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 76Y6R3NPUP;
 						LastSwiftMigration = 0820;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 76Y6R3NPUP;
 						LastSwiftMigration = 0820;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -383,6 +388,7 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				ED91AA241F25CCB400A1895C /* TermsAndConditionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +522,7 @@
 			baseConfigurationReference = 224BC87B6077DE6AFD21F31C /* Pods-MaksabComponents_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 76Y6R3NPUP;
 				INFOPLIST_FILE = MaksabComponents/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -531,6 +538,7 @@
 			baseConfigurationReference = FAD8E7994B22EF7EB1BDC51C /* Pods-MaksabComponents_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 76Y6R3NPUP;
 				INFOPLIST_FILE = MaksabComponents/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -545,6 +553,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B0571D9F6A057014B5352180 /* Pods-MaksabComponents_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 76Y6R3NPUP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -565,6 +574,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A30D314EBAA6A1ADCC193386 /* Pods-MaksabComponents_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 76Y6R3NPUP;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

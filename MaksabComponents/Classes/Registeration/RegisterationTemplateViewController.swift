@@ -9,22 +9,6 @@
 import UIKit
 import StylingBoilerPlate
 
-public extension UIViewController {
-    var isModal: Bool {
-        if let index = navigationController?.viewControllers.index(of: self), index > 0 {
-            return false
-        } else if presentingViewController != nil {
-            return true
-        } else if navigationController?.presentingViewController?.presentedViewController == navigationController  {
-            return true
-        } else if tabBarController?.presentingViewController is UITabBarController {
-            return true
-        } else {
-            return false
-        }
-    }
-}
-
 public enum RegisterationViewType: Int {
     case PhoneNumber = 0
     case VerificationCode = 1
@@ -33,8 +17,8 @@ public enum RegisterationViewType: Int {
     case PasswordAndConfirmPassword = 4
     case InviteCode = 5
     case ForgotPassword = 6
-    case AddVehicleDetails = 7
-    case BasicInfo = 8
+    case BasicInfo = 7
+    case AddVehicleDetails = 8
     
     public func next() -> RegisterationViewType? {
         return RegisterationViewType(rawValue: self.rawValue+1)
@@ -74,7 +58,7 @@ public protocol RegisterationTemplateViewControllerDataSource{
     @objc optional func actionTooltipTop(sender: UIButton)
 }
 
-open class RegisterationTemplateViewController: UIViewController {
+open class RegisterationTemplateViewController: UIViewController, NibLoadableView {
     
 //    override open func loadView() {
 //        let name = "RegisterationTemplateViewController"

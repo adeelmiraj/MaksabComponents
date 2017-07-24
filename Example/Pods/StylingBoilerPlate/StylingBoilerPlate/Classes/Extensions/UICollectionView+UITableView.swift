@@ -18,6 +18,12 @@ public extension NibLoadableView where Self: UIView{
     }
 }
 
+public extension NibLoadableView where Self: UIViewController{
+    public static var nibName: String{
+        return String(describing: self)
+    }
+}
+
 public extension ReuseableView where Self: UIView{
     public static var reuseId: String{
         return String(describing: self)

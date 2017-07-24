@@ -14,10 +14,10 @@ class ViewController: RegisterationTemplateViewController, RegisterationTemplate
     var registerationViewType = RegisterationViewType.PhoneNumber
     
     override open func loadView() {
-        let name = "RegisterationTemplateViewController"
+//        let name = "RegisterationTemplateViewController"
 //        let bundle = Bundle(for: type(of: self))
         let bundle = Bundle(for: RegisterationTemplateViewController.classForCoder())
-        guard let view = bundle.loadNibNamed(name, owner: self, options: nil)?.first as? UIView else {
+        guard let view = bundle.loadNibNamed(RegisterationTemplateViewController.nibName, owner: self, options: nil)?.first as? UIView else {
             fatalError("Nib not found.")
         }
         self.view = view
@@ -50,14 +50,14 @@ class ViewController: RegisterationTemplateViewController, RegisterationTemplate
     
     //required
     func actionNext(sender: UIButton) {
-        let vc = ViewController()
-        if registerationViewType == .BasicInfo{
-            print("Show Home")
-            return
-        }
-        let type = registerationViewType.next()!
-        
-        vc.registerationViewType = type
+        let vc = TermsAndConditionsViewController()
+//        if registerationViewType == .BasicInfo{
+//            print("Show Home")
+//            return
+//        }
+//        let type = registerationViewType.next()!
+//        
+//        vc.registerationViewType = type
         
         self.navigationController?.pushViewController(vc, animated: true)
         

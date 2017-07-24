@@ -1,8 +1,8 @@
 PODS:
   - IQKeyboardManagerSwift (4.0.10)
-  - MaksabComponents (0.1.6):
+  - MaksabComponents (0.1.8):
     - StylingBoilerPlate
-  - StylingBoilerPlate (0.1.5)
+  - StylingBoilerPlate (0.1.7)
 
 DEPENDENCIES:
   - IQKeyboardManagerSwift
@@ -15,8 +15,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
-  MaksabComponents: 06f028815c5f1eb3641598117c5d1fb3c2ca50af
-  StylingBoilerPlate: 34ab5f941160d96e38dec14ee10a0175a7277a1a
+  MaksabComponents: d00720b59affc99f13d641ff841dbe52058efcf6
+  StylingBoilerPlate: fcb9efdfac683aa89b57f93dc8030805b864b37f
 
 PODFILE CHECKSUM: 206a4326ac1669861e79ae3020cb911d744678bf
 
