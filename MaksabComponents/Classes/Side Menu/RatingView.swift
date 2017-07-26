@@ -13,21 +13,16 @@ import Cosmos
     
     override open func awakeFromNib() {
         super.awakeFromNib()
-
-        let bundle = Bundle(for: type(of: self))
-        let starEmpty = UIImage(named: "star-empty", in: bundle, compatibleWith: nil)
-        let starFilled = UIImage(named: "star-filled", in: bundle, compatibleWith: nil)
+        let starEmpty = BundleHelper.getImageFromMaksabComponent(name: "star-empty", _class: RatingView.self)
+        let starFilled = BundleHelper.getImageFromMaksabComponent(name: "star-filled", _class: RatingView.self)
         settings.emptyImage = starEmpty
         settings.filledImage = starFilled
         settings.starMargin = 0
         settings.totalStars = 5
-        
-        
     }
     
     open override func prepareForInterfaceBuilder() {
-        update()
-
         super.prepareForInterfaceBuilder()
+        update()
     }
 }

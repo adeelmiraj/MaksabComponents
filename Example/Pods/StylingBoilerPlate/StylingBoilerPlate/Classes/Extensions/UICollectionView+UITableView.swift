@@ -33,13 +33,8 @@ public extension ReuseableView where Self: UIView{
 //Table
 extension UITableViewCell:ReuseableView{}
 
-public extension UITableView{
-    public func register<T: UITableViewCell>(_ :T.Type) where T:ReuseableView, T: NibLoadableView{
-        let nib = UINib(nibName: T.nibName, bundle: .main)
-        register(nib, forCellReuseIdentifier: T.reuseId)
-    }
-    
-    public func register<T: UITableViewCell>(_ :T.Type, bundle: Bundle) where T:ReuseableView, T: NibLoadableView{
+public extension UITableView{    
+    public func register<T: UITableViewCell>(_ :T.Type, bundle: Bundle = .main) where T:ReuseableView, T: NibLoadableView{
         let nib = UINib(nibName: T.nibName, bundle: bundle)
         register(nib, forCellReuseIdentifier: T.reuseId)
     }
@@ -57,8 +52,9 @@ public extension UITableView{
 extension UICollectionViewCell: ReuseableView{}
 
 public extension UICollectionView{
-    public func register<T: UICollectionViewCell>(_ :T) where T: ReuseableView, T: NibLoadableView{
-        let nib = UINib(nibName: T.nibName, bundle: .main)
+    
+    public func register<T: UITableViewCell>(_ :T.Type, bundle: Bundle = .main) where T:ReuseableView, T: NibLoadableView{
+        let nib = UINib(nibName: T.nibName, bundle: bundle)
         register(nib, forCellWithReuseIdentifier: T.reuseId)
     }
     
