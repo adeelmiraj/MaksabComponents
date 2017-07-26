@@ -72,7 +72,6 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     public var dataSource: RegisterationTemplateViewControllerDataSource!
     public var delegate: RegisterationTemplateViewControllerDelegate?
     
-    
 
     @IBOutlet weak var socialLoginsView: UIView!
     @IBOutlet weak var fieldsView: UIView!

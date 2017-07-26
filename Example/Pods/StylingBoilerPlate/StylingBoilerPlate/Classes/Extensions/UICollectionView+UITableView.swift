@@ -39,6 +39,11 @@ public extension UITableView{
         register(nib, forCellReuseIdentifier: T.reuseId)
     }
     
+    public func register<T: UITableViewCell>(_ :T.Type, bundle: Bundle) where T:ReuseableView, T: NibLoadableView{
+        let nib = UINib(nibName: T.nibName, bundle: bundle)
+        register(nib, forCellReuseIdentifier: T.reuseId)
+    }
+    
     public func dequeCell<T: UITableViewCell>(indexPath:IndexPath) -> T where T: ReuseableView  {
         guard  let cell = dequeueReusableCell(withIdentifier: T.reuseId, for: indexPath) as? T else {
             fatalError("Could not deque cell with identifier:\(T.reuseId)")

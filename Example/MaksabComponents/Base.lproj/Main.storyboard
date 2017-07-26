@@ -27,12 +27,48 @@
             </objects>
             <point key="canvasLocation" x="823" y="126"/>
         </scene>
+        <!--Custom Side Menu View Controller-->
+        <scene sceneID="YZk-YV-ci1">
+            <objects>
+                <viewController storyboardIdentifier="CustomSideMenuScene" id="TXp-dr-Evh" customClass="CustomSideMenuViewController" customModule="MaksabComponents_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3YG-7z-tTE"/>
+                        <viewControllerLayoutGuide type="bottom" id="uQG-AI-Phk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q0Y-y5-9cv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Esd-Z7-iGs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1474" y="125"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="Y8F-UK-RTV">
+            <objects>
+                <viewController storyboardIdentifier="HomeScene" id="euE-Xu-Mnw" customClass="HomeViewController" customModule="MaksabComponents_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2LY-Wa-iGB"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ggg-mm-DGN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JY3-Xq-LR7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E2q-3S-SI0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2146" y="126"/>
+        </scene>
         <!--Maksab Navigation Controller-->
         <scene sceneID="cD6-yO-72o">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZQn-bj-3Dh" customClass="MaksabNavigationController" customModule="MaksabComponents" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ps7-cw-eRZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ps7-cw-eRZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MaksabComponents'
-  s.version          = '0.1.9'
+  s.version          = '0.1.10'
   s.summary          = 'Maksab reusable components.'
 
 # This description is used to generate tags and improve search results.
@@ -38,12 +38,13 @@ Maksab reusable components.Components that are reused or used in both rider and 
 #   'MaksabComponents' => ['MaksabComponents/Classes/*.{xib}']
 #  }
 
-# s.resource_bundles = {
-#     'MaksabComponents' => ['MaksabComponents/Assets/*.png']
-# }
+ s.resource_bundles = {
+     'MaksabComponents' => ['MaksabComponents/Assets/*.png']
+ }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
     s.frameworks = 'UIKit'
     s.requires_arc     = true
     s.dependency 'StylingBoilerPlate'
+    s.dependency 'Cosmos'
 end

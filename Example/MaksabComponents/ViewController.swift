@@ -50,18 +50,19 @@ class ViewController: RegisterationTemplateViewController, RegisterationTemplate
     
     //required
     func actionNext(sender: UIButton) {
-        let vc = TermsAndConditionsViewController()
-//        if registerationViewType == .BasicInfo{
-//            print("Show Home")
-//            return
-//        }
-//        let type = registerationViewType.next()!
-//        
-//        vc.registerationViewType = type
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-        
+        let customSideMenu = self.storyboard?.instantiateViewController(withIdentifier: CustomSideMenuViewController.sceneName)
+        UIApplication.shared.windows.first?.rootViewController = customSideMenu!
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
+    
+//    func showHome()  {
+//        let homeController = self.storyboard?.instantiateViewController(withIdentifier: HomeViewController.sceneName)
+//        let rootNavController = RootNavigationViewController(rootViewController: homeController!)
+////        sideMenuTableViewController.dataSource = rootNavController
+////        sideMenuTableViewController.delegate = rootNavController
+//        UIApplication.shared.windows.first?.rootViewController = rootNavController
+//  
+//    }
 
 }
 

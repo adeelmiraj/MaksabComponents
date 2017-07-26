@@ -20,6 +20,7 @@ class TermsAndConditionsViewController: TermsAndConditionsTemplateViewController
         }
         self.view = view
     }
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
 
