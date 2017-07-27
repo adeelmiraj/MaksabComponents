@@ -9,11 +9,39 @@
 import UIKit
 import StylingBoilerPlate
 
-class HomeViewController: UIViewController,StoryBoardLoadableView {
+class HomeViewController: UIViewController,StoryBoardLoadableView, ServiceResponseViewDelegate {
 
+    var lv: LoadingBackgroundView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        lv = self.view as! LoadingBackgroundView
+        
+        lv.addServiceReponseView(delegate: self, top: 64, bottom: 0)
+        lv.showReponseView(title: "Error!", msg: "abc", img: nil, hideRetryBtn: false)
+        
+        let item = UIBarButtonItem(title: "hide", style: .plain, target: self, action: #selector(hideLoading))
+        let item2 = UIBarButtonItem(title: "show", style: .plain, target: self, action: #selector(showLoading))
+        self.navigationItem.rightBarButtonItems = [item2,item]
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        lv.hideLoadingOrMessageView()
+    }
+    
+    func showLoading()  {
+        lv.showLoading(toView: self.view, msg: "Loading Data")
+    }
+
+    func hideLoading()  {
+        lv.hideLoadingOrMessageView()
+    }
+    
+    func actionRetry() {
+        lv.hideLoadingOrMessageView()
+        self.showLoading()
     }
     
 //    static func setAsRoot()  {

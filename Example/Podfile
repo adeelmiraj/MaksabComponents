@@ -6,6 +6,8 @@ target 'MaksabComponents_Example' do
   pod 'IQKeyboardManagerSwift'
   pod 'SideMenuController'
   pod 'Cosmos'
+  pod 'MRProgress'
+  
   target 'MaksabComponents_Tests' do
     inherit! :search_paths
 

@@ -16,23 +16,26 @@ public class ProfileView: UIView, NibLoadableView, CustomView{
     @IBOutlet weak public var profilePic: UIImageView!
     @IBOutlet weak public var labelName: UILabel!
     @IBOutlet weak public var ratingView: CosmosView!
-    
+    var view: UIView!
     override required public init(frame: CGRect) {
         super.init(frame: frame)
         let bundle = Bundle(for: type(of: self))
-        self.commonInit(bundle: bundle)
-        profilePic.layer.cornerRadius = 58/2
-        profilePic.backgroundColor = UIColor.appColor(color: .Medium)
+        view = self.commonInit(bundle: bundle)
+        configView()
     }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         let bundle = Bundle(for: type(of: self))
-        self.commonInit(bundle: bundle)
+        view = self.commonInit(bundle: bundle)
+        configView()
+    }
+    
+    
+    func configView()  {
         profilePic.layer.cornerRadius = 58/2
         profilePic.backgroundColor = UIColor.appColor(color: .Medium)
     }
-    
     public override func awakeFromNib() {
         super.awakeFromNib()
        

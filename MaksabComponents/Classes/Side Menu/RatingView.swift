@@ -8,13 +8,16 @@
 
 import UIKit
 import Cosmos
-
+import StylingBoilerPlate
 @IBDesignable open class RatingView: CosmosView{
     
     override open func awakeFromNib() {
         super.awakeFromNib()
-        let starEmpty = BundleHelper.getImageFromMaksabComponent(name: "star-empty", _class: RatingView.self)
-        let starFilled = BundleHelper.getImageFromMaksabComponent(name: "star-filled", _class: RatingView.self)
+        
+//        print(Constants.bundleIdentifier)
+        let bundleHelper = BundleHelper(resourceName: Constants.resourceName)
+        let starEmpty = bundleHelper.getImageFromMaksabComponent(name: "star-empty", _class: RatingView.self)
+        let starFilled = bundleHelper.getImageFromMaksabComponent(name: "star-filled", _class: RatingView.self)
         settings.emptyImage = starEmpty
         settings.filledImage = starFilled
         settings.starMargin = 0

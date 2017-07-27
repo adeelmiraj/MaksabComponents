@@ -23,7 +23,7 @@ public protocol CustomView{
 }
 public extension CustomView where Self: UIView, Self: NibLoadableView{
     
-    public func commonInit(bundle: Bundle)  {
+    public func commonInit(bundle: Bundle) -> UIView{
         let nib = bundle.loadNibNamed(Self.nibName, owner: self, options: nil)
         let tempView = nib?.first as? UIView
         guard (tempView) != nil else {
@@ -32,6 +32,7 @@ public extension CustomView where Self: UIView, Self: NibLoadableView{
         tempView!.frame = self.bounds
         tempView!.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         self.addSubview(tempView!)
+        return tempView!
     }
     
     

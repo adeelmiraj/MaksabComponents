@@ -1,16 +1,47 @@
 PODS:
   - Cosmos (11.0.3)
   - IQKeyboardManagerSwift (4.0.10)
-  - MaksabComponents (0.1.10):
+  - MaksabComponents (0.1.11):
     - Cosmos
+    - MRProgress
     - StylingBoilerPlate
+  - MRProgress (0.8.3):
+    - MRProgress/ActivityIndicator (= 0.8.3)
+    - MRProgress/Blur (= 0.8.3)
+    - MRProgress/Circular (= 0.8.3)
+    - MRProgress/Icons (= 0.8.3)
+    - MRProgress/NavigationBarProgress (= 0.8.3)
+    - MRProgress/Overlay (= 0.8.3)
+  - MRProgress/ActivityIndicator (0.8.3):
+    - MRProgress/Stopable
+  - MRProgress/Blur (0.8.3):
+    - MRProgress/Helper
+  - MRProgress/Circular (0.8.3):
+    - MRProgress/Helper
+    - MRProgress/ProgressBaseClass
+    - MRProgress/Stopable
+  - MRProgress/Helper (0.8.3)
+  - MRProgress/Icons (0.8.3)
+  - MRProgress/NavigationBarProgress (0.8.3):
+    - MRProgress/ProgressBaseClass
+  - MRProgress/Overlay (0.8.3):
+    - MRProgress/ActivityIndicator
+    - MRProgress/Blur
+    - MRProgress/Circular
+    - MRProgress/Helper
+    - MRProgress/Icons
+  - MRProgress/ProgressBaseClass (0.8.3)
+  - MRProgress/Stopable (0.8.3):
+    - MRProgress/Helper
   - SideMenuController (0.2.4)
-  - StylingBoilerPlate (0.1.10)
+  - StylingBoilerPlate (0.1.12):
+    - MRProgress
 
 DEPENDENCIES:
   - Cosmos
   - IQKeyboardManagerSwift
   - MaksabComponents (from `../`)
+  - MRProgress
   - SideMenuController
 
 EXTERNAL SOURCES:
@@ -20,10 +51,11 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Cosmos: eb506859929f4add2d2aec822a27efb2f718a95d
   IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
-  MaksabComponents: b5adda01846fab9cc6fef1e57a5d9088a5223726
+  MaksabComponents: 8c454d242c807e99c1c98893c6c28fa98a376179
+  MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   SideMenuController: b463d2b3aa58e2afe57f57a07938fa9a647894ca
-  StylingBoilerPlate: c32bbdd710a80ddef9241bea555161f53a8edf5c
+  StylingBoilerPlate: e6b52da8d0252e52fc6777b615fd4ee20b451da5
 
-PODFILE CHECKSUM: 06146becc1748529d771a5bb4ff257e4fb0a4f51
+PODFILE CHECKSUM: 5d49dfcbc5367de7fdbb5a6891cf1cb6184f2830
 
 COCOAPODS: 1.2.1
