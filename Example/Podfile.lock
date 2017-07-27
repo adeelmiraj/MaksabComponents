@@ -1,9 +1,8 @@
 PODS:
   - Cosmos (11.0.3)
   - IQKeyboardManagerSwift (4.0.10)
-  - MaksabComponents (0.1.11):
+  - MaksabComponents (0.1.12):
     - Cosmos
-    - MRProgress
     - StylingBoilerPlate
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
@@ -34,7 +33,7 @@ PODS:
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
   - SideMenuController (0.2.4)
-  - StylingBoilerPlate (0.1.12):
+  - StylingBoilerPlate (0.1.13):
     - MRProgress
 
 DEPENDENCIES:
@@ -51,10 +50,10 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Cosmos: eb506859929f4add2d2aec822a27efb2f718a95d
   IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
-  MaksabComponents: 8c454d242c807e99c1c98893c6c28fa98a376179
+  MaksabComponents: 05865fa7d62c8322a128825f09ddafde73bb027e
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   SideMenuController: b463d2b3aa58e2afe57f57a07938fa9a647894ca
-  StylingBoilerPlate: e6b52da8d0252e52fc6777b615fd4ee20b451da5
+  StylingBoilerPlate: e0a27d709f870d6161931d788429f08dba074114
 
 PODFILE CHECKSUM: 5d49dfcbc5367de7fdbb5a6891cf1cb6184f2830
 

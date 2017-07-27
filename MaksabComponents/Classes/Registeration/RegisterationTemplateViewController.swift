@@ -113,6 +113,21 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     override open func viewDidLoad() {
         super.viewDidLoad()
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(actionHideKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
+        
+        //text fields delegate
+        fieldFirst.delegate = self
+        fieldSecond.delegate = self
+        fieldThird.delegate = self
+        fieldFourth.delegate = self
+        
+        
+        fieldFirst.returnKeyType = .done
+        fieldSecond.returnKeyType = .done
+        fieldThird.returnKeyType = .done
+        fieldFourth.returnKeyType = .done
+        
         self.navigationController?.navigationBar.topItem?.title = ""
         
         guard let type = dataSource?.viewType() else {
@@ -132,6 +147,9 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     }
     
 
+    func actionHideKeyboard()  {
+        self.view.endEditing(true)
+    }
     
     func config(type: RegisterationViewType, assets:RegisterationAssets)  {
         
@@ -178,23 +196,29 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         switch type {
         case .PhoneNumber:
             fieldSecond.placeholder = "Enter Phone Number"
+            fieldSecond.keyboardType = .numberPad
         case .VerificationCode:
             labelTitle.text = "Verification Code"
             fieldSecond.placeholder = "Enter here..."
             btnAction.setTitle("Resend Code", for: .normal)
+            fieldSecond.keyboardType = .numberPad
         case .NameAndEmail:
             labelTitle.text = "Name & Email"
             fieldFirst.placeholder = "Name"
             fieldSecond.placeholder = "Email"
             btnAction.setTitle("Skip", for: .normal)
+            fieldSecond.keyboardType = .emailAddress
         case.Password:
             labelTitle.text = "Password"
             fieldSecond.placeholder = "Password"
             btnAction.setTitle("Forgot Password?", for: .normal)
+            fieldSecond.isSecureTextEntry = true
         case .PasswordAndConfirmPassword:
             labelTitle.text = "Password"
             fieldFirst.placeholder = "Password"
             fieldSecond.placeholder = "Confirm Password"
+            fieldFirst.isSecureTextEntry = true
+            fieldSecond.isSecureTextEntry = true
         case .InviteCode:
             labelTitle.text = "Invite Code"
             labelSubtitle.text = "Enter Invite Code and earn 25% Discount on first ride"
@@ -205,6 +229,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
             labelSubtitle.text = "Enter your email to reset password"
             fieldSecond.placeholder = "Email"
             btnAction.setTitle("Use Phone number", for: .normal)
+            fieldSecond.keyboardType = .emailAddress
         case .AddVehicleDetails:
             labelTitle.text = "Add Vehicle Details"
             fieldFirst.placeholder = "Make"
@@ -217,6 +242,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
             fieldSecond.placeholder = "Email"
             fieldThird.placeholder = "City"
             labelDriverNationality.text = "Saudi Nationality"
+            fieldSecond.keyboardType = .emailAddress
         }
     }
     
@@ -332,3 +358,89 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
 //    }
     
 }
+//MARK:- Handle TextField delegates
+extension RegisterationTemplateViewController: UITextFieldDelegate  {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+}
+
+//MARK:- Validations
+public extension RegisterationTemplateViewController{
+    
+    public func getPhoneNo() -> String? {
+        var isValid = true
+        let phoneNumber = fieldSecond.text ?? ""
+        if phoneNumber.isEmpty {
+            isValid = false
+        }else if phoneNumber.characters.count < 12 {
+            isValid = false
+        }
+        
+        if !isValid{
+            Alert.showMessage(viewController: self, title: "Invalid Input", msg: "Phone number must have 12 digits." )
+            return nil
+        }else{
+            self.view.endEditing(true)
+            return phoneNumber
+        }
+    }
+    
+    public func getNameAndEmail() -> [String?]?{
+        let name = fieldFirst.text ?? ""
+        let email = fieldSecond.text ?? ""
+        guard !email.isEmpty else {
+            self.view.endEditing(true)
+            return [nil,nil]
+        }
+        if !fieldSecond.isValid(exp: .email){
+            Alert.showMessage(viewController: self, title: "Invalid Input", msg: "Please enter a valid email address." )
+            return nil
+        }
+        self.view.endEditing(true)
+        return [name,email]
+    }
+    
+    public func getPasswordAndConfirmPassword() -> [String]? {
+        let pass = fieldFirst.text ?? ""
+        let confirmPass = fieldSecond.text ?? ""
+        
+        var msg = ""
+        if pass.characters.count < 8{
+            msg = "Password must be greater than 7 characters."
+        }else if pass.compare(confirmPass) != .orderedSame{
+            msg = "Password and Confirm Password donot match."
+        }
+        
+        if msg.isEmpty{
+            self.view.endEditing(true)
+            return [pass,confirmPass]
+        }else{
+            Alert.showMessage(viewController: self, title: "Invalid Input", msg: msg)
+            return nil
+        }
+    }
+    
+    public func getPin() -> String? {
+        let pin = fieldSecond.text ?? ""
+        if pin.characters.count == 6{
+            return pin
+        }else{
+            Alert.showMessage(viewController: self, title: "Invalid Pin", msg: "Pin must have 6 digits")
+            return nil
+        }
+    }
+    
+    public func getPassword() -> String? {
+        let pass = fieldSecond.text ?? ""
+        if pass.characters.count < 8{
+            Alert.showMessage(viewController: self, title: "Invalid Pin", msg: "Password must be greater than 7 characters.")
+            return nil
+        }else{
+            self.view.endEditing(true)
+            return pass
+        }
+    }
+}
+

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MaksabComponents'
-  s.version          = '0.1.12'
+  s.version          = '0.1.13'
   s.summary          = 'Maksab reusable components.'
 
 # This description is used to generate tags and improve search results.
@@ -47,6 +47,5 @@ Maksab reusable components.Components that are reused or used in both rider and 
     s.requires_arc     = true
     s.dependency 'StylingBoilerPlate'
     s.dependency 'Cosmos'
-    s.dependency 'MRProgress'
 
 end
