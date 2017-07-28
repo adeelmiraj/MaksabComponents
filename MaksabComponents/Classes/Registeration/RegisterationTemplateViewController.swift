@@ -19,6 +19,7 @@ public enum RegisterationViewType: Int {
     case ForgotPassword = 6
     case BasicInfo = 7
     case AddVehicleDetails = 8
+    case ResetPassUsingPhone = 9
     
     public func next() -> RegisterationViewType? {
         return RegisterationViewType(rawValue: self.rawValue+1)
@@ -33,13 +34,33 @@ public struct RegisterationAssets {
     var _twitter: UIImage?
     var _google: UIImage?
     
-   public init(logo:UIImage, tooltip:UIImage?, btnNext: UIImage, facebook:UIImage?,twitter:UIImage?, google:UIImage?) {
+    public init(logo:UIImage, tooltip:UIImage?, btnNext: UIImage, facebook:UIImage?,twitter:UIImage?, google:UIImage?) {
         _logo = logo
         _tooltip = tooltip
         _btnNext = btnNext
         _facebook = facebook
         _twitter = twitter
         _google = google
+    }
+}
+
+public struct EmailOrPhoneAsset {
+    public let isResetUsingEmail: Bool
+    public let emailorPhone: String
+    init(isResetUsingEmail: Bool, emailorPhone: String) {
+        self.isResetUsingEmail = isResetUsingEmail
+        self.emailorPhone = emailorPhone
+    }
+}
+
+public struct ResetPassUsingPhoneAsset {
+    public let pass: String
+    public let confirmPass: String
+    public let verificationCode: String
+    init(pass: String, confirmPass: String, verificationCode: String) {
+        self.pass = pass
+        self.confirmPass = confirmPass
+        self.verificationCode = verificationCode
     }
 }
 
@@ -60,19 +81,20 @@ public protocol RegisterationTemplateViewControllerDataSource{
 
 open class RegisterationTemplateViewController: UIViewController, NibLoadableView {
     
-//    override open func loadView() {
-//        let name = "RegisterationTemplateViewController"
-//        let bundle = Bundle(for: type(of: self))
-//        guard let view = bundle.loadNibNamed(name, owner: self, options: nil)?.first as? UIView else {
-//            fatalError("Nib not found.")
-//        }
-//        self.view = view
-//    }
-//    
+    //    override open func loadView() {
+    //        let name = "RegisterationTemplateViewController"
+    //        let bundle = Bundle(for: type(of: self))
+    //        guard let view = bundle.loadNibNamed(name, owner: self, options: nil)?.first as? UIView else {
+    //            fatalError("Nib not found.")
+    //        }
+    //        self.view = view
+    //    }
+    //
+    static public let countryCode = "92"
     public var dataSource: RegisterationTemplateViewControllerDataSource!
     public var delegate: RegisterationTemplateViewControllerDelegate?
     
-
+    
     @IBOutlet weak var socialLoginsView: UIView!
     @IBOutlet weak var fieldsView: UIView!
     @IBOutlet weak var logoView: UIView!
@@ -102,13 +124,15 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     @IBOutlet weak var driverNationalitySwitch: UISwitch!
     @IBOutlet weak var labelDriverNationality: UILabel!
     @IBOutlet weak var driverNationalityView: UIView!
-
+    
     
     //Social Logins View
     @IBOutlet weak var btnFacbook: UIButton!
     @IBOutlet weak var btnGoogle: UIButton!
     @IBOutlet weak var btnTwitter: UIButton!
     @IBOutlet weak var btnBottomTooltip: UIButton!
+    
+    var type:RegisterationViewType = .PhoneNumber
     
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -133,7 +157,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         guard let type = dataSource?.viewType() else {
             fatalError("Missing registeration view controller datasource method viewType")
         }
-       
+        
         guard let assets = dataSource?.assests() else {
             fatalError("Missing registeration view controller datasource assets")
         }
@@ -146,13 +170,13 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         
     }
     
-
+    
     func actionHideKeyboard()  {
         self.view.endEditing(true)
     }
     
     func config(type: RegisterationViewType, assets:RegisterationAssets)  {
-        
+        self.type = type
         self.logo.image = assets._logo
         btnTooltip.setImage(assets._tooltip, for: .normal)
         btnBottomTooltip.setImage(assets._tooltip, for: .normal)
@@ -160,8 +184,9 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         btnGoogle.setImage(assets._google, for: .normal)
         btnFacbook.setImage(assets._facebook, for: .normal)
         btnTwitter.setImage(assets._twitter, for: .normal)
+        btnAction.tintColor = UIColor.appColor(color: .Secondary)
         
-        if type != .NameAndEmail && type != .PasswordAndConfirmPassword  && type != .AddVehicleDetails && type != .BasicInfo{
+        if type != .NameAndEmail && type != .PasswordAndConfirmPassword  && type != .AddVehicleDetails && type != .BasicInfo && type != .ResetPassUsingPhone{
             removeFirstField()
         }
         if type != .PhoneNumber{
@@ -187,9 +212,12 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
             addThirdField()
             addDriverNationalityView()
         }
+        if type == .ResetPassUsingPhone{
+            addThirdField()
+        }
         self.logoView.isHidden = false
         self.fieldsView.isHidden = false
-
+        
     }
     
     public func configViews(type: RegisterationViewType)  {
@@ -243,7 +271,38 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
             fieldThird.placeholder = "City"
             labelDriverNationality.text = "Saudi Nationality"
             fieldSecond.keyboardType = .emailAddress
+        case .ResetPassUsingPhone:
+            labelTitle.text = "Reset Password"
+            fieldFirst.placeholder = "Password"
+            fieldSecond.placeholder = "Confirm Password"
+            fieldFirst.isSecureTextEntry = true
+            fieldSecond.isSecureTextEntry = true
+            fieldThird.keyboardType = .numberPad
+            fieldThird.placeholder = "Verification Code"
+            btnAction.setTitle("Resend Code", for: .normal)
         }
+    }
+    
+    public func switchForgotPasswordOption(){
+        let placeHolder = fieldSecond.placeholder ?? "Email"
+        if placeHolder.caseInsensitiveCompare("Email") == .orderedSame{
+            UIView.animate(withDuration: 10) {
+                self.labelSubtitle.text = "Enter your phone number to reset password"
+                self.btnAction.setTitle("Use Email", for: .normal)
+                self.fieldSecond.placeholder = "Phone Number"
+                self.fieldSecond.keyboardType = .numberPad
+                self.fieldSecond.text = ""
+            }
+        }else{
+            UIView.animate(withDuration: 10) {
+                self.labelSubtitle.text = "Enter your email to reset password"
+                self.btnAction.setTitle("Use Phone number", for: .normal)
+                self.fieldSecond.placeholder = "Email"
+                self.fieldSecond.keyboardType = .emailAddress
+                self.fieldSecond.text = ""
+            }
+        }
+        
     }
     
     func addTargets()  {
@@ -302,10 +361,10 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     
     func removeSocialLoginsView()  {
         self.socialLoginsView.removeFromSuperview()
-//        let bottom = NSLayoutConstraint(item: self.view, attribute: .bottom, relatedBy: .greaterThanOrEqual, toItem: self.fieldsView, attribute: .bottom, multiplier: 1, constant: 44)
+        //        let bottom = NSLayoutConstraint(item: self.view, attribute: .bottom, relatedBy: .greaterThanOrEqual, toItem: self.fieldsView, attribute: .bottom, multiplier: 1, constant: 44)
         let centerY = NSLayoutConstraint(item: fieldsView, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1, constant: 0)
         self.view.addConstraint(centerY)
-//        self.view.addConstraint(bottom)
+        //        self.view.addConstraint(bottom)
     }
     
     
@@ -346,16 +405,16 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     func actTooltipTop(sender: UIButton)  {
         delegate?.actionTooltipTop?(sender: sender)
     }
-//    open static  func createController(_for:RegisterationViewType) -> RegisterationTemplateViewController{
-//        
-//        var vc: RegisterationTemplateViewController!
-//        
-//        let bundle = Bundle(for: self.classForCoder())
-//        let name = "RegisterationTemplateViewController"
-//        vc = RegisterationTemplateViewController(nibName: name, bundle: bundle)
-//        
-//        return vc
-//    }
+    //    open static  func createController(_for:RegisterationViewType) -> RegisterationTemplateViewController{
+    //
+    //        var vc: RegisterationTemplateViewController!
+    //
+    //        let bundle = Bundle(for: self.classForCoder())
+    //        let name = "RegisterationTemplateViewController"
+    //        vc = RegisterationTemplateViewController(nibName: name, bundle: bundle)
+    //
+    //        return vc
+    //    }
     
 }
 //MARK:- Handle TextField delegates
@@ -364,6 +423,37 @@ extension RegisterationTemplateViewController: UITextFieldDelegate  {
         self.view.endEditing(true)
         return true
     }
+    
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        switch type {
+        case .PhoneNumber:
+            return handlePhoneNumber(textField: textField, shouldChangeCharactersIn: range, replacementString: string)
+        case .VerificationCode:
+            return !(textField.text!.characters.count > 5 && (string.characters.count) > range.length)
+        case .ForgotPassword:
+            guard fieldSecond.placeholder?.caseInsensitiveCompare("Email") != .orderedSame else {
+                return true
+            }
+            return handlePhoneNumber(textField: textField, shouldChangeCharactersIn: range, replacementString: string)
+        case .ResetPassUsingPhone:
+            if textField == fieldThird{
+                return !(textField.text!.characters.count > 5 && (string.characters.count) > range.length)
+            }
+            return true
+        default:
+            return true
+        }
+    }
+    
+    func handlePhoneNumber(textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField.text!.characters.count == 0 && string == "0"{
+            textField.text! = "92"
+            return false
+        }else if textField.text!.characters.count == 2 && string == "" {
+            textField.text! = ""
+        }
+        return !(textField.text!.characters.count > 11 && (string.characters.count) > range.length)
+    }
 }
 
 //MARK:- Validations
@@ -371,10 +461,11 @@ public extension RegisterationTemplateViewController{
     
     public func getPhoneNo() -> String? {
         var isValid = true
-        let phoneNumber = fieldSecond.text ?? ""
+        var phoneNumber = fieldSecond.text ?? ""
+        
         if phoneNumber.isEmpty {
             isValid = false
-        }else if phoneNumber.characters.count < 12 {
+        }else if phoneNumber.characters.count != 12{
             isValid = false
         }
         
@@ -425,6 +516,7 @@ public extension RegisterationTemplateViewController{
     public func getPin() -> String? {
         let pin = fieldSecond.text ?? ""
         if pin.characters.count == 6{
+            self.view.endEditing(true)
             return pin
         }else{
             Alert.showMessage(viewController: self, title: "Invalid Pin", msg: "Pin must have 6 digits")
@@ -442,5 +534,45 @@ public extension RegisterationTemplateViewController{
             return pass
         }
     }
+    
+    func getEmailorPhoneNo() -> EmailOrPhoneAsset? {
+        let placeHolder = fieldSecond.placeholder ?? "Email"
+        let result = placeHolder.caseInsensitiveCompare("Email")
+        switch result{
+        case .orderedSame:
+            //Email
+            let email = fieldSecond.text!
+            if !fieldSecond.isValid(exp: .email){
+                Alert.showMessage(viewController: self, title: "Invalid Input", msg: "Please enter a valid email address." )
+                return nil
+            }
+            self.view.endEditing(true)
+            return EmailOrPhoneAsset(isResetUsingEmail: true, emailorPhone: email)
+        default:
+            //PhoneNumber
+            let phoneNo = getPhoneNo()
+            guard phoneNo != nil else {
+                return nil
+            }
+            self.view.endEditing(true)
+            return EmailOrPhoneAsset(isResetUsingEmail: false, emailorPhone: phoneNo!)
+        }
+    }
+    
+    func getResetPassUsingPhoneAsset() -> ResetPassUsingPhoneAsset? {
+        let passAndConfirmPass = getPasswordAndConfirmPassword()
+        let verificationCode = fieldThird.text ?? ""
+        if passAndConfirmPass == nil{
+            return nil
+        }else if verificationCode.characters.count != 6{
+            Alert.showMessage(viewController: self, title: "Invalid Pin", msg: "Pin must have 6 digits")
+            return nil
+        }else{
+            self.view.endEditing(true)
+            return ResetPassUsingPhoneAsset(pass: passAndConfirmPass![0], confirmPass: passAndConfirmPass![1], verificationCode: verificationCode)
+        }
+    }
+    
+    
 }
 
