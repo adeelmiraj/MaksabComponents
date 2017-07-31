@@ -427,14 +427,14 @@ extension RegisterationTemplateViewController: UITextFieldDelegate  {
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         switch type {
         case .PhoneNumber:
-            return handlePhoneNumber(textField: textField, shouldChangeCharactersIn: range, replacementString: string)
+            return RegisterationTemplateViewController.handlePhoneNumber(textField: textField, shouldChangeCharactersIn: range, replacementString: string)
         case .VerificationCode:
             return !(textField.text!.characters.count > 5 && (string.characters.count) > range.length)
         case .ForgotPassword:
             guard fieldSecond.placeholder?.caseInsensitiveCompare("Email") != .orderedSame else {
                 return true
             }
-            return handlePhoneNumber(textField: textField, shouldChangeCharactersIn: range, replacementString: string)
+            return RegisterationTemplateViewController.handlePhoneNumber(textField: textField, shouldChangeCharactersIn: range, replacementString: string)
         case .ResetPassUsingPhone:
             if textField == fieldThird{
                 return !(textField.text!.characters.count > 5 && (string.characters.count) > range.length)
@@ -445,9 +445,9 @@ extension RegisterationTemplateViewController: UITextFieldDelegate  {
         }
     }
     
-    func handlePhoneNumber(textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    public static func handlePhoneNumber(textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField.text!.characters.count == 0 && string == "0"{
-            textField.text! = "92"
+            textField.text! = countryCode
             return false
         }else if textField.text!.characters.count == 2 && string == "" {
             textField.text! = ""

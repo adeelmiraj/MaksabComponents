@@ -42,7 +42,7 @@ public class LeftIconTableViewCell: UITableViewCell, NibLoadableView {
         // Configure the view for the selected state
     }
     
-    func config(icon: UIImage, title:String, subtitle:String?, rightButtonTitle:String?, delegate:LeftIconTableViewCellDelegate?)  {
+    public func config(icon: UIImage, title:String, subtitle:String?, rightButtonTitle:String?, delegate:LeftIconTableViewCellDelegate?)  {
         self.icon.image = icon
         self.labelTitle.text = title
         if subtitle != nil{

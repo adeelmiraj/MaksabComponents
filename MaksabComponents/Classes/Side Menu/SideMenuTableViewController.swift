@@ -136,7 +136,7 @@ open class SideMenuTableViewController: UIViewController,UITableViewDataSource, 
 
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard indexPath.section == 2 else {
+        guard indexPath.section == 1 else {
             return
         }
         
