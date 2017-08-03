@@ -15,8 +15,11 @@ class Tests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+//        let vc = ViewController()
+//        vc.selectRideView = SelectRideView.createInstance(x:8, width: UIScreen.main.bounds.width-16, delegate: vc)
+//        vc.selectRideView.changeRideType(newRideType: .Budget)
+//        XCTAssert(vc.selectRideView.getSelectedRideType() == .Budget)
+        
     }
     
     func testPerformanceExample() {

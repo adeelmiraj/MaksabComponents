@@ -12,6 +12,7 @@ import MaksabComponents
 class ViewController: RegisterationTemplateViewController, RegisterationTemplateViewControllerDataSource, RegisterationTemplateViewControllerDelegate {
 
     var registerationViewType = RegisterationViewType.PhoneNumber
+    var selectRideView: SelectRideView!
     
     override open func loadView() {
 //        let name = "RegisterationTemplateViewController"
@@ -23,6 +24,8 @@ class ViewController: RegisterationTemplateViewController, RegisterationTemplate
         self.view = view
         dataSource = self
         delegate = self
+        
+       
     }
     
     override public func viewDidLoad() {
@@ -37,8 +40,10 @@ class ViewController: RegisterationTemplateViewController, RegisterationTemplate
         }else if registerationViewType == .Password || registerationViewType == .ForgotPassword{
             configPrimaryButton(image: #imageLiteral(resourceName: "help"))
         }
+        
+        selectRideView = SelectRideView.createInstance(x:8, width: UIScreen.main.bounds.width-16, delegate: self)
+        self.view.addSubview(selectRideView)
     }
-
     
     func viewType() -> RegisterationViewType{
         return registerationViewType
@@ -64,5 +69,17 @@ class ViewController: RegisterationTemplateViewController, RegisterationTemplate
 //  
 //    }
 
+}
+
+extension ViewController: SelectRideDelegate{
+    
+    func toggleRideType(selectedType: RideType){
+    }
+    
+    func toggleRideOption(rideOption: RideOptions, state: Bool){
+        print(rideOption)
+        print(selectRideView.isMehramRide())
+        print(selectRideView.isNoSmoking())
+    }
 }
 

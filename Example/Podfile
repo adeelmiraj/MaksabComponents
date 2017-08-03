@@ -2,7 +2,7 @@ use_frameworks!
 
 target 'MaksabComponents_Example' do
   pod 'MaksabComponents', :path => '../'
-#  pod 'StylingBoilerPlate'
+  pod 'StylingBoilerPlate'
   pod 'IQKeyboardManagerSwift'
   pod 'SideMenuController'
   pod 'Cosmos'

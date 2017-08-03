@@ -1,7 +1,7 @@
 PODS:
   - Cosmos (11.0.3)
   - IQKeyboardManagerSwift (4.0.10)
-  - MaksabComponents (0.1.12):
+  - MaksabComponents (0.1.15):
     - Cosmos
     - StylingBoilerPlate
   - MRProgress (0.8.3):
@@ -42,6 +42,7 @@ DEPENDENCIES:
   - MaksabComponents (from `../`)
   - MRProgress
   - SideMenuController
+  - StylingBoilerPlate
 
 EXTERNAL SOURCES:
   MaksabComponents:
@@ -50,11 +51,11 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Cosmos: eb506859929f4add2d2aec822a27efb2f718a95d
   IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
-  MaksabComponents: 05865fa7d62c8322a128825f09ddafde73bb027e
+  MaksabComponents: 830d04d2ddbb2962e72c2e3b3c4df6659f009a04
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   SideMenuController: b463d2b3aa58e2afe57f57a07938fa9a647894ca
   StylingBoilerPlate: e0a27d709f870d6161931d788429f08dba074114
 
-PODFILE CHECKSUM: 5d49dfcbc5367de7fdbb5a6891cf1cb6184f2830
+PODFILE CHECKSUM: fff213d3d3b00c36e3b794e56dd8a6db10529ef5
 
 COCOAPODS: 1.2.1

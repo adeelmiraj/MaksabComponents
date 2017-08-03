@@ -8,7 +8,7 @@
 
 import UIKit
 public protocol Toggleable{
-     func onToggle(stateSelected:Bool)
+    func onToggle(stateSelected:Bool ,sender:UIButton)
 }
 
 public class ToggleBottomTitleButton: UIButton, Configurable {
@@ -64,6 +64,6 @@ public class ToggleBottomTitleButton: UIButton, Configurable {
 
     @objc private func actionToggle()  {
         stateSelected = !stateSelected
-        toggleDelegate?.onToggle(stateSelected: stateSelected)
+        toggleDelegate?.onToggle(stateSelected: stateSelected, sender: self)
     }
 }

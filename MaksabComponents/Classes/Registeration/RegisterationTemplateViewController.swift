@@ -127,10 +127,14 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     
     
     //Social Logins View
-    @IBOutlet weak var btnFacbook: UIButton!
-    @IBOutlet weak var btnGoogle: UIButton!
-    @IBOutlet weak var btnTwitter: UIButton!
+    @IBOutlet weak public var btnFacbook: UIButton!
+    @IBOutlet weak public var btnGoogle: UIButton!
+    @IBOutlet weak public var btnTwitter: UIButton!
     @IBOutlet weak var btnBottomTooltip: UIButton!
+    
+    public var activityIndicatoryFb:UIActivityIndicatorView!
+    public var activityIndicatoryGoogle:UIActivityIndicatorView!
+    public var activityIndicatoryTwitter:UIActivityIndicatorView!
     
     var type:RegisterationViewType = .PhoneNumber
     
@@ -192,6 +196,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         if type != .PhoneNumber{
             removeSocialLoginsView()
         }else{
+            addActivityIndicatorsOverSocialLogins()
             self.socialLoginsView.isHidden = false
             removeTitleView()
         }
@@ -303,6 +308,22 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
             }
         }
         
+    }
+    
+    func addActivityIndicatorsOverSocialLogins(){
+        activityIndicatoryFb = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicatoryFb.hidesWhenStopped = true
+        activityIndicatoryFb.center = btnFacbook.center
+        activityIndicatoryGoogle = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicatoryGoogle.hidesWhenStopped = true
+        activityIndicatoryGoogle.center = btnGoogle.center
+        activityIndicatoryTwitter = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicatoryTwitter.hidesWhenStopped = true
+        activityIndicatoryTwitter.center = btnTwitter.center
+        
+        btnFacbook.addSubview(activityIndicatoryFb)
+        btnGoogle.addSubview(activityIndicatoryGoogle)
+        btnTwitter.addSubview(activityIndicatoryTwitter)
     }
     
     func addTargets()  {
@@ -447,7 +468,7 @@ extension RegisterationTemplateViewController: UITextFieldDelegate  {
     
     public static func handlePhoneNumber(textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField.text!.characters.count == 0 && string == "0"{
-            textField.text! = countryCode
+            textField.text! = "92"
             return false
         }else if textField.text!.characters.count == 2 && string == "" {
             textField.text! = ""

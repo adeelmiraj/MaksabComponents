@@ -9,7 +9,7 @@
 import UIKit
 
 //height=48, aspectRatio = 17:6
-public class ToggleButton: UIButton, Configurable  {
+public class ToggleButton: UIButton, Configurable {
     
     @IBInspectable public var stateSelected: Bool = false{
         didSet{
@@ -18,6 +18,7 @@ public class ToggleButton: UIButton, Configurable  {
     }
     @IBInspectable public var selectedStateImage: UIImage!
     @IBInspectable public var unSelectedStateImage: UIImage!
+    public var toggleDelegate:Toggleable?
     
     private func toggleState(state:Bool){
         print("state:\(state)")
@@ -52,5 +53,6 @@ public class ToggleButton: UIButton, Configurable  {
     
     @objc private func actionToggle()  {
         stateSelected = !stateSelected
+        toggleDelegate?.onToggle(stateSelected: stateSelected, sender: self)
     }
 }
