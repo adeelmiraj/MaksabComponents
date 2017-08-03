@@ -8,7 +8,7 @@
 
 import UIKit
 public protocol Toggleable{
-    func onToggle(stateSelected:Bool ,sender:UIButton)
+    func onToggle(stateSelected:Bool, sender: UIButton)
 }
 
 public class ToggleBottomTitleButton: UIButton, Configurable {

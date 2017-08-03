@@ -9,7 +9,7 @@
 import UIKit
 
 //height=48, aspectRatio = 17:6
-public class ToggleButton: UIButton, Configurable {
+public class ToggleButton: UIButton, Configurable  {
     
     @IBInspectable public var stateSelected: Bool = false{
         didSet{

@@ -9,6 +9,16 @@
 import Foundation
 import UIKit
 
+struct ServerCustomError{
+    var type: Int = -1
+    var errors = [String]()
+    
+    init(type:Int = -1, errors:[String]) {
+        self.type = type
+        self.errors = errors
+    }
+}
+
 open class ResponseError {
     public var statusCode = -1
     public var reason = ""
@@ -27,7 +37,7 @@ open class ResponseError {
         let a = error.substring(with: range)
         return Int(a)
     }
-    
+    /*
     static public  func parseErrorData(data:Data?)->String?{
         guard data != nil else {
             return nil
@@ -51,8 +61,37 @@ open class ResponseError {
             print("json parsing error")
         }
         return nil
-    }
+    }*/
 
+    class func parseErrorData(data:Data?)->ServerCustomError?{
+        
+        var customError = ServerCustomError(type: -1, errors: [])
+        
+        guard data != nil else {
+            return nil
+        }
+        do{
+            let json = try JSONSerialization.jsonObject(with: data! , options: []) as! [String:Any]
+            print(json.description)
+            if let type = json["type"] as? Int{
+                customError.type = type
+            }
+            if let error = json["error"] as? String{
+                customError.errors.append(error)
+            }else if let errors = json["errors"] as? [String]{
+                customError.errors = errors
+            }else if let errors = json["errors"] as? [String:Any] {
+                if let msg = errors["full_messages"] as? [String]{
+                    customError.errors = msg
+                }
+                return nil
+            }
+        }catch{
+            print("json parsing error")
+            return nil
+        }
+        return customError
+    }
     
     public convenience init(error:Error){
         self.init()
