@@ -9,7 +9,7 @@
 import UIKit
 import Cosmos
 import StylingBoilerPlate
-@IBDesignable open class RatingView: CosmosView{
+open class RatingView: CosmosView{
     
     override open func awakeFromNib() {
         super.awakeFromNib()

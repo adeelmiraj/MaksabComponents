@@ -68,7 +68,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZQn-bj-3Dh" customClass="MaksabNavigationController" customModule="MaksabComponents" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ps7-cw-eRZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Ps7-cw-eRZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

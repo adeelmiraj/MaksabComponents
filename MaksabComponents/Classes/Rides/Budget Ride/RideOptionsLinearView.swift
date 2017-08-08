@@ -1,30 +1,19 @@
 //
-//  RidesOptionsGridView.swift
+//  RideOptionsLinearView.swift
 //  Pods
 //
-//  Created by Incubasys on 02/08/2017.
+//  Created by Incubasys on 04/08/2017.
 //
 //
 
 import UIKit
 import StylingBoilerPlate
 
-public enum RideOptions: Int{
-    case MehramRide = 0
-    case NoSmoking = 1
-    case Payment = 2
-    case NoOfPassengers = 3
-}
-
-protocol RideOptionsDelegate{
-    func rideOptioinToggled(rideOption: RideOptions, state: Bool)
-}
-
-class RidesOptionsGridView: UIView, CustomView, NibLoadableView, Toggleable{
+class RideOptionsLinearView: UIView , CustomView, NibLoadableView, Toggleable{
     
-    
-    static func createInstance(x: CGFloat, y: CGFloat, width:CGFloat) -> RidesOptionsGridView{
-        let inst = RidesOptionsGridView(frame: CGRect(x: x, y: y, width: width, height: 139))
+    static let height:CGFloat = 39
+    static func createInstance(x: CGFloat, y: CGFloat, width:CGFloat) -> RideOptionsLinearView{
+        let inst = RideOptionsLinearView(frame: CGRect(x: x, y: y, width: width, height: RideOptionsLinearView.height))
         return inst
     }
     
@@ -101,3 +90,4 @@ class RidesOptionsGridView: UIView, CustomView, NibLoadableView, Toggleable{
         return btnNoSmoking.stateSelected
     }
 }
+

@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Pods
+
+  Created by Incubasys on 04/08/2017.
+
+*/
+
+budgetRide = "Budget Ride";
+priceUnit = "SAR";
+howMuchYouAreWillingToPay = "How much are you willing to pay?";
+
+mehramRide = "Mehram Ride";
+noSmoking = "No Smoking";
+creditCard = "Credit Card";
+fourOrLessPassengers = "Four or less Passengers";

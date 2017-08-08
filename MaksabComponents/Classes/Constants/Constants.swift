@@ -10,5 +10,6 @@ import Foundation
 
 struct Constants {
     static let resourceName = "MaksabComponents"
+    static let languagedKey = "MaksabComponents"
 }
 

@@ -8,11 +8,18 @@
 
 import UIKit
 import MaksabComponents
+import StylingBoilerPlate
 
 class ViewController: RegisterationTemplateViewController, RegisterationTemplateViewControllerDataSource, RegisterationTemplateViewControllerDelegate {
 
     var registerationViewType = RegisterationViewType.PhoneNumber
     var selectRideView: SelectRideView!
+    var budgetRideView: BudgetRideView!
+    var luxuryView: LuxuryRideView!
+    var rideFound: RideFoundView!
+    var startRideView: StartRideView!
+    var rateRide: RateRideView!
+    var cellCount = 0
     
     override open func loadView() {
 //        let name = "RegisterationTemplateViewController"
@@ -41,8 +48,62 @@ class ViewController: RegisterationTemplateViewController, RegisterationTemplate
             configPrimaryButton(image: #imageLiteral(resourceName: "help"))
         }
         
-        selectRideView = SelectRideView.createInstance(x:8, width: UIScreen.main.bounds.width-16, delegate: self)
-        self.view.addSubview(selectRideView)
+//        selectRideView()
+//        showBudgetView()
+        
+        addBarItems()
+//        showLuxuryView()
+//        showFoundRide()
+//        showStartRide()
+        showRateRide()
+ 
+    }
+    
+    func addBarItems()  {
+        let incItem = UIBarButtonItem(title: "plus", style: .plain, target: self, action: #selector(addItem))
+//        let decItem = UIBarButtonItem(title: "minus", style: .plain, target: self, action: #selector(decreaseHeight))
+        self.navigationItem.rightBarButtonItems = [incItem]
+    }
+    
+    func addItem()  {
+        let row = (cellCount == 0) ? 0 : cellCount 
+        let indexPath = IndexPath(item: row, section: 0)
+        luxuryView.addRows(atIndexPaths: [indexPath], addItemsToData: { (indexPaths) in
+            self.cellCount += 1
+        }) { () -> Int in
+            return self.cellCount
+        }
+    }
+    
+
+    func showLuxuryView()  {
+        luxuryView =  LuxuryRideView.createInstance(x: 8, width: UIScreen.main.bounds.width-16, delegate: self)
+        self.view.addSubview(luxuryView)
+        luxuryView.tableView.dataSource = self
+        luxuryView.tableView.delegate = self
+        luxuryView.tableView.rowHeight = 110
+        luxuryView.show(animated: true)
+    }
+    
+    func showFoundRide()  {
+        rideFound = RideFoundView.createInstance(x: 8, width: UIScreen.main.bounds.width-16, delegate: self)
+        self.view.addSubview(rideFound)
+        rideFound.config()
+        rideFound.show(animated: true)
+    }
+    
+    func showStartRide() {
+        startRideView = StartRideView.createInstance(x: 8, width: UIScreen.main.bounds.width-16)
+        self.view.addSubview(startRideView)
+        startRideView.show(animated: true)
+        startRideView.config()
+    }
+    
+    func showRateRide()  {
+        rateRide = RateRideView.createInstance(x: 8, width: UIScreen.main.bounds.width-16, delegate: self)
+        self.view.addSubview(rateRide)
+        rateRide.show(animated: true)
+        rateRide.config()
     }
     
     func viewType() -> RegisterationViewType{
@@ -71,15 +132,48 @@ class ViewController: RegisterationTemplateViewController, RegisterationTemplate
 
 }
 
-extension ViewController: SelectRideDelegate{
+extension ViewController: LuxuryRideViewDelegate, RideFoundViewDelegate, RateRideViewDelegate{
     
-    func toggleRideType(selectedType: RideType){
-    }
-    
+//    func toggleRideType(selectedType: RideType){
+//    }
+    func actDetails(){}
+        func actContact(){}
+        func actChat(){}
     func toggleRideOption(rideOption: RideOptions, state: Bool){
-        print(rideOption)
-        print(selectRideView.isMehramRide())
-        print(selectRideView.isNoSmoking())
+//        print(rideOption)
+//        print(budgetRideView.isMehramRide())
+//        print(budgetRideView.isNoSmoking())
     }
+    
+//    func searchRides() {
+//    }
+}
+
+extension ViewController: UITableViewDataSource, UITableViewDelegate, UserInfoWithTwoBtnsDelegate{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cellCount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeCell(indexPath: indexPath) as UserInfoWithTwoBtnsTableViewCell
+        cell.config(indexPath: indexPath, delegate: self)
+        cell.userName.text = "\(indexPath.row)"
+        return cell
+    }
+    
+    func actPrimary(sender: PrimaryButton, indexPath: IndexPath){}
+    func actSecondary(sender: DestructiveButton, indexPath: IndexPath){
+//        let cell = luxuryView.tableView.cellForRow(at: indexPath) as? UserInfoWithTwoBtnsTableViewCell
+//        print("indexPath:\(indexPath.row)")
+//        print("title:\(cell?.userName.text)")
+
+        luxuryView.removeRows(atIndexPaths: [indexPath]) { (indexPaths) in
+            self.cellCount -= 1
+        }
+//        }
+        
+    }
+
 }
 

@@ -51,15 +51,13 @@ public class SelectRideView: UIView {
         rideOptionsGridView = RidesOptionsGridView.createInstance(x: 0, y: rideTypesView.frame.size.height, width: self.frame.size.width)
         rideOptionsGridView.delegate = self
         templateView.contentView.addSubview(rideOptionsGridView)
-        
-        templateView.show(animated: true){}
     }
     
-    public func show(animated: Bool, completion:@escaping (() -> Void)){
+    public func show(animated: Bool, completion: (() -> Void)? = nil){
         templateView.show(animated: animated, completion: completion)
     }
     
-    public func hide(animated: Bool, completion:@escaping (() -> Void)){
+    public func hide(animated: Bool, completion: (() -> Void)? = nil){
         templateView.hide(animated: animated, completion: completion)
     }
 }
