@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScheduledRideView" customModule="MaksabComponents" customModuleProvider="target">
+            <connections>
+                <outlet property="btnDone" destination="LQK-dl-47h" id="xfW-L9-6Bt"/>
+                <outlet property="datePicker" destination="Gea-pP-hQa" id="D6a-AH-JIK"/>
+                <outlet property="segmentedControl" destination="e3y-JI-vic" id="Qlp-Pn-bh9"/>
+                <outlet property="separatorView" destination="vWf-z7-vrJ" id="ECx-vu-oOv"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CardView" customModule="MaksabComponents" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZiZ-aa-bqP">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bV0-k0-iXb">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="e3y-JI-vic" customClass="BorderLessSegmentedControl" customModule="StylingBoilerPlate">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="9Xi-YE-eoy"/>
+                                    </constraints>
+                                    <segments>
+                                        <segment title="First"/>
+                                        <segment title="Second"/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="actSegmentChanged:" destination="-1" eventType="valueChanged" id="Is2-C8-EY1"/>
+                                    </connections>
+                                </segmentedControl>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="e3y-JI-vic" firstAttribute="top" secondItem="bV0-k0-iXb" secondAttribute="top" id="3RM-h1-LDe"/>
+                                <constraint firstAttribute="trailing" secondItem="e3y-JI-vic" secondAttribute="trailing" id="D22-Ai-J6Q"/>
+                                <constraint firstAttribute="height" constant="48" id="bpn-Om-434"/>
+                                <constraint firstItem="e3y-JI-vic" firstAttribute="leading" secondItem="bV0-k0-iXb" secondAttribute="leading" id="fLs-xv-ZlO"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LaM-S6-gC1">
+                            <rect key="frame" x="0.0" y="44" width="375" height="1"/>
+                            <color key="backgroundColor" red="0.83137254901960778" green="0.83137254901960778" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="lLu-lH-gaM"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bo5-Ui-N43">
+                            <rect key="frame" x="0.0" y="56" width="375" height="593"/>
+                            <subviews>
+                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Gea-pP-hQa">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="177"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="375" id="dQ1-3U-Fb0"/>
+                                        <constraint firstAttribute="height" constant="177" id="itf-yw-Nie"/>
+                                    </constraints>
+                                    <date key="date" timeIntervalSinceReferenceDate="523959036.94773501">
+                                        <!--2017-08-09 08:10:36 +0000-->
+                                    </date>
+                                </datePicker>
+                                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vWf-z7-vrJ" userLabel="separator View">
+                                    <rect key="frame" x="0.0" y="177" width="375" height="1"/>
+                                    <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="rFK-KE-tOf"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQK-dl-47h" customClass="PrimaryButton" customModule="StylingBoilerPlate">
+                                    <rect key="frame" x="42.5" y="545" width="290" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="48" id="5Sy-bc-lsX"/>
+                                        <constraint firstAttribute="width" constant="290" id="Qxw-2o-vG9"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="actDone:" destination="-1" eventType="touchUpInside" id="IiZ-qE-Fnx"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="vWf-z7-vrJ" firstAttribute="top" secondItem="Gea-pP-hQa" secondAttribute="bottom" id="D6g-HX-Td6"/>
+                                <constraint firstAttribute="trailing" secondItem="vWf-z7-vrJ" secondAttribute="trailing" id="J1w-vJ-Zms"/>
+                                <constraint firstItem="vWf-z7-vrJ" firstAttribute="leading" secondItem="bo5-Ui-N43" secondAttribute="leading" id="Udw-kE-pXR"/>
+                                <constraint firstAttribute="bottom" secondItem="LQK-dl-47h" secondAttribute="bottom" id="cGF-oy-j5M"/>
+                                <constraint firstItem="LQK-dl-47h" firstAttribute="centerX" secondItem="bo5-Ui-N43" secondAttribute="centerX" id="hnv-yg-2Oy"/>
+                                <constraint firstItem="Gea-pP-hQa" firstAttribute="centerX" secondItem="bo5-Ui-N43" secondAttribute="centerX" id="ph7-wN-2ix"/>
+                                <constraint firstItem="Gea-pP-hQa" firstAttribute="top" secondItem="bo5-Ui-N43" secondAttribute="top" id="yb1-hm-m8S"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="bV0-k0-iXb" secondAttribute="trailing" id="1kZ-BA-huE"/>
+                        <constraint firstItem="LaM-S6-gC1" firstAttribute="trailing" secondItem="bV0-k0-iXb" secondAttribute="trailing" id="Edc-u8-Irh"/>
+                        <constraint firstItem="LaM-S6-gC1" firstAttribute="top" secondItem="e3y-JI-vic" secondAttribute="bottom" id="HxQ-t7-l8N"/>
+                        <constraint firstItem="LaM-S6-gC1" firstAttribute="leading" secondItem="bV0-k0-iXb" secondAttribute="leading" id="K5b-cs-4Vk"/>
+                        <constraint firstAttribute="trailing" secondItem="bo5-Ui-N43" secondAttribute="trailing" id="LNG-RA-hrX"/>
+                        <constraint firstItem="bV0-k0-iXb" firstAttribute="leading" secondItem="ZiZ-aa-bqP" secondAttribute="leading" id="POz-tK-sCd"/>
+                        <constraint firstItem="bo5-Ui-N43" firstAttribute="top" secondItem="e3y-JI-vic" secondAttribute="bottom" constant="12" id="RLw-oj-zpn"/>
+                        <constraint firstItem="bo5-Ui-N43" firstAttribute="leading" secondItem="ZiZ-aa-bqP" secondAttribute="leading" id="bAZ-aO-8z9"/>
+                        <constraint firstItem="bV0-k0-iXb" firstAttribute="top" secondItem="ZiZ-aa-bqP" secondAttribute="top" id="lU2-Sv-wrb"/>
+                        <constraint firstAttribute="bottom" secondItem="bo5-Ui-N43" secondAttribute="bottom" constant="18" id="wJr-L1-eV6"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="6"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ZiZ-aa-bqP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8Ga-At-TMn"/>
+                <constraint firstItem="ZiZ-aa-bqP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9H7-cF-oJ3"/>
+                <constraint firstAttribute="bottom" secondItem="ZiZ-aa-bqP" secondAttribute="bottom" id="HMj-jw-un2"/>
+                <constraint firstAttribute="trailing" secondItem="ZiZ-aa-bqP" secondAttribute="trailing" id="hp6-3L-Dmj"/>
+            </constraints>
+            <point key="canvasLocation" x="3.5" y="-114.5"/>
+        </view>
+    </objects>
+</document>

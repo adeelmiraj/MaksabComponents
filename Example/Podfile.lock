@@ -1,0 +1,61 @@
+PODS:
+  - Cosmos (11.0.3)
+  - IQKeyboardManagerSwift (4.0.10)
+  - MaksabComponents (0.1.18):
+    - Cosmos
+    - StylingBoilerPlate
+  - MRProgress (0.8.3):
+    - MRProgress/ActivityIndicator (= 0.8.3)
+    - MRProgress/Blur (= 0.8.3)
+    - MRProgress/Circular (= 0.8.3)
+    - MRProgress/Icons (= 0.8.3)
+    - MRProgress/NavigationBarProgress (= 0.8.3)
+    - MRProgress/Overlay (= 0.8.3)
+  - MRProgress/ActivityIndicator (0.8.3):
+    - MRProgress/Stopable
+  - MRProgress/Blur (0.8.3):
+    - MRProgress/Helper
+  - MRProgress/Circular (0.8.3):
+    - MRProgress/Helper
+    - MRProgress/ProgressBaseClass
+    - MRProgress/Stopable
+  - MRProgress/Helper (0.8.3)
+  - MRProgress/Icons (0.8.3)
+  - MRProgress/NavigationBarProgress (0.8.3):
+    - MRProgress/ProgressBaseClass
+  - MRProgress/Overlay (0.8.3):
+    - MRProgress/ActivityIndicator
+    - MRProgress/Blur
+    - MRProgress/Circular
+    - MRProgress/Helper
+    - MRProgress/Icons
+  - MRProgress/ProgressBaseClass (0.8.3)
+  - MRProgress/Stopable (0.8.3):
+    - MRProgress/Helper
+  - SideMenuController (0.2.4)
+  - StylingBoilerPlate (0.1.18):
+    - MRProgress
+
+DEPENDENCIES:
+  - Cosmos
+  - IQKeyboardManagerSwift
+  - MaksabComponents (from `../`)
+  - MRProgress
+  - SideMenuController
+  - StylingBoilerPlate
+
+EXTERNAL SOURCES:
+  MaksabComponents:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Cosmos: eb506859929f4add2d2aec822a27efb2f718a95d
+  IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
+  MaksabComponents: 7b45b02d0a320b81581da7f8784acaf7a32f634b
+  MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
+  SideMenuController: b463d2b3aa58e2afe57f57a07938fa9a647894ca
+  StylingBoilerPlate: f1bb29ff938f7af2f9f950c93403e7eec516c6e8
+
+PODFILE CHECKSUM: fff213d3d3b00c36e3b794e56dd8a6db10529ef5
+
+COCOAPODS: 1.2.1

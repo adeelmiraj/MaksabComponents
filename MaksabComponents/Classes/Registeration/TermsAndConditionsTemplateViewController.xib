@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TermsAndConditionsTemplateViewController" customModule="MaksabComponents" customModuleProvider="target">
+            <connections>
+                <outlet property="labelTitle" destination="8Zf-YN-YZC" id="Sfk-We-3NU"/>
+                <outlet property="textViewDetails" destination="BhX-c6-KID" id="XKO-0b-H3m"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMR-GM-Ybk">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Zf-YN-YZC" customClass="HeadlineLabel" customModule="StylingBoilerPlate">
+                            <rect key="frame" x="22" y="73" width="331" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BhX-c6-KID">
+                            <rect key="frame" x="22" y="113" width="331" height="530"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <string key="text">Luxury is something everyone deserves from time to time. Such an indulgence can make a vacation a truly rejuvenating experience. One of the best ways to get the luxury of the rich and famous to fit into your budget can be yours through yacht charter companies. These companies specialize in creating custom sailing vacations that redefine travel. 
+
+Planning Your Luxury Trip 
+
+With your budget in mind, it is easy to plan a chartered yacht vacation. Companies often have a fleet of sailing vessels that can accommodate parties of various sizes. You may want to make it a more intimate trip with only close family. There are charters that can be rented for as few as two people. These include either a sailboat or motorboat and can come with or without a crew and captain to sail the ship for you. If you choose not to hire a crew, you will have to show that you are knowledgeable of sailing and can handle the ship competently.
+
+The next part of planning is to determine your starting and ending ports. This could be a place close to home and sail in one area or start and finish at two different ports. Generally, starting and stopping in the same port will save you money and is usually more convenient. You can also fly to a destination far from home and then sail another exotic sea. There are luxury yacht charter companies that cruise the Caribbean and Mediterranean seas or around Alaska, the Panama Canal, or anyplace you can imagine.
+
+Determining the type of cruise is another aspect of planning a chartered yachting trip. You can have as little or many crew members as the ship will hold. A captain takes all the worries out of navigating and onboard housekeeping services make it a real vacation that rivals the finest hotel services. You can also choose to have a chef and service crew as part of your vacation package.
+
+If you like the idea of knowing what it is really like to sail, but don’t want to risk safety, you can charter a sailing cruise that puts you in the role of deck hand. A competent crew will direct you as to your “chores” for keeping the ship in top shape and on course. 
+
+Destinations &amp; Ports of important Charter Companies  One of the greatest benefits of choosing a chartered cruise as a vacation is the choice. You will most likely have a rough itinerary and that can be affected by weather. However, you are flexible in deciding how long you want to stay in a particular port and if you want to add or subtract stops along the way.
+
+Your yacht is your hotel that travels with you. There is only one flight and one hotel to book! Then you take all of your luggage and unpack it just once to enjoy several days of new destinations.
+
+If you have never experienced cruising before, a chartered experience is a great way to get your feet wet. It is different from cruise lines with thousands of guests because the people on your ship will be your friends and family. The personal touches of a chartered trip will help you develop your love for the sea with all the best benefits of commercial cruises.</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="8Zf-YN-YZC" firstAttribute="leading" secondItem="jMR-GM-Ybk" secondAttribute="leading" constant="22" id="P05-Cp-ncj"/>
+                        <constraint firstAttribute="bottom" secondItem="BhX-c6-KID" secondAttribute="bottom" constant="24" id="Qjn-8Y-NQ0"/>
+                        <constraint firstItem="BhX-c6-KID" firstAttribute="trailing" secondItem="8Zf-YN-YZC" secondAttribute="trailing" id="aL6-ij-xH3"/>
+                        <constraint firstItem="BhX-c6-KID" firstAttribute="top" secondItem="8Zf-YN-YZC" secondAttribute="bottom" constant="19" id="eJs-vJ-eL5"/>
+                        <constraint firstItem="BhX-c6-KID" firstAttribute="leading" secondItem="8Zf-YN-YZC" secondAttribute="leading" id="ecH-lS-vjP"/>
+                        <constraint firstItem="8Zf-YN-YZC" firstAttribute="top" secondItem="jMR-GM-Ybk" secondAttribute="top" constant="73" id="fuc-sP-Wrk"/>
+                        <constraint firstAttribute="trailing" secondItem="8Zf-YN-YZC" secondAttribute="trailing" constant="22" id="we9-Gt-rl4"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="jMR-GM-Ybk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KxT-it-Mt2"/>
+                <constraint firstAttribute="trailing" secondItem="jMR-GM-Ybk" secondAttribute="trailing" id="MC6-Sx-nUT"/>
+                <constraint firstItem="jMR-GM-Ybk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hwj-pb-ANL"/>
+                <constraint firstAttribute="bottom" secondItem="jMR-GM-Ybk" secondAttribute="bottom" id="mxZ-Eo-1k1"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
