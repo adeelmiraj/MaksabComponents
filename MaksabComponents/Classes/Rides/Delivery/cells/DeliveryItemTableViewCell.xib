@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="75" id="KGk-i7-Jjw" customClass="DeliveryItemTableViewCell" customModule="MaksabComponents" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="469" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="469" height="75"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="txS-dI-vwl" customClass="DarkBorderTextField" customModule="StylingBoilerPlate">
+                        <rect key="frame" x="12" y="12" width="324" height="50.5"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <action selector="actItemNameChanged:" destination="KGk-i7-Jjw" eventType="editingChanged" id="cZD-Br-ye0"/>
+                        </connections>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOz-aF-JxG">
+                        <rect key="frame" x="436" y="25" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="6zm-B8-XrK"/>
+                            <constraint firstAttribute="width" secondItem="XOz-aF-JxG" secondAttribute="height" multiplier="1:1" id="t64-PA-56C"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                        <connections>
+                            <action selector="actRemove:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Z0m-v9-DQW"/>
+                        </connections>
+                    </button>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ntJ-ST-JXA" customClass="DarkBorderTextField" customModule="StylingBoilerPlate">
+                        <rect key="frame" x="348" y="12" width="80" height="50.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="hl1-QC-DBY"/>
+                        </constraints>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                        <connections>
+                            <action selector="actQtyChanged:" destination="KGk-i7-Jjw" eventType="editingChanged" id="JoO-l4-gZ8"/>
+                        </connections>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="txS-dI-vwl" secondAttribute="bottom" constant="12" id="7Rn-HU-JJf"/>
+                    <constraint firstItem="XOz-aF-JxG" firstAttribute="leading" secondItem="ntJ-ST-JXA" secondAttribute="trailing" constant="8" id="9pC-5p-832"/>
+                    <constraint firstItem="XOz-aF-JxG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Xqt-6D-ccX"/>
+                    <constraint firstItem="txS-dI-vwl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="ZY9-L1-Ww5"/>
+                    <constraint firstItem="ntJ-ST-JXA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="ezD-s5-CuP"/>
+                    <constraint firstAttribute="bottom" secondItem="ntJ-ST-JXA" secondAttribute="bottom" constant="12" id="hzc-t5-gak"/>
+                    <constraint firstItem="txS-dI-vwl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="k5y-Ce-duZ"/>
+                    <constraint firstAttribute="trailing" secondItem="XOz-aF-JxG" secondAttribute="trailing" constant="8" id="mA4-y4-puN"/>
+                    <constraint firstItem="ntJ-ST-JXA" firstAttribute="leading" secondItem="txS-dI-vwl" secondAttribute="trailing" constant="12" id="poQ-ga-egJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnRemove" destination="XOz-aF-JxG" id="VzY-H0-Nkh"/>
+                <outlet property="fieldItemName" destination="txS-dI-vwl" id="4ap-zN-pxW"/>
+                <outlet property="fieldQty" destination="ntJ-ST-JXA" id="NNf-dD-5kD"/>
+            </connections>
+            <point key="canvasLocation" x="-303" y="-15"/>
+        </tableViewCell>
+    </objects>
+</document>

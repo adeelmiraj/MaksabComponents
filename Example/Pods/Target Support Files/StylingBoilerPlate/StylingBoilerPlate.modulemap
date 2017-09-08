@@ -1,0 +1,6 @@
+framework module StylingBoilerPlate {
+  umbrella header "StylingBoilerPlate-umbrella.h"
+
+  export *
+  module * { export * }
+}

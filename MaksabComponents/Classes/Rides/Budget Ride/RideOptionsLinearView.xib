@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RideOptionsLinearView" customModule="MaksabComponents" customModuleProvider="target">
+            <connections>
+                <outlet property="btnMehramRide" destination="uG3-vu-Gga" id="hgN-K7-fFW"/>
+                <outlet property="btnNoOfPassegners" destination="iQn-tc-DBO" id="Xo3-C6-Yko"/>
+                <outlet property="btnNoSmoking" destination="BMf-OL-era" id="cKc-ot-92j"/>
+                <outlet property="btnPayment" destination="WDE-bN-tZb" id="PzA-6E-LHg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SoJ-Qq-dIe" userLabel="Buttons View">
+                    <rect key="frame" x="32" y="0.0" width="311" height="39"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uG3-vu-Gga" customClass="ToggleButton" customModule="StylingBoilerPlate">
+                            <rect key="frame" x="0.0" y="0.0" width="39" height="39"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="39" id="GLx-I6-QlE"/>
+                                <constraint firstAttribute="height" constant="39" id="T1v-ro-8nw"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="image" keyPath="selectedStateImage" value="normal-car.png"/>
+                                <userDefinedRuntimeAttribute type="image" keyPath="unSelectedStateImage" value="normal-car.png"/>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHh-sI-du9">
+                            <rect key="frame" x="39" y="0.0" width="51.5" height="39"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BMf-OL-era" customClass="ToggleButton" customModule="StylingBoilerPlate">
+                            <rect key="frame" x="90.5" y="0.0" width="39" height="39"/>
+                            <state key="normal" title="Button"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="image" keyPath="selectedStateImage" value="normal-car.png"/>
+                                <userDefinedRuntimeAttribute type="image" keyPath="unSelectedStateImage" value="normal-car.png"/>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LI8-MQ-f9s">
+                            <rect key="frame" x="129.5" y="0.0" width="52" height="39"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EWL-sB-YxD">
+                            <rect key="frame" x="220.5" y="0.0" width="51.5" height="39"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iQn-tc-DBO" customClass="ToggleButton" customModule="StylingBoilerPlate">
+                            <rect key="frame" x="272" y="0.0" width="39" height="39"/>
+                            <state key="normal" title="Button"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="image" keyPath="selectedStateImage" value="normal-car.png"/>
+                                <userDefinedRuntimeAttribute type="image" keyPath="unSelectedStateImage" value="normal-car.png"/>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WDE-bN-tZb" customClass="ToggleButton" customModule="StylingBoilerPlate">
+                            <rect key="frame" x="181.5" y="0.0" width="39" height="39"/>
+                            <state key="normal" title="Button"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="image" keyPath="selectedStateImage" value="normal-car.png"/>
+                                <userDefinedRuntimeAttribute type="image" keyPath="unSelectedStateImage" value="normal-car.png"/>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="iQn-tc-DBO" firstAttribute="leading" secondItem="EWL-sB-YxD" secondAttribute="trailing" id="09P-U6-LJs"/>
+                        <constraint firstItem="WDE-bN-tZb" firstAttribute="top" secondItem="LI8-MQ-f9s" secondAttribute="top" id="3DS-Ft-83R"/>
+                        <constraint firstItem="EWL-sB-YxD" firstAttribute="width" secondItem="LI8-MQ-f9s" secondAttribute="width" id="3jX-ec-rDh"/>
+                        <constraint firstItem="EWL-sB-YxD" firstAttribute="top" secondItem="WDE-bN-tZb" secondAttribute="top" id="8nd-YI-JDI"/>
+                        <constraint firstItem="yHh-sI-du9" firstAttribute="bottom" secondItem="uG3-vu-Gga" secondAttribute="bottom" id="ACT-Yv-BEu"/>
+                        <constraint firstItem="iQn-tc-DBO" firstAttribute="width" secondItem="uG3-vu-Gga" secondAttribute="width" id="Biw-xM-zpo"/>
+                        <constraint firstItem="EWL-sB-YxD" firstAttribute="leading" secondItem="WDE-bN-tZb" secondAttribute="trailing" id="HCu-m0-7Kg"/>
+                        <constraint firstItem="iQn-tc-DBO" firstAttribute="bottom" secondItem="EWL-sB-YxD" secondAttribute="bottom" id="JEd-uE-ukU"/>
+                        <constraint firstItem="uG3-vu-Gga" firstAttribute="top" secondItem="SoJ-Qq-dIe" secondAttribute="top" id="Nzu-bs-DhZ"/>
+                        <constraint firstItem="BMf-OL-era" firstAttribute="width" secondItem="uG3-vu-Gga" secondAttribute="width" id="QJZ-iq-rKb"/>
+                        <constraint firstAttribute="bottom" secondItem="uG3-vu-Gga" secondAttribute="bottom" id="SRh-ew-nYt"/>
+                        <constraint firstItem="yHh-sI-du9" firstAttribute="leading" secondItem="uG3-vu-Gga" secondAttribute="trailing" id="SbN-TT-s2R"/>
+                        <constraint firstItem="LI8-MQ-f9s" firstAttribute="top" secondItem="uG3-vu-Gga" secondAttribute="top" id="Tqx-vf-nLG"/>
+                        <constraint firstItem="WDE-bN-tZb" firstAttribute="bottom" secondItem="LI8-MQ-f9s" secondAttribute="bottom" id="YMJ-tQ-D3M"/>
+                        <constraint firstItem="uG3-vu-Gga" firstAttribute="leading" secondItem="SoJ-Qq-dIe" secondAttribute="leading" id="aW8-aE-3zw"/>
+                        <constraint firstItem="WDE-bN-tZb" firstAttribute="leading" secondItem="LI8-MQ-f9s" secondAttribute="trailing" id="bf5-Io-pq5"/>
+                        <constraint firstItem="BMf-OL-era" firstAttribute="bottom" secondItem="uG3-vu-Gga" secondAttribute="bottom" id="ca6-QM-lBf"/>
+                        <constraint firstItem="LI8-MQ-f9s" firstAttribute="bottom" secondItem="uG3-vu-Gga" secondAttribute="bottom" id="e6j-LI-LLb"/>
+                        <constraint firstItem="yHh-sI-du9" firstAttribute="top" secondItem="uG3-vu-Gga" secondAttribute="top" id="fJk-cb-sGX"/>
+                        <constraint firstItem="BMf-OL-era" firstAttribute="leading" secondItem="yHh-sI-du9" secondAttribute="trailing" id="fSr-0D-rOn"/>
+                        <constraint firstItem="LI8-MQ-f9s" firstAttribute="leading" secondItem="BMf-OL-era" secondAttribute="trailing" id="iLm-yH-2zO"/>
+                        <constraint firstItem="LI8-MQ-f9s" firstAttribute="width" secondItem="yHh-sI-du9" secondAttribute="width" id="m34-Em-D3h"/>
+                        <constraint firstItem="WDE-bN-tZb" firstAttribute="width" secondItem="uG3-vu-Gga" secondAttribute="width" id="nFa-yE-6uf"/>
+                        <constraint firstItem="EWL-sB-YxD" firstAttribute="bottom" secondItem="WDE-bN-tZb" secondAttribute="bottom" id="pBu-1b-I46"/>
+                        <constraint firstAttribute="trailing" secondItem="iQn-tc-DBO" secondAttribute="trailing" id="v98-Up-5M1"/>
+                        <constraint firstItem="iQn-tc-DBO" firstAttribute="top" secondItem="EWL-sB-YxD" secondAttribute="top" id="yYe-kd-vbb"/>
+                        <constraint firstItem="BMf-OL-era" firstAttribute="top" secondItem="uG3-vu-Gga" secondAttribute="top" id="zUi-Sg-9xv"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SoJ-Qq-dIe" secondAttribute="bottom" id="64s-8p-DCE"/>
+                <constraint firstAttribute="trailing" secondItem="SoJ-Qq-dIe" secondAttribute="trailing" constant="32" id="Blu-cx-SAo"/>
+                <constraint firstItem="SoJ-Qq-dIe" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="SpM-jc-IhZ"/>
+                <constraint firstItem="SoJ-Qq-dIe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="32" id="ywZ-f5-mNt"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="normal-car.png" width="60" height="28"/>
+    </resources>
+</document>
