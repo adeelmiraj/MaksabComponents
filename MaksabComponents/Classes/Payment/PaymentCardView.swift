@@ -16,7 +16,8 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
     @IBOutlet weak var staticLabelCvv: UILabel!
     @IBOutlet weak var staticLabelCardHolderName: UILabel!
     
-    
+   
+    @IBOutlet weak var cardImg: UIImageView!
     @IBOutlet weak var fieldCardNo: UITextField!
     @IBOutlet weak var fieldExpiryDate: UITextField!
     @IBOutlet weak var fieldCvv: UITextField!
@@ -24,7 +25,7 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
   
     let bundle = Bundle(for: PaymentCardView.classForCoder())
     var view: UIView!
-    public static let height: CGFloat = 188
+    public static let height: CGFloat = 188+16
     
     public struct PaymentCardInfo{
         public var cardNo: String
@@ -63,10 +64,15 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
     
 
     func configView()  {
+        let color = UIColor(netHex: 0x777777)
         staticLabelCardNo.text = "CARD NUMBER"
+        staticLabelCardNo.textColor = color
         staticLabelExpiryDate.text = "EXPIRATION DATE"
+        staticLabelExpiryDate.textColor = color
         staticLabelCvv.text = "CVV"
+        staticLabelCvv.textColor = color
         staticLabelCardHolderName.text = "CARDHOLDER NAME"
+        staticLabelCardHolderName.textColor = color
         
         fieldCardNo.placeholder = "0000 0000 0000 0000"
         fieldExpiryDate.placeholder = "MM/YY"
@@ -139,6 +145,14 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
     
     func handleCardInput(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         // check the chars length dd -->2 at the same time calculate the dd-MM --> 5
+        if textField.text!.isEmpty{
+            if let num = Int(string){
+                setCardImage(firstDigit: num)
+            }
+        }else{
+            cardImg.image = nil
+        }
+        
         if (textField.text!.characters.count == 4) || (textField.text!.characters.count == 9 ) || (textField.text!.characters.count == 14) {
             //Handle backspace being pressed
             if !(string == "") {
@@ -147,6 +161,17 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
             }
         }
         return !(textField.text!.characters.count > 18 && (string.characters.count ) > range.length)
+    }
+    
+    func setCardImage(firstDigit:Int)  {
+        let bh = BundleHelper(resourceName: Constants.resourceName)
+        if firstDigit == 5{
+            cardImg.image = bh.getImageFromMaksabComponent(name: "master-card", _class: PaymentCardView.self)
+        }else if firstDigit == 3{
+            cardImg.image = bh.getImageFromMaksabComponent(name: "master-card", _class: PaymentCardView.self)
+        }else{
+            cardImg.image = bh.getImageFromMaksabComponent(name: "master-card", _class: PaymentCardView.self)
+        }
     }
     
     func handleDateInput(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {

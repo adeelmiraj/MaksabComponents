@@ -14,17 +14,17 @@
             <rect key="frame" x="0.0" y="0.0" width="345" height="105"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="345" height="105"/>
+                <rect key="frame" x="0.0" y="0.0" width="345" height="104.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cRn-Lw-kgS">
-                        <rect key="frame" x="284" y="16" width="51" height="31"/>
+                        <rect key="frame" x="284" y="37" width="51" height="31"/>
                         <connections>
                             <action selector="actSwitchStateChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="D7w-cf-OQb"/>
                         </connections>
                     </switch>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2M-KZ-rN7" customClass="TextLabel" customModule="StylingBoilerPlate">
-                        <rect key="frame" x="12" y="21" width="260" height="21"/>
+                        <rect key="frame" x="12" y="42" width="260" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -41,13 +41,12 @@
                 <constraints>
                     <constraint firstItem="ghB-vU-zhT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ayw-Sq-rYR"/>
                     <constraint firstAttribute="trailing" secondItem="ghB-vU-zhT" secondAttribute="trailing" id="JMU-Dr-kT8"/>
-                    <constraint firstItem="cRn-Lw-kgS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Ren-dC-bMJ"/>
                     <constraint firstAttribute="trailing" secondItem="cRn-Lw-kgS" secondAttribute="trailing" constant="12" id="Zoi-gZ-Gcu"/>
                     <constraint firstItem="cRn-Lw-kgS" firstAttribute="leading" secondItem="b2M-KZ-rN7" secondAttribute="trailing" constant="12" id="iYq-PU-dsq"/>
                     <constraint firstItem="b2M-KZ-rN7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="k0Y-Hb-7YH"/>
                     <constraint firstAttribute="bottom" secondItem="ghB-vU-zhT" secondAttribute="bottom" id="kPc-Ip-fof"/>
-                    <constraint firstItem="ghB-vU-zhT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cRn-Lw-kgS" secondAttribute="bottom" constant="12" id="mgf-Eb-gHz"/>
                     <constraint firstItem="b2M-KZ-rN7" firstAttribute="centerY" secondItem="cRn-Lw-kgS" secondAttribute="centerY" id="q0s-B7-ODm"/>
+                    <constraint firstItem="cRn-Lw-kgS" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xNG-1P-wZM"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

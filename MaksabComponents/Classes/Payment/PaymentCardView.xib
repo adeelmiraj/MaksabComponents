@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PaymentCardView" customModule="MaksabComponents" customModuleProvider="target">
             <connections>
+                <outlet property="cardImg" destination="C7c-9F-DwD" id="SBy-lW-mna"/>
                 <outlet property="fieldCardHolderName" destination="mDa-sw-NuV" id="O5s-la-oHw"/>
                 <outlet property="fieldCardNo" destination="wms-cP-e96" id="a4h-27-SlT"/>
                 <outlet property="fieldCvv" destination="ZQ8-JQ-1ts" id="9Ri-vc-Da0"/>
@@ -26,14 +27,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C7c-9F-DwD">
-                    <rect key="frame" x="317" y="0.0" width="44" height="26"/>
+                    <rect key="frame" x="317" y="16" width="44" height="26"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="QOy-aQ-jjG"/>
                         <constraint firstAttribute="height" constant="26" id="js8-1U-PRe"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9k-Pp-Fdh">
-                    <rect key="frame" x="16" y="50" width="343" height="137"/>
+                    <rect key="frame" x="16" y="66" width="343" height="137"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="frJ-fs-rlE" userLabel="card no View">
                             <rect key="frame" x="0.0" y="0.0" width="343" height="35"/>
@@ -218,7 +219,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="L9k-Pp-Fdh" firstAttribute="top" secondItem="C7c-9F-DwD" secondAttribute="bottom" constant="24" id="2Uh-jL-18E"/>
-                <constraint firstItem="C7c-9F-DwD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="DrQ-3T-Ari"/>
+                <constraint firstItem="C7c-9F-DwD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="DrQ-3T-Ari"/>
                 <constraint firstAttribute="trailing" secondItem="C7c-9F-DwD" secondAttribute="trailing" constant="14" id="NHj-gy-0Ch"/>
                 <constraint firstAttribute="trailing" secondItem="L9k-Pp-Fdh" secondAttribute="trailing" constant="16" id="NNK-x3-GEP"/>
                 <constraint firstItem="L9k-Pp-Fdh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="wBm-iF-ruE"/>

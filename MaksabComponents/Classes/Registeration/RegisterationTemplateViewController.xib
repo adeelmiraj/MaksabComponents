@@ -42,6 +42,8 @@
                 <outlet property="subtitleHeight" destination="LFB-4a-zuZ" id="aeX-8A-Pfi"/>
                 <outlet property="thirdFieldHeight" destination="rJT-Tu-8df" id="SKe-ob-w4R"/>
                 <outlet property="titleViewHeight" destination="IYE-9R-qk8" id="Uuy-yJ-YEl"/>
+                <outlet property="vehicleRegisterationContainerHeight" destination="BWN-fP-AWA" id="CYF-In-MqA"/>
+                <outlet property="vehicleRegisterationContainerView" destination="8GD-jO-A53" id="8jy-cl-7q3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -67,7 +69,7 @@
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gdg-JG-UiD" userLabel="Body View">
-                    <rect key="frame" x="0.0" y="192.5" width="375" height="282"/>
+                    <rect key="frame" x="0.0" y="184.5" width="375" height="298"/>
                     <subviews>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvy-5U-ON5" userLabel="Title View">
                             <rect key="frame" x="24" y="0.0" width="327" height="60"/>
@@ -117,7 +119,7 @@ on first ride</string>
                             </constraints>
                         </view>
                         <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="EYw-QP-vtV">
-                            <rect key="frame" x="57" y="92" width="262" height="140"/>
+                            <rect key="frame" x="57" y="92" width="262" height="156"/>
                             <subviews>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ABC" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UGJ-Kr-TUz" customClass="BottomBorderTextField" customModule="StylingBoilerPlate">
                                     <rect key="frame" x="0.0" y="0.0" width="262" height="30"/>
@@ -164,8 +166,15 @@ on first ride</string>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="go"/>
                                 </textField>
-                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="swf-KE-Q9J">
+                                <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8GD-jO-A53">
                                     <rect key="frame" x="0.0" y="140" width="262" height="0.0"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" id="BWN-fP-AWA"/>
+                                    </constraints>
+                                </view>
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="swf-KE-Q9J">
+                                    <rect key="frame" x="0.0" y="156" width="262" height="0.0"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBM-ZS-OwX" customClass="TextLabel" customModule="StylingBoilerPlate">
                                             <rect key="frame" x="0.0" y="-10" width="197" height="20.5"/>
@@ -199,14 +208,14 @@ on first ride</string>
                             </constraints>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEO-lF-tL0">
-                            <rect key="frame" x="335" y="198" width="32" height="34"/>
+                            <rect key="frame" x="335" y="214" width="32" height="34"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="32" id="RB7-QC-bTe"/>
                             </constraints>
                             <state key="normal" title="Button"/>
                         </button>
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcV-mp-s6z" customClass="SecondaryActionButton" customModule="StylingBoilerPlate">
-                            <rect key="frame" x="99.5" y="262" width="177" height="20"/>
+                            <rect key="frame" x="99.5" y="278" width="177" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="pF7-sD-lRb"/>
                                 <constraint firstAttribute="width" constant="177" id="rhK-7V-pyi"/>
@@ -232,7 +241,7 @@ on first ride</string>
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TgN-mF-xcs" userLabel="Social Login View">
-                    <rect key="frame" x="0.0" y="538.5" width="375" height="128.5"/>
+                    <rect key="frame" x="0.0" y="542" width="375" height="125"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" text="or Login with" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eif-H4-RWP" customClass="CaptionLabel" customModule="StylingBoilerPlate">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
@@ -262,7 +271,7 @@ on first ride</string>
                             </subviews>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQl-MC-XXx">
-                            <rect key="frame" x="10" y="98.5" width="20" height="20"/>
+                            <rect key="frame" x="10" y="95" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="PQl-MC-XXx" secondAttribute="height" multiplier="1:1" id="cS6-er-0M6"/>
                                 <constraint firstAttribute="width" constant="20" id="iPW-xV-bKO"/>
@@ -295,14 +304,14 @@ on first ride</string>
                 <constraint firstItem="Gdg-JG-UiD" firstAttribute="trailing" secondItem="5ys-xt-D97" secondAttribute="trailing" id="Lcq-yf-3zW"/>
                 <constraint firstItem="5ys-xt-D97" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" priority="960" constant="77" id="SEW-00-A75"/>
                 <constraint firstItem="TgN-mF-xcs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Sus-qu-AR5"/>
-                <constraint firstItem="Gdg-JG-UiD" firstAttribute="top" relation="greaterThanOrEqual" secondItem="5ys-xt-D97" secondAttribute="bottom" constant="28" id="XsE-xg-5V0"/>
+                <constraint firstItem="Gdg-JG-UiD" firstAttribute="top" relation="greaterThanOrEqual" secondItem="5ys-xt-D97" secondAttribute="bottom" constant="16" id="XsE-xg-5V0"/>
                 <constraint firstItem="5ys-xt-D97" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="dhb-SC-vdP"/>
                 <constraint firstAttribute="trailing" secondItem="5ys-xt-D97" secondAttribute="trailing" id="grk-NZ-Jek"/>
                 <constraint firstItem="TgN-mF-xcs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Gdg-JG-UiD" secondAttribute="bottom" constant="24" id="i77-Zs-h5j"/>
                 <constraint firstItem="Gdg-JG-UiD" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="pqF-6b-jlJ"/>
                 <constraint firstAttribute="bottom" secondItem="TgN-mF-xcs" secondAttribute="bottom" id="ram-YI-fm2"/>
             </constraints>
-            <point key="canvasLocation" x="444.5" y="78.5"/>
+            <point key="canvasLocation" x="42" y="44"/>
         </view>
     </objects>
     <resources>

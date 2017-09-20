@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SimpleTextView" customModule="MaksabComponents" customModuleProvider="target">
+            <connections>
+                <outlet property="leftIcon" destination="2Yq-Sb-vty" id="i3m-P7-h9m"/>
+                <outlet property="leftIconTrailing" destination="V8Q-ol-3u2" id="Dhe-KL-yyb"/>
+                <outlet property="leftIconWidth" destination="fiE-y4-7gt" id="sSf-fH-onf"/>
+                <outlet property="separatorView" destination="QR6-Px-JFu" id="UKk-Wc-bPq"/>
+                <outlet property="title" destination="CYV-CJ-vmG" id="eCP-T0-BOx"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="566" height="43"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYV-CJ-vmG" customClass="TextLabel" customModule="StylingBoilerPlate">
+                    <rect key="frame" x="12" y="12" width="542" height="19"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Yq-Sb-vty">
+                    <rect key="frame" x="566" y="21.5" width="0.0" height="0.0"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="2Yq-Sb-vty" secondAttribute="height" multiplier="1:1" id="Woe-qi-OK6"/>
+                        <constraint firstAttribute="width" id="fiE-y4-7gt"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QR6-Px-JFu">
+                    <rect key="frame" x="0.0" y="42" width="566" height="1"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="e28-kj-9uj"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="CYV-CJ-vmG" secondAttribute="bottom" constant="12" id="J5s-pD-NQl"/>
+                <constraint firstItem="2Yq-Sb-vty" firstAttribute="leading" secondItem="CYV-CJ-vmG" secondAttribute="trailing" constant="12" id="QDi-7b-7Bg"/>
+                <constraint firstItem="CYV-CJ-vmG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="Rgy-BI-bm3"/>
+                <constraint firstAttribute="trailing" secondItem="2Yq-Sb-vty" secondAttribute="trailing" id="V8Q-ol-3u2"/>
+                <constraint firstAttribute="bottom" secondItem="QR6-Px-JFu" secondAttribute="bottom" id="VbS-F0-7Yb"/>
+                <constraint firstItem="CYV-CJ-vmG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="VdO-1w-Syr"/>
+                <constraint firstAttribute="trailing" secondItem="QR6-Px-JFu" secondAttribute="trailing" id="aNg-oe-v8J"/>
+                <constraint firstItem="2Yq-Sb-vty" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cwK-QP-biD"/>
+                <constraint firstItem="QR6-Px-JFu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="s6a-nT-ajO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="52" y="-367.5"/>
+        </view>
+    </objects>
+</document>

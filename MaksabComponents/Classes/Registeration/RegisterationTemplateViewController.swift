@@ -129,6 +129,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     @IBOutlet weak var titleViewHeight: NSLayoutConstraint!
     @IBOutlet weak var actionButtonHeight: NSLayoutConstraint!
     @IBOutlet weak var driverNationalityViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var vehicleRegisterationContainerHeight: NSLayoutConstraint!
     
     @IBOutlet weak public var labelTitle: HeadlineLabel!
     @IBOutlet weak public var labelSubtitle: CaptionLabel!
@@ -143,6 +144,8 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     @IBOutlet weak var driverNationalitySwitch: UISwitch!
     @IBOutlet weak var labelDriverNationality: UILabel!
     @IBOutlet weak var driverNationalityView: UIView!
+    public var vehicleRegisterationView: VehicleRegisterationView!
+    @IBOutlet weak var vehicleRegisterationContainerView: UIView!
     
     
     //Social Logins View
@@ -299,6 +302,8 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
             fieldThird.placeholder = "Year"
             fieldFourth.placeholder = "License Plate"
             fieldFifth.placeholder = "Capaity"
+            fieldFifth.inputView = showPicker()
+            addVehicleRegisterationView()
             fieldThird.keyboardType = .numberPad
             capacityArray = carCapcaityArray()
             fieldFifth.text = capacityArray[0]
@@ -354,6 +359,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         }
         fieldFifth.text = text
     }
+
     
     /*
     public func switchForgotPasswordOption(){
@@ -447,6 +453,15 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         stackViewReqHeight.constant = 64+30+30+30
     }
     
+    func addVehicleRegisterationView()  {
+        vehicleRegisterationContainerHeight.constant = 30
+        vehicleRegisterationContainerView.isHidden = false
+        vehicleRegisterationView = VehicleRegisterationView(frame: CGRect(x: 0, y: 0, width: 210, height: 30))
+        vehicleRegisterationContainerView.addSubview(vehicleRegisterationView)
+        stackViewHeight.constant = 76+30+30+30+30
+        stackViewReqHeight.constant = 64+30+30+30+30
+    }
+    
     func addDriverNationalityView()  {
         driverNationalityViewHeight.constant = 30
         driverNationalityView.isHidden = false
@@ -513,13 +528,51 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     
 }
 //MARK:- Handle TextField delegates
-extension RegisterationTemplateViewController: UITextFieldDelegate  {
+extension RegisterationTemplateViewController: UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate  {
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        guard textField == fieldFifth else {
-            return true
+        if textField == fieldFifth{
+            let picker = fieldFifth.inputView as! UIPickerView
+            picker.selectRow(selectedCapacityIndex, inComponent: 0, animated: false)
         }
-        showDropDown()
-        return false
+//        guard textField == fieldFirst else {
+            return true
+//        }
+//        showDropDown()
+//        showPicker()
+//        return false
+    }
+    
+    
+    //MARK:- Picker
+    func showPicker() -> UIPickerView {
+        let picker = UIPickerView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 100))
+//        picker.backgroundColor = UIColor.yellow
+        picker.dataSource = self
+        picker.delegate = self
+//        fieldFirst.inputView = picker
+        return picker
+//        picker.selectRow(selectedCapacityIndex, inComponent: 0, animated: false)
+    }
+    
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return capacityArray.count
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 22
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return  capacityArray[row]
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedCapacityIndex = row
+        fieldFifth.text = capacityArray[row]
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -739,7 +792,7 @@ public extension RegisterationTemplateViewController{
     }
 }
 
-
+/*
 extension RegisterationTemplateViewController: DropDownDelegate, DropDownDataSource{
    
     //DropDown delegate
@@ -777,4 +830,4 @@ extension RegisterationTemplateViewController: DropDownDelegate, DropDownDataSou
     public func selectedItemIndex() -> Int {
         return selectedCapacityIndex
     }
-}
+}*/

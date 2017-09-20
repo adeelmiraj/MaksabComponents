@@ -47,5 +47,6 @@ Maksab reusable components.Components that are reused or used in both rider and 
     s.requires_arc     = true
     s.dependency 'StylingBoilerPlate'
     s.dependency 'Cosmos'
+    s.dependency 'KMPlaceholderTextView'
 
 end

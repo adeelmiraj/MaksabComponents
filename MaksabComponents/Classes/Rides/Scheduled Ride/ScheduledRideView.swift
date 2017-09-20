@@ -56,21 +56,28 @@ public class ScheduledRideView: UIView, CustomView, NibLoadableView, SlidableVie
     
     @IBOutlet weak public var datePicker: UIDatePicker!
     @IBOutlet weak public var segmentedControl: BorderLessSegmentedControl!
+//    @IBOutlet weak var segmentedViewContainer: UIView!
+    @IBOutlet weak var segmentedControlHeight: NSLayoutConstraint!
     @IBOutlet weak var btnDone: UIButton!
     @IBOutlet weak var separatorView: UIView!
+    @IBOutlet weak var staticScheduleTitle: UILabel!
+    @IBOutlet weak var segmentedControlSeparator: UIView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var scheduleTitleViewHeight: NSLayoutConstraint!
     
     var contentView: UIView!
     var delegate: ScheduledRideViewDelegate?
     var templateView: RidesActionViewTemplate!
     
-    var tableView: UITableView!
+//    var tableView: UITableView!
     var tableSectionHeaderView: UIView!
+    
     
     var daysArray = DayInfo.getDaysArray()
     let bh = BundleHelper(resourceName: Constants.resourceName)
     
-    static public func createInstance(x: CGFloat, y: CGFloat = UIScreen.main.bounds.height - ScheduledRideView.heightForFirstSegment, width: CGFloat, delegate: ScheduledRideViewDelegate) -> ScheduledRideView{
-        let inst = ScheduledRideView(frame: CGRect(x: x, y: y, width: width, height: ScheduledRideView.heightForFirstSegment))
+    static public func createInstance(x: CGFloat, y: CGFloat = UIScreen.main.bounds.height - ScheduledRideView.heightForFirstSegment, width: CGFloat, height: CGFloat = ScheduledRideView.heightForFirstSegment, delegate: ScheduledRideViewDelegate) -> ScheduledRideView{
+        let inst = ScheduledRideView(frame: CGRect(x: x, y: y, width: width, height: height))
         inst.delegate = delegate
         return inst
     }
@@ -101,23 +108,26 @@ public class ScheduledRideView: UIView, CustomView, NibLoadableView, SlidableVie
     }
     
     func configView()  {
-        tableView = UITableView(frame: CGRect(x: 0, y: 234, width: self.frame.size.width, height: 0))
-        tableView.tableFooterView = UIView()
-        self.addSubview(tableView)
-        self.bringSubview(toFront: separatorView)
-        
+//        tableView = UITableView(frame: CGRect(x: 0, y: 234, width: self.frame.size.width, height: 0))
+//        tableView.tableFooterView = UIView()
+//        self.addSubview(tableView)
+//        self.bringSubview(toFront: separatorView)
+//        
         tableView.register(SimpleTextTableViewCell.self, bundle: bundle)
-        tableView.dataSource = self
-        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.delegate = self
         tableView.rowHeight = 44
         tableView.sectionHeaderHeight = 52
         tableView.allowsMultipleSelection = true
         creatTableSectionHeaderView()
         
-        btnDone.setTitle("Done", for: .normal)
+        btnDone.setTitle("Set Pickup Time", for: .normal)
+        staticScheduleTitle.text = "Start date and ride time"
         
         segmentedControl.setTitle("One Time", forSegmentAt: 0)
         segmentedControl.setTitle("Recurring", forSegmentAt: 1)
+        scheduleTitleViewHeight.constant = 0
+        self.layoutIfNeeded()
         
         let calendar = Calendar.current
         datePicker.date = calendar.date(byAdding: .minute, value: 15, to: Date())!
@@ -130,7 +140,7 @@ public class ScheduledRideView: UIView, CustomView, NibLoadableView, SlidableVie
         tableSectionHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: 52))
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.frame.size.width, height: 52))
         label.textAlignment = .center
-        label.text = "Start date and ride time"
+        label.text = "Schedule"
         label.font = UIFont.appFont(font: .RubikMedium, pontSize: 16)
         tableSectionHeaderView.addSubview(label)
         let view = UIView(frame: CGRect(x: 0, y: 51, width: self.frame.size.width, height: 1))
@@ -139,48 +149,70 @@ public class ScheduledRideView: UIView, CustomView, NibLoadableView, SlidableVie
         tableSectionHeaderView.addSubview(view)
     }
     
+    public func configForEditableRecurring(){
+        self.show(animated: false)
+        self.frame = CGRect(x: self.frame.origin.x, y: UIScreen.main.bounds.height - ScheduledRideView.heightForSecondSegment, width: self.frame.width, height: ScheduledRideView.heightForSecondSegment)
+        self.segmentedControlHeight.constant = 0
+        btnDone.setTitle("Delete", for: .normal)
+        btnDone.backgroundColor = UIColor.appColor(color: .Destructive)
+        segmentedControlSeparator.isHidden = true
+        scheduleTitleViewHeight.constant = 33
+        self.separatorView.alpha = 1
+        self.layoutIfNeeded()
+        self.hide(animated: false)
+    }
+    
     @IBAction func actSegmentChanged(_ sender: BorderLessSegmentedControl) {
-        
+        changeFrames(selectedSegment: sender.selectedSegmentIndex)
+    }
+
+    func changeFrames(duration: Double = 0.5, selectedSegment: Int) {
         var frame: CGRect!
-        let btnFrame: CGRect!
-        let tableFrame: CGRect!
+//        let btnFrame: CGRect!
+//        let tableFrame: CGRect!
         let changeInHeight = ScheduledRideView.heightForSecondSegment - ScheduledRideView.heightForFirstSegment
         let separatorViewAlpha: CGFloat!
-        if sender.selectedSegmentIndex == 0{
+        var schedulTitleNewHeight: CGFloat = 0
+        var btnNewTitle = "Set Pickup Time"
+        if selectedSegment == 0{
             frame = CGRect(x: self.frame.origin.x, y: UIScreen.main.bounds.height - ScheduledRideView.heightForFirstSegment, width: self.frame.width, height: ScheduledRideView.heightForFirstSegment)
             
-            let tableHeight = tableView.frame.size.height - changeInHeight
-            tableFrame = CGRect(x: tableView.frame.origin.x, y: tableView.frame.origin.y, width: tableView.frame.size.width, height: tableHeight)
-            
-            let y = btnDone.frame.origin.y - changeInHeight
-            btnFrame = CGRect(x: btnDone.frame.origin.x, y: y, width: 290, height: 48)
+//            let tableHeight = tableView.frame.size.height - changeInHeight
+//            tableFrame = CGRect(x: tableView.frame.origin.x, y: tableView.frame.origin.y, width: tableView.frame.size.width, height: tableHeight)
+//            
+//            let y = btnDone.frame.origin.y - changeInHeight
+//            btnFrame = CGRect(x: btnDone.frame.origin.x, y: y, width: 290, height: 48)
             
             separatorViewAlpha = 0
             
         }else{
+            
             frame = CGRect(x: self.frame.origin.x, y: UIScreen.main.bounds.height - ScheduledRideView.heightForSecondSegment, width: self.frame.width, height: ScheduledRideView.heightForSecondSegment)
-            
-            let tableHeight = tableView.frame.size.height + changeInHeight
-            tableFrame = CGRect(x: tableView.frame.origin.x, y: tableView.frame.origin.y, width: tableView.frame.size.width, height: tableHeight)
-            
-            let y = btnDone.frame.origin.y + changeInHeight
-            btnFrame = CGRect(x: btnDone.frame.origin.x, y: y, width: 290, height: 48)
+            schedulTitleNewHeight = 33
+            btnNewTitle = "Done"
+//            let tableHeight = tableView.frame.size.height + changeInHeight
+//            tableFrame = CGRect(x: tableView.frame.origin.x, y: tableView.frame.origin.y, width: tableView.frame.size.width, height: tableHeight)
+//            
+//            let y = btnDone.frame.origin.y + changeInHeight
+//            btnFrame = CGRect(x: btnDone.frame.origin.x, y: y, width: 290, height: 48)
             
             separatorViewAlpha = 1
         }
         
         //        self.tableContainerView.frame = CGRect(x: 0, y: self.tableContainerView.frame.origin.y, width: self.tableContainerView.frame.size.width, height: height)
         
-        
-        UIView.animate(withDuration: 0.5) {
-            self.tableView.frame = tableFrame
+        UIView.animate(withDuration: duration) {
+//            self.tableView.frame = tableFrame
+//            self.frame = frame
             self.frame = frame
-            self.btnDone.frame = btnFrame
+            self.scheduleTitleViewHeight.constant = schedulTitleNewHeight
+//            self.btnDone.frame = btnFrame
             self.separatorView.alpha = separatorViewAlpha
+            self.btnDone.setTitle(btnNewTitle, for: .normal)
+            self.layoutIfNeeded()
+//            self.btnDone.frame = btnFrame
         }
-        
     }
-
     
     @IBAction func actDone(_ sender: PrimaryButton) {
         var daysSelected = [DayInfo]()

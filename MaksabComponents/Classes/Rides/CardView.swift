@@ -17,6 +17,7 @@ open class CardView: UIView {
     @IBInspectable public var shadowOffsetHeight: Int = 1
     @IBInspectable public var shadowColor: UIColor? = UIColor.black.withAlphaComponent(0.24)
     @IBInspectable public var shadowOpacity: Float = 1
+    @IBOutlet weak var tableView: UITableView!
     
     override open func awakeFromNib() {
 //        layer.cornerRadius = cornerRadius

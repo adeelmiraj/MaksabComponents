@@ -63,6 +63,7 @@ public class RideFoundView: UIView, CustomView, NibLoadableView, SlidableView {
         rideOptionsGridView = RidesOptionsGridView.createInstance(x: 0, y: 0, width: self.frame.size.width)
         rideOptionsGridView.delegate = self
         rideOptionsContainerView.addSubview(rideOptionsGridView)
+        rideOptionsGridView.isUserInteractionEnabled = false
         
         
         hide(animated: false)
