@@ -80,11 +80,6 @@ public class SimpleTextTableViewCell: UITableViewCell, NibLoadableView {
         accessoryViewWidth.constant = 0
     }
 
-    public func config(dayInfo: DayInfo){
-        self.hasSubtitle = false
-        labelTitle.text = dayInfo.title
-        labelSubtitle.text = ""
-    }
     public func config(title: String, subtitle: String = "") {
         labelTitle.text = title
         labelSubtitle.text = subtitle

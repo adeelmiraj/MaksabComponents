@@ -9,32 +9,32 @@
 import UIKit
 import StylingBoilerPlate
 
-class RideOptionsLinearView: UIView , CustomView, NibLoadableView, Toggleable{
+public class RideOptionsLinearView: UIView , CustomView, NibLoadableView, Toggleable{
     
     static let height:CGFloat = 39
-    static func createInstance(x: CGFloat, y: CGFloat, width:CGFloat) -> RideOptionsLinearView{
+    static public func createInstance(x: CGFloat, y: CGFloat, width:CGFloat) -> RideOptionsLinearView{
         let inst = RideOptionsLinearView(frame: CGRect(x: x, y: y, width: width, height: RideOptionsLinearView.height))
         return inst
     }
     
     let bundle = Bundle(for: RidesOptionsGridView.classForCoder())
     
-    @IBOutlet weak var btnMehramRide: ToggleButton!
-    @IBOutlet weak var btnNoSmoking: ToggleButton!
+    @IBOutlet weak public var btnMehramRide: ToggleButton!
+    @IBOutlet weak public var btnNoSmoking: ToggleButton!
     @IBOutlet weak public var btnPayment: ToggleButton!
     @IBOutlet weak public var btnNoOfPassegners: ToggleButton!
     
-    var delegate: RideOptionsDelegate?
+    public var delegate: RideOptionsDelegate?
     
     var view: UIView!
     
-    override required init(frame: CGRect) {
+    override public required init(frame: CGRect) {
         super.init(frame: frame)
         view = commonInit(bundle: bundle)
         configView()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         view = commonInit(bundle: bundle)
         configView()
@@ -65,7 +65,7 @@ class RideOptionsLinearView: UIView , CustomView, NibLoadableView, Toggleable{
         btnNoOfPassegners.toggleDelegate = self
     }
     
-    func onToggle(stateSelected: Bool, sender: UIButton) {
+    public func onToggle(stateSelected: Bool, sender: UIButton) {
         let btn = sender as! ToggleButton
         
         var optionType = RideOptions.MehramRide

@@ -26,7 +26,7 @@ public class RateRideView: UIView, CustomView, NibLoadableView, SlidableView {
     @IBOutlet weak var switchRideAgain: UISwitch!
     @IBOutlet weak var btnRateRide: PrimaryButton!
     
-    var delegate: RateRideViewDelegate!
+    public var delegate: RateRideViewDelegate!
     
     var view: UIView!
     

@@ -9,11 +9,11 @@
 import UIKit
 import StylingBoilerPlate
 
-class SimpleTextCollectionViewCell: UICollectionViewCell, NibLoadableView {
+public class SimpleTextCollectionViewCell: UICollectionViewCell, NibLoadableView {
 
     @IBOutlet weak public var labelTitle: UILabel!
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }

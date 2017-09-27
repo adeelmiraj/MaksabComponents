@@ -141,7 +141,7 @@ open class SideMenuTableViewController: UIViewController,UITableViewDataSource, 
             return
         }
         
-        var row = indexPath.row
+        let row = indexPath.row
         
 //        if appType == .Driver && row >= 2{
 //            row += 1

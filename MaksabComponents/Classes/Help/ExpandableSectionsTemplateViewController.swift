@@ -107,8 +107,6 @@ open class ExpandableSectionsTemplateViewController: UIViewController, UITableVi
     }
     
     public func onTapped(tag: Int, view: SimpleTextView) {
-        let bh = BundleHelper(resourceName: Constants.resourceName)
-        
         if expandedSection == tag{
             expandedSection = -1
         }else{

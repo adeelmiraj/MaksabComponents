@@ -9,19 +9,20 @@
 import UIKit
 import StylingBoilerPlate
 
-public enum RideType: Int{
+public enum RideClassType: Int{
     case Normal = 0
     case Budget = 1
     case Luxury = 2
 }
 
-protocol RideTypesDelegate{
-    func rideTypeChanged(rideType: RideType)
+public protocol RideTypesDelegate{
+    func rideTypeChanged(rideType: RideClassType)
 }
-class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
+
+public class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
 
     
-    static func createInstance(x: CGFloat, y: CGFloat, width:CGFloat) -> RidesTypesView{
+    static public func createInstance(x: CGFloat, y: CGFloat, width:CGFloat) -> RidesTypesView{
         let inst = RidesTypesView(frame: CGRect(x: x, y: y, width: width, height: 122))
         return inst
     }
@@ -35,19 +36,19 @@ class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
     
     var view: UIView!
     
-    var selectedRideType: RideType = .Normal
+    var selectedRideType: RideClassType = .Normal
     
     var selectedButton: ToggleBottomTitleButton!
     
     public var delegate: RideTypesDelegate?
     
-    override required init(frame: CGRect) {
+    override public required init(frame: CGRect) {
         super.init(frame: frame)
         view = commonInit(bundle: bundle)
         configView()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         view = commonInit(bundle: bundle)
         configView()
@@ -71,7 +72,7 @@ class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
         btnExotic.toggleDelegate = self
     }
 
-    func onToggle(stateSelected: Bool,sender: UIButton) {
+    public func onToggle(stateSelected: Bool,sender: UIButton) {
       
         //deselecte selected button
         selectedButton.stateSelected = false
@@ -91,7 +92,7 @@ class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
         delegate?.rideTypeChanged(rideType: selectedRideType)
     }
     
-    func select(type: RideType)  {
+    func select(type: RideClassType)  {
         switch type {
         case .Normal:
             btnNormal.stateSelected = true
@@ -106,7 +107,7 @@ class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
         selectedRideType = type
     }
 
-    public func changeSelectedType(newType: RideType)  {
+    public func changeSelectedType(newType: RideClassType)  {
         
         if newType == selectedRideType{
             return
@@ -119,7 +120,7 @@ class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
         select(type: newType)
     }
     
-    public func getSelectedRideType() -> RideType{
+    public func getSelectedRideType() -> RideClassType{
         return selectedRideType
     }
 }

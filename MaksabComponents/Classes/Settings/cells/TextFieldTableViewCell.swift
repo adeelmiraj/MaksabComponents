@@ -31,6 +31,7 @@ public class TextFieldTableViewCell: UITableViewCell, NibLoadableView, UITextFie
         self.backgroundColor = UIColor.appColor(color: .Dark)
         field.textColor = UIColor.appColor(color: .LightText)
         field.tintColor = UIColor.appColor(color: .Light)
+        field.font = UIFont.appFont(font: .RubikMedium, pontSize: 17)
         field.delegate = self
     }
     
@@ -43,7 +44,8 @@ public class TextFieldTableViewCell: UITableViewCell, NibLoadableView, UITextFie
     public func config(label: String, placeholder: String,delegate: TextFieldTableViewCellDelegate, indexPath: IndexPath)  {
         self.delegate = delegate
         self.label.text = label
-        field.placeholder = placeholder
+        field.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSForegroundColorAttributeName: UIColor.appColor(color: .LightText).withAlphaComponent(0.6)
+            , NSFontAttributeName: UIFont.appFont(font: .RubikMedium, pontSize: 17)])
         self.indexPath = indexPath
     }
     
