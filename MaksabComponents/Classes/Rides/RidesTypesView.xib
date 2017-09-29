@@ -52,9 +52,8 @@
                                     </constraints>
                                     <state key="normal" title="Button"/>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SAR 40-70" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dj7-tM-5mJ" customClass="CalloutLabel" customModule="StylingBoilerPlate">
-                                    <rect key="frame" x="0.0" y="55" width="64" height="20.5"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SAR 40-70" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dj7-tM-5mJ" customClass="CalloutLabel" customModule="StylingBoilerPlate">
+                                    <rect key="frame" x="0.0" y="56" width="350" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -62,12 +61,15 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="Dj7-tM-5mJ" firstAttribute="leading" secondItem="DbX-tr-kJY" secondAttribute="leading" id="4F4-t2-5Zv"/>
                                 <constraint firstItem="DbX-tr-kJY" firstAttribute="leading" secondItem="IjC-WQ-gpn" secondAttribute="leading" id="4G2-Vc-W4L"/>
                                 <constraint firstItem="DbX-tr-kJY" firstAttribute="top" secondItem="IjC-WQ-gpn" secondAttribute="top" id="8dm-aI-2Gh"/>
                                 <constraint firstItem="xcz-wc-LGC" firstAttribute="height" secondItem="Ixy-Gh-219" secondAttribute="height" id="A1E-8O-WaS"/>
                                 <constraint firstItem="Ixy-Gh-219" firstAttribute="centerX" secondItem="IjC-WQ-gpn" secondAttribute="centerX" id="Aea-Tu-7hn"/>
                                 <constraint firstAttribute="height" constant="64" id="CjU-7H-eC6"/>
                                 <constraint firstItem="xcz-wc-LGC" firstAttribute="top" secondItem="Ixy-Gh-219" secondAttribute="top" id="F9q-5N-x19"/>
+                                <constraint firstItem="Dj7-tM-5mJ" firstAttribute="top" secondItem="xcz-wc-LGC" secondAttribute="bottom" constant="1" id="Jja-yb-2L9"/>
+                                <constraint firstItem="Dj7-tM-5mJ" firstAttribute="trailing" secondItem="xcz-wc-LGC" secondAttribute="trailing" id="MCy-Ua-mpp"/>
                                 <constraint firstItem="Ixy-Gh-219" firstAttribute="height" secondItem="DbX-tr-kJY" secondAttribute="height" id="Zla-jc-Wm6"/>
                                 <constraint firstItem="Ixy-Gh-219" firstAttribute="top" secondItem="DbX-tr-kJY" secondAttribute="top" id="kaU-7e-XNe"/>
                                 <constraint firstAttribute="trailing" secondItem="xcz-wc-LGC" secondAttribute="trailing" id="ocr-Nc-gyy"/>

@@ -32,7 +32,7 @@ public class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
     @IBOutlet weak var btnNormal: ToggleBottomTitleButton!
     @IBOutlet weak var btnBudget: ToggleBottomTitleButton!
     @IBOutlet weak var btnExotic: ToggleBottomTitleButton!
-    @IBOutlet weak var estimateBudget: UILabel!
+    @IBOutlet weak public var estimateBudget: UILabel!
     
     var view: UIView!
     
