@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GGA-Jh-fyx">
-                        <rect key="frame" x="0.0" y="0.0" width="305" height="73"/>
+                        <rect key="frame" x="0.0" y="0.0" width="305" height="105"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekf-l2-B6e" customClass="TextLabel" customModule="StylingBoilerPlate">
                                 <rect key="frame" x="131.5" y="16" width="42" height="21"/>
@@ -38,14 +38,36 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySD-0r-rlX" customClass="SecondaryActionButton" customModule="StylingBoilerPlate">
+                                <rect key="frame" x="52" y="67" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="6V7-4k-rz9"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="actViewMlmSummary" destination="KGk-i7-Jjw" eventType="touchUpInside" id="JXG-hx-h0e"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aMM-dW-B5i">
+                                <rect key="frame" x="0.0" y="104" width="305" height="1"/>
+                                <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="oEI-vv-izR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2Yh-NN-nmn" firstAttribute="top" secondItem="Ekf-l2-B6e" secondAttribute="bottom" constant="5" id="17T-oY-2LU"/>
-                            <constraint firstAttribute="bottom" secondItem="2Yh-NN-nmn" secondAttribute="bottom" constant="10" id="4Yo-RU-O40"/>
+                            <constraint firstItem="ySD-0r-rlX" firstAttribute="top" secondItem="2Yh-NN-nmn" secondAttribute="bottom" constant="4" id="6PH-Ya-kbs"/>
                             <constraint firstItem="Ekf-l2-B6e" firstAttribute="centerX" secondItem="GGA-Jh-fyx" secondAttribute="centerX" id="BzP-mq-h3b"/>
+                            <constraint firstAttribute="trailing" secondItem="aMM-dW-B5i" secondAttribute="trailing" id="C1V-lS-Jee"/>
+                            <constraint firstAttribute="bottom" secondItem="aMM-dW-B5i" secondAttribute="bottom" id="CCO-tS-wNM"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2Yh-NN-nmn" secondAttribute="trailing" constant="12" id="KKh-n9-yiE"/>
+                            <constraint firstItem="ySD-0r-rlX" firstAttribute="centerX" secondItem="2Yh-NN-nmn" secondAttribute="centerX" id="PUg-cE-en6"/>
+                            <constraint firstAttribute="bottom" secondItem="ySD-0r-rlX" secondAttribute="bottom" constant="8" id="bDs-i4-zUF"/>
                             <constraint firstItem="2Yh-NN-nmn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GGA-Jh-fyx" secondAttribute="leading" constant="12" id="gGZ-2k-fOl"/>
+                            <constraint firstItem="aMM-dW-B5i" firstAttribute="leading" secondItem="GGA-Jh-fyx" secondAttribute="leading" id="hFn-YN-g4Q"/>
                             <constraint firstItem="Ekf-l2-B6e" firstAttribute="top" secondItem="GGA-Jh-fyx" secondAttribute="top" constant="16" id="nof-NG-n9U"/>
                             <constraint firstItem="2Yh-NN-nmn" firstAttribute="centerX" secondItem="GGA-Jh-fyx" secondAttribute="centerX" id="rU8-hC-ZHI"/>
                         </constraints>
@@ -59,10 +81,11 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnMlmSummary" destination="ySD-0r-rlX" id="jSF-Jv-GUe"/>
                 <outlet property="staticLabelTotalRefferals" destination="Ekf-l2-B6e" id="vaB-MD-Yes"/>
                 <outlet property="totalRefferals" destination="2Yh-NN-nmn" id="MKa-x1-M6H"/>
             </connections>
-            <point key="canvasLocation" x="54" y="-40"/>
+            <point key="canvasLocation" x="53.5" y="-40.5"/>
         </tableViewCell>
     </objects>
 </document>

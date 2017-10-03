@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="305" id="KGk-i7-Jjw" customClass="MLMOverViewTableViewCell" customModule="MaksabComponents" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="447" height="305"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="447" height="304.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEB-js-H5h" customClass="ShoutnoteLabel" customModule="StylingBoilerPlate">
+                        <rect key="frame" x="12" y="41" width="423" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txS-EY-vz7" customClass="TextLabel" customModule="StylingBoilerPlate">
+                        <rect key="frame" x="12" y="70" width="423" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xwm-sO-Awk">
+                        <rect key="frame" x="179.5" y="95" width="88" height="21"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0CU-Vy-AsX" customClass="TextLabel" customModule="StylingBoilerPlate">
+                                <rect key="frame" x="0.0" y="-8" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4M-RI-CKd" customClass="ShoutnoteLabel" customModule="StylingBoilerPlate">
+                                <rect key="frame" x="46" y="0.0" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Y4M-RI-CKd" secondAttribute="bottom" id="FjQ-ph-Fen"/>
+                            <constraint firstItem="0CU-Vy-AsX" firstAttribute="leading" secondItem="xwm-sO-Awk" secondAttribute="leading" id="H6W-pb-aIR"/>
+                            <constraint firstAttribute="trailing" secondItem="Y4M-RI-CKd" secondAttribute="trailing" id="HkI-uT-s7c"/>
+                            <constraint firstItem="Y4M-RI-CKd" firstAttribute="top" secondItem="xwm-sO-Awk" secondAttribute="top" id="Uwh-uv-JD5"/>
+                            <constraint firstItem="Y4M-RI-CKd" firstAttribute="leading" secondItem="0CU-Vy-AsX" secondAttribute="trailing" constant="4" id="W0K-PH-sla"/>
+                            <constraint firstItem="0CU-Vy-AsX" firstAttribute="bottom" secondItem="Y4M-RI-CKd" secondAttribute="bottom" constant="-8" id="gMx-Ox-fkT"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LH2-YD-75B" customClass="PrimaryButton" customModule="StylingBoilerPlate">
+                        <rect key="frame" x="78" y="126" width="290" height="37"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="290" id="flQ-aX-pD5"/>
+                            <constraint firstAttribute="height" constant="37" id="luz-ED-Wfe"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="viewMLMTree" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3wd-gl-UEF"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nfc-Jd-G0e">
+                        <rect key="frame" x="0.0" y="303.5" width="447" height="1"/>
+                        <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="sY2-Zu-70w"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOZ-lU-6DX" customClass="TextLabel" customModule="StylingBoilerPlate">
+                        <rect key="frame" x="12" y="16" width="423" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xwm-sO-Awk" secondAttribute="trailing" constant="12" id="4fO-0m-Vdn"/>
+                    <constraint firstItem="xwm-sO-Awk" firstAttribute="top" secondItem="txS-EY-vz7" secondAttribute="bottom" constant="4" id="6uy-ns-IXG"/>
+                    <constraint firstItem="LH2-YD-75B" firstAttribute="top" secondItem="xwm-sO-Awk" secondAttribute="bottom" constant="10" id="HQu-4m-gst"/>
+                    <constraint firstItem="FOZ-lU-6DX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="HWP-qE-gSI"/>
+                    <constraint firstAttribute="trailing" secondItem="FOZ-lU-6DX" secondAttribute="trailing" constant="12" id="IGb-Xz-GBA"/>
+                    <constraint firstItem="xwm-sO-Awk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="J79-VS-spu"/>
+                    <constraint firstAttribute="trailing" secondItem="Nfc-Jd-G0e" secondAttribute="trailing" id="Ksg-9I-sFN"/>
+                    <constraint firstItem="txS-EY-vz7" firstAttribute="leading" secondItem="rEB-js-H5h" secondAttribute="leading" id="LHg-kR-TSD"/>
+                    <constraint firstAttribute="bottom" secondItem="Nfc-Jd-G0e" secondAttribute="bottom" id="NEr-7C-iAR"/>
+                    <constraint firstItem="rEB-js-H5h" firstAttribute="leading" secondItem="FOZ-lU-6DX" secondAttribute="leading" id="NhG-5k-JvJ"/>
+                    <constraint firstItem="Nfc-Jd-G0e" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="P12-0r-8gM"/>
+                    <constraint firstItem="FOZ-lU-6DX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Pyu-Vy-o4R"/>
+                    <constraint firstItem="rEB-js-H5h" firstAttribute="top" secondItem="FOZ-lU-6DX" secondAttribute="bottom" constant="4" id="bYC-45-Flv"/>
+                    <constraint firstItem="txS-EY-vz7" firstAttribute="top" secondItem="rEB-js-H5h" secondAttribute="bottom" constant="8" id="bwh-kT-mCj"/>
+                    <constraint firstItem="xwm-sO-Awk" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="fyH-Is-Kpt"/>
+                    <constraint firstItem="txS-EY-vz7" firstAttribute="trailing" secondItem="rEB-js-H5h" secondAttribute="trailing" id="h4C-Yi-lP0"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="LH2-YD-75B" secondAttribute="bottom" constant="16" id="knX-Hs-GhI"/>
+                    <constraint firstItem="rEB-js-H5h" firstAttribute="trailing" secondItem="FOZ-lU-6DX" secondAttribute="trailing" id="pYK-6Q-wqy"/>
+                    <constraint firstItem="LH2-YD-75B" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="tO1-Lq-Gc8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnViewMLMTree" destination="LH2-YD-75B" id="W3C-N7-KpO"/>
+                <outlet property="priceUnit" destination="0CU-Vy-AsX" id="fGo-hY-M3g"/>
+                <outlet property="staticLabelTotalEarnings" destination="txS-EY-vz7" id="ta0-XB-gWs"/>
+                <outlet property="staticLabelTotalNodes" destination="FOZ-lU-6DX" id="EqB-K8-PsT"/>
+                <outlet property="totalEarnings" destination="Y4M-RI-CKd" id="II2-Kk-vlD"/>
+                <outlet property="totalNodes" destination="rEB-js-H5h" id="X4s-jW-Vnd"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="-104.5"/>
+        </tableViewCell>
+    </objects>
+</document>

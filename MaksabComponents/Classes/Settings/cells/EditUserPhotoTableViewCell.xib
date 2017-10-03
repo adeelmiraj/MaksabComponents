@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ft6-9G-DI0" customClass="RoundImageView" customModule="MaksabComponents" customModuleProvider="target">
-                        <rect key="frame" x="12" y="55" width="64" height="64"/>
+                        <rect key="frame" x="12" y="54.5" width="64" height="64"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ft6-9G-DI0" secondAttribute="height" multiplier="1:1" id="LA3-nv-dlh"/>
                             <constraint firstAttribute="width" constant="64" id="hP4-lJ-qD4"/>
@@ -28,23 +28,18 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="lightBorder" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qov-JD-xM1">
-                        <rect key="frame" x="56" y="55" width="20" height="20"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qov-JD-xM1">
+                        <rect key="frame" x="53" y="51.5" width="26" height="26"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="20" id="MEB-7W-sIJ"/>
+                            <constraint firstAttribute="width" constant="26" id="MEB-7W-sIJ"/>
                             <constraint firstAttribute="width" secondItem="Qov-JD-xM1" secondAttribute="height" multiplier="1:1" id="PnL-9w-ZIu"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="10"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCc-yX-hfj">
-                        <rect key="frame" x="88" y="52.5" width="321" height="69.5"/>
+                        <rect key="frame" x="92" y="53" width="317" height="67.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJ0-Ji-yDi" customClass="TitleLabel" customModule="StylingBoilerPlate">
-                                <rect key="frame" x="0.0" y="0.0" width="321" height="20.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="317" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -52,8 +47,8 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ko6-Fy-4t4">
-                                <rect key="frame" x="0.0" y="24.5" width="321" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ko6-Fy-4t4">
+                                <rect key="frame" x="0.0" y="23.5" width="317" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -61,8 +56,8 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzF-zx-HrN" customClass="TextLabel" customModule="StylingBoilerPlate">
-                                <rect key="frame" x="0.0" y="48.5" width="321" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="753" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzF-zx-HrN" customClass="TextLabel" customModule="StylingBoilerPlate">
+                                <rect key="frame" x="0.0" y="46.5" width="317" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -77,20 +72,20 @@
                             <constraint firstAttribute="trailing" secondItem="WJ0-Ji-yDi" secondAttribute="trailing" id="FBQ-Hk-MXv"/>
                             <constraint firstItem="ko6-Fy-4t4" firstAttribute="trailing" secondItem="WJ0-Ji-yDi" secondAttribute="trailing" id="Fsn-1I-EOS"/>
                             <constraint firstItem="WJ0-Ji-yDi" firstAttribute="top" secondItem="RCc-yX-hfj" secondAttribute="top" id="KXN-xr-t3J"/>
-                            <constraint firstItem="qzF-zx-HrN" firstAttribute="top" secondItem="ko6-Fy-4t4" secondAttribute="bottom" constant="3" id="MPH-Kl-IbN"/>
+                            <constraint firstItem="qzF-zx-HrN" firstAttribute="top" secondItem="ko6-Fy-4t4" secondAttribute="bottom" constant="2" id="MPH-Kl-IbN"/>
                             <constraint firstAttribute="bottom" secondItem="qzF-zx-HrN" secondAttribute="bottom" id="Qsb-tG-rbc"/>
                             <constraint firstItem="ko6-Fy-4t4" firstAttribute="leading" secondItem="WJ0-Ji-yDi" secondAttribute="leading" id="VF7-j6-7oG"/>
                             <constraint firstItem="qzF-zx-HrN" firstAttribute="trailing" secondItem="ko6-Fy-4t4" secondAttribute="trailing" id="drm-UN-zGc"/>
                             <constraint firstItem="qzF-zx-HrN" firstAttribute="leading" secondItem="ko6-Fy-4t4" secondAttribute="leading" id="dzT-4e-snK"/>
-                            <constraint firstItem="ko6-Fy-4t4" firstAttribute="top" secondItem="WJ0-Ji-yDi" secondAttribute="bottom" constant="4" id="tIY-Y9-RGg"/>
+                            <constraint firstItem="ko6-Fy-4t4" firstAttribute="top" secondItem="WJ0-Ji-yDi" secondAttribute="bottom" constant="3" id="tIY-Y9-RGg"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="RCc-yX-hfj" firstAttribute="leading" secondItem="ft6-9G-DI0" secondAttribute="trailing" constant="12" id="1CF-If-AGj"/>
+                    <constraint firstItem="RCc-yX-hfj" firstAttribute="leading" secondItem="ft6-9G-DI0" secondAttribute="trailing" constant="16" id="1CF-If-AGj"/>
                     <constraint firstItem="ft6-9G-DI0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="QMk-wb-AAJ"/>
-                    <constraint firstItem="Qov-JD-xM1" firstAttribute="trailing" secondItem="ft6-9G-DI0" secondAttribute="trailing" id="QW6-Ou-S48"/>
-                    <constraint firstItem="Qov-JD-xM1" firstAttribute="top" secondItem="ft6-9G-DI0" secondAttribute="top" id="Qom-Xc-B7Y"/>
+                    <constraint firstItem="Qov-JD-xM1" firstAttribute="trailing" secondItem="ft6-9G-DI0" secondAttribute="trailing" constant="3" id="QW6-Ou-S48"/>
+                    <constraint firstItem="Qov-JD-xM1" firstAttribute="top" secondItem="ft6-9G-DI0" secondAttribute="top" constant="-3" id="Qom-Xc-B7Y"/>
                     <constraint firstItem="RCc-yX-hfj" firstAttribute="centerY" secondItem="ft6-9G-DI0" secondAttribute="centerY" id="kFf-H1-PxA"/>
                     <constraint firstAttribute="trailing" secondItem="RCc-yX-hfj" secondAttribute="trailing" constant="12" id="nwF-iB-Heh"/>
                     <constraint firstItem="ft6-9G-DI0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="r2u-z0-T3r"/>
@@ -103,7 +98,7 @@
                 <outlet property="userName" destination="WJ0-Ji-yDi" id="FYp-bQ-jSn"/>
                 <outlet property="userPhoto" destination="ft6-9G-DI0" id="D4V-Tg-SdI"/>
             </connections>
-            <point key="canvasLocation" x="584" y="35"/>
+            <point key="canvasLocation" x="41" y="20"/>
         </tableViewCell>
     </objects>
 </document>

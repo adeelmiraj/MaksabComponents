@@ -18,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cRn-Lw-kgS">
-                        <rect key="frame" x="284" y="37" width="51" height="31"/>
+                        <rect key="frame" x="284" y="12" width="51" height="31"/>
                         <connections>
                             <action selector="actSwitchStateChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="D7w-cf-OQb"/>
                         </connections>
                     </switch>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2M-KZ-rN7" customClass="TextLabel" customModule="StylingBoilerPlate">
-                        <rect key="frame" x="12" y="42" width="260" height="21"/>
+                        <rect key="frame" x="12" y="17" width="260" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -40,13 +40,14 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="ghB-vU-zhT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ayw-Sq-rYR"/>
+                    <constraint firstItem="ghB-vU-zhT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cRn-Lw-kgS" secondAttribute="bottom" constant="12" id="Dr2-b6-qOb"/>
                     <constraint firstAttribute="trailing" secondItem="ghB-vU-zhT" secondAttribute="trailing" id="JMU-Dr-kT8"/>
+                    <constraint firstItem="cRn-Lw-kgS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="QwS-WJ-ded"/>
                     <constraint firstAttribute="trailing" secondItem="cRn-Lw-kgS" secondAttribute="trailing" constant="12" id="Zoi-gZ-Gcu"/>
                     <constraint firstItem="cRn-Lw-kgS" firstAttribute="leading" secondItem="b2M-KZ-rN7" secondAttribute="trailing" constant="12" id="iYq-PU-dsq"/>
                     <constraint firstItem="b2M-KZ-rN7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="k0Y-Hb-7YH"/>
                     <constraint firstAttribute="bottom" secondItem="ghB-vU-zhT" secondAttribute="bottom" id="kPc-Ip-fof"/>
                     <constraint firstItem="b2M-KZ-rN7" firstAttribute="centerY" secondItem="cRn-Lw-kgS" secondAttribute="centerY" id="q0s-B7-ODm"/>
-                    <constraint firstItem="cRn-Lw-kgS" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xNG-1P-wZM"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ese-Hn-Je3">
-                        <rect key="frame" x="0.0" y="0.0" width="497" height="158.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="497" height="132.5"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YUU-pU-4uH" userLabel="title View">
                                 <rect key="frame" x="207.5" y="16" width="82" height="30"/>
@@ -80,7 +80,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LjR-C5-tMX" customClass="PrimaryButton" customModule="StylingBoilerPlate">
-                                <rect key="frame" x="80" y="89.5" width="337" height="34"/>
+                                <rect key="frame" x="80" y="81.5" width="337" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="UO4-Ms-7lp"/>
                                     <constraint firstAttribute="width" priority="900" constant="337" id="mbz-KW-8aq"/>
@@ -88,7 +88,7 @@
                                 <state key="normal" title="Button"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wlM-Cd-uje">
-                                <rect key="frame" x="0.0" y="157.5" width="497" height="1"/>
+                                <rect key="frame" x="0.0" y="131.5" width="497" height="1"/>
                                 <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Ohe-P8-EHC"/>
@@ -97,7 +97,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wlM-Cd-uje" firstAttribute="top" secondItem="LjR-C5-tMX" secondAttribute="bottom" constant="34" id="1Yj-yc-C1I"/>
+                            <constraint firstItem="wlM-Cd-uje" firstAttribute="top" secondItem="LjR-C5-tMX" secondAttribute="bottom" constant="16" id="1Yj-yc-C1I"/>
                             <constraint firstItem="YUU-pU-4uH" firstAttribute="top" secondItem="ese-Hn-Je3" secondAttribute="top" constant="16" id="8Ae-Eo-LdZ"/>
                             <constraint firstItem="5mK-eO-xLw" firstAttribute="centerX" secondItem="ese-Hn-Je3" secondAttribute="centerX" id="Cxm-JX-526"/>
                             <constraint firstItem="wlM-Cd-uje" firstAttribute="leading" secondItem="ese-Hn-Je3" secondAttribute="leading" id="Qkp-6t-oG3"/>
@@ -110,7 +110,7 @@
                             <constraint firstAttribute="bottom" secondItem="wlM-Cd-uje" secondAttribute="bottom" id="sms-cK-n9Z"/>
                             <constraint firstItem="LjR-C5-tMX" firstAttribute="centerX" secondItem="ese-Hn-Je3" secondAttribute="centerX" id="u9O-fw-feA"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LjR-C5-tMX" secondAttribute="trailing" constant="19" id="uag-IJ-M8s"/>
-                            <constraint firstItem="LjR-C5-tMX" firstAttribute="top" secondItem="5mK-eO-xLw" secondAttribute="bottom" constant="18" id="wnQ-sj-nJO"/>
+                            <constraint firstItem="LjR-C5-tMX" firstAttribute="top" secondItem="5mK-eO-xLw" secondAttribute="bottom" constant="10" id="wnQ-sj-nJO"/>
                         </constraints>
                     </view>
                 </subviews>

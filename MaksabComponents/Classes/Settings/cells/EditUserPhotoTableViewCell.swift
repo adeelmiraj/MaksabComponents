@@ -15,13 +15,13 @@ public protocol EditUserPhotoTableViewCellDelegate {
 
 public class EditUserPhotoTableViewCell: UITableViewCell, NibLoadableView {
 
-    @IBOutlet weak var userPhoto: UIImageView!
-    @IBOutlet weak var userName: TitleLabel!
-    @IBOutlet weak var phoneNo: UILabel!
-    @IBOutlet weak var emailId: TextLabel!
+    @IBOutlet weak public var userPhoto: UIImageView!
+    @IBOutlet weak public var userName: TitleLabel!
+    @IBOutlet weak public var phoneNo: UILabel!
+    @IBOutlet weak public var emailId: TextLabel!
     @IBOutlet weak var editIcon: UIImageView!
     
-    var delegate: EditUserPhotoTableViewCellDelegate?
+    public var delegate: EditUserPhotoTableViewCellDelegate?
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -37,7 +37,7 @@ public class EditUserPhotoTableViewCell: UITableViewCell, NibLoadableView {
         editIcon.backgroundColor = UIColor.appColor(color: .Light)
         let bh = BundleHelper(resourceName: Constants.resourceName)
         editIcon.image = bh.getImageFromMaksabComponent(name: "edit-profile", _class: EditUserPhotoTableViewCell.self)
-        
+        editIcon.layer.cornerRadius = editIcon.frame.size.height / 2
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(actUserPhotoTapped))
         userPhoto.addGestureRecognizer(tapGesture)
     }
@@ -48,11 +48,11 @@ public class EditUserPhotoTableViewCell: UITableViewCell, NibLoadableView {
         // Configure the view for the selected state
     }
     
-    public func config(delegate: EditUserPhotoTableViewCellDelegate)  {
+    public func config(userName: String, phone: String, email: String, delegate: EditUserPhotoTableViewCellDelegate)  {
         self.delegate = delegate
-        userName.text = "Abc"
-        phoneNo.text = "123456789"
-        emailId.text = "abc@gmail.com"
+        self.userName.text = userName
+        phoneNo.text = phone
+        emailId.text = email
     }
     
     func actUserPhotoTapped(){

@@ -20,24 +20,27 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="566" height="43"/>
+            <rect key="frame" x="0.0" y="0.0" width="566" height="63"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYV-CJ-vmG" customClass="TextLabel" customModule="StylingBoilerPlate">
-                    <rect key="frame" x="12" y="12" width="542" height="19"/>
+                    <rect key="frame" x="12" y="12" width="542" height="39"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="31" id="BT7-ZU-kUJ"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Yq-Sb-vty">
-                    <rect key="frame" x="566" y="21.5" width="0.0" height="0.0"/>
+                    <rect key="frame" x="566" y="31.5" width="0.0" height="0.0"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="2Yq-Sb-vty" secondAttribute="height" multiplier="1:1" id="Woe-qi-OK6"/>
                         <constraint firstAttribute="width" id="fiE-y4-7gt"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QR6-Px-JFu">
-                    <rect key="frame" x="0.0" y="42" width="566" height="1"/>
+                    <rect key="frame" x="0.0" y="62" width="566" height="1"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="e28-kj-9uj"/>
@@ -57,7 +60,7 @@
                 <constraint firstItem="QR6-Px-JFu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="s6a-nT-ajO"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="52" y="-367.5"/>
+            <point key="canvasLocation" x="52" y="-357.5"/>
         </view>
     </objects>
 </document>

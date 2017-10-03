@@ -16,6 +16,11 @@ public class ProfileView: UIView, NibLoadableView, CustomView{
     @IBOutlet weak public var profilePic: UIImageView!
     @IBOutlet weak public var labelName: UILabel!
     @IBOutlet weak public var ratingView: CosmosView!
+    @IBOutlet weak public var statusView: UIView!
+    @IBOutlet weak public var labelStatus: UILabel!
+    @IBOutlet weak public var statusIndicator: UIView!
+    
+    @IBOutlet weak var statusViewHeight: NSLayoutConstraint!
     var view: UIView!
     override required public init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,10 +46,14 @@ public class ProfileView: UIView, NibLoadableView, CustomView{
        
     }
     
-    func config()  {
-        
+    public func showStatusView(){
+        statusViewHeight.constant = 21
+        statusView.isHidden = false
     }
     
+    public func hideStatusView(){
+        statusViewHeight.constant = 0
+        statusView.isHidden = true
+    }
     
-
 }
