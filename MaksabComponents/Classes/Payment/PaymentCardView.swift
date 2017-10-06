@@ -9,6 +9,32 @@
 import UIKit
 import StylingBoilerPlate
 
+public struct PaymentCardInfo{
+    public var cardNo: String
+    public var expiryDate: String
+    public var cvv: String
+    public var cardHolderName: String
+    public var expiryYear: Int = 0
+    public var expiryMonth: Int = 0
+    
+    public init(cardNo: String, expiryDate: String, cvv: String, cardHolderName: String) {
+        self.cardNo = cardNo
+        self.expiryDate = expiryDate
+        self.cvv = cvv
+        self.cardHolderName = cardHolderName
+    }
+    
+    public func encodeToJSON() -> [String:Any] {
+        var dictionary = [String:Any]()
+        dictionary["name"] = cardHolderName
+        dictionary["number"] = cardNo
+        dictionary["exp_month"] = expiryMonth
+        dictionary["exp_year"] = expiryYear
+        dictionary["cvc"] = cvv
+        return dictionary
+    }
+}
+
 public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDelegate {
 
     @IBOutlet weak var staticLabelCardNo: UILabel!
@@ -26,22 +52,6 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
     let bundle = Bundle(for: PaymentCardView.classForCoder())
     var view: UIView!
     public static let height: CGFloat = 188+16
-    
-    public struct PaymentCardInfo{
-        public var cardNo: String
-        public var expiryDate: String
-        public var cvv: String
-        public var cardHolderName: String
-        public var expiryYear: Int = 0
-        public var expiryMonth: Int = 0
-        
-        public init(cardNo: String, expiryDate: String, cvv: String, cardHolderName: String) {
-            self.cardNo = cardNo
-            self.expiryDate = expiryDate
-            self.cvv = cvv
-            self.cardHolderName = cardHolderName
-        }
-    }
     
     static public func createInstance(x: CGFloat, y: CGFloat = 0, width: CGFloat) -> PaymentCardView{
         let inst = PaymentCardView(frame: CGRect(x: x, y: y, width: width, height: PaymentCardView.height))
@@ -110,7 +120,7 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
         let expDate = fieldExpiryDate.text!
         let yearStr = expDate.substring(from: expDate.index(expDate.startIndex, offsetBy: 3))
         let monthStr = expDate.substring(to: expDate.index(expDate.startIndex, offsetBy: 2))
-        if let year = Int(yearStr){
+        if let year = Int("20\(yearStr)"){
             cardInfo.expiryYear = year
         }else{
             err.reason = "Invalid expiry Date"
@@ -124,6 +134,7 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
         
 
         if err.reason.isEmpty{
+            cardInfo.cardNo = cardInfo.cardNo.replacingOccurrences(of: " ", with: "")
             completion(nil, cardInfo)
         }else{
             completion(err, nil)
@@ -145,12 +156,10 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
     
     func handleCardInput(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         // check the chars length dd -->2 at the same time calculate the dd-MM --> 5
-        if textField.text!.isEmpty{
+        if textField.text!.isEmpty || textField.text!.characters.count == 1{
             if let num = Int(string){
-                setCardImage(firstDigit: num)
+                setCardImage(digit: num)
             }
-        }else{
-            cardImg.image = nil
         }
         
         if (textField.text!.characters.count == 4) || (textField.text!.characters.count == 9 ) || (textField.text!.characters.count == 14) {
@@ -163,14 +172,19 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
         return !(textField.text!.characters.count > 18 && (string.characters.count ) > range.length)
     }
     
-    func setCardImage(firstDigit:Int)  {
+    func setCardImage(digit:Int)  {
         let bh = BundleHelper(resourceName: Constants.resourceName)
-        if firstDigit == 5{
-            cardImg.image = bh.getImageFromMaksabComponent(name: "master-card", _class: PaymentCardView.self)
-        }else if firstDigit == 3{
-            cardImg.image = bh.getImageFromMaksabComponent(name: "master-card", _class: PaymentCardView.self)
+        if digit == 4{
+            //first digit 4 visa
+            cardImg.image = bh.getImageFromMaksabComponent(name: "visacard", _class: PaymentCardView.self)
+        }else if digit >= 51 && digit <= 55{
+            //first two digits 5x  x can be 1-5 matercard
+            cardImg.image = bh.getImageFromMaksabComponent(name: "mastercard", _class: PaymentCardView.self)
+        }else if digit == 34 || digit == 37{
+            //first two digits 34  or 37 american express
+            cardImg.image = bh.getImageFromMaksabComponent(name: "americanexpersscard", _class: PaymentCardView.self)
         }else{
-            cardImg.image = bh.getImageFromMaksabComponent(name: "master-card", _class: PaymentCardView.self)
+            cardImg.image = bh.getImageFromMaksabComponent(name: "creditcard", _class: PaymentCardView.self)
         }
     }
     
