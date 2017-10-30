@@ -10,6 +10,7 @@ import UIKit
 import StylingBoilerPlate
 
 public struct PaymentCardInfo{
+    public var title: String
     public var cardNo: String
     public var expiryDate: String
     public var cvv: String
@@ -17,7 +18,8 @@ public struct PaymentCardInfo{
     public var expiryYear: Int = 0
     public var expiryMonth: Int = 0
     
-    public init(cardNo: String, expiryDate: String, cvv: String, cardHolderName: String) {
+    public init(title: String, cardNo: String, expiryDate: String, cvv: String, cardHolderName: String) {
+        self.title = title
         self.cardNo = cardNo
         self.expiryDate = expiryDate
         self.cvv = cvv
@@ -44,6 +46,7 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
     
    
     @IBOutlet weak var cardImg: UIImageView!
+    @IBOutlet weak var fieldTitle: UITextField!
     @IBOutlet weak var fieldCardNo: UITextField!
     @IBOutlet weak var fieldExpiryDate: UITextField!
     @IBOutlet weak var fieldCvv: UITextField!
@@ -51,7 +54,8 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
   
     let bundle = Bundle(for: PaymentCardView.classForCoder())
     var view: UIView!
-    public static let height: CGFloat = 188+16
+    public static let height: CGFloat = 277
+//        188+16
     
     static public func createInstance(x: CGFloat, y: CGFloat = 0, width: CGFloat) -> PaymentCardView{
         let inst = PaymentCardView(frame: CGRect(x: x, y: y, width: width, height: PaymentCardView.height))
@@ -74,7 +78,9 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
     
 
     func configView()  {
+        backgroundColor = UIColor.appColor(color: .Dark)
         let color = UIColor(netHex: 0x777777)
+        
         staticLabelCardNo.text = "CARD NUMBER"
         staticLabelCardNo.textColor = color
         staticLabelExpiryDate.text = "EXPIRATION DATE"
@@ -84,6 +90,8 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
         staticLabelCardHolderName.text = "CARDHOLDER NAME"
         staticLabelCardHolderName.textColor = color
         
+        fieldTitle.attributedPlaceholder = NSAttributedString(string: "Title", attributes: [NSFontAttributeName: UIFont.appFont(font: .RubikMedium, pontSize: 17)])
+        fieldTitle.font = UIFont.appFont(font: .RubikMedium, pontSize: 17)
         fieldCardNo.placeholder = "0000 0000 0000 0000"
         fieldExpiryDate.placeholder = "MM/YY"
         fieldCvv.placeholder = "1234"
@@ -105,7 +113,9 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
         //            err.reason = "Please enter valid name and quantity."
         //
         //        }
-        if fieldCardNo.text!.characters.count != 19{
+        if fieldTitle.text!.isEmpty{
+            err.reason = "Title is required"
+        }else if fieldCardNo.text!.characters.count != 19{
             err.reason = "Card no must have 16 digits"
         }else if fieldExpiryDate.text!.characters.count != 5{
             err.reason = "Invalid expiry date"
@@ -115,7 +125,7 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
             err.reason = "Card Holder name is required"
         }
         
-        var cardInfo = PaymentCardInfo(cardNo: fieldCardNo.text!, expiryDate: fieldExpiryDate.text!, cvv: fieldCvv.text!, cardHolderName: fieldCardHolderName.text!)
+        var cardInfo = PaymentCardInfo(title: fieldTitle.text!, cardNo: fieldCardNo.text!, expiryDate: fieldExpiryDate.text!, cvv: fieldCvv.text!, cardHolderName: fieldCardHolderName.text!)
         
         let expDate = fieldExpiryDate.text!
         let yearStr = expDate.substring(from: expDate.index(expDate.startIndex, offsetBy: 3))
@@ -131,8 +141,6 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
             err.reason = "Invalid expiry Date"
         }
         
-        
-
         if err.reason.isEmpty{
             cardInfo.cardNo = cardInfo.cardNo.replacingOccurrences(of: " ", with: "")
             completion(nil, cardInfo)
@@ -153,15 +161,10 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
         return true
     }
     
-    
     func handleCardInput(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         // check the chars length dd -->2 at the same time calculate the dd-MM --> 5
-        if textField.text!.isEmpty || textField.text!.characters.count == 1{
-            if let num = Int(string){
-                setCardImage(digit: num)
-            }
-        }
-        
+        let replaced = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        setCardImage(string: replaced)
         if (textField.text!.characters.count == 4) || (textField.text!.characters.count == 9 ) || (textField.text!.characters.count == 14) {
             //Handle backspace being pressed
             if !(string == "") {
@@ -172,9 +175,20 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
         return !(textField.text!.characters.count > 18 && (string.characters.count ) > range.length)
     }
     
-    func setCardImage(digit:Int)  {
+    func setCardImage(string: String)  {
         let bh = BundleHelper(resourceName: Constants.resourceName)
-        if digit == 4{
+        
+//        if string.count == 1 , let digit = Int(string), digit == 4{
+//
+//        }else{
+//            cardImg.image = bh.getImageFromMaksabComponent(name: "creditcard", _class: PaymentCardView.self)
+//        }
+        
+        guard string.characters.count <= 2 , let digit = Int(string) else {
+            return
+        }
+        
+        if digit == 4 || (digit >= 40 && digit <= 49){
             //first digit 4 visa
             cardImg.image = bh.getImageFromMaksabComponent(name: "visacard", _class: PaymentCardView.self)
         }else if digit >= 51 && digit <= 55{
@@ -184,7 +198,7 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
             //first two digits 34  or 37 american express
             cardImg.image = bh.getImageFromMaksabComponent(name: "americanexpersscard", _class: PaymentCardView.self)
         }else{
-            cardImg.image = bh.getImageFromMaksabComponent(name: "creditcard", _class: PaymentCardView.self)
+            cardImg.image = nil
         }
     }
     

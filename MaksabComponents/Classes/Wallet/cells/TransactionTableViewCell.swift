@@ -39,12 +39,11 @@ public class TransactionTableViewCell: UITableViewCell, NibLoadableView {
         // Configure the view for the selected state
     }
     
-    public func config()  {
-        let date = Date()
-        dateTime.text = date.string(format: "dd/MM/YYYY, hh:mm a")
+    public func config(createdAt: Date?, amount: Double, description: String)  {
+        dateTime.text = createdAt?.string(format: "dd/MM/YYYY, hh:mm a") ?? ""
         details.attributedText = String.boldAttributedString(
-            boldComponent: "SAR 05.00",
-            otherComponent: "deposited to Maqsab through bank transfer.",
+            boldComponent: String(format:"SAR %.2f",amount),
+            otherComponent: description,
             boldFont: UIFont.appFont(font: .RubikMedium, pontSize: 17),
             otherfont: UIFont.appFont(font: .RubikRegular, pontSize: 17),
             textColor: UIColor.appColor(color: .LightText))
@@ -52,16 +51,16 @@ public class TransactionTableViewCell: UITableViewCell, NibLoadableView {
     
 
     
-    public func showTransactionId()  {
+    public func showTransactionId(transactionId: String)  {
         transactionTypeContainerView.isHidden = true
         transactionIdContainerView.isHidden = false
-        transactionId.text = "13456"
+        self.transactionId.text = transactionId
     }
     
-    public func showTransactionType()  {
+    public func showTransactionType(title:String, icon: UIImage)  {
         transactionTypeContainerView.isHidden = false
         transactionIdContainerView.isHidden = true
-        transactionTypeTitle.text = "Credit"
-        transactionTypeIcon.image = UIImage(named: "my-wallet")?.withRenderingMode(.alwaysTemplate)
+        transactionTypeTitle.text = title
+        transactionTypeIcon.image = icon.withRenderingMode(.alwaysTemplate)
     }
 }

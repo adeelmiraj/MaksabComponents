@@ -35,8 +35,8 @@ public class TotalRefferalsTableViewCell: UITableViewCell, NibLoadableView {
         // Configure the view for the selected state
     }
     
-    public func config(refferals: String, delegate: TotalRefferalsTableViewCellDelegate)  {
-        totalRefferals.text = refferals
+    public func config(refferals: Int, delegate: TotalRefferalsTableViewCellDelegate)  {
+        totalRefferals.text = "\(refferals)"
         self.delegate = delegate
     }
     

@@ -23,7 +23,7 @@ public class InviteMoreFriendsTableViewCell: UITableViewCell, NibLoadableView {
         super.awakeFromNib()
         // Initialization code
         self.backgroundColor = UIColor.appColor(color: .Dark)
-        staticLabelInviteFriends.text = "            5 more friends and earn a higher"
+        staticLabelInviteFriends.text = "            more friends to Earn more."
 //        commission
         btnInvite.tintColor = UIColor.appColor(color: .Secondary)
         btnInvite.setTitle("Invite", for: .normal)
@@ -38,6 +38,7 @@ public class InviteMoreFriendsTableViewCell: UITableViewCell, NibLoadableView {
     
     public func config(delegate: InviteMoreFriendsTableViewCellDelegate)  {
         self.delegate = delegate
+        
     }
     
     @IBAction func actInvite(){

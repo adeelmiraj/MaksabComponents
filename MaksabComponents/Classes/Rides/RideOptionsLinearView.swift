@@ -9,7 +9,7 @@
 import UIKit
 import StylingBoilerPlate
 
-public class RideOptionsLinearView: UIView , CustomView, NibLoadableView, Toggleable{
+public class RideOptionsLinearView: UIView , CustomView, NibLoadableView{
     
     static let height:CGFloat = 39
     static public func createInstance(x: CGFloat, y: CGFloat, width:CGFloat) -> RideOptionsLinearView{
@@ -24,9 +24,8 @@ public class RideOptionsLinearView: UIView , CustomView, NibLoadableView, Toggle
     @IBOutlet weak public var btnPayment: ToggleButton!
     @IBOutlet weak public var btnNoOfPassegners: ToggleButton!
     
-    public var delegate: RideOptionsDelegate?
-    
     var view: UIView!
+    var rideOptions: RideOptions?
     
     override public required init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,29 +41,29 @@ public class RideOptionsLinearView: UIView , CustomView, NibLoadableView, Toggle
     
     func configView()  {
         let bh = BundleHelper(resourceName: Constants.resourceName)
-        btnMehramRide.selectedStateImage = bh.getImageFromMaksabComponent(name: "budget-car", _class: RidesOptionsGridView.self)
-        btnMehramRide.unSelectedStateImage = bh.getImageFromMaksabComponent(name: "budget-car", _class: RidesOptionsGridView.self)
+        btnMehramRide.selectedStateImage = bh.getImageFromMaksabComponent(name: "mehram-selected", _class: RidesOptionsGridView.self)
+        btnMehramRide.unSelectedStateImage = bh.getImageFromMaksabComponent(name: "mehram", _class: RidesOptionsGridView.self)
         
-        btnNoSmoking.selectedStateImage = bh.getImageFromMaksabComponent(name: "budget-car", _class: RidesOptionsGridView.self)
-        btnNoSmoking.unSelectedStateImage = bh.getImageFromMaksabComponent(name: "budget-car", _class: RidesOptionsGridView.self)
+        btnNoSmoking.selectedStateImage = bh.getImageFromMaksabComponent(name: "smoking", _class: RidesOptionsGridView.self)
+        btnNoSmoking.unSelectedStateImage = bh.getImageFromMaksabComponent(name: "no-smoking", _class: RidesOptionsGridView.self)
         
         btnPayment.selectedStateImage = bh.getImageFromMaksabComponent(name: "budget-car", _class: RidesOptionsGridView.self)
         btnPayment.unSelectedStateImage = bh.getImageFromMaksabComponent(name: "budget-car", _class: RidesOptionsGridView.self)
         
-        btnNoOfPassegners.selectedStateImage = bh.getImageFromMaksabComponent(name: "budget-car", _class: RidesOptionsGridView.self)
-        btnNoOfPassegners.unSelectedStateImage = bh.getImageFromMaksabComponent(name: "budget-car", _class: RidesOptionsGridView.self)
+        btnNoOfPassegners.selectedStateImage = bh.getImageFromMaksabComponent(name: "passengers", _class: RidesOptionsGridView.self)
+        btnNoOfPassegners.unSelectedStateImage = bh.getImageFromMaksabComponent(name: "passengers", _class: RidesOptionsGridView.self)
         
-        btnMehramRide.setTitle("Mehram Ride", for: .normal)
-        btnNoSmoking.setTitle("No Smoking", for: .normal)
-        btnPayment.setTitle("Credit Card", for: .normal)
-        btnNoOfPassegners.setTitle("4 or less Passengers", for: .normal)
-        
+        btnMehramRide.setTitle("", for: .normal)
+        btnNoSmoking.setTitle("", for: .normal)
+        btnPayment.setTitle("", for: .normal)
+        btnNoOfPassegners.setTitle("", for: .normal)
+        /*
         btnMehramRide.toggleDelegate = self
         btnNoSmoking.toggleDelegate = self
         btnPayment.toggleDelegate = self
-        btnNoOfPassegners.toggleDelegate = self
+        btnNoOfPassegners.toggleDelegate = self*/
     }
-    
+    /*
     public func onToggle(stateSelected: Bool, sender: UIButton) {
         let btn = sender as! ToggleButton
         
@@ -80,14 +79,40 @@ public class RideOptionsLinearView: UIView , CustomView, NibLoadableView, Toggle
         }
         
         delegate?.rideOptioinToggled(rideOption: optionType, state: stateSelected)
+    }*/
+    
+    //MARK:- Setters
+    public func config(rideOptions: RideOptions){
+        btnMehramRide.stateSelected = rideOptions.isMehram
+        btnNoSmoking.stateSelected = rideOptions.isSmoking
+        setPayment(paymentInfo: rideOptions.paymentInfo)
+        self.rideOptions = rideOptions
+        //refresh btn
+        btnNoOfPassegners.stateSelected = btnNoOfPassegners.stateSelected
     }
     
-    func isMehramRide() -> Bool{
-        return btnMehramRide.stateSelected
+
+    //Payment
+    public func setPayment(paymentInfo: PaymentInfo){
+        let bh = BundleHelper(resourceName: Constants.resourceName)
+        var icon: UIImage!
+        switch paymentInfo.mehtod {
+        case .cash:
+            icon = bh.getImageFromMaksabComponent(name: "cash-circle", _class: RideOptionsLinearView.self)
+        case .wallet:
+            icon = bh.getImageFromMaksabComponent(name: "wallet-card", _class: RideOptionsLinearView.self)
+        case .card:
+            icon = bh.getImageFromMaksabComponent(name: "credit-card", _class: RideOptionsLinearView.self)
+        }
+        btnPayment.setImage(icon.withRenderingMode(.alwaysOriginal), for: .normal)
     }
     
-    func isNoSmoking() -> Bool{
-        return btnNoSmoking.stateSelected
+    //MARK:- Getters
+    public func getRideOptions() -> RideOptions {
+        guard rideOptions != nil else {
+            return RideOptions()
+        }
+        return rideOptions!
     }
 }
 

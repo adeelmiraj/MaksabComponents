@@ -38,11 +38,11 @@ public class CurrentBalanceTableViewCell: UITableViewCell, NibLoadableView {
         // Configure the view for the selected state
     }
     
-    public func config(title: String, delegate: CurrentBalanceTableViewCellDelegate, hideInfoBtn: Bool = true)  {
+    public func config(title: String, amount: Double, delegate: CurrentBalanceTableViewCellDelegate, hideInfoBtn: Bool = true)  {
         self.labelTitle.text = title
         self.delegate = delegate
         btnInfo.isHidden = hideInfoBtn
-        price.text = "1024.25"
+        price.text = String(format:"%.2f",amount)
     }
     
     @IBAction func actPayNow(){

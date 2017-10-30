@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="155" id="KGk-i7-Jjw" customClass="UserInfoTableViewCell" customModule="MaksabComponents" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="716" height="155"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="716" height="154.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EvW-W5-Xly" customClass="RoundImageView" customModule="MaksabComponents">
+                        <rect key="frame" x="12" y="45.5" width="64" height="64"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="64" id="1ni-Gv-l0A"/>
+                            <constraint firstAttribute="width" secondItem="EvW-W5-Xly" secondAttribute="height" multiplier="1:1" id="hqE-r1-gGc"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="lightBorder" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jM9-Cj-wAo" customClass="RatingView" customModule="MaksabComponents">
+                        <rect key="frame" x="619" y="69" width="85" height="17"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="Oun-8y-uFZ"/>
+                            <constraint firstAttribute="width" constant="85" id="bqC-9D-YRD"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                <real key="value" value="17"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pY9-aV-sqN">
+                        <rect key="frame" x="88" y="16" width="519" height="122.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2JU-Al-UKc" customClass="TitleLabel" customModule="StylingBoilerPlate">
+                                <rect key="frame" x="0.0" y="0.0" width="519" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNi-c9-Ao2" customClass="TextLabel" customModule="StylingBoilerPlate">
+                                <rect key="frame" x="0.0" y="24" width="519" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08Z-75-S72" customClass="TextLabel" customModule="StylingBoilerPlate">
+                                <rect key="frame" x="0.0" y="48" width="519" height="74.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2JU-Al-UKc" firstAttribute="top" secondItem="pY9-aV-sqN" secondAttribute="top" id="1fc-Uq-IhX"/>
+                            <constraint firstItem="dNi-c9-Ao2" firstAttribute="leading" secondItem="pY9-aV-sqN" secondAttribute="leading" id="42l-fC-ZDW"/>
+                            <constraint firstItem="dNi-c9-Ao2" firstAttribute="top" secondItem="2JU-Al-UKc" secondAttribute="bottom" constant="3" id="Ggd-iu-gMe"/>
+                            <constraint firstAttribute="bottom" secondItem="08Z-75-S72" secondAttribute="bottom" id="Jlo-LB-hTZ"/>
+                            <constraint firstAttribute="trailing" secondItem="dNi-c9-Ao2" secondAttribute="trailing" id="aB0-zo-Dxg"/>
+                            <constraint firstItem="2JU-Al-UKc" firstAttribute="leading" secondItem="pY9-aV-sqN" secondAttribute="leading" id="b3n-DG-PWP"/>
+                            <constraint firstAttribute="trailing" secondItem="2JU-Al-UKc" secondAttribute="trailing" id="cb5-Kt-a6I"/>
+                            <constraint firstItem="08Z-75-S72" firstAttribute="leading" secondItem="pY9-aV-sqN" secondAttribute="leading" id="hRd-oC-zyL"/>
+                            <constraint firstItem="08Z-75-S72" firstAttribute="top" secondItem="dNi-c9-Ao2" secondAttribute="bottom" constant="3" id="jtv-9g-41r"/>
+                            <constraint firstAttribute="trailing" secondItem="08Z-75-S72" secondAttribute="trailing" id="t8z-wb-ycb"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UfH-NV-NTm">
+                        <rect key="frame" x="0.0" y="153.5" width="716" height="1"/>
+                        <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="xgf-hQ-0QU"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="UfH-NV-NTm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="48j-kM-toV"/>
+                    <constraint firstAttribute="bottom" secondItem="pY9-aV-sqN" secondAttribute="bottom" constant="16" id="9Sh-Vd-2RL"/>
+                    <constraint firstItem="EvW-W5-Xly" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="BVD-2D-w8N"/>
+                    <constraint firstAttribute="bottom" secondItem="UfH-NV-NTm" secondAttribute="bottom" id="Fl4-Tx-kCP"/>
+                    <constraint firstItem="jM9-Cj-wAo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="KoG-bN-HUZ"/>
+                    <constraint firstItem="pY9-aV-sqN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="OeT-Hm-DmO"/>
+                    <constraint firstAttribute="trailing" secondItem="jM9-Cj-wAo" secondAttribute="trailing" constant="12" id="bUb-5F-KVX"/>
+                    <constraint firstItem="jM9-Cj-wAo" firstAttribute="leading" secondItem="pY9-aV-sqN" secondAttribute="trailing" constant="12" id="hMr-E3-rhd"/>
+                    <constraint firstAttribute="trailing" secondItem="UfH-NV-NTm" secondAttribute="trailing" id="kqS-3V-t5e"/>
+                    <constraint firstItem="pY9-aV-sqN" firstAttribute="leading" secondItem="EvW-W5-Xly" secondAttribute="trailing" constant="12" id="nSG-S3-XC2"/>
+                    <constraint firstItem="EvW-W5-Xly" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="uJW-YH-6Z7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="carName" destination="dNi-c9-Ao2" id="HLw-e0-jLP"/>
+                <outlet property="licencsePlate" destination="08Z-75-S72" id="2oD-x8-5WD"/>
+                <outlet property="ratingView" destination="jM9-Cj-wAo" id="8mG-7R-ZjJ"/>
+                <outlet property="userName" destination="2JU-Al-UKc" id="Yrh-Jt-gur"/>
+                <outlet property="userPhoto" destination="EvW-W5-Xly" id="iZI-fN-qYW"/>
+            </connections>
+            <point key="canvasLocation" x="47" y="-80"/>
+        </tableViewCell>
+    </objects>
+</document>

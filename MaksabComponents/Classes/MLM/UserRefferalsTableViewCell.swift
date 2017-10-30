@@ -11,7 +11,7 @@ import StylingBoilerPlate
 
 public class UserRefferalsTableViewCell: UITableViewCell, NibLoadableView {
 
-    @IBOutlet weak var userPhoto: UIImageView!
+    @IBOutlet weak public var userPhoto: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var totalRefferals: UILabel!
     @IBOutlet weak var accessoryImgView: UIImageView!
@@ -39,8 +39,8 @@ public class UserRefferalsTableViewCell: UITableViewCell, NibLoadableView {
         accessoryImgView.image = bh.getImageFromMaksabComponent(name: "arrow-left", _class: UserRefferalsTableViewCell.self).withRenderingMode(.alwaysTemplate)
     }
     
-    public func config(){
-        userName.text = "Shah Al Bhak"
-        totalRefferals.text = "20 Refferals"
+    public func config(name: String, referrals: Int){
+        userName.text = name
+        totalRefferals.text = "\(referrals) Referrals"
     }
 }

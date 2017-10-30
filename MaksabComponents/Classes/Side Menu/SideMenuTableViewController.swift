@@ -16,13 +16,14 @@ public enum AppType {
 
 @objc public protocol SideMenuDelegate {
     func showProfile()
-    func showHome()
-    @objc optional func showPayment()
-    @objc optional func showMyTrips()
-    func showWallet()
-    func showHelp()
-    func showSettings()
-    func showInviteFriends()
+//    func showHome()
+//    @objc optional func showPayment()
+//    @objc optional func showMyTrips()
+//    func showWallet()
+//    func showHelp()
+//    func showSettings()
+//    func showInviteFriends()
+    func menuItemSelected(atIndexPath: IndexPath)
 }
 
 public struct SideMenuItem{
@@ -140,79 +141,8 @@ open class SideMenuTableViewController: UIViewController,UITableViewDataSource, 
         guard indexPath.section == 1 else {
             return
         }
-        
-        let row = indexPath.row
-        
-//        if appType == .Driver && row >= 2{
-//            row += 1
-//        }
-        switch row {
-        case 0:
-            delegate?.showHome()
-        case 1:
-            if appType == .Rider{
-                delegate?.showPayment!()
-            }else{
-                delegate?.showProfile()
-            }
-        case 2:
-            delegate?.showMyTrips!()
-        case 3:
-            delegate?.showWallet()
-        case 4:
-            delegate?.showHelp()
-        case 5:
-            delegate?.showSettings()
-        case 6:
-            delegate?.showInviteFriends()
-        default:
-            return
-        }
-        
+        delegate?.menuItemSelected(atIndexPath: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
 }

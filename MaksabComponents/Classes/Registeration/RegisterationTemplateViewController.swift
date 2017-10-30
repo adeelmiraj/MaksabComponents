@@ -93,6 +93,7 @@ public protocol RegisterationTemplateViewControllerDataSource{
     @objc optional func actionTwitterLogin(sender: UIButton)
     @objc optional func actionTooltipBottom(sender: UIButton)
     @objc optional func actionTooltipTop(sender: UIButton)
+    @objc optional func actionBackToSignup(sender: UIButton)
 }
 
 open class RegisterationTemplateViewController: UIViewController, NibLoadableView {
@@ -141,6 +142,8 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     @IBOutlet weak public var fieldFifth: BottomBorderTextField!
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var btnAction: UIButton!
+    
+    @IBOutlet weak var btnBackToSigup: UIButton!
     @IBOutlet weak var driverNationalitySwitch: UISwitch!
     @IBOutlet weak var labelDriverNationality: UILabel!
     @IBOutlet weak var driverNationalityView: UIView!
@@ -220,7 +223,6 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         btnFacbook.setImage(assets._facebook, for: .normal)
         btnTwitter.setImage(assets._twitter, for: .normal)
         btnAction.tintColor = UIColor.appColor(color: .Secondary)
-        
         if type != .NameAndEmail && type != .PasswordAndConfirmPassword  && type != .AddVehicleDetails && type != .BasicInfo && type != .ResetPassUsingPhone{
             removeFirstField()
         }
@@ -231,7 +233,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
             self.socialLoginsView.isHidden = false
             removeTitleView()
         }
-        if type == .PasswordAndConfirmPassword || type == .PhoneNumber || type == .AddVehicleDetails || type == .BasicInfo || type == .ForgotPassword{
+        if type == .PasswordAndConfirmPassword || type == .PhoneNumber || type == .AddVehicleDetails || type == .BasicInfo || type == .ForgotPassword || type == .NameAndEmail{
             removeActionButton()
         }
         if type != .InviteCode && type != .ForgotPassword{
@@ -258,6 +260,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     }
     
     public func configViews(type: RegisterationViewType)  {
+        btnBackToSigup.setTitle("Back To Signup", for: .normal)
         switch type {
         case .PhoneNumber:
             fieldSecond.placeholder = "Enter Phone Number"
@@ -267,6 +270,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
             fieldSecond.placeholder = "Enter here..."
             btnAction.setTitle("Resend Code", for: .normal)
             fieldSecond.keyboardType = .numberPad
+            btnBackToSigup.isHidden = false
         case .NameAndEmail:
             labelTitle.text = "Name & Email"
             fieldFirst.placeholder = "Name"
@@ -301,7 +305,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
             fieldSecond.placeholder = "Model"
             fieldThird.placeholder = "Year"
             fieldFourth.placeholder = "License Plate"
-            fieldFifth.placeholder = "Capaity"
+            fieldFifth.placeholder = "Capacity"
             fieldFifth.inputView = showPicker()
             addVehicleRegisterationView()
             fieldThird.keyboardType = .numberPad
@@ -407,6 +411,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         btnTwitter.addTarget(self, action: #selector(actTwitterLogin(sender:)), for: .touchUpInside)
         btnTooltip.addTarget(self, action: #selector(actTooltipTop(sender:)), for: .touchUpInside)
         btnBottomTooltip.addTarget(self, action: #selector(actBottomTooltip(sender:)), for: .touchUpInside)
+        btnBackToSigup.addTarget(self, action: #selector(actBackToSignup(sender:)), for: .touchUpInside)
     }
     
     func removeFirstField()  {
@@ -515,6 +520,10 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     func actTooltipTop(sender: UIButton)  {
         delegate?.actionTooltipTop?(sender: sender)
     }
+    
+    func actBackToSignup(sender: UIButton)  {
+        delegate?.actionBackToSignup?(sender: sender)
+    }
     //    open static  func createController(_for:RegisterationViewType) -> RegisterationTemplateViewController{
     //
     //        var vc: RegisterationTemplateViewController!
@@ -596,8 +605,14 @@ extension RegisterationTemplateViewController: UITextFieldDelegate, UIPickerView
                 return !(textField.text!.characters.count > 5 && (string.characters.count) > range.length)
             }
             return true
-        default:
+        case .AddVehicleDetails:
+            if textField == fieldThird{
+                return !(textField.text!.characters.count > 3 && (string.characters.count) > range.length)
+            }
             return true
+        default:
+            return !(textField.text!.characters.count > 119 && (string.characters.count) > range.length)
+//            return true
         }
     }
     
@@ -634,14 +649,16 @@ public extension RegisterationTemplateViewController{
         }
     }
     
-    public func getNameAndEmail() -> [String?]?{
+    public func getNameAndEmail() -> [String]?{
         let name = fieldFirst.text ?? ""
         let email = fieldSecond.text ?? ""
-        guard !email.isEmpty else {
-            self.view.endEditing(true)
-            return [nil,nil]
-        }
-        if !fieldSecond.isValid(exp: .email){
+        if name.isEmpty{
+            Alert.showMessage(viewController: self, title: "Invalid Input", msg: "Name is required." )
+            return nil
+        }else if email.isEmpty{
+            Alert.showMessage(viewController: self, title: "Invalid Input", msg: "Email is required." )
+            return nil
+        }else if !fieldSecond.isValid(exp: .email){
             Alert.showMessage(viewController: self, title: "Invalid Input", msg: "Please enter a valid email address." )
             return nil
         }
@@ -739,7 +756,7 @@ public extension RegisterationTemplateViewController{
     
     public func getInviteCode() -> String? {
         let pin = fieldSecond.text ?? ""
-        if pin.characters.count == 6{
+        if pin.characters.count > 0 {
             self.view.endEditing(true)
             return pin
         }else{
@@ -756,7 +773,10 @@ public extension RegisterationTemplateViewController{
         if name.isEmpty || email.isEmpty || city.isEmpty {
             Alert.showMessage(viewController: self, title: "Invalid Input", msg: "Please fill all the fields")
             return nil
-        }else{
+        }else if !fieldSecond.isValid(exp: .email){
+            Alert.showMessage(viewController: self, title: "Invalid Input", msg: "Please fill all the fields")
+            return nil
+        } else{
             self.view.endEditing(true)
             return BasicInfo(name: name, email: email, city: city, isSaudiNational: isSaudiNational)
         }

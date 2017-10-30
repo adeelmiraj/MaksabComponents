@@ -29,8 +29,8 @@ public class CommissionRateTableViewCell: UITableViewCell, NibLoadableView {
         // Configure the view for the selected state
     }
     
-    public func config()  {
-        commissionRate.text = "2.72%"
+    public func config(comissionRate: Double)  {
+        commissionRate.text = "\(comissionRate)%"
     }
     
 }

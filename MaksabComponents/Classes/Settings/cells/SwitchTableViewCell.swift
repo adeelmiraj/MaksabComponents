@@ -55,7 +55,7 @@ public class SwitchTableViewCell: UITableViewCell, NibLoadableView {
         self.delegate = delegate
         self.indexPath = indexPath
         labelTitle.text = setting.title
-        switchOption.isOn = setting.isOn
+        switchOption.setOn(setting.isOn, animated: true)
     }
     
     @IBAction func actSwitchStateChanged(_ sender: UISwitch) {
