@@ -19,10 +19,12 @@ public protocol CreateIssueDelegate{
 open class CreateIssueTemplateViewController: UIViewController, NibLoadableView, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var textView: KMPlaceholderTextView!
+    @IBOutlet weak public var textView: KMPlaceholderTextView!
     @IBOutlet weak var btnSeekHelp: UIButton!
     
     public var delegate: CreateIssueDelegate?
+    public var showSelectRide: Bool = true
+    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
     open override func loadView() {
         let name = CreateIssueTemplateViewController.nibName
@@ -53,6 +55,9 @@ open class CreateIssueTemplateViewController: UIViewController, NibLoadableView,
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(SimpleTextTableViewCell.self, bundle: Bundle(for: SimpleTextTableViewCell.classForCoder()))
+        if !showSelectRide{
+            tableViewHeight.constant = 50
+        }
         textView.layer.cornerRadius = 5
         textView.placeholder = "Details"
         btnSeekHelp.setTitle("Seek Help", for: .normal)
@@ -60,7 +65,11 @@ open class CreateIssueTemplateViewController: UIViewController, NibLoadableView,
     
     //MARK:- tableView
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        if showSelectRide{
+            return 2
+        }else {
+            return 1
+        }
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -71,7 +80,7 @@ open class CreateIssueTemplateViewController: UIViewController, NibLoadableView,
         let cell = tableView.dequeCell(indexPath: indexPath) as SimpleTextTableViewCell
         cell.isLight = true
         cell.separatorView.backgroundColor = UIColor.appColor(color: .Dark)
-        if indexPath.row == 0{
+        if showSelectRide && indexPath.row == 0{
             cell.config(title: "Select a Ride")
         }else{
             cell.config(title: "Select an Issue")
@@ -83,9 +92,9 @@ open class CreateIssueTemplateViewController: UIViewController, NibLoadableView,
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0{
+        if showSelectRide && indexPath.row == 0{
             delegate?.selectRide()
-        }else if indexPath.row == 1{
+        }else{
             delegate?.selectIssue()
         }
     }

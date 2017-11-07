@@ -17,11 +17,11 @@ public enum PaymentMethod: Int {
     public func getTitle() -> String {
         switch self {
         case .card:
-            return "Credit Card"
+            return "payment-method-Credit".localized(bundle: .main)
         case .cash:
-            return "Cash"
+            return "payment-method-Cash".localized(bundle: .main)
         case .wallet:
-            return "Wallet"
+            return "payment-method-Maqsab Wallet".localized(bundle: .main)
         }
     }
 }
@@ -43,20 +43,18 @@ public enum RideCapacity: Int {
     }
 }
 
-public struct RideOptions{
+public class RideOptions{
     public var isMehram: Bool = false
     public var isSmoking: Bool = false
     public var capacity: RideCapacity = .twoSitter
-    public var paymentInfo = PaymentInfo()
-    
-    public init(){}
-}
-
-public struct PaymentInfo{
-    public var mehtod: PaymentMethod = .cash
-    public var cardId: Int?
+    public var paymentInfo = PaymentInfo(method: .cash)
     
     public init() {}
+}
+
+public class PaymentInfo{
+    public var mehtod: PaymentMethod
+    public var cardId: Int?
     
     public init(method: PaymentMethod, cardId: Int? = nil) {
         self.mehtod = method
@@ -261,7 +259,7 @@ public class RidesOptionsGridView: UIView, CustomView, NibLoadableView, Toggleab
     
     //MARK:- Getters
     public func getPaymentInfo() -> PaymentInfo{
-        var paymentInfo = PaymentInfo()
+        var paymentInfo = PaymentInfo(method: .cash, cardId: nil)
         if selectedPaymentOptionIndex == 1{
             paymentInfo.mehtod = .wallet
         }else if selectedPaymentOptionIndex > 1{
@@ -284,7 +282,7 @@ public class RidesOptionsGridView: UIView, CustomView, NibLoadableView, Toggleab
     }
     
     public func getRideOptions() -> RideOptions {
-        var options = RideOptions()
+        let options = RideOptions()
         options.isMehram = isMehramRide()
         options.isSmoking = isSmoking()
         options.capacity = getRideCapcity()

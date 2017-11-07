@@ -56,10 +56,14 @@ public class LeftIconTableViewCell: UITableViewCell, NibLoadableView {
                 backgroundColor = UIColor.appColor(color: .Light)
                 labelTitle.textColor = UIColor.appColor(color: .DarkText)
                 labelSubtitle.textColor = UIColor.appColor(color: .DarkText)
+                acessoryImgView.tintColor = UIColor.appColor(color: .DarkText)
+                icon.tintColor = UIColor.appColor(color: .DarkText)
             }else{
                 backgroundColor = UIColor.appColor(color: .Dark)
                 labelTitle.textColor = UIColor.appColor(color: .LightText)
                 labelSubtitle.textColor = UIColor.appColor(color: .LightText)
+                acessoryImgView.tintColor = UIColor.appColor(color: .LightText)
+                icon.tintColor = UIColor.appColor(color: .LightText)
             }
         }
     }

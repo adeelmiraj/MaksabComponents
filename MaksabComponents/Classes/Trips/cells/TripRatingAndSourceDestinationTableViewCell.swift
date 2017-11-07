@@ -8,7 +8,6 @@
 
 import UIKit
 import StylingBoilerPlate
-import MaksabComponents
 
 public class TripRatingAndSourceDestinationTableViewCell: UITableViewCell, NibLoadableView{
 

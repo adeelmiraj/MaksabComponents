@@ -14,8 +14,12 @@ public enum RideType: Int {
     case delivery = 1
     case budget = 2
     case luxury = 3
+    case schedule = 4
 }
 
+public protocol RidesTypesViewDelegate {
+    func rideTypeToggled(rideType: RideType)
+}
 public class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
 
     
@@ -35,6 +39,9 @@ public class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
     
     var selectedRideType = RideType.normal
     var selectedButton: ToggleBottomTitleButton!
+    var isShowNormalRide: Bool = false
+    
+    public var delegate: RidesTypesViewDelegate?
     
     override public required init(frame: CGRect) {
         super.init(frame: frame)
@@ -65,6 +72,16 @@ public class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
         btnBudget.toggleDelegate = self
         btnExotic.toggleDelegate = self
     }
+    
+    public func showOnlyNormalRide()  {
+        isShowNormalRide = true
+        btnNormal.isHidden = true
+        btnExotic.isHidden = true
+        let bh = BundleHelper(resourceName: Constants.resourceName)
+        btnBudget.setImage(bh.getImageFromMaksabComponent(name: "normal-car", _class: RidesTypesView.self), for: .normal)
+        btnBudget.setTitle("Normal", for: .normal)
+        btnBudget.stateSelected = true
+    }
 
     public func onToggle(stateSelected: Bool,sender: UIButton) {
       
@@ -83,6 +100,7 @@ public class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
             selectedRideType = .luxury
             selectedButton = btnExotic
         }
+        delegate?.rideTypeToggled(rideType: selectedRideType)
     }
     
     func select(type: RideType)  {
@@ -112,6 +130,10 @@ public class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
     }
     
     public func getSelectedRideType() -> RideType{
-        return selectedRideType
+        if isShowNormalRide{
+            return .schedule
+        }else{
+            return selectedRideType
+        }
     }
 }

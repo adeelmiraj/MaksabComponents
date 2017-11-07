@@ -8,7 +8,6 @@
 
 import UIKit
 import StylingBoilerPlate
-
 @objc public protocol CurrentBalanceTableViewCellDelegate {
     func currentBalanceAction()
     @objc optional func showInfo()

@@ -28,6 +28,8 @@ public class FavouriteLocationTableViewCell: UITableViewCell, NibLoadableView {
         leftImageView.image = bh.getImageFromMaksabComponent(name: "arrow-left", _class: FavouriteLocationTableViewCell.self).withRenderingMode(.alwaysTemplate)
         icon.tintColor = UIColor.appColor(color: .Light)
         self.backgroundColor = UIColor.appColor(color: .Dark)
+        locationTitle.minimumScaleFactor = 0.7
+        locationTitle.adjustsFontSizeToFitWidth = true
     }
     
     override public func setSelected(_ selected: Bool, animated: Bool) {
@@ -36,10 +38,14 @@ public class FavouriteLocationTableViewCell: UITableViewCell, NibLoadableView {
         // Configure the view for the selected state
     }
     
-    public func config(icon: UIImage, title: String){
+    public func config(icon: UIImage, title: String, address: String){
         self.icon.image = icon
         self.locationTitle.text = title
-        address.text = "Riyadh"
+        self.address.text = address
+    }
+    
+    public func hideAccessoryView()  {
+        leftImageView.isHidden = true
     }
     
 }
