@@ -31,16 +31,18 @@ Maksab reusable components.Components that are reused or used in both rider and 
   s.ios.deployment_target = '9.0'
 
   s.source_files = 'MaksabComponents/Classes/**/*.{h,m,swift}'
-  s.resources = 'MaksabComponents/Classes/**/*.{xib,ttf}'
+# s.resources = 'MaksabComponents/Classes/**/*.{xib,ttf}'
+  s.resources = ['MaksabComponents/Assets/*.png','MaksabComponents/Assets/MaksabComponents.bundle', 'MaksabComponents/Classes/**/*.{xib,ttf}']
+
 #s.resources = 'MaksabComponents/Classes/**/*.{xib}'
 
 #s.resource_bundles = {
 #   'MaksabComponents' => ['MaksabComponents/Classes/*.{xib}']
 #  }
 
- s.resource_bundles = {
-     'MaksabComponents' => ['MaksabComponents/Assets/*.png']
- }
+# s.resource_bundles = {
+#     'MaksabComponents' => ['MaksabComponents/Assets/*.png','MaksabComponents/Assets/MaksabComponents.bundle']
+# }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
     s.frameworks = 'UIKit'

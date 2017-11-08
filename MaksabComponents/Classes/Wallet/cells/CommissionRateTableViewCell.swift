@@ -11,16 +11,16 @@ import StylingBoilerPlate
 
 public class CommissionRateTableViewCell: UITableViewCell, NibLoadableView {
 
-    @IBOutlet weak var staticLabelCommissionRate: UILabel!
-    @IBOutlet weak var staticLabelRank: UILabel!
-    @IBOutlet weak var commissionRate: UILabel!
+    @IBOutlet weak public var staticLabelCommissionRate: UILabel!
+    @IBOutlet weak public var staticLabelRank: UILabel!
+    @IBOutlet weak public var commissionRate: UILabel!
     
     override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.backgroundColor = UIColor.appColor(color: .Dark)
-        staticLabelCommissionRate.text = "Commission Rate"
-        staticLabelRank.text = "Rank:"
+        staticLabelCommissionRate.text = Bundle.localizedStringFor(key: "wallet-mlm-commission-rate")
+        staticLabelRank.text = Bundle.localizedStringFor(key: "wallet-mlm-rank")
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {

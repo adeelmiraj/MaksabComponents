@@ -49,25 +49,22 @@ public class VehicleRegisterationView: UIView, NibLoadableView, CustomView {
     
     public func updateState(state: DocumentState)  {
         var img: UIImage!
-        let bh = BundleHelper(resourceName: Constants.resourceName)
         switch state {
         case .NotAddedYet:
-            img = bh.getImageFromMaksabComponent(name: "plus", _class: VehicleRegisterationView.self)
-//                UIImage(named: "plus")
+            img = UIImage.image(named: "plus")
             btn.isHidden = false
             activityIndicator.stopAnimating()
         case .InProgress:
-            img = bh.getImageFromMaksabComponent(name: "plus", _class: VehicleRegisterationView.self)
+            img = UIImage.image(named: "plus")
             activityIndicator.startAnimating()
             btn.isHidden = true
         case .Failed:
-            img = bh.getImageFromMaksabComponent(name: "info", _class: VehicleRegisterationView.self)
+            img = UIImage.image(named: "info")
             img = img?.imageWithColor(color1: UIColor(netHex: 0xBF2326))
             activityIndicator.stopAnimating()
             btn.isHidden = false
         case .Uploaded:
-            img = bh.getImageFromMaksabComponent(name: "checkmark", _class: VehicleRegisterationView.self)
-//                UIImage(named: "checkmark")
+            img = UIImage.image(named: "checkmark")
             activityIndicator.stopAnimating()
             btn.isHidden = false
         }

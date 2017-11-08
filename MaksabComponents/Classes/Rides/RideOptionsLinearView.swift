@@ -41,17 +41,17 @@ public class RideOptionsLinearView: UIView , CustomView, NibLoadableView{
     
     func configView()  {
         let bh = BundleHelper(resourceName: Constants.resourceName)
-        btnMehramRide.selectedStateImage = bh.getImageFromMaksabComponent(name: "mehram-selected", _class: RidesOptionsGridView.self)
-        btnMehramRide.unSelectedStateImage = bh.getImageFromMaksabComponent(name: "mehram", _class: RidesOptionsGridView.self)
+        btnMehramRide.selectedStateImage = UIImage.image(named: "mehram-selected")
+        btnMehramRide.unSelectedStateImage = UIImage.image(named: "mehram")
         
-        btnNoSmoking.selectedStateImage = bh.getImageFromMaksabComponent(name: "smoking", _class: RidesOptionsGridView.self)
-        btnNoSmoking.unSelectedStateImage = bh.getImageFromMaksabComponent(name: "no-smoking", _class: RidesOptionsGridView.self)
+        btnNoSmoking.selectedStateImage = UIImage.image(named: "smoking")
+        btnNoSmoking.unSelectedStateImage = UIImage.image(named: "no-smoking")
         
-        btnPayment.selectedStateImage = bh.getImageFromMaksabComponent(name: "budget-car", _class: RidesOptionsGridView.self)
-        btnPayment.unSelectedStateImage = bh.getImageFromMaksabComponent(name: "budget-car", _class: RidesOptionsGridView.self)
+        btnPayment.selectedStateImage = UIImage.image(named: "budget-car")
+        btnPayment.unSelectedStateImage = UIImage.image(named: "budget-car")
         
-        btnNoOfPassegners.selectedStateImage = bh.getImageFromMaksabComponent(name: "passengers", _class: RidesOptionsGridView.self)
-        btnNoOfPassegners.unSelectedStateImage = bh.getImageFromMaksabComponent(name: "passengers", _class: RidesOptionsGridView.self)
+        btnNoOfPassegners.selectedStateImage = UIImage.image(named: "passengers")
+        btnNoOfPassegners.unSelectedStateImage = UIImage.image(named: "passengers")
         
         btnMehramRide.setTitle("", for: .normal)
         btnNoSmoking.setTitle("", for: .normal)
@@ -94,15 +94,14 @@ public class RideOptionsLinearView: UIView , CustomView, NibLoadableView{
 
     //Payment
     public func setPayment(paymentInfo: PaymentInfo){
-        let bh = BundleHelper(resourceName: Constants.resourceName)
         var icon: UIImage!
         switch paymentInfo.mehtod {
         case .cash:
-            icon = bh.getImageFromMaksabComponent(name: "cash-circle", _class: RideOptionsLinearView.self)
+            icon = UIImage.image(named: "cash-circle")
         case .wallet:
-            icon = bh.getImageFromMaksabComponent(name: "wallet-card", _class: RideOptionsLinearView.self)
+            icon = UIImage.image(named: "wallet-card")
         case .card:
-            icon = bh.getImageFromMaksabComponent(name: "credit-card", _class: RideOptionsLinearView.self)
+            icon = UIImage.image(named: "credit-card")
         }
         btnPayment.setImage(icon.withRenderingMode(.alwaysOriginal), for: .normal)
     }

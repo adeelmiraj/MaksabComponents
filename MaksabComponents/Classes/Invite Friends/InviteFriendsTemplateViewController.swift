@@ -26,13 +26,11 @@ open class InviteFriendsTemplateViewController: UIViewController, NibLoadableVie
     
     func configView()  {
         self.view.backgroundColor = UIColor.appColor(color: .Dark)
-        let bh = BundleHelper(resourceName: Constants.resourceName)
         self.view.backgroundColor = UIColor.appColor(color: .Dark)
-        inviteFriendImg.image = bh.getImageFromMaksabComponent(name: "invite", _class: InviteFriendsTemplateViewController.self)
-        staticLabelInviteFriends.text = "Invite your friends and earn money."
-        staticLabelInviteCode.text = "Invite Code"
-        btnShare.setTitle("Share", for: .normal)
-        
+        inviteFriendImg.setImg(named: "invite")
+        staticLabelInviteCode.text = Bundle.localizedStringFor(key: "invite-friend-invite-code")
+        staticLabelInviteFriends.text = Bundle.localizedStringFor(key: "invite-friend-msg")
+        btnShare.setTitle(Bundle.localizedStringFor(key:"invite-friend-btn-share"), for: .normal)
     }
 
     public func setInviteCode(code: String){

@@ -16,7 +16,7 @@ import StylingBoilerPlate
 public class CurrentBalanceTableViewCell: UITableViewCell, NibLoadableView {
 
     @IBOutlet weak public var labelTitle: UILabel!
-    @IBOutlet weak var staticLabelPriceUnit: UILabel!
+    @IBOutlet weak public var staticLabelPriceUnit: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak public var btnInfo: UIButton!
     @IBOutlet weak public var btnPayNow: UIButton!
@@ -27,8 +27,8 @@ public class CurrentBalanceTableViewCell: UITableViewCell, NibLoadableView {
         super.awakeFromNib()
         // Initialization code
         self.backgroundColor = UIColor.appColor(color: .Dark)
-        staticLabelPriceUnit.text = "SAR"
         btnInfo.tintColor = UIColor.appColor(color: .Secondary)
+        staticLabelPriceUnit.text = Bundle.localizedStringFor(key: "constant-currency-SAR")
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {

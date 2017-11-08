@@ -13,7 +13,7 @@ public class FavouriteLocationTableViewCell: UITableViewCell, NibLoadableView {
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var locationTitle: TitleLabel!
     @IBOutlet weak var address: TextLabel!
-    @IBOutlet weak var leftImageView: UIImageView!
+    @IBOutlet weak public var leftImageView: UIImageView!
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -23,9 +23,7 @@ public class FavouriteLocationTableViewCell: UITableViewCell, NibLoadableView {
     }
 
     func configView()  {
-        let bh = BundleHelper(resourceName: Constants.resourceName)
         leftImageView.tintColor = UIColor.appColor(color: .Light)
-        leftImageView.image = bh.getImageFromMaksabComponent(name: "arrow-left", _class: FavouriteLocationTableViewCell.self).withRenderingMode(.alwaysTemplate)
         icon.tintColor = UIColor.appColor(color: .Light)
         self.backgroundColor = UIColor.appColor(color: .Dark)
         locationTitle.minimumScaleFactor = 0.7

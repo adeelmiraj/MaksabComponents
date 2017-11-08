@@ -1,0 +1,98 @@
+/* 
+  Localizable.strings
+  Pods
+
+  Created by Mansoor Ali on 07/11/2017.
+  
+*/
+"constant-currency-SAR" = "SAR";
+"constant-title" = "Title";
+"constant-invalid-input" = "Invalid Input";
+
+//MARK:- MAKSAB COMPONENTS
+//Registeration
+"auth-btn-back-to-signup" = "Back To Signup";
+"auth-enter-phone-no" = "Enter Phone Number";
+"auth-verification-code" = "Verification Code";
+"auth-enter-here" = "Enter here...";
+"auth-resend-code" = "Resend Code";
+"auth-name-and-email" = "Name & Email";
+"auth-name" = "Name";
+"auth-email" = "Email";
+"auth-skip" = "Skip";
+"auth-password" = "Password";
+"auth-reset-pass" = "Reset Password";
+"auth-password-confirm" = "Confirm Password";
+"auth-invite-code" = "Invite Code";
+"auth-btn-forgot-pass" = "Forgot Password?";
+"auth-invite-code-msg" = "Enter Invite Code and earn 25% Discount on first ride";
+"auth-forgot-pass-msg" = "Enter your phone number to reset password";
+"auth-forgot-pass" = "Forgot Password";
+"auth-add-vehicle-details" = "Add Vehicle Details";
+"auth-make" = "Make";
+"auth-model" = "Model";
+"auth-year" = "Year";
+"auth-license-plate" = "License Plate";
+"auth-capacity" = "Capacity";
+"auth-basic-info" = "Basic Information";
+"auth-city" = "City";
+"auth-saudi-national" = "Saudi Nationality";
+//validation errors
+"auth-phone-must-be-twelve-digits" = "Phone number must have 12 digits.";
+"auth-name-is-required" = "Name is required";
+"auth-email-is-required" = "Email is required" ;
+"auth-enter-valid-email" = "Please enter a valid email address" ;
+"auth-pass-must-be-greater-than-seven-char" = "Password must be greater than 7 characters";
+"auth-pass-and-confirm-pass-donot-match" = "Password and Confirm Password donot match";
+"auth-invalid-pin-title" = "Invalid Pin";
+"auth-invalid-pin-msg" = "Pin must have 6 digits";
+"auth-invalid-invite-code-title" = "Invalid Invite Code";
+"auth-invalid-invite-code-msg" = "Invite Code cannot be empty";
+"auth-fill-all-fields" = "Please fill all the fields";
+"auth-invalid-year" = "Invalid Year";
+"auth-year-must-be-greater-than" = "Year must be greater than %d";
+
+//MARK:- MAKSAB COMPONENTS
+//Help
+"help-cell-select-ride" = "Select Ride";
+"help-cell-select-issue" = "Select Issue";
+"help-details" = "Details";
+"help-btn-seek-help" = "Seek Help";
+
+//Invite Friends
+"invite-friend-invite-code" = "Invite Code";
+"invite-friend-msg" = "Invite your friends and earn money";
+"invite-friend-btn-share" = "Share";
+//Wallet
+"wallet-cell-invite-more-friends" = "%@ more friends to Earn more";
+"wallet-cell-invite-btn-title" = "Invite";
+"wallet-cell-total-referral-title" = "Total Refferrals";
+"wallet-cell-total-referral-view-mlm-summary" = "View MLM Summary";
+"wallet-cell-transaction-id" = "Transaction ID:";
+//Mlm
+"wallet-mlm-commission-rate" = "Comission Rate: %d%";
+"wallet-mlm-rank" = "Rank";
+"wallet-mlm-earnings" = "Earnings: %@ %.2f";
+"wallet-mlm-people" = "People";
+"walet-mlm-total-nodes" = "Total Nodes";
+"wallet-mlm-total-earnings" = "Total Earnings";
+"wallet-mlm-btn-view-mlm-tree" = "View MLM Tree";
+"wallet-mlm-cell-user-refferals" = "%d Referrals";
+//Trip
+"trip-cell-complain-ride-again" = "Ride again with %@";
+"trip-cell-complain-btn-title" = "Complaint/Inquiry";
+//Payment
+"payment-add-card-no" = "CARD NUMBER";
+"payment-add-expiry-date" = "EXPIRATION DATE";
+"payment-add-cvv" = "CVV";
+"payment-add-carholder-name" = "CARDHOLDER NAME";
+"payment-add-cardno-placeholder" = "0000 0000 0000 0000";
+"payment-add-date-placeholder" = "MM/YY";
+"payment-add-fieldcvv-placeholder" = "1234";
+"payment-add-field-cardno-placeholder" = "ABC";
+"payment-add-error-invalid-input" = "Invalid Input";
+"payment-add-eror-title-req" = "Title is required";
+"payment-add-eror-invalid-card-no" = "Card no must have 16 digits";
+"payment-add-eror-invalid-expiry-date" = "Invalid expiry date";
+"payment-add-eror-invalid-cvv" = "Invalid CVV";
+"payment-add-eror-invalid-cardholder-name" = "Card Holder name is required";

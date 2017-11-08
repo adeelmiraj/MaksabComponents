@@ -35,8 +35,7 @@ public class EditUserPhotoTableViewCell: UITableViewCell, NibLoadableView {
         userPhoto.backgroundColor = UIColor.appColor(color: .Medium)
         self.backgroundColor = UIColor.appColor(color: .Dark)
         editIcon.backgroundColor = UIColor.appColor(color: .Light)
-        let bh = BundleHelper(resourceName: Constants.resourceName)
-        editIcon.image = bh.getImageFromMaksabComponent(name: "edit-profile", _class: EditUserPhotoTableViewCell.self)
+        editIcon.setImg(named: "edit-profile")
         //editIcon.layer.cornerRadius = editIcon.frame.size.height / 2
 //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(actUserPhotoTapped))
 //        userPhoto.addGestureRecognizer(tapGesture)

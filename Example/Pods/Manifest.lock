@@ -1,8 +1,10 @@
 PODS:
   - Cosmos (11.0.3)
   - IQKeyboardManagerSwift (4.0.10)
+  - KMPlaceholderTextView (1.3.0)
   - MaksabComponents (0.1.20):
-    - Cosmos
+    - Cosmos (= 11.0.3)
+    - KMPlaceholderTextView
     - StylingBoilerPlate
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
@@ -34,7 +36,8 @@ PODS:
     - MRProgress/Helper
   - SideMenuController (0.2.4)
   - StylingBoilerPlate (0.1.18):
-    - MRProgress
+    - SVProgressHUD
+  - SVProgressHUD (2.2.2)
 
 DEPENDENCIES:
   - Cosmos
@@ -42,20 +45,24 @@ DEPENDENCIES:
   - MaksabComponents (from `../`)
   - MRProgress
   - SideMenuController
-  - StylingBoilerPlate
+  - StylingBoilerPlate (from `/Users/mansoor/Documents/iOS/Maksab Space/StylingBoilerPlate`)
 
 EXTERNAL SOURCES:
   MaksabComponents:
     :path: ../
+  StylingBoilerPlate:
+    :path: /Users/mansoor/Documents/iOS/Maksab Space/StylingBoilerPlate
 
 SPEC CHECKSUMS:
   Cosmos: eb506859929f4add2d2aec822a27efb2f718a95d
   IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
-  MaksabComponents: 6d303bb6015ec6ac38c458c2aa9de3c1139542a1
+  KMPlaceholderTextView: 2bbcd19a273648a80a61e1e48f9743a24d8930e3
+  MaksabComponents: b40ffed0658ff5fae685ef27cc383052da23ff49
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   SideMenuController: b463d2b3aa58e2afe57f57a07938fa9a647894ca
-  StylingBoilerPlate: f1bb29ff938f7af2f9f950c93403e7eec516c6e8
+  StylingBoilerPlate: 9e401f27c8a0d981693b5300c43f8180157b0ec1
+  SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
 
-PODFILE CHECKSUM: fff213d3d3b00c36e3b794e56dd8a6db10529ef5
+PODFILE CHECKSUM: 113147e5654fac11539c7cc010cf77077815d84b
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1

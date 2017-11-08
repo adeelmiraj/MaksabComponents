@@ -14,9 +14,9 @@ public class MLMLevelDetailsTableViewCell: UITableViewCell, NibLoadableView {
     @IBOutlet weak var badgeImg: UIImageView!
     @IBOutlet weak var labelLevel: UILabel!
     @IBOutlet weak var noOfPeople: UILabel!
-    @IBOutlet weak var staticLabelPeople: UILabel!
-    @IBOutlet weak var comissionRate: UILabel!
-    @IBOutlet weak var earnings: UILabel!
+    @IBOutlet weak public var staticLabelPeople: UILabel!
+    @IBOutlet weak public var comissionRate: UILabel!
+    @IBOutlet weak public var earnings: UILabel!
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -28,10 +28,8 @@ public class MLMLevelDetailsTableViewCell: UITableViewCell, NibLoadableView {
     
     func configView()  {
         self.backgroundColor = UIColor.appColor(color: .Dark)
-        staticLabelPeople.text = "People"
-        let bh = BundleHelper(resourceName: Constants.resourceName)
-        badgeImg.image = bh.getImageFromMaksabComponent(name: "badge", _class: MLMLevelDetailsTableViewCell.self)
-        
+        badgeImg.setImg(named: "badge")
+        staticLabelPeople.text = Bundle.localizedStringFor(key: "wallet-mlm-people")
     }
     
     override public func setSelected(_ selected: Bool, animated: Bool) {
@@ -40,12 +38,16 @@ public class MLMLevelDetailsTableViewCell: UITableViewCell, NibLoadableView {
         // Configure the view for the selected state
     }
     
-    public func config(level: Int, peoples: Int, comissionRate: Double, earnings: Double, earningUnit: String = "SAR" )  {
+    public func config(level: Int, peoples: Int, comissionRate: Double, earnings: Double)  {
         labelLevel.text = "\(level)"
         noOfPeople.text = "\(peoples)"
-        self.comissionRate.text = "Comission Rate: \(round(comissionRate))%"
-        self.earnings.text = "Earnings: \(earningUnit) \(earnings)"
         
+        let format = Bundle.localizedStringFor(key: "wallet-mlm-commission-rate")
+        self.comissionRate.text = String(format: format, round(comissionRate))
+        
+        let unit = Bundle.localizedStringFor(key: "constant-currency-SAR")
+        let formatEarnings = Bundle.localizedStringFor(key: "wallet-mlm-earnings")
+        self.earnings.text = String(format: formatEarnings,unit,earnings)
     }
     
 }

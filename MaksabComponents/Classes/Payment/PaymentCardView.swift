@@ -39,23 +39,25 @@ public struct PaymentCardInfo{
 
 public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDelegate {
 
-    @IBOutlet weak var staticLabelCardNo: UILabel!
-    @IBOutlet weak var staticLabelExpiryDate: UILabel!
-    @IBOutlet weak var staticLabelCvv: UILabel!
-    @IBOutlet weak var staticLabelCardHolderName: UILabel!
+    @IBOutlet weak public var staticLabelCardNo: UILabel!
+    @IBOutlet weak public var staticLabelExpiryDate: UILabel!
+    @IBOutlet weak public var staticLabelCvv: UILabel!
+    @IBOutlet weak public var staticLabelCardHolderName: UILabel!
     
    
     @IBOutlet weak var cardImg: UIImageView!
-    @IBOutlet weak var fieldTitle: UITextField!
-    @IBOutlet weak var fieldCardNo: UITextField!
-    @IBOutlet weak var fieldExpiryDate: UITextField!
-    @IBOutlet weak var fieldCvv: UITextField!
-    @IBOutlet weak var fieldCardHolderName: UITextField!
+    @IBOutlet weak public var fieldTitle: UITextField!
+    @IBOutlet weak public var fieldCardNo: UITextField!
+    @IBOutlet weak public var fieldExpiryDate: UITextField!
+    @IBOutlet weak public var fieldCvv: UITextField!
+    @IBOutlet weak public var fieldCardHolderName: UITextField!
   
     let bundle = Bundle(for: PaymentCardView.classForCoder())
     var view: UIView!
     public static let height: CGFloat = 277
 //        188+16
+    public var errors = [String]()
+    public var errorTitle = String()
     
     static public func createInstance(x: CGFloat, y: CGFloat = 0, width: CGFloat) -> PaymentCardView{
         let inst = PaymentCardView(frame: CGRect(x: x, y: y, width: width, height: PaymentCardView.height))
@@ -81,32 +83,44 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
         backgroundColor = UIColor.appColor(color: .Dark)
         let color = UIColor(netHex: 0x777777)
         
-        staticLabelCardNo.text = "CARD NUMBER"
         staticLabelCardNo.textColor = color
-        staticLabelExpiryDate.text = "EXPIRATION DATE"
         staticLabelExpiryDate.textColor = color
-        staticLabelCvv.text = "CVV"
         staticLabelCvv.textColor = color
-        staticLabelCardHolderName.text = "CARDHOLDER NAME"
         staticLabelCardHolderName.textColor = color
         
-        fieldTitle.attributedPlaceholder = NSAttributedString(string: "Title", attributes: [NSFontAttributeName: UIFont.appFont(font: .RubikMedium, pontSize: 17)])
         fieldTitle.font = UIFont.appFont(font: .RubikMedium, pontSize: 17)
-        fieldCardNo.placeholder = "0000 0000 0000 0000"
-        fieldExpiryDate.placeholder = "MM/YY"
-        fieldCvv.placeholder = "1234"
-        fieldCardHolderName.placeholder = "ABC"
         
         fieldCardNo.delegate = self
         fieldExpiryDate.delegate = self
         fieldCvv.delegate = self
         fieldCardHolderName.delegate = self
+        
+        staticLabelCardNo.text = Bundle.localizedStringFor(key: "payment-add-card-no")
+        staticLabelExpiryDate.text = Bundle.localizedStringFor(key: "payment-add-expiry-date")
+        staticLabelCvv.text = Bundle.localizedStringFor(key: "payment-add-cvv")
+        staticLabelCardHolderName.text = Bundle.localizedStringFor(key: "payment-add-carholder-name")
+        
+        fieldTitle.attributedPlaceholder = NSAttributedString(string: Bundle.localizedStringFor(key: "constant-title"), attributes: [NSFontAttributeName: UIFont.appFont(font: .RubikMedium, pontSize: 17)])
+        fieldTitle.font = UIFont.appFont(font: .RubikMedium, pontSize: 17)
+        
+        fieldCardNo.placeholder = Bundle.localizedStringFor(key: "payment-add-cardno-placeholder")
+        fieldExpiryDate.placeholder = Bundle.localizedStringFor(key: "payment-add-date-placeholder")
+        fieldCvv.placeholder = Bundle.localizedStringFor(key: "payment-add-fieldcvv-placeholder")
+        fieldCardHolderName.placeholder = Bundle.localizedStringFor(key: "payment-add-field-cardno-placeholder")
+        
+        errorTitle = Bundle.localizedStringFor(key: "payment-add-error-invalid-input")
+        errors = [String]()
+        errors.append(Bundle.localizedStringFor(key: "payment-add-eror-title-req"))
+        errors.append(Bundle.localizedStringFor(key: "payment-add-eror-invalid-card-no"))
+        errors.append(Bundle.localizedStringFor(key: "payment-add-eror-invalid-expiry-date"))
+        errors.append(Bundle.localizedStringFor(key: "payment-add-eror-invalid-cvv"))
+        errors.append(Bundle.localizedStringFor(key: "payment-add-eror-invalid-cardholder-name"))
     }
     
     public func getCardInfo(completion:@escaping((_ err:ResponseError?,_ cardInfo: PaymentCardInfo?)->Void)){
         
         let err = ResponseError()
-        err.errorTitle = "Invalid Input"
+        err.errorTitle = errorTitle
         err.reason = ""
         
         //        if deliveryItems.count == 1 && deliveryItems[0].itemName.isEmpty && deliveryItems[0].quantity < 0{
@@ -114,31 +128,37 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
         //
         //        }
         if fieldTitle.text!.isEmpty{
-            err.reason = "Title is required"
-        }else if fieldCardNo.text!.characters.count != 19{
-            err.reason = "Card no must have 16 digits"
-        }else if fieldExpiryDate.text!.characters.count != 5{
-            err.reason = "Invalid expiry date"
-        }else if fieldCvv.text!.characters.count < 3 {
-            err.reason = "Invalid CVV"
+            err.reason = errors[0]
+        }else if fieldCardNo.text!.count != 19{
+            err.reason = errors[1]
+        }else if fieldExpiryDate.text!.count != 5{
+            err.reason = errors[2]
+        }else if fieldCvv.text!.count < 3 {
+            err.reason = errors[3]
         }else if fieldCardHolderName.text!.isEmpty{
-            err.reason = "Card Holder name is required"
+            err.reason = errors[4]
         }
         
         var cardInfo = PaymentCardInfo(title: fieldTitle.text!, cardNo: fieldCardNo.text!, expiryDate: fieldExpiryDate.text!, cvv: fieldCvv.text!, cardHolderName: fieldCardHolderName.text!)
         
+        guard  !fieldExpiryDate.text!.isEmpty  else {
+            err.errorTitle = errorTitle
+            err.reason = errors[2]
+            completion(err, nil)
+            return
+        }
         let expDate = fieldExpiryDate.text!
         let yearStr = expDate.substring(from: expDate.index(expDate.startIndex, offsetBy: 3))
         let monthStr = expDate.substring(to: expDate.index(expDate.startIndex, offsetBy: 2))
         if let year = Int("20\(yearStr)"){
             cardInfo.expiryYear = year
         }else{
-            err.reason = "Invalid expiry Date"
+            err.reason = errors[0]
         }
         if let month = Int(monthStr),month <= 12, month >= 1 {
             cardInfo.expiryMonth = month
         }else{
-            err.reason = "Invalid expiry Date"
+            err.reason = errors[0]
         }
         
         if err.reason.isEmpty{
@@ -165,14 +185,14 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
         // check the chars length dd -->2 at the same time calculate the dd-MM --> 5
         let replaced = (textField.text! as NSString).replacingCharacters(in: range, with: string)
         setCardImage(string: replaced)
-        if (textField.text!.characters.count == 4) || (textField.text!.characters.count == 9 ) || (textField.text!.characters.count == 14) {
+        if (textField.text!.count == 4) || (textField.text!.count == 9 ) || (textField.text!.count == 14) {
             //Handle backspace being pressed
             if !(string == "") {
                 // append the text
                 textField.text = textField.text! + " "
             }
         }
-        return !(textField.text!.characters.count > 18 && (string.characters.count ) > range.length)
+        return !(textField.text!.count > 18 && (string.count ) > range.length)
     }
     
     func setCardImage(string: String)  {
@@ -184,19 +204,19 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
 //            cardImg.image = bh.getImageFromMaksabComponent(name: "creditcard", _class: PaymentCardView.self)
 //        }
         
-        guard string.characters.count <= 2 , let digit = Int(string) else {
+        guard string.count <= 2 , let digit = Int(string) else {
             return
         }
         
         if digit == 4 || (digit >= 40 && digit <= 49){
             //first digit 4 visa
-            cardImg.image = bh.getImageFromMaksabComponent(name: "visacard", _class: PaymentCardView.self)
+            cardImg.setImg(named: "visacard")
         }else if digit >= 51 && digit <= 55{
             //first two digits 5x  x can be 1-5 matercard
-            cardImg.image = bh.getImageFromMaksabComponent(name: "mastercard", _class: PaymentCardView.self)
+            cardImg.setImg(named: "mastercard")
         }else if digit == 34 || digit == 37{
             //first two digits 34  or 37 american express
-            cardImg.image = bh.getImageFromMaksabComponent(name: "americanexpersscard", _class: PaymentCardView.self)
+            cardImg.setImg(named: "americanexpersscard")
         }else{
             cardImg.image = nil
         }
@@ -205,7 +225,7 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
     func handleDateInput(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         // check the chars length dd -->2 at the same time calculate the dd-MM --> 5
         //        || (textField.text!.characters.count == 5)
-        if (textField.text!.characters.count == 2)  {
+        if (textField.text!.count == 2)  {
             //Handle backspace being pressed
             if !(string == "") {
                 // append the text
@@ -213,11 +233,11 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
             }
         }
         // check the condition not exceed 9 chars
-        return !(textField.text!.characters.count > 4 && (string.characters.count ) > range.length)
+        return !(textField.text!.count > 4 && (string.count ) > range.length)
     }
     
     func handleCvvInput(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let newLength = textField.text!.characters.count + string.characters.count - range.length
+        let newLength = textField.text!.count + string.count - range.length
 //        let newString = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
 //        if newString.characters.count == 5 {
 //            textField.rightView = UIImageView(image: #imageLiteral(resourceName: "smallGreenTick"))

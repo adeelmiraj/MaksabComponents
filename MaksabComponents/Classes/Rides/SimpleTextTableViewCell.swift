@@ -72,7 +72,7 @@ public class SimpleTextTableViewCell: UITableViewCell, NibLoadableView {
     public func addAccessoryView(img: UIImage?)  {
         accessoryViewWidth.constant = 16
         accessoryViewTrailing.constant = 12
-        accessoryViewImg.image = img
+        accessoryViewImg.image = img?.withRenderingMode(.alwaysTemplate)
     }
     
     public func removeAccessoryView()  {

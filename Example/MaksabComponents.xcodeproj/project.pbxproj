@@ -12,15 +12,14 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		65CDC9A738BCDAD566B3CE7C /* Pods_MaksabComponents_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E370C5039F4D6BF4781AE6E3 /* Pods_MaksabComponents_Example.framework */; };
+		89F8FF3F1FB2E3A600724F36 /* CreateIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8FF3E1FB2E3A600724F36 /* CreateIssueViewController.swift */; };
+		89F8FF4A1FB2ED3100724F36 /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8FF491FB2ED3100724F36 /* InviteFriendsViewController.swift */; };
 		AA200F3A34BC09EA5B3AC11F /* Pods_MaksabComponents_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B4378B3896E6709E83CBFE8 /* Pods_MaksabComponents_Tests.framework */; };
-		ED0CC16D1F275AC300EFF2FA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0CC16C1F275AC300EFF2FA /* HomeViewController.swift */; };
 		ED25FD531F1F61610037616E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		ED25FD541F1F616D0037616E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		ED5305571F209D7F002620AE /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED5305541F209D7F002620AE /* Rubik-Bold.ttf */; };
 		ED5305581F209D7F002620AE /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED5305551F209D7F002620AE /* Rubik-Medium.ttf */; };
 		ED5305591F209D7F002620AE /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED5305561F209D7F002620AE /* Rubik-Regular.ttf */; };
-		ED54A2701F27775A002EF684 /* CustomSideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED54A26F1F27775A002EF684 /* CustomSideMenuController.swift */; };
-		ED91AA241F25CCB400A1895C /* TermsAndConditionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED91AA231F25CCB400A1895C /* TermsAndConditionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,16 +46,17 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		6CC00475E9A91CA32F392234 /* MaksabComponents.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MaksabComponents.podspec; path = ../MaksabComponents.podspec; sourceTree = "<group>"; };
+		89F8FF3E1FB2E3A600724F36 /* CreateIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateIssueViewController.swift; sourceTree = "<group>"; };
+		89F8FF401FB2E50300724F36 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
+		89F8FF411FB2E50300724F36 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		89F8FF491FB2ED3100724F36 /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
 		A30D314EBAA6A1ADCC193386 /* Pods-MaksabComponents_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaksabComponents_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MaksabComponents_Tests/Pods-MaksabComponents_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		A3A35ABBF5127340F79506DD /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B0571D9F6A057014B5352180 /* Pods-MaksabComponents_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaksabComponents_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MaksabComponents_Tests/Pods-MaksabComponents_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		E370C5039F4D6BF4781AE6E3 /* Pods_MaksabComponents_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MaksabComponents_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED0CC16C1F275AC300EFF2FA /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ED5305541F209D7F002620AE /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		ED5305551F209D7F002620AE /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
 		ED5305561F209D7F002620AE /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
-		ED54A26F1F27775A002EF684 /* CustomSideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSideMenuController.swift; sourceTree = "<group>"; };
-		ED91AA231F25CCB400A1895C /* TermsAndConditionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsViewController.swift; sourceTree = "<group>"; };
 		EED91C15C6AD0DF493FAF657 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		FAD8E7994B22EF7EB1BDC51C /* Pods-MaksabComponents_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MaksabComponents_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-MaksabComponents_Example/Pods-MaksabComponents_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,13 +119,12 @@
 				ED5305531F209D67002620AE /* Fonts */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				ED0CC16C1F275AC300EFF2FA /* HomeViewController.swift */,
-				ED91AA231F25CCB400A1895C /* TermsAndConditionsViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
-				ED54A26F1F27775A002EF684 /* CustomSideMenuController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				89F8FF3E1FB2E3A600724F36 /* CreateIssueViewController.swift */,
+				89F8FF491FB2ED3100724F36 /* InviteFriendsViewController.swift */,
 			);
 			name = "Example for MaksabComponents";
 			path = MaksabComponents;
@@ -301,13 +300,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MaksabComponents_Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		361FFA32C38E612936D0AFBD /* [CP] Copy Pods Resources */ = {
@@ -361,13 +363,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MaksabComponents_Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DF813F0994E191D57EA37AE3 /* [CP] Embed Pods Frameworks */ = {
@@ -376,9 +381,26 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MaksabComponents_Example/Pods-MaksabComponents_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework",
+				"${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/MaksabComponents/MaksabComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenuController/SideMenuController.framework",
+				"${BUILT_PRODUCTS_DIR}/StylingBoilerPlate/StylingBoilerPlate.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KMPlaceholderTextView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaksabComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenuController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StylingBoilerPlate.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -392,11 +414,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED54A2701F27775A002EF684 /* CustomSideMenuController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				ED91AA241F25CCB400A1895C /* TermsAndConditionsViewController.swift in Sources */,
-				ED0CC16D1F275AC300EFF2FA /* HomeViewController.swift in Sources */,
+				89F8FF3F1FB2E3A600724F36 /* CreateIssueViewController.swift in Sources */,
+				89F8FF4A1FB2ED3100724F36 /* InviteFriendsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +444,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				607FACDA1AFB9204008FA782 /* Base */,
+				89F8FF401FB2E50300724F36 /* ar */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -431,6 +453,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				607FACDF1AFB9204008FA782 /* Base */,
+				89F8FF411FB2E50300724F36 /* ar */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -442,6 +465,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -489,6 +513,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;

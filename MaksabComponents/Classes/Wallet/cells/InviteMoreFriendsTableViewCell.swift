@@ -15,19 +15,19 @@ public protocol InviteMoreFriendsTableViewCellDelegate {
 
 public class InviteMoreFriendsTableViewCell: UITableViewCell, NibLoadableView {
 
-    @IBOutlet weak var btnInvite: UIButton!
-    @IBOutlet weak var staticLabelInviteFriends: UILabel!
+    @IBOutlet weak public var btnInvite: UIButton!
+    @IBOutlet weak public var staticLabelInviteFriends: UILabel!
     var delegate: InviteMoreFriendsTableViewCellDelegate?
     
     override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.backgroundColor = UIColor.appColor(color: .Dark)
-        staticLabelInviteFriends.text = "            more friends to Earn more."
-//        commission
         btnInvite.tintColor = UIColor.appColor(color: .Secondary)
-        btnInvite.setTitle("Invite", for: .normal)
         btnInvite.titleLabel?.font = UIFont.appFont(font: .RubikRegular, pontSize: 15)
+        
+        btnInvite.setTitle(Bundle.localizedStringFor(key: "wallet-cell-invite-btn-title"), for: .normal)
+        staticLabelInviteFriends.text = String(format: Bundle.localizedStringFor(key: "wallet-cell-invite-more-friends"),"            ")
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {

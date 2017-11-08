@@ -22,7 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.appColor(color: .Dark)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.appColor(color: .Dark)]
         
-        
+//        let viewController = UIViewController()
+//        self.window?.rootViewController = viewController
+//        self.window?.makeKeyAndVisible()
         return true
     }
 

@@ -17,11 +17,11 @@ public enum PaymentMethod: Int {
     public func getTitle() -> String {
         switch self {
         case .card:
-            return "payment-method-Credit".localized(bundle: .main)
+            return "payment-method-Credit"
         case .cash:
-            return "payment-method-Cash".localized(bundle: .main)
+            return "payment-method-Cash"
         case .wallet:
-            return "payment-method-Maqsab Wallet".localized(bundle: .main)
+            return "payment-method-Maqsab Wallet"
         }
     }
 }
@@ -99,7 +99,6 @@ public class RidesOptionsGridView: UIView, CustomView, NibLoadableView, Toggleab
     var availablePayments = PaymentOptions.createPaymentOptions()
     var selectedPaymentOptionIndex: Int = 0
     
-    let bh = BundleHelper(resourceName: Constants.resourceName)
     override public required init(frame: CGRect) {
         super.init(frame: frame)
         view = commonInit(bundle: bundle)
@@ -113,25 +112,25 @@ public class RidesOptionsGridView: UIView, CustomView, NibLoadableView, Toggleab
     }
     
     func configView()  {
-        btnMehramRide.selectedStateImage = bh.getImageFromMaksabComponent(name: "mehram-selected", _class: RidesOptionsGridView.self)
-        btnMehramRide.unSelectedStateImage = bh.getImageFromMaksabComponent(name: "mehram", _class: RidesOptionsGridView.self)
+        btnMehramRide.selectedStateImage = UIImage.image(named: "mehram-selected")
+        btnMehramRide.unSelectedStateImage = UIImage.image(named: "mehram")
         btnMehramRide.stateSelected = false
         
-        btnNoSmoking.selectedStateImage = bh.getImageFromMaksabComponent(name: "smoking", _class: RidesOptionsGridView.self)
-        btnNoSmoking.unSelectedStateImage = bh.getImageFromMaksabComponent(name: "no-smoking", _class: RidesOptionsGridView.self)
+        btnNoSmoking.selectedStateImage = UIImage.image(named: "smoking")
+        btnNoSmoking.unSelectedStateImage = UIImage.image(named: "no-smoking")
         btnNoSmoking.stateSelected = false
         
-        btnPayment.selectedStateImage = bh.getImageFromMaksabComponent(name: "cash-circle", _class: RidesOptionsGridView.self)
-        btnPayment.unSelectedStateImage = bh.getImageFromMaksabComponent(name: "credit-card", _class: RidesOptionsGridView.self)
+        btnPayment.selectedStateImage = UIImage.image(named: "cash-circle")
+        btnPayment.unSelectedStateImage = UIImage.image(named: "credit-card")
         btnPayment.stateSelected = true
         
-        btnNoOfPassegners.selectedStateImage = bh.getImageFromMaksabComponent(name: "passengers", _class: RidesOptionsGridView.self)
-        btnNoOfPassegners.unSelectedStateImage = bh.getImageFromMaksabComponent(name: "passengers", _class: RidesOptionsGridView.self)
+        btnNoOfPassegners.selectedStateImage = UIImage.image(named: "passengers")
+        btnNoOfPassegners.unSelectedStateImage = UIImage.image(named: "passengers")
         btnNoOfPassegners.stateSelected = true
         
         btnMehramRide.setTitle("Mehram Ride", for: .normal)
         btnNoSmoking.setTitle("No Smoking", for: .normal)
-        let icon = bh.getImageFromMaksabComponent(name: "cash-circle", _class: RidesOptionsGridView.self)
+        let icon = UIImage.image(named: "cash-circle")!
         updatePaymentBtn(title: availablePayments[selectedPaymentOptionIndex].title, img: icon)
         btnNoOfPassegners.setTitle("\(capacity.getCount()) or less Passengers", for: .normal)
         
@@ -175,17 +174,17 @@ public class RidesOptionsGridView: UIView, CustomView, NibLoadableView, Toggleab
         switch paymentInfo.mehtod {
         case .cash:
             selectedPaymentOptionIndex = 0
-            icon = bh.getImageFromMaksabComponent(name: "cash-circle", _class: RidesOptionsGridView.self)
+            icon = UIImage.image(named: "cash-circle")
         case .wallet:
             selectedPaymentOptionIndex = 1
-            icon = bh.getImageFromMaksabComponent(name: "wallet-card", _class: RidesOptionsGridView.self)
+            icon = UIImage.image(named: "wallet-card")
         case .card:
             if let cardIndex = getIndexForCard(id: paymentInfo.cardId){
                 selectedPaymentOptionIndex = cardIndex
-                icon = bh.getImageFromMaksabComponent(name: "credit-card", _class: RidesOptionsGridView.self)
+                icon = UIImage.image(named: "credit-card")
             }else{
                 selectedPaymentOptionIndex = 0
-                icon = bh.getImageFromMaksabComponent(name: "cash-circle", _class: RidesOptionsGridView.self)
+                icon = UIImage.image(named: "cash-circle")
             }
         }
         updatePaymentBtn(title: availablePayments[selectedPaymentOptionIndex].title, img: icon)
@@ -222,11 +221,11 @@ public class RidesOptionsGridView: UIView, CustomView, NibLoadableView, Toggleab
             }
             var icon: UIImage!
             if selectedPaymentOptionIndex == 0{
-                 icon = bh.getImageFromMaksabComponent(name: "cash-circle", _class: RidesOptionsGridView.self)
+                 icon = UIImage.image(named: "cash-circle")
             }else if selectedPaymentOptionIndex == 1{
-                 icon = bh.getImageFromMaksabComponent(name: "wallet-card", _class: RidesOptionsGridView.self)
+                 icon = UIImage.image(named: "wallet-card")
             }else{
-                 icon = bh.getImageFromMaksabComponent(name: "credit-card", _class: RidesOptionsGridView.self)
+                 icon = UIImage.image(named: "credit-card")
             }
             let paymentOption = availablePayments[selectedPaymentOptionIndex]
             updatePaymentBtn(title: paymentOption.title, img: icon)
@@ -259,7 +258,7 @@ public class RidesOptionsGridView: UIView, CustomView, NibLoadableView, Toggleab
     
     //MARK:- Getters
     public func getPaymentInfo() -> PaymentInfo{
-        var paymentInfo = PaymentInfo(method: .cash, cardId: nil)
+        let paymentInfo = PaymentInfo(method: .cash, cardId: nil)
         if selectedPaymentOptionIndex == 1{
             paymentInfo.mehtod = .wallet
         }else if selectedPaymentOptionIndex > 1{

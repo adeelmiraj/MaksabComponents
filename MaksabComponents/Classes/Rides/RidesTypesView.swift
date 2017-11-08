@@ -59,10 +59,9 @@ public class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
         
         selectedButton = btnNormal
         
-        let bh = BundleHelper(resourceName: Constants.resourceName)
-        btnNormal.setImage(bh.getImageFromMaksabComponent(name: "normal-car", _class: RidesTypesView.self), for: .normal)
-        btnBudget.setImage(bh.getImageFromMaksabComponent(name: "budget-car", _class: RidesTypesView.self), for: .normal)
-        btnExotic.setImage(bh.getImageFromMaksabComponent(name: "luxury-car", _class: RidesTypesView.self), for: .normal)
+        btnNormal.setImage(UIImage.image(named: "normal-car"), for: .normal)
+        btnBudget.setImage(UIImage.image(named: "budget-car"), for: .normal)
+        btnExotic.setImage(UIImage.image(named: "luxury-car"), for: .normal)
         
         btnNormal.setTitle("Normal", for: .normal)
         btnBudget.setTitle("Budget", for: .normal)
@@ -77,8 +76,7 @@ public class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
         isShowNormalRide = true
         btnNormal.isHidden = true
         btnExotic.isHidden = true
-        let bh = BundleHelper(resourceName: Constants.resourceName)
-        btnBudget.setImage(bh.getImageFromMaksabComponent(name: "normal-car", _class: RidesTypesView.self), for: .normal)
+        btnBudget.setImage(UIImage.image(named: "normal-car"), for: .normal)
         btnBudget.setTitle("Normal", for: .normal)
         btnBudget.stateSelected = true
     }

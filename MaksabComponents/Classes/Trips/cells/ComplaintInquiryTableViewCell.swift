@@ -27,7 +27,7 @@ public class ComplaintInquiryTableViewCell: UITableViewCell, NibLoadableView {
         hideDefaultSeparator()
         self.backgroundColor = UIColor.appColor(color: .Dark)
         labelRideAgain.text = ""
-        btnComplain.setTitle("Complaint/Inquiry", for: .normal)
+       btnComplain.setTitle(Bundle.localizedStringFor(key: "trip-cell-complain-btn-title"), for: .normal)
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
@@ -37,7 +37,8 @@ public class ComplaintInquiryTableViewCell: UITableViewCell, NibLoadableView {
     }
     
     public func config(userName: String)  {
-        labelRideAgain.text = "Ride again with \(userName)?"
+        let format = Bundle.localizedStringFor(key: "trip-cell-complain-ride-again")
+        labelRideAgain.text = String(format: format,userName)
     }
     
     @IBAction func actComplain(_ sender: PrimaryButton) {

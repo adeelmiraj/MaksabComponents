@@ -13,13 +13,9 @@ open class RatingView: CosmosView{
     
     override open func awakeFromNib() {
         super.awakeFromNib()
-        
-//        print(Constants.bundleIdentifier)
-        let bundleHelper = BundleHelper(resourceName: Constants.resourceName)
-        let starEmpty = bundleHelper.getImageFromMaksabComponent(name: "star-empty", _class: RatingView.self)
-        let starFilled = bundleHelper.getImageFromMaksabComponent(name: "star-filled", _class: RatingView.self)
-        settings.emptyImage = starEmpty
-        settings.filledImage = starFilled
+
+        settings.emptyImage = UIImage.image(named: "star-empty")
+        settings.filledImage = UIImage.image(named: "star-filled")
         settings.starMargin = 0
         settings.totalStars = 5
         self.backgroundColor = UIColor.clear

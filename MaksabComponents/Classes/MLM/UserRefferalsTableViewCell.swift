@@ -34,13 +34,13 @@ public class UserRefferalsTableViewCell: UITableViewCell, NibLoadableView {
         
         userPhoto.backgroundColor = UIColor.appColor(color: .Medium)
         userPhoto.layer.cornerRadius = userPhoto.frame.size.height / 2
-        let bh = BundleHelper(resourceName: Constants.resourceName)
         accessoryImgView.tintColor = UIColor.appColor(color: .Light)
-        accessoryImgView.image = bh.getImageFromMaksabComponent(name: "arrow-left", _class: UserRefferalsTableViewCell.self).withRenderingMode(.alwaysTemplate)
+        accessoryImgView.setLocalizedImg(named: "arrow-right",redneringMode: .alwaysTemplate)
     }
     
     public func config(name: String, referrals: Int){
         userName.text = name
-        totalRefferals.text = "\(referrals) Referrals"
+        let format = Bundle.localizedStringFor(key: "wallet-mlm-cell-user-refferals")
+        totalRefferals.text = String(format: format, referrals)
     }
 }

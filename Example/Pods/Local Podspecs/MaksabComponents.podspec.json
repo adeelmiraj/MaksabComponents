@@ -19,12 +19,11 @@
     "ios": "9.0"
   },
   "source_files": "MaksabComponents/Classes/**/*.{h,m,swift}",
-  "resources": "MaksabComponents/Classes/**/*.{xib,ttf}",
-  "resource_bundles": {
-    "MaksabComponents": [
-      "MaksabComponents/Assets/*.png"
-    ]
-  },
+  "resources": [
+    "MaksabComponents/Assets/*.png",
+    "MaksabComponents/Assets/MaksabComponents.bundle",
+    "MaksabComponents/Classes/**/*.{xib,ttf}"
+  ],
   "frameworks": "UIKit",
   "requires_arc": true,
   "dependencies": {
@@ -32,6 +31,9 @@
 
     ],
     "Cosmos": [
+      "11.0.3"
+    ],
+    "KMPlaceholderTextView": [
 
     ]
   }

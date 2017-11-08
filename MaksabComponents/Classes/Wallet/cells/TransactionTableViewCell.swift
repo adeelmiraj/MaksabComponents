@@ -11,7 +11,7 @@ import StylingBoilerPlate
 
 public class TransactionTableViewCell: UITableViewCell, NibLoadableView {
 
-    @IBOutlet weak var staticLabelTransactionId: UILabel!
+    @IBOutlet weak public var staticLabelTransactionId: UILabel!
     @IBOutlet weak var transactionId: UILabel!
     @IBOutlet weak var dateTime: UILabel!
     @IBOutlet weak var details: UILabel!
@@ -26,11 +26,13 @@ public class TransactionTableViewCell: UITableViewCell, NibLoadableView {
         super.awakeFromNib()
         // Initialization code
         self.backgroundColor = UIColor.appColor(color: .Dark)
-        staticLabelTransactionId.text = "Transaction ID:"
         transactionId.font = UIFont.appFont(font: .RubikMedium, pontSize: 14)
         transactionId.textColor = UIColor.appColor(color: .LightText)
         details.textColor = UIColor.appColor(color: .LightText)
         transactionTypeIcon.tintColor = UIColor.appColor(color: .Light)
+        
+        staticLabelTransactionId.text = Bundle.localizedStringFor(key: "wallet-cell-transaction-id")
+       
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
@@ -40,9 +42,10 @@ public class TransactionTableViewCell: UITableViewCell, NibLoadableView {
     }
     
     public func config(createdAt: Date?, amount: Double, description: String)  {
+        let unit =  Bundle.localizedStringFor(key: "constant-currency-SAR")
         dateTime.text = createdAt?.string(format: "dd/MM/YYYY, hh:mm a") ?? ""
         details.attributedText = String.boldAttributedString(
-            boldComponent: String(format:"SAR %.2f",amount),
+            boldComponent: String(format:"\(unit) %.2f",amount),
             otherComponent: description,
             boldFont: UIFont.appFont(font: .RubikMedium, pontSize: 17),
             otherfont: UIFont.appFont(font: .RubikRegular, pontSize: 17),

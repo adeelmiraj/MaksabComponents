@@ -20,12 +20,12 @@ open class CreateIssueTemplateViewController: UIViewController, NibLoadableView,
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak public var textView: KMPlaceholderTextView!
-    @IBOutlet weak var btnSeekHelp: UIButton!
+    @IBOutlet weak public var btnSeekHelp: UIButton!
     
     public var delegate: CreateIssueDelegate?
     public var showSelectRide: Bool = true
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
-    
+    let bundle = Bundle(for: CreateIssueTemplateViewController.classForCoder())
     open override func loadView() {
         let name = CreateIssueTemplateViewController.nibName
         let bundle = Bundle(for: CreateIssueTemplateViewController.classForCoder())
@@ -59,8 +59,8 @@ open class CreateIssueTemplateViewController: UIViewController, NibLoadableView,
             tableViewHeight.constant = 50
         }
         textView.layer.cornerRadius = 5
-        textView.placeholder = "Details"
-        btnSeekHelp.setTitle("Seek Help", for: .normal)
+        textView.placeholder = Bundle.localizedStringFor(key: "help-details")
+        btnSeekHelp.setTitle(Bundle.localizedStringFor(key: "help-btn-seek-help"), for: .normal)
     }
     
     //MARK:- tableView
@@ -80,14 +80,13 @@ open class CreateIssueTemplateViewController: UIViewController, NibLoadableView,
         let cell = tableView.dequeCell(indexPath: indexPath) as SimpleTextTableViewCell
         cell.isLight = true
         cell.separatorView.backgroundColor = UIColor.appColor(color: .Dark)
-        if showSelectRide && indexPath.row == 0{
-            cell.config(title: "Select a Ride")
-        }else{
-            cell.config(title: "Select an Issue")
-        }
-        let bh = BundleHelper(resourceName: Constants.resourceName)
-        cell.addAccessoryView(img: bh.getImageFromMaksabComponent(name: "arrow-left", _class: ExpandableSectionsTemplateViewController.self))
         cell.selectionStyle = .default
+        if indexPath.row == 0{
+            cell.config(title: Bundle.localizedStringFor(key: "help-cell-select-issue"))
+        }else{
+            cell.config(title: Bundle.localizedStringFor(key: "help-cell-select-ride"))
+        }
+        cell.addAccessoryView(img: UIImage.localizedImage(named: "arrow-right"))
         return cell
     }
     

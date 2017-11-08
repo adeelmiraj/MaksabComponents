@@ -260,73 +260,71 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     }
     
     public func configViews(type: RegisterationViewType)  {
-        btnBackToSigup.setTitle("Back To Signup", for: .normal)
+        btnBackToSigup.setTitle(Bundle.localizedStringFor(key: "auth-btn-back-to-signup"), for: .normal)
         switch type {
         case .PhoneNumber:
-            fieldSecond.placeholder = "Enter Phone Number"
+            fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-enter-phone-no")
             fieldSecond.keyboardType = .numberPad
         case .VerificationCode:
-            labelTitle.text = "Verification Code"
-            fieldSecond.placeholder = "Enter here..."
-            btnAction.setTitle("Resend Code", for: .normal)
+            labelTitle.text = Bundle.localizedStringFor(key: "auth-verification-code")
+            fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-enter-here")
+            btnAction.setTitle(Bundle.localizedStringFor(key: "auth-resend-code"), for: .normal)
             fieldSecond.keyboardType = .numberPad
             btnBackToSigup.isHidden = false
         case .NameAndEmail:
-            labelTitle.text = "Name & Email"
-            fieldFirst.placeholder = "Name"
-            fieldSecond.placeholder = "Email"
-            btnAction.setTitle("Skip", for: .normal)
+            labelTitle.text = Bundle.localizedStringFor(key: "auth-name-and-email")
+            fieldFirst.placeholder = Bundle.localizedStringFor(key: "auth-name")
+            fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-email")
             fieldSecond.keyboardType = .emailAddress
         case.Password:
-            labelTitle.text = "Password"
-            fieldSecond.placeholder = "Password"
-            btnAction.setTitle("Forgot Password?", for: .normal)
+            labelTitle.text = Bundle.localizedStringFor(key: "auth-password")
+            fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-password")
+            btnAction.setTitle(Bundle.localizedStringFor(key: "auth-btn-forgot-pass"), for: .normal)
             fieldSecond.isSecureTextEntry = true
         case .PasswordAndConfirmPassword:
-            labelTitle.text = "Password"
-            fieldFirst.placeholder = "Password"
-            fieldSecond.placeholder = "Confirm Password"
+            labelTitle.text = Bundle.localizedStringFor(key: "auth-password")
+            fieldFirst.placeholder = Bundle.localizedStringFor(key: "auth-password")
+            fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-password-confirm")
             fieldFirst.isSecureTextEntry = true
             fieldSecond.isSecureTextEntry = true
         case .InviteCode:
-            labelTitle.text = "Invite Code"
-            labelSubtitle.text = "Enter Invite Code and earn 25% Discount on first ride"
-            fieldSecond.placeholder = "Invite Code"
-            btnAction.setTitle("Skip", for: .normal)
+            labelTitle.text = Bundle.localizedStringFor(key: "auth-invite-code")
+            labelSubtitle.text = Bundle.localizedStringFor(key: "auth-invite-code-msg")
+            fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-invite-code")
+            btnAction.setTitle(Bundle.localizedStringFor(key: "auth-skip"), for: .normal)
         case .ForgotPassword:
-            labelTitle.text = "Forgot Password"
-            labelSubtitle.text = "Enter your phone number to reset password"
-            fieldSecond.placeholder = "Phone Number"
-            btnAction.setTitle("Use Phone number", for: .normal)
+            labelTitle.text = Bundle.localizedStringFor(key: "auth-forgot-pass")
+            labelSubtitle.text = Bundle.localizedStringFor(key: "auth-forgot-pass-msg")
+            fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-enter-phone-no")
             fieldSecond.keyboardType = .numberPad
         case .AddVehicleDetails:
-            labelTitle.text = "Add Vehicle Details"
-            fieldFirst.placeholder = "Make"
-            fieldSecond.placeholder = "Model"
-            fieldThird.placeholder = "Year"
-            fieldFourth.placeholder = "License Plate"
-            fieldFifth.placeholder = "Capacity"
+            labelTitle.text = Bundle.localizedStringFor(key: "auth-add-vehicle-details")
+            fieldFirst.placeholder = Bundle.localizedStringFor(key: "auth-make")
+            fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-model")
+            fieldThird.placeholder = Bundle.localizedStringFor(key: "auth-year")
+            fieldFourth.placeholder = Bundle.localizedStringFor(key: "auth-license-plate")
+            fieldFifth.placeholder = Bundle.localizedStringFor(key: "auth-capacity")
             fieldFifth.inputView = showPicker()
             addVehicleRegisterationView()
             fieldThird.keyboardType = .numberPad
             capacityArray = carCapcaityArray()
             fieldFifth.text = capacityArray[0]
         case .BasicInfo:
-            labelTitle.text = "Basic Information"
-            fieldFirst.placeholder = "Name"
-            fieldSecond.placeholder = "Email"
-            fieldThird.placeholder = "City"
-            labelDriverNationality.text = "Saudi Nationality"
+            labelTitle.text = Bundle.localizedStringFor(key: "auth-basic-info")
+            fieldFirst.placeholder = Bundle.localizedStringFor(key: "auth-name")
+            fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-email")
+            fieldThird.placeholder = Bundle.localizedStringFor(key: "auth-city")
+            labelDriverNationality.text = Bundle.localizedStringFor(key: "auth-saudi-national")
             fieldSecond.keyboardType = .emailAddress
         case .ResetPassUsingPhone:
-            labelTitle.text = "Reset Password"
-            fieldFirst.placeholder = "Password"
-            fieldSecond.placeholder = "Confirm Password"
+            labelTitle.text = Bundle.localizedStringFor(key: "auth-reset-pass")
+            fieldFirst.placeholder = Bundle.localizedStringFor(key: "auth-password")
+            fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-password-confirm")
             fieldFirst.isSecureTextEntry = true
             fieldSecond.isSecureTextEntry = true
             fieldThird.keyboardType = .numberPad
-            fieldThird.placeholder = "Verification Code"
-            btnAction.setTitle("Resend Code", for: .normal)
+            fieldThird.placeholder = Bundle.localizedStringFor(key: "auth-verification-code")
+            btnAction.setTitle(Bundle.localizedStringFor(key: "auth-resend-code"), for: .normal)
         }
     }
     
@@ -363,29 +361,6 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         }
         fieldFifth.text = text
     }
-
-    
-    /*
-    public func switchForgotPasswordOption(){
-//        let placeHolder = fieldSecond.placeholder ?? "Email"
-//        if placeHolder.caseInsensitiveCompare("Email") == .orderedSame{
-//            UIView.animate(withDuration: 10) {
-//                self.labelSubtitle.text = "Enter your phone number to reset password"
-//                self.btnAction.setTitle("Use Email", for: .normal)
-//                self.fieldSecond.placeholder = "Phone Number"
-//                self.fieldSecond.keyboardType = .numberPad
-//                self.fieldSecond.text = ""
-//            }
-//        }else{
-//            UIView.animate(withDuration: 10) {
-//                self.labelSubtitle.text = "Enter your email to reset password"
-//                self.btnAction.setTitle("Use Phone number", for: .normal)
-//                self.fieldSecond.placeholder = "Email"
-//                self.fieldSecond.keyboardType = .emailAddress
-//                self.fieldSecond.text = ""
-//            }
-//        }
-    }*/
     
     func addActivityIndicatorsOverSocialLogins(){
         activityIndicatoryFb = UIActivityIndicatorView(activityIndicatorStyle: .gray)
@@ -524,17 +499,6 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     func actBackToSignup(sender: UIButton)  {
         delegate?.actionBackToSignup?(sender: sender)
     }
-    //    open static  func createController(_for:RegisterationViewType) -> RegisterationTemplateViewController{
-    //
-    //        var vc: RegisterationTemplateViewController!
-    //
-    //        let bundle = Bundle(for: self.classForCoder())
-    //        let name = "RegisterationTemplateViewController"
-    //        vc = RegisterationTemplateViewController(nibName: name, bundle: bundle)
-    //
-    //        return vc
-    //    }
-    
 }
 //MARK:- Handle TextField delegates
 extension RegisterationTemplateViewController: UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate  {
@@ -543,24 +507,16 @@ extension RegisterationTemplateViewController: UITextFieldDelegate, UIPickerView
             let picker = fieldFifth.inputView as! UIPickerView
             picker.selectRow(selectedCapacityIndex, inComponent: 0, animated: false)
         }
-//        guard textField == fieldFirst else {
-            return true
-//        }
-//        showDropDown()
-//        showPicker()
-//        return false
+        return true
     }
     
     
     //MARK:- Picker
     func showPicker() -> UIPickerView {
         let picker = UIPickerView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 100))
-//        picker.backgroundColor = UIColor.yellow
         picker.dataSource = self
         picker.delegate = self
-//        fieldFirst.inputView = picker
         return picker
-//        picker.selectRow(selectedCapacityIndex, inComponent: 0, animated: false)
     }
     
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -594,36 +550,35 @@ extension RegisterationTemplateViewController: UITextFieldDelegate, UIPickerView
         case .PhoneNumber:
             return RegisterationTemplateViewController.handlePhoneNumber(textField: textField, shouldChangeCharactersIn: range, replacementString: string)
         case .VerificationCode:
-            return !(textField.text!.characters.count > 5 && (string.characters.count) > range.length)
+            return !(textField.text!.count > 5 && (string.count) > range.length)
         case .ForgotPassword:
-            guard fieldSecond.placeholder?.caseInsensitiveCompare("Email") != .orderedSame else {
-                return true
-            }
+//            guard fieldSecond.placeholder?.caseInsensitiveCompare("Email") != .orderedSame else {
+//                return true
+//            }
             return RegisterationTemplateViewController.handlePhoneNumber(textField: textField, shouldChangeCharactersIn: range, replacementString: string)
         case .ResetPassUsingPhone:
             if textField == fieldThird{
-                return !(textField.text!.characters.count > 5 && (string.characters.count) > range.length)
+                return !(textField.text!.count > 5 && (string.count) > range.length)
             }
             return true
         case .AddVehicleDetails:
             if textField == fieldThird{
-                return !(textField.text!.characters.count > 3 && (string.characters.count) > range.length)
+                return !(textField.text!.count > 3 && (string.count) > range.length)
             }
             return true
         default:
-            return !(textField.text!.characters.count > 119 && (string.characters.count) > range.length)
-//            return true
+            return !(textField.text!.count > 119 && (string.count) > range.length)
         }
     }
     
     public static func handlePhoneNumber(textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField.text!.characters.count == 0 && string == "0"{
-            textField.text! = "92"
-            return false
-        }else if textField.text!.characters.count == 2 && string == "" {
-            textField.text! = ""
-        }
-        return !(textField.text!.characters.count > 11 && (string.characters.count) > range.length)
+//        if textField.text!.count == 0 && string == "0"{
+//            textField.text! = "92"
+//            return false
+//        }else if textField.text!.count == 2 && string == "" {
+//            textField.text! = ""
+//        }
+        return !(textField.text!.count > 11 && (string.count) > range.length)
     }
 }
 
@@ -632,16 +587,16 @@ public extension RegisterationTemplateViewController{
     
     public func getPhoneNo() -> String? {
         var isValid = true
-        var phoneNumber = fieldSecond.text ?? ""
+        let phoneNumber = fieldSecond.text ?? ""
         
         if phoneNumber.isEmpty {
             isValid = false
-        }else if phoneNumber.characters.count != 12{
+        }else if phoneNumber.count != 12{
             isValid = false
         }
         
         if !isValid{
-            Alert.showMessage(viewController: self, title: "Invalid Input", msg: "Phone number must have 12 digits." )
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg:   Bundle.localizedStringFor(key: "auth-phone-must-be-twelve-digits"))
             return nil
         }else{
             self.view.endEditing(true)
@@ -653,13 +608,13 @@ public extension RegisterationTemplateViewController{
         let name = fieldFirst.text ?? ""
         let email = fieldSecond.text ?? ""
         if name.isEmpty{
-            Alert.showMessage(viewController: self, title: "Invalid Input", msg: "Name is required." )
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: Bundle.localizedStringFor(key: "auth-name-is-required"))
             return nil
         }else if email.isEmpty{
-            Alert.showMessage(viewController: self, title: "Invalid Input", msg: "Email is required." )
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: Bundle.localizedStringFor(key: "auth-email-is-required"))
             return nil
         }else if !fieldSecond.isValid(exp: .email){
-            Alert.showMessage(viewController: self, title: "Invalid Input", msg: "Please enter a valid email address." )
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: Bundle.localizedStringFor(key: "auth-enter-valid-email"))
             return nil
         }
         self.view.endEditing(true)
@@ -671,36 +626,36 @@ public extension RegisterationTemplateViewController{
         let confirmPass = fieldSecond.text ?? ""
         
         var msg = ""
-        if pass.characters.count < 8{
-            msg = "Password must be greater than 7 characters."
+        if pass.count < 8{
+            msg = Bundle.localizedStringFor(key: "auth-pass-must-be-greater-than-seven-char")
         }else if pass.compare(confirmPass) != .orderedSame{
-            msg = "Password and Confirm Password donot match."
+            msg = Bundle.localizedStringFor(key: "auth-pass-and-confirm-pass-donot-match")
         }
         
         if msg.isEmpty{
             self.view.endEditing(true)
             return [pass,confirmPass]
         }else{
-            Alert.showMessage(viewController: self, title: "Invalid Input", msg: msg)
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: msg)
             return nil
         }
     }
     
     public func getPin() -> String? {
         let pin = fieldSecond.text ?? ""
-        if pin.characters.count == 6{
+        if pin.count == 6{
             self.view.endEditing(true)
             return pin
         }else{
-            Alert.showMessage(viewController: self, title: "Invalid Pin", msg: "Pin must have 6 digits")
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "auth-invalid-pin-title"), msg: Bundle.localizedStringFor(key: "auth-invalid-pin-msg"))
             return nil
         }
     }
     
     public func getPassword() -> String? {
         let pass = fieldSecond.text ?? ""
-        if pass.characters.count < 8{
-            Alert.showMessage(viewController: self, title: "Invalid Pin", msg: "Password must be greater than 7 characters.")
+        if pass.count < 8{
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: Bundle.localizedStringFor(key: "auth-pass-must-be-greater-than-seven-char"))
             return nil
         }else{
             self.view.endEditing(true)
@@ -745,8 +700,8 @@ public extension RegisterationTemplateViewController{
         let verificationCode = fieldThird.text ?? ""
         if passAndConfirmPass == nil{
             return nil
-        }else if verificationCode.characters.count != 6{
-            Alert.showMessage(viewController: self, title: "Invalid Pin", msg: "Pin must have 6 digits")
+        }else if verificationCode.count != 6{
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "auth-invalid-pin-title"), msg: Bundle.localizedStringFor(key: "auth-invalid-pin-msg"))
             return nil
         }else{
             self.view.endEditing(true)
@@ -756,12 +711,12 @@ public extension RegisterationTemplateViewController{
     
     public func getInviteCode() -> String? {
         let pin = fieldSecond.text ?? ""
-        if pin.characters.count > 0 {
+        if pin.count == 0 {
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key:"auth-invalid-invite-code-title"), msg: Bundle.localizedStringFor(key:"auth-invalid-invite-code-msg"))
+            return nil
+        }else{
             self.view.endEditing(true)
             return pin
-        }else{
-            Alert.showMessage(viewController: self, title: "Invalid Invite Code", msg: "Invite Code must have 6 digits")
-            return nil
         }
     }
     
@@ -771,10 +726,10 @@ public extension RegisterationTemplateViewController{
         let city = fieldThird.text ?? ""
         let isSaudiNational = driverNationalitySwitch.isOn
         if name.isEmpty || email.isEmpty || city.isEmpty {
-            Alert.showMessage(viewController: self, title: "Invalid Input", msg: "Please fill all the fields")
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: Bundle.localizedStringFor(key: "auth-fill-all-fields"))
             return nil
         }else if !fieldSecond.isValid(exp: .email){
-            Alert.showMessage(viewController: self, title: "Invalid Input", msg: "Please fill all the fields")
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: Bundle.localizedStringFor(key: "auth-fill-all-fields"))
             return nil
         } else{
             self.view.endEditing(true)
@@ -789,14 +744,16 @@ public extension RegisterationTemplateViewController{
         let licensePlate = fieldFourth.text ?? ""
         let currentYear = getCurrentYear()
         guard let year = Int(yearString),year <= currentYear  else {
-            Alert.showMessage(viewController: self, title: "Invalid Input", msg: "Invalid Year")
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: Bundle.localizedStringFor(key: "auth-invalid-year"))
             return nil
         }
         if year < RegisterationTemplateViewController.minValidYear{
-            Alert.showMessage(viewController: self, title: "Invalid Input", msg: "Year must be greater than \(RegisterationTemplateViewController.minValidYear - 1)")
+            let format = Bundle.localizedStringFor(key: "auth-year-must-be-greater-than")
+            let minValue = RegisterationTemplateViewController.minValidYear - 1
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: String(format: format,minValue))
             return nil
         }else if make.isEmpty || model.isEmpty || licensePlate.isEmpty {
-            Alert.showMessage(viewController: self, title: "Invalid Input", msg: "Please fill all the fields")
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: Bundle.localizedStringFor(key: "auth-fill-all-fields"))
             return nil
         }else{
             self.view.endEditing(true)
@@ -811,43 +768,3 @@ public extension RegisterationTemplateViewController{
         return components.year ?? 0
     }
 }
-
-/*
-extension RegisterationTemplateViewController: DropDownDelegate, DropDownDataSource{
-   
-    //DropDown delegate
-    func showDropDown()  {
-        let dropDown = DropDownViewController()
-        dropDown.delegate = self
-        dropDown.dataSource = self
-        //        let pointDetail = PointDetailViewController.newInstanceFromNib()
-        //        pointDetail.delegate = self
-        dropDown.modalPresentationStyle = .popover
-        //        pointDetail.animPointData = actionItem
-        
-        dropDown.preferredContentSize = CGSize(width: 250, height: 120)
-        present(dropDown, animated: true, completion: nil)
-        
-        let popoverPresentationController = dropDown.popoverPresentationController
-        popoverPresentationController?.sourceView = fieldFifth
-        popoverPresentationController?.permittedArrowDirections = [.up,.down]
-        popoverPresentationController?.canOverlapSourceViewRect = false
-        popoverPresentationController?.sourceRect = CGRect(x: 0, y: 0, width: fieldFifth.frame.size.width, height: fieldFifth.frame.size.height)
-        dropDown.data = capacityArray
-    }
-    
-    public func selectedDropDownItem(index: Int, dropDown: DropDownViewController) {
-        dropDown.dismiss(animated: true, completion: nil)
-        fieldFifth.text = capacityArray[index]
-        selectedCapacityIndex = index
-    }
-    
-    //DropDown dataSource
-    public func data() -> [String] {
-        return capacityArray
-    }
-    
-    public func selectedItemIndex() -> Int {
-        return selectedCapacityIndex
-    }
-}*/

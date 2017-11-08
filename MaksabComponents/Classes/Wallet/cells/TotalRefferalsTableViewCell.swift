@@ -15,7 +15,7 @@ public protocol TotalRefferalsTableViewCellDelegate {
 
 public class TotalRefferalsTableViewCell: UITableViewCell, NibLoadableView {
 
-    @IBOutlet weak var staticLabelTotalRefferals: UILabel!
+    @IBOutlet weak public var staticLabelTotalRefferals: UILabel!
     @IBOutlet weak var totalRefferals: UILabel!
     @IBOutlet weak public var btnMlmSummary: UIButton!
     
@@ -25,8 +25,9 @@ public class TotalRefferalsTableViewCell: UITableViewCell, NibLoadableView {
         super.awakeFromNib()
         // Initialization code
         self.backgroundColor = UIColor.appColor(color: .Dark)
-        staticLabelTotalRefferals.text = "Total Refferrals"
-        btnMlmSummary.setTitle("View MLM Summary", for: .normal)
+        
+        staticLabelTotalRefferals.text =  Bundle.localizedStringFor(key: "wallet-cell-total-referral-title")
+        btnMlmSummary.setTitle(Bundle.localizedStringFor(key: "wallet-cell-total-referral-view-mlm-summary"), for: .normal)
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {

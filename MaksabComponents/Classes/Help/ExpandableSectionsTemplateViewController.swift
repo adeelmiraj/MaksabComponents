@@ -78,11 +78,10 @@ open class ExpandableSectionsTemplateViewController: UIViewController, UITableVi
         let simpleTextView = SimpleTextView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 50))
         simpleTextView.delegate = self
         simpleTextView.tag = section
-        let bh = BundleHelper(resourceName: Constants.resourceName)
         if expandedSection == section{
-            simpleTextView.addLeftView(img: bh.getImageFromMaksabComponent(name: "arrow-down", _class: ExpandableSectionsTemplateViewController.self))
+            simpleTextView.addLeftView(img: UIImage.image(named: "arrow-down"))
         }else{
-            simpleTextView.addLeftView(img: bh.getImageFromMaksabComponent(name: "arrow-up", _class: ExpandableSectionsTemplateViewController.self))
+            simpleTextView.addLeftView(img: UIImage.image(named: "arrow-up"))
         }
         return dataSource!.configHeaderView(view: simpleTextView, section: section)
     }

@@ -15,9 +15,9 @@ public protocol  MLMOverViewTableViewCellDelegate {
 
 public class MLMOverViewTableViewCell: UITableViewCell, NibLoadableView {
 
-    @IBOutlet weak var staticLabelTotalNodes: UILabel!
-    @IBOutlet weak var staticLabelTotalEarnings: UILabel!
-    @IBOutlet weak var priceUnit: UILabel!
+    @IBOutlet weak public var staticLabelTotalNodes: UILabel!
+    @IBOutlet weak public var staticLabelTotalEarnings: UILabel!
+    @IBOutlet weak public var priceUnit: UILabel!
     @IBOutlet weak public var totalNodes: UILabel!
     @IBOutlet weak public var totalEarnings: UILabel!
     @IBOutlet weak public var btnViewMLMTree: UIButton!
@@ -39,11 +39,10 @@ public class MLMOverViewTableViewCell: UITableViewCell, NibLoadableView {
     
     func configView()  {
         self.backgroundColor = UIColor.appColor(color: .Dark)
-        
-        staticLabelTotalNodes.text = "Total Nodes"
-        staticLabelTotalEarnings.text = "Total Earnings"
-        priceUnit.text = "SAR"
-        btnViewMLMTree.setTitle("View MLM Tree", for: .normal)
+        staticLabelTotalNodes.text = Bundle.localizedStringFor(key: "walet-mlm-total-nodes")
+        staticLabelTotalEarnings.text = Bundle.localizedStringFor(key: "wallet-mlm-total-earnings")
+        priceUnit.text = Bundle.localizedStringFor(key: "constant-currency-SAR")
+        btnViewMLMTree.setTitle(Bundle.localizedStringFor(key: "wallet-mlm-btn-view-mlm-tree"), for: .normal)
     }
     
     public func config(totalNodes: Int, totalEarnings: Double,delegate: MLMOverViewTableViewCellDelegate){
