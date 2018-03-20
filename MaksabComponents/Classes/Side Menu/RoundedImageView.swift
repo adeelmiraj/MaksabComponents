@@ -21,7 +21,7 @@ public class RoundImageView: UIImageView {
     @IBInspectable var lightBorder: Bool = false
     
     override public func awakeFromNib() {
-        var color = UIColor.appColor(color: .Dark)
+        var color = UIColor.appColor(color: .Header)
         if lightBorder{
             color = UIColor.appColor(color: .Light)
         }

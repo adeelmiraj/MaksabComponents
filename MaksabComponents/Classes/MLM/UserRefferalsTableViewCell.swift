@@ -30,11 +30,11 @@ public class UserRefferalsTableViewCell: UITableViewCell, NibLoadableView {
     }
     
     func configView()  {
-        self.backgroundColor = UIColor.appColor(color: .Dark)
+        self.backgroundColor = UIColor.appColor(color: .Light)
         
         userPhoto.backgroundColor = UIColor.appColor(color: .Medium)
         userPhoto.layer.cornerRadius = userPhoto.frame.size.height / 2
-        accessoryImgView.tintColor = UIColor.appColor(color: .Light)
+        accessoryImgView.tintColor = UIColor.appColor(color: .Dark)
         accessoryImgView.setLocalizedImg(named: "arrow-right",redneringMode: .alwaysTemplate)
     }
     

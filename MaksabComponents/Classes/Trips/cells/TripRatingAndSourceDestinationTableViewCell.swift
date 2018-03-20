@@ -18,7 +18,7 @@ public class TripRatingAndSourceDestinationTableViewCell: UITableViewCell, NibLo
     override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.backgroundColor = UIColor.appColor(color: .Dark)
+        self.backgroundColor = UIColor.appColor(color: .Light)
         hideDefaultSeparator()
     }
 

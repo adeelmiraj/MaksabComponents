@@ -12,7 +12,7 @@ public protocol SlidableView{}
 public extension SlidableView where Self:UIView {
     public var animationTime: Double {
         get{
-            return self.animationTime
+            return 0.5
         }
         set(newVal){
             animationTime = newVal

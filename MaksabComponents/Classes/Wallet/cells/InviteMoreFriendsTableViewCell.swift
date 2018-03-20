@@ -22,12 +22,20 @@ public class InviteMoreFriendsTableViewCell: UITableViewCell, NibLoadableView {
     override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.backgroundColor = UIColor.appColor(color: .Dark)
-        btnInvite.tintColor = UIColor.appColor(color: .Secondary)
-        btnInvite.titleLabel?.font = UIFont.appFont(font: .RubikRegular, pontSize: 15)
+        self.backgroundColor = UIColor.appColor(color: .Light)
+//        btnInvite.tintColor = UIColor.appColor(color: .Light)
+//        btnInvite.titleLabel?.font = UIFont.appFont(font: .RubikRegular, pontSize: 15)
         
-        btnInvite.setTitle(Bundle.localizedStringFor(key: "wallet-cell-invite-btn-title"), for: .normal)
-        staticLabelInviteFriends.text = String(format: Bundle.localizedStringFor(key: "wallet-cell-invite-more-friends"),"            ")
+        let dir = Locale.characterDirection(forLanguage: Locale.current.languageCode ?? "en")
+        if dir == .leftToRight {
+            let btnleading = NSLayoutConstraint(item: btnInvite, attribute: .leading, relatedBy: .equal, toItem: staticLabelInviteFriends, attribute: .leading, multiplier: 1, constant: 0)
+            self.addConstraint(btnleading)
+        }else {
+            let btntrailing = NSLayoutConstraint(item: btnInvite, attribute: .trailing, relatedBy: .equal, toItem: staticLabelInviteFriends, attribute: .trailing, multiplier: 1, constant: 16)
+            self.addConstraint(btntrailing)
+        }
+//        btnInvite.setTitle(Bundle.localizedStringFor(key: "wallet-cell-invite-btn-title"), for: .normal)
+        staticLabelInviteFriends.text = Bundle.localizedStringFor(key: "wallet-cell-invite-more-friends")
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {

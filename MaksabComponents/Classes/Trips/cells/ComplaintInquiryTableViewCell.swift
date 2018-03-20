@@ -25,7 +25,7 @@ public class ComplaintInquiryTableViewCell: UITableViewCell, NibLoadableView {
         super.awakeFromNib()
         // Initialization code
         hideDefaultSeparator()
-        self.backgroundColor = UIColor.appColor(color: .Dark)
+        self.backgroundColor = UIColor.appColor(color: .Light)
         labelRideAgain.text = ""
        btnComplain.setTitle(Bundle.localizedStringFor(key: "trip-cell-complain-btn-title"), for: .normal)
     }

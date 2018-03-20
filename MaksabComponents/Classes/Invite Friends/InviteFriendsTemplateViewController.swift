@@ -17,6 +17,7 @@ open class InviteFriendsTemplateViewController: UIViewController, NibLoadableVie
     @IBOutlet weak public var inviteCode: UILabel!
     @IBOutlet weak public var btnShare: UIButton!
 
+    @IBOutlet weak var inviteCodeContainer: UIView!
     override open func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,12 +26,14 @@ open class InviteFriendsTemplateViewController: UIViewController, NibLoadableVie
     }
     
     func configView()  {
-        self.view.backgroundColor = UIColor.appColor(color: .Dark)
-        self.view.backgroundColor = UIColor.appColor(color: .Dark)
+        self.view.backgroundColor = UIColor.appColor(color: .Light)
         inviteFriendImg.setImg(named: "invite")
         staticLabelInviteCode.text = Bundle.localizedStringFor(key: "invite-friend-invite-code")
         staticLabelInviteFriends.text = Bundle.localizedStringFor(key: "invite-friend-msg")
         btnShare.setTitle(Bundle.localizedStringFor(key:"invite-friend-btn-share"), for: .normal)
+        
+        inviteCodeContainer.layer.borderWidth = 1
+        inviteCodeContainer.layer.borderColor = UIColor.appColor(color: .Dark).cgColor
     }
 
     public func setInviteCode(code: String){

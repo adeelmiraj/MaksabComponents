@@ -21,7 +21,6 @@ open class MaksabNavigationController: UINavigationController {
         super.viewDidLoad()
         setBarStyle(_isTransparent: isTransparent)
         self.navigationBar.topItem?.title = ""
-        // Do any additional setup after loading the view.
     }
 
     func setBarStyle(_isTransparent: Bool) {
@@ -30,11 +29,21 @@ open class MaksabNavigationController: UINavigationController {
             self.navigationBar.setBackgroundImage(img, for: .default)
             let shadowImg = UIImage.getImageFromColor(color: UIColor.clear, size: CGSize(width: self.view.frame.size.width, height: 1))
             self.navigationBar.shadowImage = shadowImg
+            UIApplication.shared.statusBarStyle = .default
         }else{
-            let img = UIImage.getImageFromColor(color: UIColor.white, size: CGSize(width: self.view.frame.size.width, height: 64))
+            let img = UIImage.getImageFromColor(color: UIColor.appColor(color: .Primary), size: CGSize(width: self.view.frame.size.width, height: 64))
             self.navigationBar.setBackgroundImage(img, for: .default)
-            let shadowImg = UIImage.getImageFromColor(color: UIColor.appColor(color: .Dark), size: CGSize(width: self.view.frame.size.width, height: 1))
+            let shadowImg = UIImage.getImageFromColor(color: UIColor.appColor(color: .PrimaryDark), size: CGSize(width: self.view.frame.size.width, height: 1))
             self.navigationBar.shadowImage = shadowImg
+            UIApplication.shared.statusBarStyle = .lightContent
+        }
+    }
+    
+    open override var preferredStatusBarStyle: UIStatusBarStyle{
+        if isTransparent{
+            return .default
+        }else{
+            return .lightContent
         }
     }
 }

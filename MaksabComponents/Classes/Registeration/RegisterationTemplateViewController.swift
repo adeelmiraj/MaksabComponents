@@ -94,6 +94,7 @@ public protocol RegisterationTemplateViewControllerDataSource{
     @objc optional func actionTooltipBottom(sender: UIButton)
     @objc optional func actionTooltipTop(sender: UIButton)
     @objc optional func actionBackToSignup(sender: UIButton)
+    @objc optional func showCitiesList()
 }
 
 open class RegisterationTemplateViewController: UIViewController, NibLoadableView {
@@ -107,7 +108,6 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     //        self.view = view
     //    }
     //
-    static public let countryCode = "92"
     static public let minValidYear = 1997
     public var dataSource: RegisterationTemplateViewControllerDataSource!
     public var delegate: RegisterationTemplateViewControllerDelegate?
@@ -120,6 +120,8 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     @IBOutlet weak public var logo: UIImageView!
     
     //Fields View
+    @IBOutlet weak var phoneCodeWidth: NSLayoutConstraint!
+    @IBOutlet weak var fieldSecondLeading: NSLayoutConstraint!
     @IBOutlet weak var firstFieldHeight: NSLayoutConstraint!
     @IBOutlet weak var thirdFieldHeight: NSLayoutConstraint!
     @IBOutlet weak var fourthFieldHeight: NSLayoutConstraint!
@@ -135,6 +137,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     @IBOutlet weak public var labelTitle: HeadlineLabel!
     @IBOutlet weak public var labelSubtitle: CaptionLabel!
     @IBOutlet weak var btnTooltip: UIButton!
+    @IBOutlet weak var fieldPhoneCode: BottomBorderTextField!
     @IBOutlet weak public var fieldFirst: BottomBorderTextField!
     @IBOutlet weak public var fieldSecond: BottomBorderTextField!
     @IBOutlet weak public var fieldThird: BottomBorderTextField!
@@ -177,6 +180,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         fieldThird.delegate = self
         fieldFourth.delegate = self
         fieldFifth.delegate = self
+        fieldPhoneCode.delegate = self
         
         
         fieldFirst.returnKeyType = .done
@@ -263,6 +267,8 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         btnBackToSigup.setTitle(Bundle.localizedStringFor(key: "auth-btn-back-to-signup"), for: .normal)
         switch type {
         case .PhoneNumber:
+            showPhoneNoCode()
+            fieldPhoneCode.text = Bundle.localizedStringFor(key: "auth-country-code")
             fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-enter-phone-no")
             fieldSecond.keyboardType = .numberPad
         case .VerificationCode:
@@ -408,13 +414,18 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         actionButtonHeight.constant = 0
     }
     
+    func showPhoneNoCode()  {
+        fieldSecondLeading.constant = 12
+        phoneCodeWidth.constant = 40
+        fieldPhoneCode.clearButtonMode = .never
+    }
+    
     func addThirdField()  {
         thirdFieldHeight.constant = 30
         fieldThird.isHidden = false
         
         stackViewHeight.constant = 76+30
         stackViewReqHeight.constant = 64+30
-        
     }
     
     func addFourthField()  {
@@ -506,6 +517,9 @@ extension RegisterationTemplateViewController: UITextFieldDelegate, UIPickerView
         if textField == fieldFifth{
             let picker = fieldFifth.inputView as! UIPickerView
             picker.selectRow(selectedCapacityIndex, inComponent: 0, animated: false)
+        }else if textField == fieldThird && type == .BasicInfo{
+            delegate?.showCitiesList?()
+            return false
         }
         return true
     }
@@ -548,6 +562,9 @@ extension RegisterationTemplateViewController: UITextFieldDelegate, UIPickerView
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         switch type {
         case .PhoneNumber:
+            if textField == fieldPhoneCode{
+                return RegisterationTemplateViewController.handlePhoneCode(textField: textField, shouldChangeCharactersIn: range, replacementString: string)
+            }
             return RegisterationTemplateViewController.handlePhoneNumber(textField: textField, shouldChangeCharactersIn: range, replacementString: string)
         case .VerificationCode:
             return !(textField.text!.count > 5 && (string.count) > range.length)
@@ -566,9 +583,33 @@ extension RegisterationTemplateViewController: UITextFieldDelegate, UIPickerView
                 return !(textField.text!.count > 3 && (string.count) > range.length)
             }
             return true
+        case .BasicInfo:
+            if textField == fieldFirst{
+                return handleName(textField: textField,shouldChangeCharactersIn: range, replacementString: string)
+            }
         default:
             return !(textField.text!.count > 119 && (string.count) > range.length)
         }
+        return !(textField.text!.count > 119 && (string.count) > range.length)
+    }
+    
+    
+    func handleName(textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
+        if string == " "{
+            return !(textField.text!.count > 119 && (string.count) > range.length)
+        }else if  string.count > 0 {
+            let lettersOnly = CharacterSet.letters
+            guard let scalar = UnicodeScalar.init(string) else{
+                return false
+            }
+            let strValid = lettersOnly.contains(scalar)
+            return strValid && !(textField.text!.count > 119 && (string.count) > range.length)
+        }
+        return true
+    }
+    
+    public static func handlePhoneCode(textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return !(textField.text!.count > 3 && (string.count) > range.length)
     }
     
     public static func handlePhoneNumber(textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -578,7 +619,7 @@ extension RegisterationTemplateViewController: UITextFieldDelegate, UIPickerView
 //        }else if textField.text!.count == 2 && string == "" {
 //            textField.text! = ""
 //        }
-        return !(textField.text!.count > 11 && (string.count) > range.length)
+        return !(textField.text!.count > 9 && (string.count) > range.length)
     }
 }
 
@@ -586,8 +627,28 @@ extension RegisterationTemplateViewController: UITextFieldDelegate, UIPickerView
 public extension RegisterationTemplateViewController{
     
     public func getPhoneNo() -> String? {
+        let phoneNo = RegisterationTemplateViewController.getValidPhoneNoFrom(fieldCode: fieldPhoneCode, fieldPhoneNo: fieldSecond)
+        if phoneNo == nil{
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg:   Bundle.localizedStringFor(key: "auth-phone-must-be-twelve-digits"))
+        }else{
+            self.view.endEditing(true)
+        }
+        return phoneNo
+    }
+    
+    public static func getValidPhoneNoFrom(fieldCode: UITextField, fieldPhoneNo: UITextField) -> String? {
         var isValid = true
-        let phoneNumber = fieldSecond.text ?? ""
+        var code = fieldCode.text ?? Bundle.localizedStringFor(key: "auth-country-code")
+        if !code.isEmpty{
+            code.remove(at: code.startIndex)
+        }
+        
+        var noWithoutCode = fieldPhoneNo.text ?? ""
+        if noWithoutCode.count == 10 && noWithoutCode.first! == "0"{
+            noWithoutCode = noWithoutCode.substring(from: noWithoutCode.index(after: noWithoutCode.startIndex))
+        }
+        
+        let phoneNumber = "\(code)\(noWithoutCode)"
         
         if phoneNumber.isEmpty {
             isValid = false
@@ -596,10 +657,8 @@ public extension RegisterationTemplateViewController{
         }
         
         if !isValid{
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg:   Bundle.localizedStringFor(key: "auth-phone-must-be-twelve-digits"))
             return nil
         }else{
-            self.view.endEditing(true)
             return phoneNumber
         }
     }
@@ -663,38 +722,6 @@ public extension RegisterationTemplateViewController{
         }
     }
     
-    /*
-    func getEmailorPhoneNo() -> EmailOrPhoneAsset? {
-        let phoneNo = getPhoneNo()
-        guard phoneNo != nil else {
-            return nil
-        }
-        self.view.endEditing(true)
-        return EmailOrPhoneAsset(isResetUsingEmail: false, emailorPhone: phoneNo!)
-        /*
-        let placeHolder = fieldSecond.placeholder ?? "Email"
-        let result = placeHolder.caseInsensitiveCompare("Email")
-        switch result{
-        case .orderedSame:
-            //Email
-            let email = fieldSecond.text!
-            if !fieldSecond.isValid(exp: .email){
-                Alert.showMessage(viewController: self, title: "Invalid Input", msg: "Please enter a valid email address." )
-                return nil
-            }
-            self.view.endEditing(true)
-            return EmailOrPhoneAsset(isResetUsingEmail: true, emailorPhone: email)
-        default:
-            //PhoneNumber
-            let phoneNo = getPhoneNo()
-            guard phoneNo != nil else {
-                return nil
-            }
-            self.view.endEditing(true)
-            return EmailOrPhoneAsset(isResetUsingEmail: false, emailorPhone: phoneNo!)
-        }*/
-    }
-    */
     func getResetPassUsingPhoneAsset() -> ResetPassUsingPhoneAsset? {
         let passAndConfirmPass = getPasswordAndConfirmPassword()
         let verificationCode = fieldThird.text ?? ""

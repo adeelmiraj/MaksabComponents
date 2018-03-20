@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,14 +15,15 @@
             <rect key="frame" x="0.0" y="0.0" width="473" height="62"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="473" height="62"/>
+                <rect key="frame" x="0.0" y="0.0" width="473" height="61.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7eq-lz-ueR">
-                        <rect key="frame" x="225" y="16.5" width="37" height="18"/>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7eq-lz-ueR">
+                        <rect key="frame" x="224.5" y="16.5" width="37" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="NAL-7g-l40"/>
                         </constraints>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <state key="normal" title="Invite"/>
                         <connections>
                             <action selector="actInvite" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wTW-Lx-68Y"/>
@@ -32,13 +34,10 @@
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
-                        </userDefinedRuntimeAttributes>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Opd-ux-k98">
-                        <rect key="frame" x="0.0" y="60.5" width="473" height="1"/>
-                        <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                        <rect key="frame" x="0.0" y="61.5" width="473" height="1"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="IhO-kT-Mvq"/>
                         </constraints>
@@ -50,12 +49,19 @@
                     <constraint firstItem="Opd-ux-k98" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Gti-Ks-7aI"/>
                     <constraint firstAttribute="bottom" secondItem="gZU-8Y-ANZ" secondAttribute="bottom" constant="16" id="HKV-0H-ebd"/>
                     <constraint firstItem="gZU-8Y-ANZ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Nem-yB-9Jl"/>
+                    <constraint firstItem="7eq-lz-ueR" firstAttribute="trailing" secondItem="gZU-8Y-ANZ" secondAttribute="trailing" constant="16" id="PQj-Ca-BnB"/>
                     <constraint firstItem="gZU-8Y-ANZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="brg-ht-lFs"/>
                     <constraint firstAttribute="trailing" secondItem="Opd-ux-k98" secondAttribute="trailing" id="cXM-yj-nyu"/>
-                    <constraint firstAttribute="bottom" secondItem="Opd-ux-k98" secondAttribute="bottom" id="exK-Fd-WC9"/>
+                    <constraint firstAttribute="bottom" secondItem="Opd-ux-k98" secondAttribute="bottom" constant="-1" id="exK-Fd-WC9"/>
                     <constraint firstItem="7eq-lz-ueR" firstAttribute="leading" secondItem="gZU-8Y-ANZ" secondAttribute="leading" id="fRH-gR-mGT"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gZU-8Y-ANZ" secondAttribute="trailing" constant="12" id="rs7-3i-rfF"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="PQj-Ca-BnB"/>
+                        <exclude reference="fRH-gR-mGT"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnInvite" destination="7eq-lz-ueR" id="epl-ux-cng"/>

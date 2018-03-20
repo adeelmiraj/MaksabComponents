@@ -31,11 +31,12 @@ public class EditUserPhotoTableViewCell: UITableViewCell, NibLoadableView {
 
     func configView()  {
         phoneNo.font = UIFont.appFont(font: .RubikRegular, pontSize: 16)
-        phoneNo.textColor = UIColor.appColor(color: .LightText)
+        phoneNo.textColor = UIColor.appColor(color: .DarkText)
         userPhoto.backgroundColor = UIColor.appColor(color: .Medium)
-        self.backgroundColor = UIColor.appColor(color: .Dark)
-        editIcon.backgroundColor = UIColor.appColor(color: .Light)
-        editIcon.setImg(named: "edit-profile")
+        self.backgroundColor = UIColor.appColor(color: .Light)
+        editIcon.backgroundColor = UIColor.clear
+        editIcon.setImg(named: "edit-profile", redneringMode: .alwaysTemplate)
+        editIcon.tintColor = UIColor.appColor(color: .Light)
         //editIcon.layer.cornerRadius = editIcon.frame.size.height / 2
 //        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(actUserPhotoTapped))
 //        userPhoto.addGestureRecognizer(tapGesture)

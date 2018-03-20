@@ -32,12 +32,10 @@ public class SimpleTextView: UIView, NibLoadableView, CustomView {
                 self.backgroundColor = UIColor.appColor(color: .Light)
                 leftIcon.tintColor = UIColor.appColor(color: .Dark)
                 title.textColor = UIColor.appColor(color: .DarkText)
-                separatorView.backgroundColor = UIColor.appColor(color: .Dark)
             }else{
                 self.backgroundColor = UIColor.appColor(color: .Dark)
                 leftIcon.tintColor = UIColor.appColor(color: .Light)
                 title.textColor = UIColor.appColor(color: .LightText)
-                separatorView.backgroundColor = UIColor.appColor(color: .Light)
             }
         }
     }
@@ -64,6 +62,7 @@ public class SimpleTextView: UIView, NibLoadableView, CustomView {
     func configView()  {
         contentView.backgroundColor = UIColor.clear
         isLight = true
+        separatorView.backgroundColor = UIColor.appColor(color: .Header)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(actViewTapped))
         self.addGestureRecognizer(tapGesture)
     }

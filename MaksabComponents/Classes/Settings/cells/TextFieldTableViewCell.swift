@@ -28,9 +28,9 @@ public class TextFieldTableViewCell: UITableViewCell, NibLoadableView, UITextFie
     }
 
     func configView()  {
-        self.backgroundColor = UIColor.appColor(color: .Dark)
-        field.textColor = UIColor.appColor(color: .LightText)
-        field.tintColor = UIColor.appColor(color: .Light)
+        self.backgroundColor = UIColor.appColor(color: .Light)
+        field.textColor = UIColor.appColor(color: .DarkText)
+        field.tintColor = UIColor.appColor(color: .Dark)
         field.font = UIFont.appFont(font: .RubikMedium, pontSize: 17)
         field.delegate = self
     }

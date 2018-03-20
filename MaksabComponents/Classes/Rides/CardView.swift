@@ -40,11 +40,21 @@ open class CardView: UIView {
 //        layer.borderColor = UIColor.black
         layer.cornerRadius = cornerRadius
         layer.shadowColor = shadowColor?.cgColor
-        layer.shadowOffset = CGSize(width: shadowOffsetWidth, height: shadowOffsetHeight);
+        layer.shadowOffset = CGSize(width: shadowOffsetWidth, height: shadowOffsetHeight)
         layer.shadowOpacity = shadowOpacity
         layer.shadowPath = shadowPath.cgPath
     }
     
-    
-    
+    public static func makeCard(view: UIView){
+        view.layer.cornerRadius = 6
+        let shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: 6)
+        
+        view.layer.masksToBounds = false
+        view.layer.cornerRadius = 6
+        view.layer.shadowColor = UIColor.black.withAlphaComponent(0.24).cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 1)
+        view.layer.shadowOpacity = 1
+        view.layer.shadowPath = shadowPath.cgPath
+    }
+
 }

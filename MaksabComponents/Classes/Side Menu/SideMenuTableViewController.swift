@@ -78,17 +78,21 @@ open class SideMenuTableViewController: UIViewController,UITableViewDataSource, 
         sideMenuItems = dataSource!.sideMenuItems()
         appType = dataSource!.appType()
         
-        tableView.backgroundColor = UIColor.appColor(color: .Dark)
+        setupTableView()
+       
+    }
+
+    func setupTableView()  {
+        tableView.backgroundColor = UIColor.appColor(color: .Light)
         self.automaticallyAdjustsScrollViewInsets = false
         
         tableView.register(LeftIconTableViewCell.self, bundle: bundle)
         tableView.rowHeight = 52
         
         let footerView = UIView()
-        footerView.backgroundColor = UIColor.appColor(color: .Dark)
+        footerView.backgroundColor = UIColor.appColor(color: .Light)
         tableView.tableFooterView = footerView
     }
-
     func actionHeaderView()  {
         delegate?.showProfile()
     }
@@ -129,8 +133,12 @@ open class SideMenuTableViewController: UIViewController,UITableViewDataSource, 
         let cell = tableView.dequeCell(indexPath: indexPath) as LeftIconTableViewCell
         let sideMenuItem = sideMenuItems[indexPath.row]
 //        cell.backgroundColor = UIColor.appColor(color: .Dark)
-        cell.isLight = false
+        cell.isLight = true
         cell.config(icon: sideMenuItem.icon, title: sideMenuItem.title, subtitle: nil)
+        if appType == .Rider{
+//            cell.backgroundColor = UIColor.appColor(color: .Light)
+//            cell.textLabel?.textColor = UIColor.appColor(color: .DarkText)
+        }
         return cell
     }
 

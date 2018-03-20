@@ -61,6 +61,7 @@ public class SimpleTextTableViewCell: UITableViewCell, NibLoadableView {
         // Initialization code
         self.layoutMargins = UIEdgeInsets.zero
         self.hideDefaultSeparator()
+        separatorView.backgroundColor = UIColor.appColor(color: .Header)
         removeAccessoryView()
     }
 

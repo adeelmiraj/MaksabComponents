@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -31,7 +32,7 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghB-vU-zhT">
                         <rect key="frame" x="0.0" y="104" width="345" height="1"/>
-                        <color key="backgroundColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="IFQ-RZ-ff0"/>
                         </constraints>
@@ -46,7 +47,7 @@
                     <constraint firstAttribute="trailing" secondItem="cRn-Lw-kgS" secondAttribute="trailing" constant="12" id="Zoi-gZ-Gcu"/>
                     <constraint firstItem="cRn-Lw-kgS" firstAttribute="leading" secondItem="b2M-KZ-rN7" secondAttribute="trailing" constant="12" id="iYq-PU-dsq"/>
                     <constraint firstItem="b2M-KZ-rN7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="k0Y-Hb-7YH"/>
-                    <constraint firstAttribute="bottom" secondItem="ghB-vU-zhT" secondAttribute="bottom" id="kPc-Ip-fof"/>
+                    <constraint firstAttribute="bottom" secondItem="ghB-vU-zhT" secondAttribute="bottom" constant="-1" id="kPc-Ip-fof"/>
                     <constraint firstItem="b2M-KZ-rN7" firstAttribute="centerY" secondItem="cRn-Lw-kgS" secondAttribute="centerY" id="q0s-B7-ODm"/>
                 </constraints>
             </tableViewCellContentView>

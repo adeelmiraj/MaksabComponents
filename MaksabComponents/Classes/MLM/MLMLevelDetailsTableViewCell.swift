@@ -15,9 +15,10 @@ public class MLMLevelDetailsTableViewCell: UITableViewCell, NibLoadableView {
     @IBOutlet weak var labelLevel: UILabel!
     @IBOutlet weak var noOfPeople: UILabel!
     @IBOutlet weak public var staticLabelPeople: UILabel!
-    @IBOutlet weak public var comissionRate: UILabel!
+    @IBOutlet weak public var validity: UILabel!
     @IBOutlet weak public var earnings: UILabel!
     
+    @IBOutlet weak var lockedBadge: UIImageView!
     override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,9 +28,22 @@ public class MLMLevelDetailsTableViewCell: UITableViewCell, NibLoadableView {
 
     
     func configView()  {
-        self.backgroundColor = UIColor.appColor(color: .Dark)
-        badgeImg.setImg(named: "badge")
+        self.backgroundColor = UIColor.appColor(color: .Light)
+        
+        badgeImg.tintColor = UIColor.appColor(color: .Primary)
+        badgeImg.setImg(named: "badge",redneringMode: .alwaysTemplate)
+        
+        lockedBadge.setLocalizedImg(named: "mlm-locked-badge")
+        
         staticLabelPeople.text = Bundle.localizedStringFor(key: "wallet-mlm-people")
+        staticLabelPeople.textColor = UIColor.appColor(color: .Primary)
+        staticLabelPeople.font = TextLabel.font()
+        
+        noOfPeople.textColor = UIColor.appColor(color: .Primary)
+        noOfPeople.font = ShoutnoteLabel.font()
+        
+        earnings.font = TextLabel.font()
+        earnings.textColor = UIColor.appColor(color: .Primary)
     }
     
     override public func setSelected(_ selected: Bool, animated: Bool) {
@@ -38,16 +52,28 @@ public class MLMLevelDetailsTableViewCell: UITableViewCell, NibLoadableView {
         // Configure the view for the selected state
     }
     
-    public func config(level: Int, peoples: Int, comissionRate: Double, earnings: Double)  {
-        labelLevel.text = "\(level)"
+    public func config(level: Int, peoples: Int, earnings: Double, expiryDateString: String?, isUnlocked: Bool)  {
+        let format = Bundle.localizedStringFor(key: "wallet-mlm-level")
+        labelLevel.text = String(format: format,level)
         noOfPeople.text = "\(peoples)"
         
-        let format = Bundle.localizedStringFor(key: "wallet-mlm-commission-rate")
-        self.comissionRate.text = String(format: format, round(comissionRate))
-        
-        let unit = Bundle.localizedStringFor(key: "constant-currency-SAR")
+        //Earnings
+        let unitFormat = Bundle.localizedStringFor(key: "constant-currency-SAR")
+        let unit = String(format: unitFormat,earnings)
         let formatEarnings = Bundle.localizedStringFor(key: "wallet-mlm-earnings")
-        self.earnings.text = String(format: formatEarnings,unit,earnings)
+        self.earnings.text = String(format: formatEarnings,unit)
+        
+        //validity
+        if isUnlocked{
+            let format = Bundle.localizedStringFor(key: "wallet-mlm-unlocked-until")
+            validity.text = String(format:format,expiryDateString ?? "")
+            validity.textColor = UIColor.appColor(color: .LightText)
+            lockedBadge.isHidden = true
+        }else{
+            validity.text = Bundle.localizedStringFor(key: "wallet-mlm-take-more-rides-to-unlock")
+            validity.textColor = UIColor.appColor(color: .Secondary)
+            lockedBadge.isHidden = false
+        }
     }
     
 }

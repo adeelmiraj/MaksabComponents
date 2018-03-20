@@ -26,9 +26,14 @@ public class CurrentBalanceTableViewCell: UITableViewCell, NibLoadableView {
     override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.backgroundColor = UIColor.appColor(color: .Dark)
-        btnInfo.tintColor = UIColor.appColor(color: .Secondary)
-        staticLabelPriceUnit.text = Bundle.localizedStringFor(key: "constant-currency-SAR")
+        self.backgroundColor = UIColor.appColor(color: .Light)
+        
+        staticLabelPriceUnit.text = Bundle.localizedStringFor(key: "constant-currency-SAR-only")
+        staticLabelPriceUnit.font = UIFont.appFont(font: .RubikRegular, pontSize: 17)
+        staticLabelPriceUnit.textColor = UIColor.appColor(color: .Primary)
+        
+        price.font = UIFont.appFont(font: .RubikMedium, pontSize: 48)
+        price.textColor = UIColor.appColor(color: .Primary)
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {

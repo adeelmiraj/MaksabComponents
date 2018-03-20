@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,14 +20,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BoI-qF-ER8">
-                        <rect key="frame" x="111.5" y="16" width="189" height="48"/>
+                        <rect key="frame" x="126" y="16" width="160" height="40.5"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="48" id="NXV-fe-0ci"/>
-                            <constraint firstAttribute="width" constant="189" id="wbc-E5-x8D"/>
+                            <constraint firstAttribute="width" secondItem="BoI-qF-ER8" secondAttribute="height" multiplier="63:16" id="LaW-Q4-bE1"/>
+                            <constraint firstAttribute="width" constant="160" id="wbc-E5-x8D"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVH-tI-NoD" customClass="TitleLabel" customModule="StylingBoilerPlate">
-                        <rect key="frame" x="135.5" y="16" width="141" height="40"/>
+                        <rect key="frame" x="150" y="16" width="112" height="32.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -34,25 +36,19 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1Y-1v-dne">
-                        <rect key="frame" x="162" y="74" width="88" height="21"/>
+                        <rect key="frame" x="162" y="66.5" width="88" height="21"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXT-3R-pTU" customClass="ShoutnoteLabel" customModule="StylingBoilerPlate">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXT-3R-pTU">
                                 <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCk-ui-9zq" customClass="TextLabel" customModule="StylingBoilerPlate">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCk-ui-9zq">
                                 <rect key="frame" x="46" y="-8" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -65,37 +61,38 @@
                             <constraint firstAttribute="bottom" secondItem="nXT-3R-pTU" secondAttribute="bottom" id="oG6-G1-h3d"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vq2-1X-L4g" customClass="TextLabel" customModule="StylingBoilerPlate">
-                        <rect key="frame" x="12" y="105" width="388" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vq2-1X-L4g">
+                        <rect key="frame" x="12" y="97.5" width="388" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
-                        </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCJ-es-AUH" customClass="TextLabel" customModule="StylingBoilerPlate">
-                        <rect key="frame" x="12" y="130" width="388" height="21"/>
+                        <rect key="frame" x="12" y="122.5" width="388" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
-                        </userDefinedRuntimeAttributes>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uBv-PE-4b0">
-                        <rect key="frame" x="0.0" y="232.5" width="412" height="1"/>
-                        <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                        <rect key="frame" x="0.0" y="233.5" width="412" height="1"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="stD-VO-TwV"/>
                         </constraints>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hJp-Bx-jLE">
+                        <rect key="frame" x="332" y="16" width="80" height="40.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="PN5-UY-5t3"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="eCJ-es-AUH" firstAttribute="trailing" secondItem="Vq2-1X-L4g" secondAttribute="trailing" id="3lc-dF-9xQ"/>
                     <constraint firstAttribute="trailing" secondItem="uBv-PE-4b0" secondAttribute="trailing" id="61z-YQ-J7H"/>
                     <constraint firstItem="uBv-PE-4b0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="DeL-WL-hqD"/>
                     <constraint firstItem="zVH-tI-NoD" firstAttribute="bottom" secondItem="BoI-qF-ER8" secondAttribute="bottom" constant="-8" id="E8C-o1-thS"/>
+                    <constraint firstItem="hJp-Bx-jLE" firstAttribute="height" secondItem="BoI-qF-ER8" secondAttribute="height" id="HLq-Yp-lr2"/>
                     <constraint firstItem="zVH-tI-NoD" firstAttribute="top" secondItem="BoI-qF-ER8" secondAttribute="top" id="I8a-Il-suE"/>
                     <constraint firstAttribute="trailing" secondItem="Vq2-1X-L4g" secondAttribute="trailing" constant="12" id="JZr-7H-S24"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eCJ-es-AUH" secondAttribute="bottom" constant="16" id="McY-MO-HxE"/>
@@ -105,22 +102,25 @@
                     <constraint firstItem="BoI-qF-ER8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="QQ1-jr-KvK"/>
                     <constraint firstItem="zVH-tI-NoD" firstAttribute="trailing" secondItem="BoI-qF-ER8" secondAttribute="trailing" constant="-24" id="SOI-6j-Lh1"/>
                     <constraint firstItem="eCJ-es-AUH" firstAttribute="top" secondItem="Vq2-1X-L4g" secondAttribute="bottom" constant="4" id="SXR-o9-6OS"/>
+                    <constraint firstItem="hJp-Bx-jLE" firstAttribute="centerY" secondItem="BoI-qF-ER8" secondAttribute="centerY" id="VYa-g9-uZy"/>
                     <constraint firstItem="g1Y-1v-dne" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="XYv-f9-eJP"/>
                     <constraint firstItem="g1Y-1v-dne" firstAttribute="top" secondItem="BoI-qF-ER8" secondAttribute="bottom" constant="10" id="fkz-eF-OdS"/>
                     <constraint firstItem="g1Y-1v-dne" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="mru-sL-N4C"/>
+                    <constraint firstAttribute="trailing" secondItem="hJp-Bx-jLE" secondAttribute="trailing" id="noC-zy-Wwh"/>
                     <constraint firstItem="zVH-tI-NoD" firstAttribute="leading" secondItem="BoI-qF-ER8" secondAttribute="leading" constant="24" id="sha-y2-GXI"/>
-                    <constraint firstAttribute="bottom" secondItem="uBv-PE-4b0" secondAttribute="bottom" id="tZh-jw-fZW"/>
+                    <constraint firstAttribute="bottom" secondItem="uBv-PE-4b0" secondAttribute="bottom" constant="-1" id="tZh-jw-fZW"/>
                     <constraint firstItem="BoI-qF-ER8" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="uZK-uo-jkk"/>
                     <constraint firstItem="eCJ-es-AUH" firstAttribute="leading" secondItem="Vq2-1X-L4g" secondAttribute="leading" id="zBn-oT-RkX"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="badgeImg" destination="BoI-qF-ER8" id="qjR-ot-VE3"/>
-                <outlet property="comissionRate" destination="Vq2-1X-L4g" id="BUk-IQ-1ib"/>
-                <outlet property="earnings" destination="eCJ-es-AUH" id="qXe-Z5-k1J"/>
+                <outlet property="earnings" destination="Vq2-1X-L4g" id="vPF-Lu-Kdf"/>
                 <outlet property="labelLevel" destination="zVH-tI-NoD" id="cAJ-N8-CSd"/>
+                <outlet property="lockedBadge" destination="hJp-Bx-jLE" id="0Bq-Vb-vgj"/>
                 <outlet property="noOfPeople" destination="nXT-3R-pTU" id="ZPV-z8-rzj"/>
                 <outlet property="staticLabelPeople" destination="QCk-ui-9zq" id="AK1-nc-Wah"/>
+                <outlet property="validity" destination="eCJ-es-AUH" id="d2V-96-ePr"/>
             </connections>
             <point key="canvasLocation" x="56" y="52"/>
         </tableViewCell>

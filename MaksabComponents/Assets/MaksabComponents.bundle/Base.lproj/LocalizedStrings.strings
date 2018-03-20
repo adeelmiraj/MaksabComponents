@@ -5,9 +5,11 @@
   Created by Mansoor Ali on 07/11/2017.
   
 */
-"constant-currency-SAR" = "SAR";
+"constant-currency-SAR" = "SAR %.2f";
+"constant-currency-SAR-only" = "SAR";
 "constant-title" = "Title";
 "constant-invalid-input" = "Invalid Input";
+"alert-action-Cancel" = "Cancel";
 
 //MARK:- MAKSAB COMPONENTS
 //Registeration
@@ -37,13 +39,14 @@
 "auth-basic-info" = "Basic Information";
 "auth-city" = "City";
 "auth-saudi-national" = "Saudi Nationality";
+"auth-country-code" = "+966";
 //validation errors
 "auth-phone-must-be-twelve-digits" = "Phone number must have 12 digits.";
 "auth-name-is-required" = "Name is required";
 "auth-email-is-required" = "Email is required" ;
 "auth-enter-valid-email" = "Please enter a valid email address" ;
 "auth-pass-must-be-greater-than-seven-char" = "Password must be greater than 7 characters";
-"auth-pass-and-confirm-pass-donot-match" = "Password and Confirm Password donot match";
+"auth-pass-and-confirm-pass-donot-match" = "Password and Confirm Password do not match";
 "auth-invalid-pin-title" = "Invalid Pin";
 "auth-invalid-pin-msg" = "Pin must have 6 digits";
 "auth-invalid-invite-code-title" = "Invalid Invite Code";
@@ -51,6 +54,14 @@
 "auth-fill-all-fields" = "Please fill all the fields";
 "auth-invalid-year" = "Invalid Year";
 "auth-year-must-be-greater-than" = "Year must be greater than %d";
+
+//MARK:- PhoneNumber Alert
+"phone-no-enter-number" = "Enter Phone Number";
+"phone-no-country-code" = "+966";
+"phone-no-must-be-twelve-digits" = "Phone number must have 12 digits";
+"phone-no-register" = "Register";
+"phone-no-required" = "Phone Number Required";
+"phone-no-required-description" = "Your Phone Number is needed for registeration. This will be required only once";
 
 //MARK:- MAKSAB COMPONENTS
 //Help
@@ -64,13 +75,33 @@
 "invite-friend-msg" = "Invite your friends and earn money";
 "invite-friend-btn-share" = "Share";
 //Wallet
-"wallet-cell-invite-more-friends" = "%@ more friends to Earn more";
+"wallet-cell-invite-more-friends" = "Invite more friends to Earn more";
 "wallet-cell-invite-btn-title" = "Invite";
 "wallet-cell-total-referral-title" = "Total Refferrals";
 "wallet-cell-total-referral-view-mlm-summary" = "View MLM Summary";
-"wallet-cell-transaction-id" = "Transaction ID:";
+"wallet-cell-transaction-id" = "Transaction ID: %d";
+"wallet-withdrawl-funds-available" = "Funds Available for withdrawal";
+"wallet-withdrawl-amount-to-withdraw" = "Amount to withdraw";
+"wallet-withdrawl-amount" = "Amount";
+"wallet-withdrawl-amount-note" = "* Amount should be less than available funds";
+"wallet-withdrawl-account-info" = "Account Info";
+"wallet-withdrawl-account-title" = "Account Title";
+"wallet-withdrawl-account-no" = "Account Number";
+"wallet-withdrawl-bank-name" = "Bank Name";
+"wallet-withdrawl-branch-name" = "Branch Name";
+"wallet-withdrawl-submit-withdrawl" = "Submit Withdrawl";
+"wallet-withdrawl-insufficient-funds-title" = "Insufficient funds";
+"wallet-withdrawl-insufficient-funds-msg" = "Insufficient funds for withdrawl";
+"wallet-withdrawl-invalid-amount" = "Invalid Amount";
+"wallet-withdrawl-account-title-required" = "Account title is required";
+"wallet-withdrawl-invalid-account-no-msg" = "Account No must be greater tha 10 digits";
+"wallet-withdrawl-bank-name-required" = "Bank name is required";
+"wallet-withdrawl-branch-name-required" = "Branch name is required";
+"wallet-withdrawl-nav-title" = "Request Withdrawl" ;
 //Mlm
-"wallet-mlm-commission-rate" = "Comission Rate: %d%";
+"wallet-mlm-unlocked-until" = "Unlocked Until: %@";
+"wallet-mlm-take-more-rides-to-unlock" = "Take more rides to unlock";
+"wallet-mlm-level" = "Level %d";
 "wallet-mlm-rank" = "Rank";
 "wallet-mlm-earnings" = "Earnings: %@ %.2f";
 "wallet-mlm-people" = "People";
@@ -79,7 +110,7 @@
 "wallet-mlm-btn-view-mlm-tree" = "View MLM Tree";
 "wallet-mlm-cell-user-refferals" = "%d Referrals";
 //Trip
-"trip-cell-complain-ride-again" = "Ride again with %@";
+"trip-cell-complain-ride-again" = "Ride again with %@?";
 "trip-cell-complain-btn-title" = "Complaint/Inquiry";
 //Payment
 "payment-add-card-no" = "CARD NUMBER";
@@ -96,3 +127,18 @@
 "payment-add-eror-invalid-expiry-date" = "Invalid expiry date";
 "payment-add-eror-invalid-cvv" = "Invalid CVV";
 "payment-add-eror-invalid-cardholder-name" = "Card Holder name is required";
+"payment-method-credit" = "Credit Card";
+"payment-method-wallet" = "Maksab Wallet";
+"payment-method-cash" = "Cash";
+//Rides
+"ride-type-economy-title" = "Economy";
+"ride-type-business-title" = "Business";
+"ride-type-normal-title" = "Normal";
+"ride-type-budget-title" = "Budget";
+"ride-type-luxury-title" = "Luxury";
+//Ride Options Grid
+"ride-options-non-mehram" = "Non Mehram";
+"ride-options-mehram" = "Mehram";
+"ride-options-no-smoking" = "No Smoking";
+"ride-options-smoking" = "Smoking";
+"ride-options-wallet" = "Wallet";

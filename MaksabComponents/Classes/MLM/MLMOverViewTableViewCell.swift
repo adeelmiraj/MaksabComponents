@@ -38,10 +38,20 @@ public class MLMOverViewTableViewCell: UITableViewCell, NibLoadableView {
     }
     
     func configView()  {
-        self.backgroundColor = UIColor.appColor(color: .Dark)
+        self.backgroundColor = UIColor.appColor(color: .Light)
+        
+        totalEarnings.font = ShoutnoteLabel.font()
+        totalEarnings.textColor = UIColor.appColor(color: .Primary)
+        
+        totalNodes.font = ShoutnoteLabel.font()
+        totalNodes.textColor = UIColor.appColor(color: .Primary)
+        
+        priceUnit.font = TextLabel.font()
+        priceUnit.textColor = UIColor.appColor(color: .Primary)
+        
         staticLabelTotalNodes.text = Bundle.localizedStringFor(key: "walet-mlm-total-nodes")
         staticLabelTotalEarnings.text = Bundle.localizedStringFor(key: "wallet-mlm-total-earnings")
-        priceUnit.text = Bundle.localizedStringFor(key: "constant-currency-SAR")
+        priceUnit.text = Bundle.localizedStringFor(key: "constant-currency-SAR-only")
         btnViewMLMTree.setTitle(Bundle.localizedStringFor(key: "wallet-mlm-btn-view-mlm-tree"), for: .normal)
     }
     

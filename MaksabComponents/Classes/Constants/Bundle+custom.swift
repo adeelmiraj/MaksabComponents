@@ -26,7 +26,7 @@ extension Bundle{
 //    return NSLocalizedStringFromTableInBundle(key, @"JSQMessages", [NSBundle jsq_messagesAssetBundle], nil);
 //    }
     
-    static func maksabComponentsBundle() -> Bundle{
+    public static func maksabComponentsBundle() -> Bundle{
         return Bundle(for: InviteFriendsTemplateViewController.classForCoder())
     }
     

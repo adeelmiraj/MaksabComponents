@@ -41,7 +41,7 @@ public class ScheduleDestinationInfoView: UIView, CustomView, NibLoadableView {
     
     func configView()  {
         view.backgroundColor = UIColor.clear
-        self.backgroundColor = UIColor.appColor(color: .Dark)
+        self.backgroundColor = UIColor.appColor(color: .Light)
     }
     
     public func config(distance: NSAttributedString, origin: String, destination: String){

@@ -80,7 +80,7 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
     
 
     func configView()  {
-        backgroundColor = UIColor.appColor(color: .Dark)
+        backgroundColor = UIColor.appColor(color: .Light)
         let color = UIColor(netHex: 0x777777)
         
         staticLabelCardNo.textColor = color
@@ -169,17 +169,6 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
         }
     }
     
-    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        if textField == fieldCardNo{
-            return handleCardInput(textField: textField, shouldChangeCharactersInRange: range, replacementString: string)
-        }else if textField == fieldCvv{
-            return handleCvvInput(textField: textField, shouldChangeCharactersInRange: range, replacementString: string)
-        }else if textField == fieldExpiryDate{
-            return handleDateInput(textField: textField, shouldChangeCharactersInRange: range, replacementString: string)
-        }
-        return true
-    }
     
     func handleCardInput(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         // check the chars length dd -->2 at the same time calculate the dd-MM --> 5

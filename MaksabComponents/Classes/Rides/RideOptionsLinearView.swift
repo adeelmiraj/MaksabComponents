@@ -17,7 +17,7 @@ public class RideOptionsLinearView: UIView , CustomView, NibLoadableView{
         return inst
     }
     
-    let bundle = Bundle(for: RidesOptionsGridView.classForCoder())
+    let bundle = Bundle(for: RideOptionsLinearView.classForCoder())
     
     @IBOutlet weak public var btnMehramRide: ToggleButton!
     @IBOutlet weak public var btnNoSmoking: ToggleButton!
@@ -40,15 +40,14 @@ public class RideOptionsLinearView: UIView , CustomView, NibLoadableView{
     }
     
     func configView()  {
-        let bh = BundleHelper(resourceName: Constants.resourceName)
         btnMehramRide.selectedStateImage = UIImage.image(named: "mehram-selected")
         btnMehramRide.unSelectedStateImage = UIImage.image(named: "mehram")
         
         btnNoSmoking.selectedStateImage = UIImage.image(named: "smoking")
         btnNoSmoking.unSelectedStateImage = UIImage.image(named: "no-smoking")
         
-        btnPayment.selectedStateImage = UIImage.image(named: "budget-car")
-        btnPayment.unSelectedStateImage = UIImage.image(named: "budget-car")
+        btnPayment.selectedStateImage = UIImage.image(named: "cash-circle")
+        btnPayment.unSelectedStateImage = UIImage.image(named: "cash-circle")
         
         btnNoOfPassegners.selectedStateImage = UIImage.image(named: "passengers")
         btnNoOfPassegners.unSelectedStateImage = UIImage.image(named: "passengers")
@@ -57,29 +56,9 @@ public class RideOptionsLinearView: UIView , CustomView, NibLoadableView{
         btnNoSmoking.setTitle("", for: .normal)
         btnPayment.setTitle("", for: .normal)
         btnNoOfPassegners.setTitle("", for: .normal)
-        /*
-        btnMehramRide.toggleDelegate = self
-        btnNoSmoking.toggleDelegate = self
-        btnPayment.toggleDelegate = self
-        btnNoOfPassegners.toggleDelegate = self*/
+   
     }
-    /*
-    public func onToggle(stateSelected: Bool, sender: UIButton) {
-        let btn = sender as! ToggleButton
-        
-        var optionType = RideOptions.MehramRide
-        if btn == btnMehramRide{
-            optionType = .MehramRide
-        }else if btn == btnNoSmoking{
-            optionType = .NoSmoking
-        }else if btn == btnPayment{
-            optionType = .Payment
-        }else if btn == btnNoOfPassegners{
-            optionType = .NoOfPassengers
-        }
-        
-        delegate?.rideOptioinToggled(rideOption: optionType, state: stateSelected)
-    }*/
+
     
     //MARK:- Setters
     public func config(rideOptions: RideOptions){

@@ -50,7 +50,7 @@ open class CreateIssueTemplateViewController: UIViewController, NibLoadableView,
     }
     
     func configView()  {
-        self.view.backgroundColor = UIColor.appColor(color: .Dark)
+        self.view.backgroundColor = UIColor.appColor(color: .Light)
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -60,6 +60,9 @@ open class CreateIssueTemplateViewController: UIViewController, NibLoadableView,
         }
         textView.layer.cornerRadius = 5
         textView.placeholder = Bundle.localizedStringFor(key: "help-details")
+        textView.layer.borderWidth = 1
+        textView.layer.borderColor = UIColor.appColor(color: .Dark).cgColor
+        textView.textColor = UIColor.appColor(color: .DarkText)
         btnSeekHelp.setTitle(Bundle.localizedStringFor(key: "help-btn-seek-help"), for: .normal)
     }
     
@@ -79,12 +82,11 @@ open class CreateIssueTemplateViewController: UIViewController, NibLoadableView,
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeCell(indexPath: indexPath) as SimpleTextTableViewCell
         cell.isLight = true
-        cell.separatorView.backgroundColor = UIColor.appColor(color: .Dark)
         cell.selectionStyle = .default
-        if indexPath.row == 0{
-            cell.config(title: Bundle.localizedStringFor(key: "help-cell-select-issue"))
-        }else{
+        if indexPath.row == 0 && showSelectRide{
             cell.config(title: Bundle.localizedStringFor(key: "help-cell-select-ride"))
+        }else{
+            cell.config(title: Bundle.localizedStringFor(key: "help-cell-select-issue"))
         }
         cell.addAccessoryView(img: UIImage.localizedImage(named: "arrow-right"))
         return cell

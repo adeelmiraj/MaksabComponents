@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,14 +40,14 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUY-Vi-fJl" userLabel="path View">
                                         <rect key="frame" x="10" y="4.5" width="516" height="1"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="Bnp-3j-NGA"/>
                                         </constraints>
                                     </view>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0sM-BN-c0a" userLabel="start point View">
                                         <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="10" id="CdX-hi-xK5"/>
                                             <constraint firstAttribute="width" secondItem="0sM-BN-c0a" secondAttribute="height" multiplier="1:1" id="qm6-pS-RJ2"/>
@@ -60,7 +60,7 @@
                                     </view>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zPh-WI-hfm" userLabel="end point View">
                                         <rect key="frame" x="526" y="0.0" width="10" height="10"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="10" id="GKH-Ke-PNQ"/>
                                             <constraint firstAttribute="width" secondItem="zPh-WI-hfm" secondAttribute="height" multiplier="1:1" id="UAY-y4-G5f"/>
@@ -92,7 +92,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2DH-3z-W4q" customClass="TextLabel" customModule="StylingBoilerPlate">
@@ -101,7 +101,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
@@ -125,7 +125,7 @@
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6HP-Gk-rpm">
                         <rect key="frame" x="0.0" y="308" width="560" height="1"/>
-                        <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="IvY-up-HJP"/>
                         </constraints>
@@ -138,7 +138,7 @@
                     <constraint firstItem="xto-DF-dAd" firstAttribute="top" secondItem="M4O-5P-WF8" secondAttribute="bottom" constant="24" id="aTl-mA-9Vs"/>
                     <constraint firstItem="6HP-Gk-rpm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bZL-Rk-1Jz"/>
                     <constraint firstItem="M4O-5P-WF8" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="dbf-I3-X36"/>
-                    <constraint firstAttribute="bottom" secondItem="6HP-Gk-rpm" secondAttribute="bottom" id="gNG-7r-7rT"/>
+                    <constraint firstAttribute="bottom" secondItem="6HP-Gk-rpm" secondAttribute="bottom" constant="-1" id="gNG-7r-7rT"/>
                     <constraint firstItem="xto-DF-dAd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="hvd-Z8-J9w"/>
                     <constraint firstAttribute="bottom" secondItem="xto-DF-dAd" secondAttribute="bottom" constant="16" id="pAW-gw-RVm"/>
                 </constraints>

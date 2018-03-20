@@ -20,6 +20,7 @@ public class LeftIconWithSubtitlesTableViewCell: UITableViewCell, NibLoadableVie
     @IBOutlet weak public var labelSubtitle: UILabel!
     @IBOutlet weak var rightButton: UIButton!
     
+    @IBOutlet weak var accessoryImageView: UIImageView!
     @IBOutlet weak var rightViewWidth: NSLayoutConstraint!
     
     var delegate: LeftIconWithSubtitlesCellDelegate?
@@ -29,10 +30,10 @@ public class LeftIconWithSubtitlesTableViewCell: UITableViewCell, NibLoadableVie
         super.awakeFromNib()
         self.hideDefaultSeparator()
         
-        labelTitle.textColor = UIColor.appColor(color: .LightText)
-        labelSubtitle.textColor = UIColor.appColor(color: .LightText)
-        self.backgroundColor = UIColor.appColor(color: .Dark)
-        self.icon.tintColor = UIColor.appColor(color: .Light)
+        labelTitle.textColor = UIColor.appColor(color: .DarkText)
+        labelSubtitle.textColor = UIColor.appColor(color: .DarkText)
+        self.backgroundColor = UIColor.appColor(color: .Light)
+        self.icon.tintColor = UIColor.appColor(color: .Dark)
         
     }
     
@@ -49,6 +50,7 @@ public class LeftIconWithSubtitlesTableViewCell: UITableViewCell, NibLoadableVie
         self.labelSubtitle.text = subtitle
         
         if rightButtonTitle != nil{
+            rightButton.isHidden = true
             rightViewWidth.constant = 114
             rightButton.setTitle(rightButtonTitle, for: .normal)
         }
@@ -60,6 +62,17 @@ public class LeftIconWithSubtitlesTableViewCell: UITableViewCell, NibLoadableVie
             return
         }
         delegate?.actionLeftButton(indexPath: index)
+    }
+    
+    public func addLeftView(img: UIImage?)  {
+        rightButton.isHidden = true
+        rightViewWidth.constant = 16+12+12
+        accessoryImageView.image = img
+        
+    }
+    
+    public func removeLeftView()  {
+        rightViewWidth.constant = 0
     }
     
 }

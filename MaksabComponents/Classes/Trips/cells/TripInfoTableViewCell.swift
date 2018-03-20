@@ -20,6 +20,7 @@ public class TripInfoTableViewCell: UITableViewCell, NibLoadableView {
         super.awakeFromNib()
         hideDefaultSeparator()
         backgroundColor = UIColor.appColor(color: .Medium)
+        price.textColor = UIColor.appColor(color: .Primary)
     }
     
     override public func setSelected(_ selected: Bool, animated: Bool) {

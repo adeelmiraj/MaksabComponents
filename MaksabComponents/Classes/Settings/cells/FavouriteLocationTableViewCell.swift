@@ -23,9 +23,9 @@ public class FavouriteLocationTableViewCell: UITableViewCell, NibLoadableView {
     }
 
     func configView()  {
-        leftImageView.tintColor = UIColor.appColor(color: .Light)
-        icon.tintColor = UIColor.appColor(color: .Light)
-        self.backgroundColor = UIColor.appColor(color: .Dark)
+        leftImageView.tintColor = UIColor.appColor(color: .Dark)
+        icon.tintColor = UIColor.appColor(color: .Dark)
+        self.backgroundColor = UIColor.appColor(color: .Light)
         locationTitle.minimumScaleFactor = 0.7
         locationTitle.adjustsFontSizeToFitWidth = true
     }

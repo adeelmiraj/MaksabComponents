@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -46,18 +47,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DMG-Rw-a0V" customClass="CaptionLabel" customModule="StylingBoilerPlate">
                                         <rect key="frame" x="0.0" y="24" width="469" height="83.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
                                 <constraints>
@@ -81,6 +76,13 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZI-wG-Xig" userLabel="right View">
                         <rect key="frame" x="509" y="0.0" width="0.0" height="135.5"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ojc-Yr-1II">
+                                <rect key="frame" x="12" y="59" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="16" id="avK-zp-mml"/>
+                                    <constraint firstAttribute="width" secondItem="ojc-Yr-1II" secondAttribute="height" multiplier="1:1" id="cDb-Ey-8DW"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPL-kK-ijZ" customClass="PrimaryButton" customModule="StylingBoilerPlate">
                                 <rect key="frame" x="12" y="53" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
@@ -94,14 +96,16 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="width" id="VTp-Sw-FTF"/>
+                            <constraint firstItem="ojc-Yr-1II" firstAttribute="leading" secondItem="eZI-wG-Xig" secondAttribute="leading" constant="12" id="Xrh-p5-kJp"/>
                             <constraint firstItem="fPL-kK-ijZ" firstAttribute="centerY" secondItem="eZI-wG-Xig" secondAttribute="centerY" id="Zpj-NO-B2I"/>
                             <constraint firstAttribute="trailing" secondItem="fPL-kK-ijZ" secondAttribute="trailing" constant="12" id="e9N-D2-tIT"/>
+                            <constraint firstItem="ojc-Yr-1II" firstAttribute="centerY" secondItem="eZI-wG-Xig" secondAttribute="centerY" id="h5o-BO-3yi"/>
                             <constraint firstItem="fPL-kK-ijZ" firstAttribute="leading" secondItem="eZI-wG-Xig" secondAttribute="leading" constant="12" id="p8a-5b-vgY"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ud0-eH-BQF">
                         <rect key="frame" x="0.0" y="135" width="509" height="1"/>
-                        <color key="backgroundColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="m6P-IB-cld"/>
                         </constraints>
@@ -118,12 +122,13 @@
                     <constraint firstItem="ud0-eH-BQF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="WAJ-Ok-vd9"/>
                     <constraint firstAttribute="trailing" secondItem="ud0-eH-BQF" secondAttribute="trailing" id="ZdS-ne-sCm"/>
                     <constraint firstAttribute="trailing" secondItem="eZI-wG-Xig" secondAttribute="trailing" id="oEe-ke-cTz"/>
-                    <constraint firstAttribute="bottom" secondItem="ud0-eH-BQF" secondAttribute="bottom" id="xoi-FB-yZJ"/>
+                    <constraint firstAttribute="bottom" secondItem="ud0-eH-BQF" secondAttribute="bottom" constant="-1" id="xoi-FB-yZJ"/>
                     <constraint firstItem="6mr-cJ-MFw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="yvc-uy-RbJ"/>
                     <constraint firstItem="dPg-Y2-tPq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="zKi-EP-q7f"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="accessoryImageView" destination="ojc-Yr-1II" id="ZEm-v4-b5m"/>
                 <outlet property="icon" destination="EoZ-bO-bgR" id="nHt-IC-xaG"/>
                 <outlet property="labelSubtitle" destination="DMG-Rw-a0V" id="ppR-hF-SmQ"/>
                 <outlet property="labelTitle" destination="gr1-Xl-hsF" id="4Fy-Pm-Ks7"/>

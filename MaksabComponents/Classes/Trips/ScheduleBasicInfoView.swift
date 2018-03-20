@@ -43,7 +43,7 @@ public class ScheduleBasicInfoView: UIView, CustomView, NibLoadableView {
         view.backgroundColor = UIColor.clear
         self.backgroundColor = UIColor.appColor(color: .Light)
         price.font = UIFont.appFont(font: .RubikMedium, pontSize: 15)
-        price.textColor = UIColor.appColor(color: .DarkText)
+        price.textColor = UIColor.appColor(color: .Primary)
     }
     
     public func config(otherInfo: String, price: String, time: String){

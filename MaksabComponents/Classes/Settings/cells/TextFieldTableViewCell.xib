@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,9 +23,6 @@
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="isLight" value="YES"/>
-                        </userDefinedRuntimeAttributes>
                     </label>
                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zif-vE-YdD">
                         <rect key="frame" x="279" y="16" width="150" height="30"/>
@@ -38,8 +35,8 @@
                         <textInputTraits key="textInputTraits" returnKeyType="go"/>
                     </textField>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jgb-k2-X5w">
-                        <rect key="frame" x="0.0" y="60.5" width="441" height="1"/>
-                        <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                        <rect key="frame" x="0.0" y="61.5" width="441" height="1"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="IVO-F1-Ldg"/>
                         </constraints>
@@ -52,7 +49,7 @@
                     <constraint firstAttribute="trailing" secondItem="jgb-k2-X5w" secondAttribute="trailing" id="dqj-Vq-Lfc"/>
                     <constraint firstItem="z5x-6g-IbL" firstAttribute="centerY" secondItem="zif-vE-YdD" secondAttribute="centerY" id="ePy-N5-qiG"/>
                     <constraint firstAttribute="trailing" secondItem="zif-vE-YdD" secondAttribute="trailing" constant="12" id="fu3-wP-xKy"/>
-                    <constraint firstAttribute="bottom" secondItem="jgb-k2-X5w" secondAttribute="bottom" id="mZq-UR-a8Z"/>
+                    <constraint firstAttribute="bottom" secondItem="jgb-k2-X5w" secondAttribute="bottom" constant="-1" id="mZq-UR-a8Z"/>
                     <constraint firstItem="z5x-6g-IbL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="xDq-Ba-7vJ"/>
                 </constraints>
             </tableViewCellContentView>

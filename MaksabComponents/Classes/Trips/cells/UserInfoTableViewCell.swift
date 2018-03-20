@@ -16,12 +16,14 @@ public class UserInfoTableViewCell: UITableViewCell, NibLoadableView {
     @IBOutlet weak public var carName: UILabel!
     @IBOutlet weak public var licencsePlate: UILabel!
     @IBOutlet weak public var ratingView: RatingView!
+    @IBOutlet weak public var separator: UIView!
     
     override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.backgroundColor = UIColor.appColor(color: .Dark)
+        self.backgroundColor = UIColor.appColor(color: .Light)
         hideDefaultSeparator()
+        separator.backgroundColor = UIColor.appColor(color: .Header)
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {

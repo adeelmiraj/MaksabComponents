@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,7 +27,9 @@
                 <outlet property="fieldFifth" destination="dJf-DV-cZW" id="phv-gA-LrH"/>
                 <outlet property="fieldFirst" destination="UGJ-Kr-TUz" id="Tal-jm-cjz"/>
                 <outlet property="fieldFourth" destination="s5E-GX-fe3" id="0Qg-WV-DwU"/>
+                <outlet property="fieldPhoneCode" destination="0oU-s0-WT7" id="W4G-BI-lKI"/>
                 <outlet property="fieldSecond" destination="NKB-aa-VLN" id="bvE-fq-PvO"/>
+                <outlet property="fieldSecondLeading" destination="XZu-Ts-Tri" id="6V7-Qy-xlQ"/>
                 <outlet property="fieldThird" destination="rvk-dP-wnu" id="UMf-qO-uym"/>
                 <outlet property="fieldsView" destination="Gdg-JG-UiD" id="Lb2-G3-LHC"/>
                 <outlet property="fifthFieldHeight" destination="PeV-YZ-N4i" id="1j7-jI-GgQ"/>
@@ -38,6 +40,7 @@
                 <outlet property="labelTitle" destination="Yle-o5-kOz" id="AIZ-8q-aUK"/>
                 <outlet property="logo" destination="rGN-v1-8y8" id="bqf-qS-70V"/>
                 <outlet property="logoView" destination="5ys-xt-D97" id="gbZ-B3-Cta"/>
+                <outlet property="phoneCodeWidth" destination="8Wl-hq-d11" id="qDS-WY-pI1"/>
                 <outlet property="socialLoginsView" destination="TgN-mF-xcs" id="HPD-4u-9Gg"/>
                 <outlet property="stackViewHeight" destination="6So-sb-kzP" id="28j-Pb-pSy"/>
                 <outlet property="stackViewReqHeight" destination="Bba-3q-ljj" id="Cfm-IH-cGS"/>
@@ -121,10 +124,10 @@ on first ride</string>
                             </constraints>
                         </view>
                         <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="EYw-QP-vtV">
-                            <rect key="frame" x="57" y="92" width="262" height="76"/>
+                            <rect key="frame" x="58" y="92" width="261" height="76"/>
                             <subviews>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ABC" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UGJ-Kr-TUz" customClass="BottomBorderTextField" customModule="StylingBoilerPlate">
-                                    <rect key="frame" x="0.0" y="0.0" width="262" height="30"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="261" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="StJ-jP-Az8"/>
                                     </constraints>
@@ -132,17 +135,40 @@ on first ride</string>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ABC" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NKB-aa-VLN" customClass="BottomBorderTextField" customModule="StylingBoilerPlate">
-                                    <rect key="frame" x="0.0" y="46" width="262" height="30"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faE-MG-50q">
+                                    <rect key="frame" x="0.0" y="46" width="261" height="30"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+966" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0oU-s0-WT7" customClass="BottomBorderTextField" customModule="StylingBoilerPlate">
+                                            <rect key="frame" x="0.0" y="-0.5" width="0.0" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" id="8Wl-hq-d11"/>
+                                            </constraints>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ABC" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NKB-aa-VLN" customClass="BottomBorderTextField" customModule="StylingBoilerPlate">
+                                            <rect key="frame" x="0.0" y="0.0" width="261" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="Gdt-eg-O2y"/>
+                                            </constraints>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                        </textField>
+                                    </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="30" id="Gdt-eg-O2y"/>
+                                        <constraint firstItem="0oU-s0-WT7" firstAttribute="leading" secondItem="faE-MG-50q" secondAttribute="leading" id="DDR-Q8-kiC"/>
+                                        <constraint firstItem="NKB-aa-VLN" firstAttribute="leading" secondItem="0oU-s0-WT7" secondAttribute="trailing" id="XZu-Ts-Tri"/>
+                                        <constraint firstItem="0oU-s0-WT7" firstAttribute="top" secondItem="NKB-aa-VLN" secondAttribute="top" id="a4W-Op-D5k"/>
+                                        <constraint firstAttribute="bottom" secondItem="NKB-aa-VLN" secondAttribute="bottom" id="fVZ-IC-zQy"/>
+                                        <constraint firstItem="NKB-aa-VLN" firstAttribute="top" secondItem="faE-MG-50q" secondAttribute="top" id="imY-p3-8lp"/>
+                                        <constraint firstAttribute="trailing" secondItem="NKB-aa-VLN" secondAttribute="trailing" id="nqM-Kl-Vl8"/>
+                                        <constraint firstItem="0oU-s0-WT7" firstAttribute="bottom" secondItem="NKB-aa-VLN" secondAttribute="bottom" id="oth-fF-wZj"/>
                                     </constraints>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" returnKeyType="go"/>
-                                </textField>
+                                </view>
                                 <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ABC" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rvk-dP-wnu" customClass="BottomBorderTextField" customModule="StylingBoilerPlate">
-                                    <rect key="frame" x="0.0" y="76" width="262" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="76" width="261" height="0.0"/>
                                     <constraints>
                                         <constraint firstAttribute="height" id="rJT-Tu-8df"/>
                                     </constraints>
@@ -151,7 +177,7 @@ on first ride</string>
                                     <textInputTraits key="textInputTraits" returnKeyType="go"/>
                                 </textField>
                                 <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ABC" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s5E-GX-fe3" customClass="BottomBorderTextField" customModule="StylingBoilerPlate">
-                                    <rect key="frame" x="0.0" y="76" width="262" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="76" width="261" height="0.0"/>
                                     <constraints>
                                         <constraint firstAttribute="height" id="T6J-2v-32v"/>
                                     </constraints>
@@ -160,7 +186,7 @@ on first ride</string>
                                     <textInputTraits key="textInputTraits" returnKeyType="go"/>
                                 </textField>
                                 <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ABC" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dJf-DV-cZW" customClass="BottomBorderTextField" customModule="StylingBoilerPlate">
-                                    <rect key="frame" x="0.0" y="76" width="262" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="76" width="261" height="0.0"/>
                                     <constraints>
                                         <constraint firstAttribute="height" id="PeV-YZ-N4i"/>
                                     </constraints>
@@ -169,23 +195,23 @@ on first ride</string>
                                     <textInputTraits key="textInputTraits" returnKeyType="go"/>
                                 </textField>
                                 <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8GD-jO-A53">
-                                    <rect key="frame" x="0.0" y="76" width="262" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="76" width="261" height="0.0"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="height" id="BWN-fP-AWA"/>
                                     </constraints>
                                 </view>
                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="swf-KE-Q9J">
-                                    <rect key="frame" x="0.0" y="76" width="262" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="76" width="261" height="0.0"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBM-ZS-OwX" customClass="TextLabel" customModule="StylingBoilerPlate">
-                                            <rect key="frame" x="0.0" y="-10" width="197" height="20.5"/>
+                                            <rect key="frame" x="0.5" y="-10" width="196" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1hy-bR-mZW">
-                                            <rect key="frame" x="209" y="-15.5" width="51" height="31"/>
+                                            <rect key="frame" x="208.5" y="-15.5" width="51" height="31"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="49" id="673-SM-O1H"/>
                                                 <constraint firstAttribute="height" constant="31" id="xTb-8E-PBD"/>

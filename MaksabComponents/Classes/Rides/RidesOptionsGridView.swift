@@ -17,26 +17,23 @@ public enum PaymentMethod: Int {
     public func getTitle() -> String {
         switch self {
         case .card:
-            return "payment-method-Credit"
+            return Bundle.localizedStringFor(key: "payment-method-credit")
         case .cash:
-            return "payment-method-Cash"
+            return Bundle.localizedStringFor(key: "payment-method-cash")
         case .wallet:
-            return "payment-method-Maqsab Wallet"
+            return Bundle.localizedStringFor(key: "payment-method-wallet")
         }
     }
 }
 
 public enum RideCapacity: Int {
-    case twoSitter = 0
-    case fiveSitter = 1
+    case fourSitter = 1
     case sevenSitter = 2
     
     public func getCount() -> Int {
         switch self {
-        case .twoSitter:
-            return 2
-        case .fiveSitter:
-            return 5
+        case .fourSitter:
+            return 4
         case .sevenSitter:
             return 7
         }
@@ -46,7 +43,7 @@ public enum RideCapacity: Int {
 public class RideOptions{
     public var isMehram: Bool = false
     public var isSmoking: Bool = false
-    public var capacity: RideCapacity = .twoSitter
+    public var capacity: RideCapacity = .fourSitter
     public var paymentInfo = PaymentInfo(method: .cash)
     
     public init() {}
@@ -73,29 +70,28 @@ public struct PaymentOptions{
     }
     
     static func createPaymentOptions() -> [PaymentOptions] {
-        let optionCash = PaymentOptions(title: "Cash", id: -1)
-        let optionWallet = PaymentOptions(title: "Wallet", id: -1)
+        
+        let optionCash = PaymentOptions(title: Bundle.localizedStringFor(key: "payment-method-cash"), id: -1)
+        let optionWallet = PaymentOptions(title: Bundle.localizedStringFor(key: "ride-options-wallet"), id: -1)
         return [optionCash,optionWallet]
     }
 }
 
-public class RidesOptionsGridView: UIView, CustomView, NibLoadableView, Toggleable{
+public class RidesOptionsGridView: UIView, CustomView, NibLoadableView, ToggleViewDelegate{
     
     
     static public func createInstance(x: CGFloat, y: CGFloat, width:CGFloat) -> RidesOptionsGridView{
-        let inst = RidesOptionsGridView(frame: CGRect(x: x, y: y, width: width, height: 139))
+        let inst = RidesOptionsGridView(frame: CGRect(x: x, y: y, width: width, height: 72))
         return inst
     }
     
     let bundle = Bundle(for: RidesOptionsGridView.classForCoder())
     
-    @IBOutlet weak public var btnMehramRide: ToggleButton!
-    @IBOutlet weak var btnNoSmoking: ToggleButton!
-    @IBOutlet weak public var btnPayment: ToggleButton!
-    @IBOutlet weak public var btnNoOfPassegners: ToggleButton!
+    @IBOutlet weak public var mehramView: ToggleView!
+    @IBOutlet weak public var paymentView: ToggleView!
     
     var view: UIView!
-    var capacity = RideCapacity.twoSitter
+    var capacity = RideCapacity.fourSitter
     var availablePayments = PaymentOptions.createPaymentOptions()
     var selectedPaymentOptionIndex: Int = 0
     
@@ -112,32 +108,22 @@ public class RidesOptionsGridView: UIView, CustomView, NibLoadableView, Toggleab
     }
     
     func configView()  {
-        btnMehramRide.selectedStateImage = UIImage.image(named: "mehram-selected")
-        btnMehramRide.unSelectedStateImage = UIImage.image(named: "mehram")
-        btnMehramRide.stateSelected = false
         
-        btnNoSmoking.selectedStateImage = UIImage.image(named: "smoking")
-        btnNoSmoking.unSelectedStateImage = UIImage.image(named: "no-smoking")
-        btnNoSmoking.stateSelected = false
+        mehramView.selectedStateImg = UIImage.image(named: "mehram-selected")
+        mehramView.unSelectedStateImg = UIImage.image(named: "mehram")
         
-        btnPayment.selectedStateImage = UIImage.image(named: "cash-circle")
-        btnPayment.unSelectedStateImage = UIImage.image(named: "credit-card")
-        btnPayment.stateSelected = true
+        mehramView.selectedStateTitle = Bundle.localizedStringFor(key: "ride-options-mehram")
+        mehramView.unSelectedStateTitle = Bundle.localizedStringFor(key: "ride-options-non-mehram")
+        mehramView.title.numberOfLines = 2
+        mehramView.state = false
         
-        btnNoOfPassegners.selectedStateImage = UIImage.image(named: "passengers")
-        btnNoOfPassegners.unSelectedStateImage = UIImage.image(named: "passengers")
-        btnNoOfPassegners.stateSelected = true
+        paymentView.icon.image = UIImage.image(named: "cash-circle")
+        paymentView.title.text = Bundle.localizedStringFor(key: "payment-method-cash")
+
+        paymentView.toggeable = self
         
-        btnMehramRide.setTitle("Mehram Ride", for: .normal)
-        btnNoSmoking.setTitle("No Smoking", for: .normal)
         let icon = UIImage.image(named: "cash-circle")!
         updatePaymentBtn(title: availablePayments[selectedPaymentOptionIndex].title, img: icon)
-        btnNoOfPassegners.setTitle("\(capacity.getCount()) or less Passengers", for: .normal)
-        
-        btnMehramRide.toggleDelegate = self
-        btnNoSmoking.toggleDelegate = self
-        btnPayment.toggleDelegate = self
-        btnNoOfPassegners.toggleDelegate = self
     }
     
     public func addCreditCards(creditCards: [PaymentOptions]){
@@ -146,26 +132,8 @@ public class RidesOptionsGridView: UIView, CustomView, NibLoadableView, Toggleab
     
     //MARK:- Setters
     public func config(rideOptions: RideOptions){
-        btnMehramRide.stateSelected = rideOptions.isMehram
-        setSmoking(state: rideOptions.isSmoking)
-        setCapacity(capacity: rideOptions.capacity)
         setPayment(paymentInfo: rideOptions.paymentInfo)
-    }
-    
-    //Smoking
-    public func setSmoking(state: Bool)  {
-        if state{
-            btnNoSmoking.setTitle("Smoking", for: .normal)
-        }else{
-            btnNoSmoking.setTitle("No Smoking", for: .normal)
-        }
-        btnNoSmoking.stateSelected = state
-    }
-    
-    //Capacity
-    public func setCapacity(capacity: RideCapacity)  {
-        self.capacity = capacity
-        btnNoOfPassegners.setTitle("\(capacity.getCount()) or less Passengers", for: .normal)
+        mehramView.state = rideOptions.isMehram
     }
     
     //Payment
@@ -191,8 +159,8 @@ public class RidesOptionsGridView: UIView, CustomView, NibLoadableView, Toggleab
     }
     
     func updatePaymentBtn(title: String, img: UIImage)  {
-        btnPayment.setTitle(title, for: .normal)
-        btnPayment.setImage(img.withRenderingMode(.alwaysOriginal), for: .normal)
+        paymentView.icon.image = img
+        paymentView.title.text = title
     }
     
     func getIndexForCard(id: Int?) -> Int? {
@@ -208,12 +176,8 @@ public class RidesOptionsGridView: UIView, CustomView, NibLoadableView, Toggleab
         return nil
     }
     
-    public func onToggle(stateSelected: Bool, sender: UIButton) {
-        let btn = sender as! ToggleButton
-       
-        if btn == btnNoSmoking{
-            setSmoking(state: btn.stateSelected)
-        }else if btn == btnPayment{
+    public func viewToggled(state: Bool, view: ToggleView) {
+        if view == paymentView{
             if selectedPaymentOptionIndex == availablePayments.count - 1{
                 selectedPaymentOptionIndex = 0
             }else{
@@ -221,40 +185,16 @@ public class RidesOptionsGridView: UIView, CustomView, NibLoadableView, Toggleab
             }
             var icon: UIImage!
             if selectedPaymentOptionIndex == 0{
-                 icon = UIImage.image(named: "cash-circle")
+                icon = UIImage.image(named: "cash-circle")
             }else if selectedPaymentOptionIndex == 1{
-                 icon = UIImage.image(named: "wallet-card")
+                icon = UIImage.image(named: "wallet-card")
             }else{
-                 icon = UIImage.image(named: "credit-card")
+                icon = UIImage.image(named: "credit-card")
             }
             let paymentOption = availablePayments[selectedPaymentOptionIndex]
             updatePaymentBtn(title: paymentOption.title, img: icon)
-        }else if btn == btnNoOfPassegners{
-            switch capacity {
-            case .twoSitter:
-                self.capacity = .fiveSitter
-            case .fiveSitter:
-                self.capacity = .sevenSitter
-            case .sevenSitter:
-                self.capacity = .twoSitter
-            }
-            setCapacity(capacity: capacity)
         }
     }
-    
-
-    /*
-    public func isCash() -> Bool{
-      return selectedPaymentOptionIndex == 0
-    }
-    
-    public func isWallet() -> Bool{
-        return selectedPaymentOptionIndex == 1
-    }
-    
-    public func getCreditCardId() -> Int{
-        return availablePayments[selectedPaymentOptionIndex].id
-    }*/
     
     //MARK:- Getters
     public func getPaymentInfo() -> PaymentInfo{
@@ -272,18 +212,13 @@ public class RidesOptionsGridView: UIView, CustomView, NibLoadableView, Toggleab
         return capacity
     }
     
-    public func isSmoking() -> Bool{
-        return btnNoSmoking.stateSelected
-    }
-    
     public func isMehramRide() -> Bool{
-        return btnMehramRide.stateSelected
+        return mehramView.state
     }
     
     public func getRideOptions() -> RideOptions {
         let options = RideOptions()
         options.isMehram = isMehramRide()
-        options.isSmoking = isSmoking()
         options.capacity = getRideCapcity()
         options.paymentInfo = getPaymentInfo()
         return options
