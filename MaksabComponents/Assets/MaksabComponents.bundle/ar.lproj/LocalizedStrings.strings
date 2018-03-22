@@ -91,6 +91,10 @@
 "wallet-withdrawl-bank-name-required" = "البنك";
 "wallet-withdrawl-branch-name-required" = "عنوان البنك";
 "wallet-withdrawl-nav-title" = "طلب سحب مبلغ" ;
+"wallet-pay-now-nav-title" = "Pay Now";
+"wallet-maqsab-owe-you" = "Maqsab owe You";
+"wallet-amount-to-pay" = "Amount to pay";
+"wallet-pay-now" = "Pay Now";
 //Mlm
 "wallet-mlm-unlocked-until" = "هذا المستوى متاح الى: %@";
 "wallet-mlm-take-more-rides-to-unlock" = "قم برحلات اضافية لفتح هذا المستوى";

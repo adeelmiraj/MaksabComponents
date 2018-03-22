@@ -219,7 +219,8 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     
     func config(type: RegisterationViewType, assets:RegisterationAssets)  {
         self.type = type
-        self.logo.image = assets._logo
+        self.logo.image = assets._logo.withRenderingMode(.alwaysTemplate)
+        self.logo.tintColor = UIColor.appColor(color: .Primary)
         btnTooltip.setImage(assets._tooltip, for: .normal)
         btnBottomTooltip.setImage(assets._tooltip, for: .normal)
         btnNext.setImage(assets._btnNext, for: .normal)
@@ -372,15 +373,16 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         activityIndicatoryFb = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activityIndicatoryFb.hidesWhenStopped = true
         activityIndicatoryFb.center = btnFacbook.center
+        btnFacbook.addSubview(activityIndicatoryFb)
+        
         activityIndicatoryGoogle = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activityIndicatoryGoogle.hidesWhenStopped = true
         activityIndicatoryGoogle.center = btnGoogle.center
+        btnGoogle.addSubview(activityIndicatoryGoogle)
+        
         activityIndicatoryTwitter = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activityIndicatoryTwitter.hidesWhenStopped = true
         activityIndicatoryTwitter.center = btnTwitter.center
-        
-        btnFacbook.addSubview(activityIndicatoryFb)
-        btnGoogle.addSubview(activityIndicatoryGoogle)
         btnTwitter.addSubview(activityIndicatoryTwitter)
     }
     

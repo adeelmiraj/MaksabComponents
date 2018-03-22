@@ -170,6 +170,18 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
     }
     
     
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == fieldCardNo{
+            return handleCardInput(textField: textField, shouldChangeCharactersInRange: range, replacementString: string)
+        }else if textField == fieldExpiryDate{
+            return handleDateInput(textField: textField, shouldChangeCharactersInRange: range, replacementString: string)
+        }else if textField == fieldCvv{
+            return handleCvvInput(textField: textField, shouldChangeCharactersInRange: range, replacementString: string)
+        }else {
+            return !(textField.text!.count > 128 && (string.count) > range.length)
+        }
+    }
+    
     func handleCardInput(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         // check the chars length dd -->2 at the same time calculate the dd-MM --> 5
         let replaced = (textField.text! as NSString).replacingCharacters(in: range, with: string)
@@ -185,13 +197,6 @@ public class PaymentCardView: UIView, CustomView, NibLoadableView, UITextFieldDe
     }
     
     func setCardImage(string: String)  {
-        let bh = BundleHelper(resourceName: Constants.resourceName)
-        
-//        if string.count == 1 , let digit = Int(string), digit == 4{
-//
-//        }else{
-//            cardImg.image = bh.getImageFromMaksabComponent(name: "creditcard", _class: PaymentCardView.self)
-//        }
         
         guard string.count <= 2 , let digit = Int(string) else {
             return

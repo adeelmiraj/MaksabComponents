@@ -44,14 +44,14 @@ open class WithdrawTemplateViewController: UIViewController {
     }
     
     func customize()  {
-        self.view.backgroundColor = UIColor.appColor(color: .Dark)
+        self.view.backgroundColor = UIColor.appColor(color: .Light)
         
         fundsAvailable.text = Bundle.localizedStringFor(key: "wallet-withdrawl-funds-available")
         
         amountToWithdraw.text = Bundle.localizedStringFor(key: "wallet-withdrawl-amount-to-withdraw")
         fieldWithdrawAmount.placeholder = Bundle.localizedStringFor(key: "wallet-withdrawl-amount")
         amountInfoMsg.font = UIFont.appFont(font: .RubikRegular, pontSize: 10)
-        amountInfoMsg.textColor = UIColor.appColor(color: .LightText)
+        amountInfoMsg.textColor = UIColor.appColor(color: .DarkText)
         amountInfoMsg.text = Bundle.localizedStringFor(key: "wallet-withdrawl-amount-note")
         
         accountInfo.text = Bundle.localizedStringFor(key: "wallet-withdrawl-account-info")
@@ -65,12 +65,14 @@ open class WithdrawTemplateViewController: UIViewController {
     }
     
     public func config(amount: Double){
+        self.currentBalance = amount
         let amountText = String(format: "%.2f", amount)
         amountAvailable.attributedText = String.boldAttributedString(boldComponent: "\(amountText)",
             otherComponent: "SAR",
             boldFont: UIFont.appFont(font: .RubikBold, pontSize: 32),
             otherfont: UIFont.appFont(font: .RubikRegular, pontSize: 12),
-            textColor: UIColor.appColor(color: .LightText),
+            textColor: UIColor.appColor(color: .Primary),
+            boldTextColor: UIColor.appColor(color: .Primary),
             boldFirst: false)
         
     }
@@ -82,7 +84,7 @@ open class WithdrawTemplateViewController: UIViewController {
         }
         var amount: Double = 0
         var msg = ""
-        if let a = Double(fieldWithdrawAmount.text!),amount > 0 , a < currentBalance!{
+        if let a = Double(fieldWithdrawAmount.text!),a > 0 , a < currentBalance!{
             amount = a
         }else{
             msg = Bundle.localizedStringFor(key:"wallet-withdrawl-invalid-amount")
