@@ -1,18 +1,42 @@
 "constant-currency-SAR" = "ريال سعودي %.2f";
 "constant-currency-SAR-only" = "ريال سعودي";
 "constant-title" = "العنوان";
-"constant-invalid-input" = "ادخال خاطئ";
+"Invalid Input" = "ادخال خاطئ";
 "alert-action-Cancel" = "الغاء";
 
 //MARK:- MAKSAB COMPONENTS
 //Registeration
 "auth-btn-back-to-signup" = "العودة للتسجيل";
+"Terms & Conditions" = "الأحكام والشروط";
+"Retry" = "محاولة اخرى";
 "auth-enter-phone-no" = "ادخل رقم هاتفك";
+"or Login with" = "تسجيل الدخول بواسطة";
+"Vehicle Registeration" = "رخصة السير";
+"Gender" = "الجنس";
+"Male" = "ذكر";
+"Female" = "انثى";
+"Date Of Birth" = "تاريخ الميلاد";
+"Saudi Id/Iqama Id" = "رقم الهوية";
+"Plate Type" = "نوع التسجيل";
+"Sequence Number" = "الرقم التسلسلي لرخصة السير";
+"Private Car" = "خصوصي";
+"Public Transport" = "نقل عام";
+"Private Transport" = "نقل خاص";
+"Public Bus" = "حافلة صغيرة عامة";
+"Private Bus" = "حافلة صغيرة خاصة";
+"Taxi" = "اجرة";
+"Heavy equipment" = "معدات ثقيلة";
+"Export" = "تصدير";
+"Diplomatic" = "دبلوماسي";
+"Motorcycle" = "دراجة نارية";
+"Temporary" = "مؤقت";
+"Hijri" = "هجري";
+"Gregorian" = "ميلادي";
 "auth-verification-code" = "رمز التفعيل";
 "auth-enter-here" = "ادخل هنا";
 "auth-resend-code" = "اعادة ارسال";
 "auth-name-and-email" = "الاسم و البريد الالكتروني";
-"auth-name" = "الاسم";
+"Name" = "الاسم";
 "auth-email" = "الايميل";
 "auth-skip" = "تخطي";
 "auth-password" = "الرمز السري";
@@ -38,8 +62,9 @@
 "auth-name-is-required" = "الاسم مطلوب";
 "auth-email-is-required" = "البريد الالكتروني مطلوب" ;
 "auth-enter-valid-email" = "الرجاء ادخال بريد الكتروني صحيح" ;
-"auth-pass-must-be-greater-than-seven-char" = "الرمز السري لابد ان يكون اكثر من 7 خانات";
+"Password must be more than 5 characters" = "الرمز السري لابد ان يكون اكثر من 5 خانات";
 "auth-pass-and-confirm-pass-donot-match" = "الرمز السري غير صحيح";
+"Password (must be 6 digits)" = "الرمز السري (لابد ان يكون من 6 خانات)";
 "auth-invalid-pin-title" = "رمز التفعيل خاطئ";
 "auth-invalid-pin-msg" = "رمز التفعيل لابد ان يحتوي على 6 ارقام";
 "auth-invalid-invite-code-title" = "رمز دعوة خاطئ";
@@ -91,10 +116,10 @@
 "wallet-withdrawl-bank-name-required" = "البنك";
 "wallet-withdrawl-branch-name-required" = "عنوان البنك";
 "wallet-withdrawl-nav-title" = "طلب سحب مبلغ" ;
-"wallet-pay-now-nav-title" = "Pay Now";
-"wallet-maqsab-owe-you" = "Maqsab owe You";
-"wallet-amount-to-pay" = "Amount to pay";
-"wallet-pay-now" = "Pay Now";
+"Pay Now" = "ادفع الان";
+"Maqsab owe You" = "مكاسب مدين لك";
+"You owe Maqsab" = "انت مدين لمكسب";
+"Amount to pay" = "مبلغ الدفعة";
 //Mlm
 "wallet-mlm-unlocked-until" = "هذا المستوى متاح الى: %@";
 "wallet-mlm-take-more-rides-to-unlock" = "قم برحلات اضافية لفتح هذا المستوى";
@@ -103,7 +128,8 @@
 "wallet-mlm-earnings" = "أرباح: %@";
 "wallet-mlm-people" = "المدعويين";
 "walet-mlm-total-nodes" = "اجمالي المدعويين";
-"wallet-mlm-total-earnings" = "اجمالي المكاسب";
+//"wallet-mlm-total-earnings" = "اجمالي المكاسب";
+"All Time Earnings" = "اجمالي مكاسب المستويات المحققة";
 "wallet-mlm-btn-view-mlm-tree" = "رؤية المستويات";
 "wallet-mlm-cell-user-refferals" = "%d المدعويين";
 //Trip
@@ -124,18 +150,18 @@
 "payment-add-eror-invalid-expiry-date" = "تاريخ نهاية البطاقة خاطئ";
 "payment-add-eror-invalid-cvv" = "خاطئ CVV";
 "payment-add-eror-invalid-cardholder-name" = "اسم حامل البطاقة مطلوب";
-"payment-method-credit" = "البطاقة الائتمانية";
+"Credit Card" = "البطاقة الائتمانية";
 "payment-method-wallet" = "المحفظة";
-"payment-method-cash" = "نقدا";
+"Cash" = "نقدا";
 //Rides
 "ride-type-economy-title" = "اقتصاد";
-"ride-type-business-title" = "تجارة";
+"Business" = "فارهة";
 "ride-type-normal-title" = "عادية";
-"ride-type-budget-title" = "ميزانية";
+"Budget" = "فرصة مكسب";
 "ride-type-luxury-title" = "كمالي";
 //Ride Options Grid
 "ride-options-non-mehram" = "غير محرم";
 "ride-options-mehram" = "محرم";
 "ride-options-no-smoking" = "ممنوع التدخين";
 "ride-options-smoking" = "تدخين";
-"ride-options-wallet" = "المحفظة";
+"Wallet" = "المحفظة";

@@ -17,6 +17,7 @@ public enum RideType: Int {
     case budget = 2
     case luxury = 3
     case schedule = 4
+	case special = 7
 }
 
 public protocol RidesTypesViewDelegate {
@@ -36,10 +37,10 @@ public class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
     @IBOutlet weak var btnNormal: ToggleBottomTitleButton!
     @IBOutlet weak var btnBudget: ToggleBottomTitleButton!
     @IBOutlet weak var btnExotic: ToggleBottomTitleButton!
-    @IBOutlet weak public var estimateBudget: UILabel!
-    @IBOutlet weak public var estimateEconomy: CalloutLabel!
     
-    @IBOutlet weak public var estimateBusiness: CalloutLabel!
+    @IBOutlet weak public var normalFare: UILabel!
+    @IBOutlet weak public var economyFare: CalloutLabel!
+    @IBOutlet weak public var businessFare: CalloutLabel!
     var view: UIView!
     
     var selectedRideType = RideType.normal
@@ -74,19 +75,25 @@ public class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
     
     func configView()  {
         
-        titleNormal = Bundle.localizedStringFor(key: "ride-type-normal-title")
-        titleEconomy = Bundle.localizedStringFor(key: "ride-type-economy-title")
-        titleBusiness = Bundle.localizedStringFor(key: "ride-type-business-title")
-        titleBudget = Bundle.localizedStringFor(key: "ride-type-budget-title")
-        titleLuxury = Bundle.localizedStringFor(key: "ride-type-luxury-title")
+        createRideTypesTitles()
 
         selectedButton = btnNormal
         
         updateCarIcons(capacity: capacity)
-//        btnNormal.setImage(UIImage.localizedImage(named: "normal-car"), for: .normal)
-//        btnBudget.setImage(UIImage.localizedImage(named: "budget-car"), for: .normal)
-//        btnExotic.setImage(UIImage.localizedImage(named: "luxury-car"), for: .normal)
+        setupRideTypeButtons()
+        setupFareLabels()
         
+    }
+    
+    private func createRideTypesTitles(){
+        titleNormal = Bundle.localizedStringFor(key: "ride-type-normal-title")
+        titleEconomy = Bundle.localizedStringFor(key: "ride-type-economy-title")
+        titleBusiness = Bundle.localizedStringFor(key: "Business")
+        titleBudget = Bundle.localizedStringFor(key: "Budget")
+        titleLuxury = Bundle.localizedStringFor(key: "ride-type-luxury-title")
+    }
+    
+    private func setupRideTypeButtons(){
         btnNormal.setTitle(titleNormal, for: .normal)
         btnBudget.setTitle(titleEconomy, for: .normal)
         btnExotic.setTitle(titleBusiness, for: .normal)
@@ -94,21 +101,22 @@ public class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
         btnNormal.toggleDelegate = self
         btnBudget.toggleDelegate = self
         btnExotic.toggleDelegate = self
+    }
+    
+    private func setupFareLabels()  {
+        let scale: CGFloat = 0.7
+        let font = UIFont.appFont(font: .RubikRegular, pontSize: 10)
         
-        estimateBudget.minimumScaleFactor = 0.7
-        estimateEconomy.minimumScaleFactor = 0.7
-        estimateBusiness.minimumScaleFactor = 0.7
-        
-        estimateBudget.adjustsFontSizeToFitWidth = true
-        estimateEconomy.adjustsFontSizeToFitWidth = true
-        estimateBusiness.adjustsFontSizeToFitWidth = true
-        
-        estimateBudget.font = UIFont.appFont(font: .RubikRegular, pontSize: 10)
-        estimateEconomy.font = estimateBudget.font
-        estimateBusiness.font = estimateBudget.font
-        estimateBudget.text = ""
-        estimateEconomy.text = ""
-        estimateBusiness.text = ""
+        setup(label: normalFare, scale: scale, font: font)
+        setup(label: economyFare, scale: scale, font: font)
+        setup(label: businessFare, scale: scale, font: font)
+    }
+    
+    private func setup(label: UILabel, scale: CGFloat, font: UIFont){
+        label.font = font
+        label.minimumScaleFactor = scale
+        label.adjustsFontSizeToFitWidth = true
+        label.text = ""
     }
     
     public override func layoutSubviews() {
@@ -116,35 +124,35 @@ public class RidesTypesView: UIView, CustomView, NibLoadableView, Toggleable{
     }
     
     public func showOnlyNormalRide()  {
-        btnBudget.isHidden = true
-        btnExotic.isHidden = true
-        btnNormal.setImage(normalCar(capacity: capacity), for: .normal)
-        btnNormal.setTitle(titleNormal, for: .normal)
-        btnNormal.stateSelected = true
-        btnNormal.isUserInteractionEnabled = false
+        hideEconomyAndBusinessOptions()
+        setupCenterButton(title: titleNormal, icon: normalCar(capacity: capacity))
         selectedRideType = .schedule
     }
     
     public func showOnlyBudgetRide()  {
-        btnBudget.isHidden = true
-        btnExotic.isHidden = true
-        btnNormal.setImage(economyCar(capacity: capacity), for: .normal)
-        btnNormal.setTitle(titleBudget, for: .normal)
-        btnNormal.stateSelected = true
-        btnNormal.isUserInteractionEnabled = false
+        hideEconomyAndBusinessOptions()
+        setupCenterButton(title: titleBudget, icon: economyCar(capacity: capacity))
         selectedRideType = .budget
     }
     
     public func showOnlyLuxuryRide()  {
-        btnBudget.isHidden = true
-        btnExotic.isHidden = true
-        btnNormal.setImage(businessCar(capacity: capacity), for: .normal)
-        btnNormal.setTitle(titleLuxury, for: .normal)
-        btnNormal.isUserInteractionEnabled = false
-        btnNormal.stateSelected = true
+        hideEconomyAndBusinessOptions()
+        setupCenterButton(title: titleLuxury, icon: businessCar(capacity: capacity))
         selectedRideType = .luxury
     }
 
+    private func hideEconomyAndBusinessOptions(){
+        btnBudget.isHidden = true
+        btnExotic.isHidden = true
+    }
+    
+    private func setupCenterButton(title: String, icon: UIImage?){
+        btnNormal.setImage(icon, for: .normal)
+        btnNormal.setTitle(title, for: .normal)
+        btnNormal.isUserInteractionEnabled = false
+        btnNormal.stateSelected = true
+    }
+    
     public func setCapacity(capacity: RideCapacity)  {
         self.capacity = capacity
     }

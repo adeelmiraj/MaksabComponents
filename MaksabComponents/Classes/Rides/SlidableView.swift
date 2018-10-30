@@ -21,14 +21,15 @@ public extension SlidableView where Self:UIView {
     
     public func hide(animated: Bool, animationTime: Double = 0.5, completion: (() -> Void)? = nil){
         let t = self.transform
-        let newTransform = CGAffineTransform(a: t.a, b: t.b, c: t.c, d: t.d, tx: 0, ty: self.frame.size.height)
+		let newTransform = t.translatedBy(x: 0, y: self.frame.size.height)
+//        let newTransform = CGAffineTransform(a: t.a, b: t.b, c: t.c, d: t.d, tx: 0, ty: self.frame.size.height)
         changeTransform(transform: newTransform, animated: animated, animationTime: animationTime, completion: completion)
     }
     
     public func show(animated: Bool, animationTime: Double = 0.5, completion: (() -> Void)? = nil)  {
-        let t = self.transform
-        let newTransform = CGAffineTransform(a: t.a, b: t.b, c: t.c, d: t.d, tx: 0, ty: 0)
-        changeTransform(transform: newTransform, animated: animated, animationTime: animationTime, completion: completion)
+//        let t = self.transform
+//        let newTransform = CGAffineTransform(a: t.a, b: t.b, c: t.c, d: t.d, tx: 0, ty: 0)
+        changeTransform(transform: CGAffineTransform.identity, animated: animated, animationTime: animationTime, completion: completion)
     }
     
     func changeTransform(transform:CGAffineTransform , animated: Bool, animationTime: Double, completion: (() -> Void)? = nil) {

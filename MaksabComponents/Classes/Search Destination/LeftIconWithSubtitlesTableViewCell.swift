@@ -19,7 +19,9 @@ public class LeftIconWithSubtitlesTableViewCell: UITableViewCell, NibLoadableVie
     @IBOutlet weak public var labelTitle: UILabel!
     @IBOutlet weak public var labelSubtitle: UILabel!
     @IBOutlet weak var rightButton: UIButton!
-    
+	@IBOutlet weak var subtitleHeight: NSLayoutConstraint!
+	@IBOutlet weak var subtitleTop: NSLayoutConstraint!
+	
     @IBOutlet weak var accessoryImageView: UIImageView!
     @IBOutlet weak var rightViewWidth: NSLayoutConstraint!
     
@@ -48,7 +50,7 @@ public class LeftIconWithSubtitlesTableViewCell: UITableViewCell, NibLoadableVie
         self.icon.image = icon.withRenderingMode(.alwaysTemplate)
         self.labelTitle.text = title
         self.labelSubtitle.text = subtitle
-        
+        showSubtitle()
         if rightButtonTitle != nil{
             rightButton.isHidden = true
             rightViewWidth.constant = 114
@@ -57,6 +59,16 @@ public class LeftIconWithSubtitlesTableViewCell: UITableViewCell, NibLoadableVie
         self.delegate = delegate
     }
 
+	public func hideSubtitle(){
+		subtitleHeight.constant = 0
+		subtitleTop.constant = 0
+	}
+
+	public func showSubtitle(){
+		subtitleHeight.constant = 90
+		subtitleTop.constant = 3
+	}
+	
     @IBAction func actRightButton(_ sender: PrimaryButton) {
         guard let index = self.indexPath else {
             return

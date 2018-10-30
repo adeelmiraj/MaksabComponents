@@ -67,7 +67,7 @@ public class MLMLevelDetailsTableViewCell: UITableViewCell, NibLoadableView {
         if isUnlocked{
             let format = Bundle.localizedStringFor(key: "wallet-mlm-unlocked-until")
             validity.text = String(format:format,expiryDateString ?? "")
-            validity.textColor = UIColor.appColor(color: .LightText)
+            validity.textColor = UIColor.appColor(color: .Secondary)
             lockedBadge.isHidden = true
         }else{
             validity.text = Bundle.localizedStringFor(key: "wallet-mlm-take-more-rides-to-unlock")

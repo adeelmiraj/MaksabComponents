@@ -67,17 +67,44 @@ public struct ResetPassUsingPhoneAsset {
 
 public struct BasicInfo{
     public var name: String
-    public var email: String
+    public var email: String?
     public var city: String
     public var isSaudiNational: Bool
+	public var selectedGenderIndex: Int
+	public var dateOfBirth: Date
+	public var iqamaOrSaudiId: String
+	public var isHijriDob: Bool
+
+	init() {
+		name = ""
+		email = nil
+		city = ""
+		isSaudiNational = true
+		selectedGenderIndex = 0
+		dateOfBirth = Date()
+		iqamaOrSaudiId = ""
+		isHijriDob = true
+	}
 }
 
 public struct VehicleDetails{
     public var make: String
     public var model: String
     public var year: Int
+	public var plateType: Int
     public var licensePlate: String
+	public var sequenceNo: String
     public var selectedCapacityIndex: Int
+
+	init() {
+		make = ""
+		model = ""
+		year = 0
+		plateType = 0
+		licensePlate = ""
+		sequenceNo = ""
+		selectedCapacityIndex = 0
+	}
 }
 
 public protocol RegisterationTemplateViewControllerDataSource{
@@ -118,7 +145,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     @IBOutlet weak var logoView: UIView!
     
     @IBOutlet weak public var logo: UIImageView!
-    
+    @IBOutlet weak public var orLoginWithLabel: UILabel!
     //Fields View
     @IBOutlet weak var phoneCodeWidth: NSLayoutConstraint!
     @IBOutlet weak var fieldSecondLeading: NSLayoutConstraint!
@@ -126,6 +153,8 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     @IBOutlet weak var thirdFieldHeight: NSLayoutConstraint!
     @IBOutlet weak var fourthFieldHeight: NSLayoutConstraint!
     @IBOutlet weak var fifthFieldHeight: NSLayoutConstraint!
+	@IBOutlet weak var sixthFieldHeight: NSLayoutConstraint!
+	@IBOutlet weak var seventhFieldHeight: NSLayoutConstraint!
     @IBOutlet weak var stackViewHeight: NSLayoutConstraint!
     @IBOutlet weak var stackViewReqHeight: NSLayoutConstraint!
     @IBOutlet weak var subtitleHeight: NSLayoutConstraint!
@@ -143,6 +172,8 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     @IBOutlet weak public var fieldThird: BottomBorderTextField!
     @IBOutlet weak public var fieldFourth: BottomBorderTextField!
     @IBOutlet weak public var fieldFifth: BottomBorderTextField!
+	@IBOutlet weak public var fieldSixth: BottomBorderTextField!
+	@IBOutlet weak public var fieldSeventh: BottomBorderTextField!
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var btnAction: UIButton!
     
@@ -152,7 +183,8 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     @IBOutlet weak var driverNationalityView: UIView!
     public var vehicleRegisterationView: VehicleRegisterationView!
     @IBOutlet weak var vehicleRegisterationContainerView: UIView!
-    
+	var genderPickerView: UIPickerView?
+	var plateTypePickerView: UIPickerView?
     
     //Social Logins View
     @IBOutlet weak public var btnFacbook: UIButton!
@@ -164,9 +196,16 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     public var activityIndicatoryGoogle:UIActivityIndicatorView!
     public var activityIndicatoryTwitter:UIActivityIndicatorView!
     
-    var type:RegisterationViewType = .PhoneNumber
+    var type: RegisterationViewType = .PhoneNumber
     var capacityArray = [String]()
+	var gendersArray = [Bundle.localizedStringFor(key: "Male"),Bundle.localizedStringFor(key: "Female")]
+
+	var plateTypeArray = [PlateType]()
+	var selectedGenderIndex = 0
     var selectedCapacityIndex: Int = 0
+	var selectedPlateTypeIndex: Int = 0
+	var driverDOB: Date?
+	var isHijriDob = true
     
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -181,13 +220,16 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         fieldFourth.delegate = self
         fieldFifth.delegate = self
         fieldPhoneCode.delegate = self
+		fieldSixth.delegate = self
         
-        
+        btnTooltip.isHidden = true
+		
         fieldFirst.returnKeyType = .done
         fieldSecond.returnKeyType = .done
         fieldThird.returnKeyType = .done
         fieldFourth.returnKeyType = .done
         fieldFifth.returnKeyType = .done
+		fieldSixth.returnKeyType = .done
         
         self.navigationController?.navigationBar.topItem?.title = ""
         
@@ -206,6 +248,8 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         addTargets()
         
         configurationsCompleted()
+
+		orLoginWithLabel.text = Bundle.localizedStringFor(key: "or Login with")
         
     }
     
@@ -221,14 +265,14 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         self.type = type
         self.logo.image = assets._logo.withRenderingMode(.alwaysTemplate)
         self.logo.tintColor = UIColor.appColor(color: .Primary)
-        btnTooltip.setImage(assets._tooltip, for: .normal)
+//        btnTooltip.setImage(assets._tooltip, for: .normal)
         btnBottomTooltip.setImage(assets._tooltip, for: .normal)
         btnNext.setImage(assets._btnNext, for: .normal)
         btnGoogle.setImage(assets._google, for: .normal)
         btnFacbook.setImage(assets._facebook, for: .normal)
         btnTwitter.setImage(assets._twitter, for: .normal)
         btnAction.tintColor = UIColor.appColor(color: .Secondary)
-        if type != .NameAndEmail && type != .PasswordAndConfirmPassword  && type != .AddVehicleDetails && type != .BasicInfo && type != .ResetPassUsingPhone{
+        if type != .PasswordAndConfirmPassword  && type != .AddVehicleDetails && type != .BasicInfo && type != .ResetPassUsingPhone && type != .NameAndEmail{
             removeFirstField()
         }
         if type != .PhoneNumber{
@@ -245,15 +289,20 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
             removeSubtitle()
         }
         if type == .VerificationCode{
-            btnTooltip.isHidden = false
+//            btnTooltip.isHidden = false
         }
         if type == .AddVehicleDetails{
             addThirdField()
             addFourthField()
             addFifthField()
+			addSixthField()
+			addSeventhField()
         }
         if type == .BasicInfo{
             addThirdField()
+			addFourthField()
+			addFifthField()
+			addSixthField()
             addDriverNationalityView()
         }
         if type == .ResetPassUsingPhone{
@@ -279,10 +328,13 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
             fieldSecond.keyboardType = .numberPad
             btnBackToSigup.isHidden = false
         case .NameAndEmail:
-            labelTitle.text = Bundle.localizedStringFor(key: "auth-name-and-email")
-            fieldFirst.placeholder = Bundle.localizedStringFor(key: "auth-name")
-            fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-email")
-            fieldSecond.keyboardType = .emailAddress
+			labelTitle.text = Bundle.localizedStringFor(key: "Name")
+			fieldFirst.placeholder = Bundle.localizedStringFor(key: "Name")
+			fieldSecond.placeholder = Bundle.localizedStringFor(key: "Gender")
+			genderPickerView = showGenderPicker()
+			fieldSecond.inputView = genderPickerView
+			//            fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-email")
+		//            fieldSecond.keyboardType = .emailAddress
         case.Password:
             labelTitle.text = Bundle.localizedStringFor(key: "auth-password")
             fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-password")
@@ -290,7 +342,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
             fieldSecond.isSecureTextEntry = true
         case .PasswordAndConfirmPassword:
             labelTitle.text = Bundle.localizedStringFor(key: "auth-password")
-            fieldFirst.placeholder = Bundle.localizedStringFor(key: "auth-password")
+            fieldFirst.placeholder = Bundle.localizedStringFor(key: "Password (must be 6 digits)")
             fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-password-confirm")
             fieldFirst.isSecureTextEntry = true
             fieldSecond.isSecureTextEntry = true
@@ -309,20 +361,50 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
             fieldFirst.placeholder = Bundle.localizedStringFor(key: "auth-make")
             fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-model")
             fieldThird.placeholder = Bundle.localizedStringFor(key: "auth-year")
-            fieldFourth.placeholder = Bundle.localizedStringFor(key: "auth-license-plate")
-            fieldFifth.placeholder = Bundle.localizedStringFor(key: "auth-capacity")
-            fieldFifth.inputView = showPicker()
+			fieldFourth.placeholder = Bundle.localizedStringFor(key: "Plate Type")
+            fieldFifth.placeholder = Bundle.localizedStringFor(key: "auth-license-plate")
+				.appending("(ى-و-ھ-١٢٣٤)")
+			fieldSixth.placeholder = Bundle.localizedStringFor(key: "Sequence Number")
+            fieldSeventh.placeholder = Bundle.localizedStringFor(key: "auth-capacity")
             addVehicleRegisterationView()
             fieldThird.keyboardType = .numberPad
+			fieldSixth.keyboardType = .numberPad
             capacityArray = carCapcaityArray()
-            fieldFifth.text = capacityArray[0]
+			plateTypePickerView = showPlateTypePicker()
+			fieldFourth.inputView = plateTypePickerView
+			plateTypeArray = createPlateTypeArray()
+			fieldFourth.text = plateTypeArray[selectedPlateTypeIndex].title
+			fieldSeventh.inputView = showPicker()
+            fieldSeventh.text = capacityArray[selectedCapacityIndex]
         case .BasicInfo:
             labelTitle.text = Bundle.localizedStringFor(key: "auth-basic-info")
-            fieldFirst.placeholder = Bundle.localizedStringFor(key: "auth-name")
+            fieldFirst.placeholder = Bundle.localizedStringFor(key: "Name")
             fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-email")
             fieldThird.placeholder = Bundle.localizedStringFor(key: "auth-city")
+			fieldFourth.placeholder = Bundle.localizedStringFor(key: "Gender")
+			fieldFifth.placeholder = Bundle.localizedStringFor(key: "Date Of Birth")
+			fieldSixth.placeholder = Bundle.localizedStringFor(key: "Saudi Id/Iqama Id")
+			fieldSixth.keyboardType = .numberPad
+			let datePickerView = DatePickerView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 170))
+			datePickerView.dateUpdateCallback = { [weak self] (date,isHijri) in
+				let dateFormatter = DateFormatter()
+				dateFormatter.dateFormat = "MMMM  dd  YYYY"
+				if isHijri{
+					dateFormatter.calendar = Calendar(identifier: .islamicUmmAlQura)
+				}else {
+					dateFormatter.calendar = Calendar(identifier: .gregorian)
+				}
+				let dateString = dateFormatter.string(from: date)
+				self?.fieldFifth.text =  dateString
+				self?.driverDOB = date
+				self?.isHijriDob = isHijri
+			}
+
+			fieldFifth.inputView = datePickerView
             labelDriverNationality.text = Bundle.localizedStringFor(key: "auth-saudi-national")
             fieldSecond.keyboardType = .emailAddress
+			genderPickerView = showGenderPicker()
+			fieldFourth.inputView = genderPickerView
         case .ResetPassUsingPhone:
             labelTitle.text = Bundle.localizedStringFor(key: "auth-reset-pass")
             fieldFirst.placeholder = Bundle.localizedStringFor(key: "auth-password")
@@ -338,6 +420,33 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     open func carCapcaityArray() -> [String]{
         return [String]()
     }
+
+	public struct PlateType {
+		var title: String
+		var id: Int
+	}
+
+	private func localisedValue(for key: String) -> String {
+		return Bundle.localizedStringFor(key: key)
+	}
+
+	public func createPlateTypeArray() -> [PlateType] {
+		var arr = [PlateType]()
+
+		arr.append(PlateType(title: localisedValue(for: "Private Car"), id: 1))
+		arr.append(PlateType(title: localisedValue(for: "Public Transport"), id: 2))
+		arr.append(PlateType(title: localisedValue(for: "Private Transport"), id: 3))
+		arr.append(PlateType(title: localisedValue(for: "Public Bus"), id: 4))
+		arr.append(PlateType(title: localisedValue(for: "Private Bus"), id: 5))
+		arr.append(PlateType(title: localisedValue(for: "Taxi"), id: 6))
+		arr.append(PlateType(title: localisedValue(for: "Heavy equipment"), id: 7))
+		arr.append(PlateType(title: localisedValue(for: "Export"), id: 8))
+		arr.append(PlateType(title: localisedValue(for: "Diplomatic"), id: 9))
+		arr.append(PlateType(title: localisedValue(for: "Motorcycle"), id: 10))
+		arr.append(PlateType(title: localisedValue(for: "Temporary"), id: 11))
+		return arr
+	}
+
     public func setFirstFieldText(text: String){
         guard fieldFirst != nil else {
             return
@@ -445,6 +554,22 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         stackViewHeight.constant = 76+30+30+30
         stackViewReqHeight.constant = 64+30+30+30
     }
+
+	func addSixthField()  {
+		sixthFieldHeight.constant = 30
+		fieldSixth.isHidden = false
+
+		stackViewHeight.constant = 76+30+30+30+30
+		stackViewReqHeight.constant = 64+30+30+30+30
+	}
+
+	func addSeventhField()  {
+		seventhFieldHeight.constant = 30
+		fieldSixth.isHidden = false
+
+		stackViewHeight.constant = 76+150
+		stackViewReqHeight.constant = 64+150
+	}
     
     func addVehicleRegisterationView()  {
         vehicleRegisterationContainerHeight.constant = 30
@@ -516,13 +641,22 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
 //MARK:- Handle TextField delegates
 extension RegisterationTemplateViewController: UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate  {
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == fieldFifth{
-            let picker = fieldFifth.inputView as! UIPickerView
+        if textField == fieldSeventh && type == .AddVehicleDetails{
+            let picker = fieldSeventh.inputView as! UIPickerView
             picker.selectRow(selectedCapacityIndex, inComponent: 0, animated: false)
         }else if textField == fieldThird && type == .BasicInfo{
             delegate?.showCitiesList?()
             return false
-        }
+		}else if (textField == fieldSecond && type == .NameAndEmail)  {
+			let picker = fieldSecond.inputView as! UIPickerView
+			picker.selectRow(selectedGenderIndex, inComponent: 0, animated: false)
+			textField.text = gendersArray[selectedGenderIndex]
+		}else if (textField == fieldFourth && type == .BasicInfo) {
+			let picker = fieldFourth.inputView as! UIPickerView
+			picker.selectRow(selectedGenderIndex, inComponent: 0, animated: false)
+			textField.text = gendersArray[selectedGenderIndex]
+		}
+		
         return true
     }
     
@@ -534,12 +668,51 @@ extension RegisterationTemplateViewController: UITextFieldDelegate, UIPickerView
         picker.delegate = self
         return picker
     }
+
+	func showGenderPicker() -> UIPickerView {
+		let picker = UIPickerView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 100))
+		picker.dataSource = self
+		picker.delegate = self
+		return picker
+	}
+
+	func showDatePicker(calendarIdentifier: Calendar.Identifier) -> UIDatePicker {
+		let picker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200))
+		picker.datePickerMode = .date
+		picker.date = Date()
+		picker.calendar = Calendar(identifier: calendarIdentifier)
+		picker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
+//		picker.autoresizingMask = UIViewAutoresizing.flexibleRightMargin
+		return picker
+	}
+
+	func showPlateTypePicker() -> UIPickerView {
+		let picker = UIPickerView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200))
+		picker.dataSource = self
+		picker.delegate = self
+		return picker
+	}
+
+	func dateChanged(_ datePicker: UIDatePicker)  {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "MMMM  dd  YYYY"
+		dateFormatter.calendar = Calendar(identifier: .islamicUmmAlQura)
+//		dateFormatter.locale = Locale.init(identifier: "en_GB")
+		let dateString = dateFormatter.string(from: datePicker.date)
+		fieldFifth.text =  dateString
+		driverDOB = datePicker.date
+	}
     
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+		if pickerView == genderPickerView {
+			return gendersArray.count
+		}else if pickerView == plateTypePickerView {
+			return plateTypeArray.count
+		}
         return capacityArray.count
     }
     
@@ -548,12 +721,29 @@ extension RegisterationTemplateViewController: UITextFieldDelegate, UIPickerView
     }
     
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+		if pickerView == genderPickerView {
+			return gendersArray[row]
+		}else if pickerView == plateTypePickerView {
+			return plateTypeArray[row].title
+		}
         return  capacityArray[row]
     }
     
     public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedCapacityIndex = row
-        fieldFifth.text = capacityArray[row]
+		if pickerView == genderPickerView {
+			selectedGenderIndex = row
+			if type == .NameAndEmail {
+				fieldSecond.text = gendersArray[row]
+			}else if type == .BasicInfo {
+				fieldFourth.text = gendersArray[row]
+			}
+		}else if pickerView == plateTypePickerView {
+			selectedPlateTypeIndex = row
+			fieldFourth.text = plateTypeArray[row].title
+		}else {
+        	selectedCapacityIndex = row
+        	fieldSeventh.text = capacityArray[row]
+		}
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -583,12 +773,25 @@ extension RegisterationTemplateViewController: UITextFieldDelegate, UIPickerView
         case .AddVehicleDetails:
             if textField == fieldThird{
                 return !(textField.text!.count > 3 && (string.count) > range.length)
-            }
-            return true
+			}else if textField == fieldFifth {
+				return handleLicencePlate(textField: textField,shouldChangeCharactersInRange: range, replacementString: string)
+			}else if textField == fieldFourth {
+				return false
+			} else if textField == fieldSeventh {
+				return false
+			}
         case .BasicInfo:
             if textField == fieldFirst{
                 return handleName(textField: textField,shouldChangeCharactersIn: range, replacementString: string)
-            }
+			}else if textField == fieldFourth {
+				return false
+			}else if textField == fieldSixth {
+				 return handleIqamaId(textField: textField,shouldChangeCharactersIn: range, replacementString: string)
+			}
+		case .NameAndEmail:
+			if textField == fieldSecond {
+				return false
+			}
         default:
             return !(textField.text!.count > 119 && (string.count) > range.length)
         }
@@ -609,7 +812,48 @@ extension RegisterationTemplateViewController: UITextFieldDelegate, UIPickerView
         }
         return true
     }
-    
+
+	public func handleIqamaId(textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+		return !(textField.text!.count > 9 && (string.count) > range.length)
+	}
+
+	public func handleLicencePlate(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+		// check the chars length dd -->2 at the same time calculate the dd-MM --> 5
+		let replaced = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+		if replaced.count <= 5 && !isLicenceInitialCharacter(string: string) && !(string == "") {
+			return false
+		}else if replaced.count > 5 && !isArabicNumber(string: string) && !(string == "") {
+			return false
+		}
+		if (textField.text!.count == 1) || (textField.text!.count == 3 ) || (textField.text!.count == 5) {
+			//Handle backspace being pressed
+			if !(string == "") {
+				// append the text
+				textField.text = textField.text! + "-"
+			}
+		}
+		return !(textField.text!.count > 9 && (string.count ) > range.length)
+	}
+
+	private func isLicenceInitialCharacter(string: String) -> Bool {
+		let allowedCharacters = ["ا", "ب", "ح", "د", "ر", "س", "ص", "ط", "ع", "ق", "ك", "ل", "م", "ن", "ھ", "و", "ى"]
+		for ch in allowedCharacters {
+			if ch == string {
+				return true
+			}
+		}
+		return false
+	}
+
+	private func isArabicNumber(string: String) -> Bool {
+		let allowedCharacters = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"]
+		for ch in allowedCharacters {
+			if ch == string {
+				return true
+			}
+		}
+		return false
+	}
     public static func handlePhoneCode(textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return !(textField.text!.count > 3 && (string.count) > range.length)
     }
@@ -631,7 +875,7 @@ public extension RegisterationTemplateViewController{
     public func getPhoneNo() -> String? {
         let phoneNo = RegisterationTemplateViewController.getValidPhoneNoFrom(fieldCode: fieldPhoneCode, fieldPhoneNo: fieldSecond)
         if phoneNo == nil{
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg:   Bundle.localizedStringFor(key: "auth-phone-must-be-twelve-digits"))
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg:   Bundle.localizedStringFor(key: "auth-phone-must-be-twelve-digits"))
         }else{
             self.view.endEditing(true)
         }
@@ -665,30 +909,34 @@ public extension RegisterationTemplateViewController{
         }
     }
     
-    public func getNameAndEmail() -> [String]?{
-        let name = fieldFirst.text ?? ""
-        let email = fieldSecond.text ?? ""
-        if name.isEmpty{
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: Bundle.localizedStringFor(key: "auth-name-is-required"))
-            return nil
-        }else if email.isEmpty{
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: Bundle.localizedStringFor(key: "auth-email-is-required"))
-            return nil
-        }else if !fieldSecond.isValid(exp: .email){
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: Bundle.localizedStringFor(key: "auth-enter-valid-email"))
-            return nil
-        }
-        self.view.endEditing(true)
-        return [name,email]
-    }
+	public func getNameAndGender() -> (name: String, gender: Int)?{
+		let name = fieldFirst.text ?? ""
+		let gender = fieldSecond.text ?? ""
+		if name.isEmpty{
+			Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "auth-name-is-required"))
+			return nil
+		}else if  gender.isEmpty {
+			Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "auth-fill-all-fields"))
+			return nil
+		}else {
+			self.view.endEditing(true)
+			return (name,selectedGenderIndex)
+		}/*else if email.isEmpty{
+		Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: Bundle.localizedStringFor(key: "auth-email-is-required"))
+		return nil
+		}else if !fieldSecond.isValid(exp: .email){
+		Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: Bundle.localizedStringFor(key: "auth-enter-valid-email"))
+		return nil
+		}*/
+	}
     
     public func getPasswordAndConfirmPassword() -> [String]? {
         let pass = fieldFirst.text ?? ""
         let confirmPass = fieldSecond.text ?? ""
         
         var msg = ""
-        if pass.count < 8{
-            msg = Bundle.localizedStringFor(key: "auth-pass-must-be-greater-than-seven-char")
+        if pass.count <= 5{
+            msg = Bundle.localizedStringFor(key: "Password must be more than 5 characters")
         }else if pass.compare(confirmPass) != .orderedSame{
             msg = Bundle.localizedStringFor(key: "auth-pass-and-confirm-pass-donot-match")
         }
@@ -697,7 +945,7 @@ public extension RegisterationTemplateViewController{
             self.view.endEditing(true)
             return [pass,confirmPass]
         }else{
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: msg)
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: msg)
             return nil
         }
     }
@@ -715,8 +963,8 @@ public extension RegisterationTemplateViewController{
     
     public func getPassword() -> String? {
         let pass = fieldSecond.text ?? ""
-        if pass.count < 8{
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: Bundle.localizedStringFor(key: "auth-pass-must-be-greater-than-seven-char"))
+        if pass.count <= 5{
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "Password must be more than 5 characters"))
             return nil
         }else{
             self.view.endEditing(true)
@@ -748,47 +996,68 @@ public extension RegisterationTemplateViewController{
             return pin
         }
     }
-    
-    public func getBasicInfo() -> BasicInfo? {
-        let name = fieldFirst.text ?? ""
-        let email = fieldSecond.text ?? ""
-        let city = fieldThird.text ?? ""
-        let isSaudiNational = driverNationalitySwitch.isOn
-        if name.isEmpty || email.isEmpty || city.isEmpty {
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: Bundle.localizedStringFor(key: "auth-fill-all-fields"))
-            return nil
-        }else if !fieldSecond.isValid(exp: .email){
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: Bundle.localizedStringFor(key: "auth-fill-all-fields"))
-            return nil
-        } else{
-            self.view.endEditing(true)
-            return BasicInfo(name: name, email: email, city: city, isSaudiNational: isSaudiNational)
-        }
-    }
+
+	public func getBasicInfo() -> BasicInfo? {
+		var email: String?
+		if let emailString = fieldSecond.text, !emailString.isEmpty {
+			email = emailString
+		}
+		let isSaudiNational = driverNationalitySwitch.isOn
+		if (fieldFirst.text ?? "").isEmpty || (fieldThird.text ?? "").isEmpty || (fieldFourth.text ?? "" ).isEmpty || driverDOB == nil  || (fieldSixth.text ?? "").count != 10 {
+			Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "auth-fill-all-fields"))
+			return nil
+		}else if let emailString = email, !UITextField.isValid(text: emailString, forExp: .email){
+			Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "auth-fill-all-fields"))
+			return nil
+		} else{
+			self.view.endEditing(true)
+			var info = BasicInfo()
+			info.name = fieldFirst.text ?? ""
+			info.email = email
+			info.city = fieldThird.text ?? ""
+			info.isSaudiNational = isSaudiNational
+			info.selectedGenderIndex = selectedGenderIndex
+			info.dateOfBirth = driverDOB ?? Date()
+			info.isHijriDob = isHijriDob
+			info.iqamaOrSaudiId = fieldSixth.text ?? ""
+			return info
+		}
+	}
     
     public func getVehicleDetails() -> VehicleDetails? {
         let make = fieldFirst.text ?? ""
         let model = fieldSecond.text ?? ""
         let yearString = fieldThird.text ?? ""
-        let licensePlate = fieldFourth.text ?? ""
+        let licensePlate = fieldFifth.text ?? ""
+		let plateType = fieldFourth.text ?? ""
+		let sequenceNo = fieldSixth.text ?? ""
         let currentYear = getCurrentYear()
         guard let year = Int(yearString),year <= currentYear  else {
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: Bundle.localizedStringFor(key: "auth-invalid-year"))
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "auth-invalid-year"))
             return nil
         }
         if year < RegisterationTemplateViewController.minValidYear{
             let format = Bundle.localizedStringFor(key: "auth-year-must-be-greater-than")
             let minValue = RegisterationTemplateViewController.minValidYear - 1
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: String(format: format,minValue))
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: String(format: format,minValue))
             return nil
-        }else if make.isEmpty || model.isEmpty || licensePlate.isEmpty {
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "constant-invalid-input"), msg: Bundle.localizedStringFor(key: "auth-fill-all-fields"))
+        }else if make.isEmpty || model.isEmpty || plateType.isEmpty || sequenceNo.isEmpty || licensePlate.count != 10 {
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "auth-fill-all-fields"))
             return nil
         }else{
             self.view.endEditing(true)
-            return VehicleDetails(make: make, model: model, year: year, licensePlate: licensePlate, selectedCapacityIndex: selectedCapacityIndex)
+			var info = VehicleDetails()
+			info.make = make
+			info.model = model
+			info.year = year
+			info.plateType = plateTypeArray[selectedPlateTypeIndex].id
+			info.licensePlate = licensePlate
+			info.sequenceNo = sequenceNo
+			info.selectedCapacityIndex = selectedCapacityIndex
+            return info
         }
     }
+
     
     func getCurrentYear() -> Int {
         let date = Date()
@@ -796,4 +1065,105 @@ public extension RegisterationTemplateViewController{
         let components = calendar.dateComponents([.year], from: date)
         return components.year ?? 0
     }
+}
+
+
+class DatePickerView: UIView {
+
+	var selectedIndex = 0 {
+		didSet {
+			if selectedIndex == 0 {
+				gregorianPicker.isHidden = true
+				hijriPicker.isHidden = false
+			}else {
+				gregorianPicker.isHidden = false
+				hijriPicker.isHidden = true
+			}
+		}
+	}
+
+	var segmentedControl: UISegmentedControl!
+	var hijriPicker: UIDatePicker!
+	var gregorianPicker: UIDatePicker!
+	var date = Date()
+	var isHijriDate = true
+	var dateUpdateCallback: ((Date,Bool) ->Void)?
+
+	override init(frame: CGRect) {
+		super.init(frame: frame)
+		customizeUI()
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		customizeUI()
+	}
+
+	//MARK: UI
+	private func customizeUI () {
+
+//		segmentedControl = DarkBorderSegmentedControl()
+//		segmentedControl.insertSegment(withTitle: "Hijri", at: 0, animated: false)
+//		segmentedControl.insertSegment(withTitle: "Gregorian", at: 1, animated: false)
+		segmentedControl = UISegmentedControl(items: ["Hijri", "Gregorian"])
+		segmentedControl.tintColor = UIColor.appColor(color: .Primary)
+		segmentedControl.selectedSegmentIndex = selectedIndex
+		segmentedControl.addTarget(self, action: #selector(segmentUpdated(_:)), for: .valueChanged)
+		add(segmentedControl: segmentedControl, to: self)
+
+		hijriPicker = createDatePicker(calendarIdentifier: .islamicUmmAlQura)
+		hijriPicker.addTarget(self, action: #selector(dateUpdated(_:)), for: .valueChanged)
+		add(datePicker: hijriPicker, to: self, topView: segmentedControl)
+
+		gregorianPicker = createDatePicker(calendarIdentifier: .gregorian)
+		gregorianPicker.addTarget(self, action: #selector(dateUpdated(_:)), for: .valueChanged)
+		add(datePicker: gregorianPicker, to: self, topView: segmentedControl)
+
+		selectedIndex = segmentedControl.selectedSegmentIndex
+
+//		self.backgroundColor = UIColor.black
+	}
+
+	private func add(segmentedControl child: UISegmentedControl, to parent: UIView) {
+		child.translatesAutoresizingMaskIntoConstraints = false
+		parent.addSubview(child)
+
+		child.heightAnchor.constraint(equalToConstant: 30).isActive = true
+		child.leadingAnchor.constraint(equalTo: parent.leadingAnchor).isActive = true
+		parent.trailingAnchor.constraint(equalTo: child.trailingAnchor).isActive = true
+	}
+
+	private func add(datePicker child: UIDatePicker, to parent: UIView, topView: UISegmentedControl) {
+		child.translatesAutoresizingMaskIntoConstraints = false
+		parent.addSubview(child)
+
+		child.heightAnchor.constraint(equalToConstant: 140).isActive = true
+		child.topAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
+		child.leadingAnchor.constraint(equalTo: parent.leadingAnchor).isActive = true
+		parent.trailingAnchor.constraint(equalTo: child.trailingAnchor).isActive = true
+		parent.bottomAnchor.constraint(equalTo: child.bottomAnchor).isActive = true
+	}
+
+	func createDatePicker(calendarIdentifier: Calendar.Identifier) -> UIDatePicker {
+		let picker = UIDatePicker()
+		picker.datePickerMode = .date
+		picker.date = Date()
+		picker.calendar = Calendar(identifier: calendarIdentifier)
+		return picker
+	}
+
+	@objc private func segmentUpdated(_ sender: UISegmentedControl) {
+		selectedIndex = sender.selectedSegmentIndex
+	}
+
+	@objc private func dateUpdated(_ sender: UIDatePicker) {
+		if sender == hijriPicker {
+			isHijriDate = true
+		}else if sender == gregorianPicker {
+			isHijriDate = false
+		}
+		date = sender.date
+		dateUpdateCallback?(sender.date,isHijriDate)
+	}
+
 }

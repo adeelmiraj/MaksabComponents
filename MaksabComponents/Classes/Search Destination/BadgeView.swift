@@ -20,8 +20,6 @@ public class BadgeView: UIView, CustomView, NibLoadableView{
     
     @IBOutlet weak public var timeContainerView: UIView!
     
-    
-    
     @IBOutlet weak public var arrowView: UIView!
     
     @IBOutlet weak public var borderView: UIView!
@@ -57,7 +55,13 @@ public class BadgeView: UIView, CustomView, NibLoadableView{
         curveView.layer.borderColor = UIColor.appColor(color: .Dark).cgColor
         curveView.layer.cornerRadius = 25
         
+        setupLabels()
         
+    }
+    
+    func setupLabels()  {
+        locationName.font = UIFont.appFont(font: .RubikMedium, pontSize: 12)
+        subtitle.font = UIFont.appFont(font: .RubikMedium, pontSize: 10)
     }
     
     public func config(location: String, distance: String, time: String, timeUnit: String){

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -43,13 +43,16 @@
                                 <rect key="frame" x="0.0" y="14" width="469" height="107.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gr1-Xl-hsF" customClass="NavigationTitleLabel" customModule="StylingBoilerPlate">
-                                        <rect key="frame" x="0.0" y="0.0" width="469" height="21"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="469" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DMG-Rw-a0V" customClass="CaptionLabel" customModule="StylingBoilerPlate">
-                                        <rect key="frame" x="0.0" y="24" width="469" height="83.5"/>
+                                        <rect key="frame" x="0.0" y="23.5" width="469" height="84"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="90" id="aXf-3R-CbE"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -134,6 +137,8 @@
                 <outlet property="labelTitle" destination="gr1-Xl-hsF" id="4Fy-Pm-Ks7"/>
                 <outlet property="rightButton" destination="fPL-kK-ijZ" id="4mS-sg-a0X"/>
                 <outlet property="rightViewWidth" destination="VTp-Sw-FTF" id="Ybf-RV-Slc"/>
+                <outlet property="subtitleHeight" destination="aXf-3R-CbE" id="Ajz-VT-u6w"/>
+                <outlet property="subtitleTop" destination="Wne-32-GDm" id="FY7-eH-dWf"/>
             </connections>
             <point key="canvasLocation" x="149" y="-346"/>
         </tableViewCell>

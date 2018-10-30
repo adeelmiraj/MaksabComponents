@@ -43,7 +43,7 @@ public class VehicleRegisterationView: UIView, NibLoadableView, CustomView {
     }
     
     func configView()  {
-        staticVehicleRegisterationLabel.text = "Vehicle Registeration"
+        staticVehicleRegisterationLabel.text = Bundle.localizedStringFor(key: "Vehicle Registeration")
         updateState(state: state)
     }
     
@@ -72,6 +72,9 @@ public class VehicleRegisterationView: UIView, NibLoadableView, CustomView {
     }
     
     @IBAction func actionBtn(){
+		guard delegate != nil else {
+			return
+		}
         delegate?.actionAddImage()
     }
 }

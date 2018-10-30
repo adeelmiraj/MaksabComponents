@@ -50,7 +50,7 @@ public class MLMOverViewTableViewCell: UITableViewCell, NibLoadableView {
         priceUnit.textColor = UIColor.appColor(color: .Primary)
         
         staticLabelTotalNodes.text = Bundle.localizedStringFor(key: "walet-mlm-total-nodes")
-        staticLabelTotalEarnings.text = Bundle.localizedStringFor(key: "wallet-mlm-total-earnings")
+        staticLabelTotalEarnings.text = Bundle.localizedStringFor(key: "All Time Earnings")
         priceUnit.text = Bundle.localizedStringFor(key: "constant-currency-SAR-only")
         btnViewMLMTree.setTitle(Bundle.localizedStringFor(key: "wallet-mlm-btn-view-mlm-tree"), for: .normal)
     }

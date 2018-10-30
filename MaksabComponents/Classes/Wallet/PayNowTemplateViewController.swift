@@ -29,17 +29,15 @@ open class PayNowTemplateViewController: UIViewController, NibLoadableView {
         super.viewWillAppear(animated)
         
         self.navigationController?.navigationBar.topItem?.title = ""
-        self.navigationItem.title = Bundle.localizedStringFor(key: "wallet-pay-now-nav-title")
+        self.navigationItem.title = Bundle.localizedStringFor(key: "Pay Now")
     }
     
     func customize()  {
         self.view.backgroundColor = UIColor.appColor(color: .Light)
-        titleLabel.text = Bundle.localizedStringFor(key: "wallet-maqsab-owe-you")
-        amountToPay.text = Bundle.localizedStringFor(key: "wallet-amount-to-pay")
-        
+        titleLabel.text = Bundle.localizedStringFor(key: "You owe Maqsab")
+        amountToPay.text = Bundle.localizedStringFor(key: "Amount to pay")
         fieldAmount.placeholder = Bundle.localizedStringFor(key: "wallet-withdrawl-amount")
-        
-        btnSubmitt.setTitle(Bundle.localizedStringFor(key: "wallet-pay-now"), for: .normal)
+        btnSubmitt.setTitle(Bundle.localizedStringFor(key: "Pay Now"), for: .normal)
 
     }
     
@@ -60,7 +58,8 @@ open class PayNowTemplateViewController: UIViewController, NibLoadableView {
            return a
         }else{
             let msg = Bundle.localizedStringFor(key:"wallet-withdrawl-invalid-amount")
-            Alert.showMessage(viewController: self, title: "Inavlid Input", msg: msg)
+			let title = Bundle.localizedStringFor(key:"Invalid Input")
+            Alert.showMessage(viewController: self, title: title, msg: msg)
             return nil
         }
     }

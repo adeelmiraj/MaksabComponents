@@ -7,8 +7,32 @@
 */
 "constant-currency-SAR" = "SAR %.2f";
 "constant-currency-SAR-only" = "SAR";
+"Terms & Conditions" = "Terms & Conditions";
+"Retry" = "Retry";
 "constant-title" = "Title";
-"constant-invalid-input" = "Invalid Input";
+"or Login with" = "or Login with";
+"Vehicle Registeration" = "Vehicle Registeration";
+"Gender" = "Gender";
+"Male" = "Male";
+"Female" = "Female";
+"Date Of Birth" = "Date Of Birth";
+"Saudi Id/Iqama Id" = "Saudi Id/Iqama Id";
+"Plate Type" = "Plate Type";
+"Sequence Number" = "Sequence Number";
+"Private Car" = "Private Car";
+"Public Transport" = "Public Transport";
+"Private Transport" = "Private Transport";
+"Public Bus" = "Public Bus";
+"Private Bus" = "Private Bus";
+"Taxi" = "Taxi";
+"Heavy equipment" = "Heavy equipment";
+"Export" = "Export";
+"Diplomatic" = "Diplomatic";
+"Motorcycle" = "Motorcycle";
+"Temporary" = "Temporary";
+"Hijri" = "Hijri";
+"Gregorian" = "Gregorian";
+"Invalid Input" = "Invalid Input";
 "alert-action-Cancel" = "Cancel";
 
 //MARK:- MAKSAB COMPONENTS
@@ -19,7 +43,7 @@
 "auth-enter-here" = "Enter here...";
 "auth-resend-code" = "Resend Code";
 "auth-name-and-email" = "Name & Email";
-"auth-name" = "Name";
+"Name" = "Name";
 "auth-email" = "Email";
 "auth-skip" = "Skip";
 "auth-password" = "Password";
@@ -27,7 +51,7 @@
 "auth-password-confirm" = "Confirm Password";
 "auth-invite-code" = "Invite Code";
 "auth-btn-forgot-pass" = "Forgot Password?";
-"auth-invite-code-msg" = "Enter Invite Code and earn 25% Discount on first ride";
+"auth-invite-code-msg" = "Enter Invite Code";
 "auth-forgot-pass-msg" = "Enter your phone number to reset password";
 "auth-forgot-pass" = "Forgot Password";
 "auth-add-vehicle-details" = "Add Vehicle Details";
@@ -40,12 +64,13 @@
 "auth-city" = "City";
 "auth-saudi-national" = "Saudi Nationality";
 "auth-country-code" = "+966";
+"Password (must be 6 digits)" = "Password (must be 6 digits)";
 //validation errors
 "auth-phone-must-be-twelve-digits" = "Phone number must have 12 digits.";
 "auth-name-is-required" = "Name is required";
 "auth-email-is-required" = "Email is required" ;
 "auth-enter-valid-email" = "Please enter a valid email address" ;
-"auth-pass-must-be-greater-than-seven-char" = "Password must be greater than 7 characters";
+"Password must be more than 5 characters" = "Password must be more than 5 characters";
 "auth-pass-and-confirm-pass-donot-match" = "Password and Confirm Password do not match";
 "auth-invalid-pin-title" = "Invalid Pin";
 "auth-invalid-pin-msg" = "Pin must have 6 digits";
@@ -98,10 +123,10 @@
 "wallet-withdrawl-bank-name-required" = "Bank name is required";
 "wallet-withdrawl-branch-name-required" = "Branch name is required";
 "wallet-withdrawl-nav-title" = "Request Withdrawl" ;
-"wallet-pay-now-nav-title" = "Pay Now";
-"wallet-maqsab-owe-you" = "Maqsab owe You";
-"wallet-amount-to-pay" = "Amount to pay";
-"wallet-pay-now" = "Pay Now";
+"Pay Now" = "Pay Now";
+"Maqsab owe You" = "Maqsab owe You";
+"You owe Maqsab" = "You owe Maqsab";
+"Amount to pay" = "Amount to pay";
 //Mlm
 "wallet-mlm-unlocked-until" = "Unlocked Until: %@";
 "wallet-mlm-take-more-rides-to-unlock" = "Take more rides to unlock";
@@ -110,7 +135,8 @@
 "wallet-mlm-earnings" = "Earnings: %@ %.2f";
 "wallet-mlm-people" = "People";
 "walet-mlm-total-nodes" = "Total Nodes";
-"wallet-mlm-total-earnings" = "Total Earnings";
+//"wallet-mlm-total-earnings" = "Total Earnings";
+"All Time Earnings" = "All Time Earnings";
 "wallet-mlm-btn-view-mlm-tree" = "View MLM Tree";
 "wallet-mlm-cell-user-refferals" = "%d Referrals";
 //Trip
@@ -131,18 +157,18 @@
 "payment-add-eror-invalid-expiry-date" = "Invalid expiry date";
 "payment-add-eror-invalid-cvv" = "Invalid CVV";
 "payment-add-eror-invalid-cardholder-name" = "Card Holder name is required";
-"payment-method-credit" = "Credit Card";
-"payment-method-wallet" = "Maksab Wallet";
-"payment-method-cash" = "Cash";
+"Credit Card" = "Credit Card";
+"payment-method-wallet" = "Mxaap Wallet";
+"Cash" = "Cash";
 //Rides
 "ride-type-economy-title" = "Economy";
-"ride-type-business-title" = "Business";
+"Business" = "Business";
 "ride-type-normal-title" = "Normal";
-"ride-type-budget-title" = "Budget";
+"Budget" = "Budget";
 "ride-type-luxury-title" = "Luxury";
 //Ride Options Grid
 "ride-options-non-mehram" = "Non Mehram";
 "ride-options-mehram" = "Mehram";
 "ride-options-no-smoking" = "No Smoking";
 "ride-options-smoking" = "Smoking";
-"ride-options-wallet" = "Wallet";
+"Wallet" = "Wallet";

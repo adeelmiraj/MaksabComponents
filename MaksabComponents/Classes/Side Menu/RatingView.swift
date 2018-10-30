@@ -18,7 +18,7 @@ open class RatingView: CosmosView{
         settings.filledImage = UIImage.image(named: "star-filled")
         settings.starMargin = 0
         settings.totalStars = 5
-        self.backgroundColor = UIColor.clear
+        //self.backgroundColor = UIColor.clear
     }
     
     open override func prepareForInterfaceBuilder() {
