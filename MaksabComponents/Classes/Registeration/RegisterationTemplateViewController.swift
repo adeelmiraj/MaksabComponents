@@ -253,9 +253,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         
     }
     
-    open func configurationsCompleted()  {
-        
-    }
+    open func configurationsCompleted()  { }
     
     func actionHideKeyboard()  {
         self.view.endEditing(true)
@@ -759,7 +757,7 @@ extension RegisterationTemplateViewController: UITextFieldDelegate, UIPickerView
             }
             return RegisterationTemplateViewController.handlePhoneNumber(textField: textField, shouldChangeCharactersIn: range, replacementString: string)
         case .VerificationCode:
-            return !(textField.text!.count > 5 && (string.count) > range.length)
+            return !(textField.text!.count > 3 && (string.count) > range.length)
         case .ForgotPassword:
 //            guard fieldSecond.placeholder?.caseInsensitiveCompare("Email") != .orderedSame else {
 //                return true
