@@ -950,7 +950,7 @@ public extension RegisterationTemplateViewController{
     
     public func getPin() -> String? {
         let pin = fieldSecond.text ?? ""
-        if pin.count == 6{
+        if pin.count == 4 {
             self.view.endEditing(true)
             return pin
         }else{
