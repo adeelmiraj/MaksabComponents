@@ -108,7 +108,7 @@ public class RidesOptionsGridView: UIView, CustomView, NibLoadableView, ToggleVi
     
     let bundle = Bundle(for: RidesOptionsGridView.classForCoder())
     
-    @IBOutlet weak var mehramView: ToggleView!
+    @IBOutlet weak public var mehramView: ToggleView!
     @IBOutlet weak var paymentView: ToggleView!
     
     var view: UIView!
@@ -147,21 +147,9 @@ public class RidesOptionsGridView: UIView, CustomView, NibLoadableView, ToggleVi
 
         paymentView.toggeable = self
 		paymentView.autoToggle = false
-        
-//        let icon = UIImage.image(named: "cash-circle")!
-//        updatePaymentBtn(title: availablePayments[selectedPaymentOptionIndex].title, img: icon)
+
     }
 
-	/*
-    public func addCreditCards(creditCards: [PaymentOptions]){
-        availablePayments.append(contentsOf: creditCards)
-}
-    
-    //MARK:- Setters
-    public func config(rideOptions: RideOptions){
-        setPayment(paymentInfo: rideOptions.paymentInfo)
-        mehramView.state = rideOptions.isMehram
-    }*/
     
     //Payment
 	public func setPayment(title: String, image: UIImage?){
@@ -173,72 +161,12 @@ public class RidesOptionsGridView: UIView, CustomView, NibLoadableView, ToggleVi
 		mehramView.icon.image = image
 		mehramView.title.text = title
 	}
-
-	/*
-    func getIndexForCard(id: Int?) -> Int? {
-        guard  id != nil else {
-            return nil
-        }
-        for i in 2..<availablePayments.count{
-            if id == availablePayments[i].id{
-                selectedPaymentOptionIndex = i
-				return selectedPaymentOptionIndex
-            }
-        }
-        return nil
-    }*/
     
     public func viewToggled(state: Bool, view: ToggleView) {
         if view == paymentView{
 			delegate?.rideOptionsGridViewDidSelectPayment()
-			/*
-            if selectedPaymentOptionIndex == availablePayments.count - 1{
-                selectedPaymentOptionIndex = 0
-            }else{
-                selectedPaymentOptionIndex += 1
-            }
-            var icon: UIImage!
-            if selectedPaymentOptionIndex == 0{
-                icon = UIImage.image(named: "cash-circle")
-            }else if selectedPaymentOptionIndex == 1{
-                icon = UIImage.image(named: "wallet-card")
-            }else{
-                icon = UIImage.image(named: "credit-card")
-            }
-            let paymentOption = availablePayments[selectedPaymentOptionIndex]
-            updatePaymentBtn(title: paymentOption.title, img: icon)*/
 		}else {
 			delegate?.rideOptionsGridViewDidSelectMehram()
 		}
     }
-    
-    //MARK:- Getters
-	/*
-    public func getPaymentInfo() -> PaymentInfo{
-        let paymentInfo = PaymentInfo(method: .cash, cardId: nil)
-        if selectedPaymentOptionIndex == 1{
-            paymentInfo.mehtod = .wallet
-        }else if selectedPaymentOptionIndex > 1{
-            paymentInfo.mehtod = .card
-            paymentInfo.cardId = availablePayments[selectedPaymentOptionIndex].id
-        }
-        return paymentInfo
-    }
-    
-    public func getRideCapcity() -> RideCapacity {
-        return capacity
-    }
-    
-    public func isMehramRide() -> Bool{
-        return mehramView.state
-    }
-    
-    public func getRideOptions() -> RideOptions {
-        let options = RideOptions()
-        options.isMehram = isMehramRide()
-        options.capacity = getRideCapcity()
-        options.paymentInfo = getPaymentInfo()
-        return options
-    }*/
-
 }
