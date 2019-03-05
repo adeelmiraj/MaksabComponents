@@ -67,8 +67,8 @@
 "Password must be more than 5 characters" = "Password must be more than 5 characters";
 "auth-pass-and-confirm-pass-donot-match" = "Password and Confirm Password do not match";
 "Password (must be 6 digits)" = "Password (must be 6 digits)";
-"auth-invalid-pin-title" = "Invalid Pin";
-"auth-invalid-pin-msg" = "Pin must have 6 digits";
+"Invalid Pin" = "Invalid Pin";
+"Pin must have 4 digits" = "Pin must have 6 digits";
 "auth-invalid-invite-code-title" = "Invalid Invite Code";
 "auth-invalid-invite-code-msg" = "Invite Code cannot be empty";
 "auth-fill-all-fields" = "Please fill all the fields";

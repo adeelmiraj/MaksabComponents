@@ -65,7 +65,7 @@
 "Password must be more than 5 characters" = "الرمز السري لابد ان يكون اكثر من 5 خانات";
 "auth-pass-and-confirm-pass-donot-match" = "الرمز السري غير صحيح";
 "Password (must be 6 digits)" = "الرمز السري (لابد ان يكون من 6 خانات)";
-"auth-invalid-pin-title" = "رمز التفعيل خاطئ";
+"Invalid Pin" = "رمز التفعيل خاطئ";
 "auth-invalid-pin-msg" = "رمز التفعيل لابد ان يحتوي على 6 ارقام";
 "auth-invalid-invite-code-title" = "رمز دعوة خاطئ";
 "auth-invalid-invite-code-msg" = "رمز الدعوة لايمكن ان يكون فارغ";
