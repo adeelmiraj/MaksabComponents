@@ -975,7 +975,7 @@ public extension RegisterationTemplateViewController{
         let verificationCode = fieldThird.text ?? ""
         if passAndConfirmPass == nil{
             return nil
-        }else if verificationCode.count != 6{
+        }else if verificationCode.count != 4{
             Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "auth-invalid-pin-title"), msg: Bundle.localizedStringFor(key: "auth-invalid-pin-msg"))
             return nil
         }else{
