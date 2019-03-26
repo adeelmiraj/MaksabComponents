@@ -189,12 +189,12 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
     //Social Logins View
     @IBOutlet weak public var btnFacbook: UIButton!
     @IBOutlet weak public var btnGoogle: UIButton!
-    @IBOutlet weak public var btnTwitter: UIButton!
+//    @IBOutlet weak public var btnTwitter: UIButton!
     @IBOutlet weak var btnBottomTooltip: UIButton!
     
     public var activityIndicatoryFb:UIActivityIndicatorView!
     public var activityIndicatoryGoogle:UIActivityIndicatorView!
-    public var activityIndicatoryTwitter:UIActivityIndicatorView!
+//    public var activityIndicatoryTwitter:UIActivityIndicatorView!
     
     var type: RegisterationViewType = .PhoneNumber
     var capacityArray = [String]()
@@ -268,7 +268,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         btnNext.setImage(assets._btnNext, for: .normal)
         btnGoogle.setImage(assets._google, for: .normal)
         btnFacbook.setImage(assets._facebook, for: .normal)
-        btnTwitter.setImage(assets._twitter, for: .normal)
+//        btnTwitter.setImage(assets._twitter, for: .normal)
         btnAction.tintColor = UIColor.appColor(color: .Secondary)
         if type != .PasswordAndConfirmPassword  && type != .AddVehicleDetails && type != .BasicInfo && type != .ResetPassUsingPhone && type != .NameAndEmail{
             removeFirstField()
@@ -317,7 +317,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         case .PhoneNumber:
             showPhoneNoCode()
             fieldPhoneCode.text = Bundle.localizedStringFor(key: "auth-country-code")
-            fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-enter-phone-no")
+            fieldSecond.placeholder = Bundle.localizedStringFor(key: "Phone Number i.e. 5xxxxxxxxx")
             fieldSecond.keyboardType = .numberPad
         case .VerificationCode:
             labelTitle.text = Bundle.localizedStringFor(key: "auth-verification-code")
@@ -352,7 +352,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         case .ForgotPassword:
             labelTitle.text = Bundle.localizedStringFor(key: "auth-forgot-pass")
             labelSubtitle.text = Bundle.localizedStringFor(key: "auth-forgot-pass-msg")
-            fieldSecond.placeholder = Bundle.localizedStringFor(key: "auth-enter-phone-no")
+            fieldSecond.placeholder = Bundle.localizedStringFor(key: "Phone Number i.e. 5xxxxxxxxx")
             fieldSecond.keyboardType = .numberPad
         case .AddVehicleDetails:
             labelTitle.text = Bundle.localizedStringFor(key: "auth-add-vehicle-details")
@@ -487,10 +487,10 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         activityIndicatoryGoogle.center = btnGoogle.center
         btnGoogle.addSubview(activityIndicatoryGoogle)
         
-        activityIndicatoryTwitter = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        activityIndicatoryTwitter.hidesWhenStopped = true
-        activityIndicatoryTwitter.center = btnTwitter.center
-        btnTwitter.addSubview(activityIndicatoryTwitter)
+//        activityIndicatoryTwitter = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+//        activityIndicatoryTwitter.hidesWhenStopped = true
+//        activityIndicatoryTwitter.center = btnTwitter.center
+//        btnTwitter.addSubview(activityIndicatoryTwitter)
     }
     
     func addTargets()  {
@@ -498,7 +498,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         btnNext.addTarget(self, action: #selector(actNext(sender:)), for: .touchUpInside)
         btnGoogle.addTarget(self, action: #selector(actGoogleLogin(sender:)), for: .touchUpInside)
         btnFacbook.addTarget(self, action: #selector(actFacebookLogin(sender:)), for: .touchUpInside)
-        btnTwitter.addTarget(self, action: #selector(actTwitterLogin(sender:)), for: .touchUpInside)
+//        btnTwitter.addTarget(self, action: #selector(actTwitterLogin(sender:)), for: .touchUpInside)
         btnTooltip.addTarget(self, action: #selector(actTooltipTop(sender:)), for: .touchUpInside)
         btnBottomTooltip.addTarget(self, action: #selector(actBottomTooltip(sender:)), for: .touchUpInside)
         btnBackToSigup.addTarget(self, action: #selector(actBackToSignup(sender:)), for: .touchUpInside)
@@ -585,7 +585,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         stackViewReqHeight.constant = 64+30+30
     }
     
-    func removeSocialLoginsView()  {
+    public func removeSocialLoginsView()  {
         self.socialLoginsView.removeFromSuperview()
         //        let bottom = NSLayoutConstraint(item: self.view, attribute: .bottom, relatedBy: .greaterThanOrEqual, toItem: self.fieldsView, attribute: .bottom, multiplier: 1, constant: 44)
         let centerY = NSLayoutConstraint(item: fieldsView, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1, constant: 0)
@@ -620,9 +620,9 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         delegate?.actionFacbookLogin?(sender: sender)
     }
     
-    func actTwitterLogin(sender: UIButton)  {
-        delegate?.actionTwitterLogin?(sender: sender)
-    }
+//    func actTwitterLogin(sender: UIButton)  {
+//        delegate?.actionTwitterLogin?(sender: sender)
+//    }
     
     func actBottomTooltip(sender: UIButton)  {
         delegate?.actionTooltipBottom?(sender: sender)

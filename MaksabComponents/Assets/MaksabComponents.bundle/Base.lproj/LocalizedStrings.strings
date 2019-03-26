@@ -38,7 +38,7 @@
 //MARK:- MAKSAB COMPONENTS
 //Registeration
 "auth-btn-back-to-signup" = "Back To Signup";
-"auth-enter-phone-no" = "Enter Phone Number";
+"Phone Number i.e. 5xxxxxxxxx" = "Phone Number i.e. 5xxxxxxxxx";
 "auth-verification-code" = "Verification Code";
 "auth-enter-here" = "Enter here...";
 "auth-resend-code" = "Resend Code";
