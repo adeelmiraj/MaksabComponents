@@ -2,9 +2,10 @@ PODS:
   - Cosmos (11.0.3)
   - IQKeyboardManagerSwift (4.0.10)
   - KMPlaceholderTextView (1.3.0)
-  - MaksabComponents (0.1.32):
+  - MaksabComponents (0.1.33):
     - Cosmos (= 11.0.3)
     - KMPlaceholderTextView
+    - StylingBoilerPlate
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
     - MRProgress/Blur (= 0.8.3)
@@ -34,6 +35,9 @@ PODS:
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
   - SideMenuController (0.2.4)
+  - StylingBoilerPlate (0.1.23):
+    - SVProgressHUD
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - Cosmos
@@ -41,6 +45,7 @@ DEPENDENCIES:
   - MaksabComponents (from `../`)
   - MRProgress
   - SideMenuController
+  - StylingBoilerPlate (from `https://github.com/mansoor92/StylingBoilerPlate.git`, tag `0.1.23`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -49,19 +54,30 @@ SPEC REPOS:
     - KMPlaceholderTextView
     - MRProgress
     - SideMenuController
+    - SVProgressHUD
 
 EXTERNAL SOURCES:
   MaksabComponents:
     :path: "../"
+  StylingBoilerPlate:
+    :git: https://github.com/mansoor92/StylingBoilerPlate.git
+    :tag: 0.1.23
+
+CHECKOUT OPTIONS:
+  StylingBoilerPlate:
+    :git: https://github.com/mansoor92/StylingBoilerPlate.git
+    :tag: 0.1.23
 
 SPEC CHECKSUMS:
   Cosmos: eb506859929f4add2d2aec822a27efb2f718a95d
   IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
   KMPlaceholderTextView: 2bbcd19a273648a80a61e1e48f9743a24d8930e3
-  MaksabComponents: f3dc0cbab297af7779885912e2fa43c712a154a6
+  MaksabComponents: 3e2bda12b38068f6c6fed3c027b6cdcf94c7ef9b
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   SideMenuController: b463d2b3aa58e2afe57f57a07938fa9a647894ca
+  StylingBoilerPlate: 3fec716e233862cfbad962a84bb1e8cdcc6b15fa
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: f844ad46faae87fc3267788ab05bc17948b9d804
+PODFILE CHECKSUM: dec84445d7cc7e6e1d14fd9eba6d7553ecd05b7e
 
 COCOAPODS: 1.6.0.beta.2

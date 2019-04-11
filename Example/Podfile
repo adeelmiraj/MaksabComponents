@@ -2,6 +2,7 @@ use_frameworks!
 
 target 'MaksabComponents_Example' do
   pod 'MaksabComponents', :path => '../'
+	pod 'StylingBoilerPlate', :git => 'https://github.com/mansoor92/StylingBoilerPlate.git', :tag => '0.1.23'
 #  pod 'StylingBoilerPlate', '0.1.20'
   pod 'IQKeyboardManagerSwift'
   pod 'SideMenuController'
@@ -11,6 +12,5 @@ target 'MaksabComponents_Example' do
   target 'MaksabComponents_Tests' do
     inherit! :search_paths
 
-    
   end
 end

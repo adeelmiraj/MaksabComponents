@@ -158,7 +158,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MaksabComponents/MaksabComponents.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SideMenuController/SideMenuController.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/StylingBoilerPlate/StylingBoilerPlate.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework"
@@ -166,7 +168,9 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MRProgress/MRProgress.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MaksabComponents/MaksabComponents.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SideMenuController/SideMenuController.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/StylingBoilerPlate/StylingBoilerPlate.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
