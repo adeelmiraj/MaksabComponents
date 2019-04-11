@@ -585,7 +585,7 @@ open class RegisterationTemplateViewController: UIViewController, NibLoadableVie
         stackViewReqHeight.constant = 64+30+30
     }
     
-    func removeSocialLoginsView()  {
+    public func removeSocialLoginsView()  {
         self.socialLoginsView.removeFromSuperview()
         //        let bottom = NSLayoutConstraint(item: self.view, attribute: .bottom, relatedBy: .greaterThanOrEqual, toItem: self.fieldsView, attribute: .bottom, multiplier: 1, constant: 44)
         let centerY = NSLayoutConstraint(item: fieldsView, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1, constant: 0)
