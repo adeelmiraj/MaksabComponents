@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MaksabComponents'
-  s.version          = '0.1.31'
+  s.version          = '0.1.32'
   s.summary          = 'Maksab reusable components.'
 
 # This description is used to generate tags and improve search results.
@@ -47,7 +47,7 @@ Maksab reusable components.Components that are reused or used in both rider and 
   # s.public_header_files = 'Pod/Classes/**/*.h'
     s.frameworks = 'UIKit'
     s.requires_arc     = true
-    s.dependency 'StylingBoilerPlate'
+    s.dependency 'StylingBoilerPlate', '0.1.20'
     s.dependency 'Cosmos', '11.0.3'
     s.dependency 'KMPlaceholderTextView'
 
