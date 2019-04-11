@@ -59,7 +59,7 @@ open class PayNowTemplateViewController: UIViewController, NibLoadableView {
         }else{
             let msg = Bundle.localizedStringFor(key:"wallet-withdrawl-invalid-amount")
 			let title = Bundle.localizedStringFor(key:"Invalid Input")
-            Alert.showMessage(viewController: self, title: title, msg: msg)
+			Alert.showMessage(viewController: self, title: title, msg: msg, dismissBtnTitle: Bundle.localizedStringFor(key: "Dismiss"))
             return nil
         }
     }

@@ -1,6 +1,6 @@
 {
   "name": "MaksabComponents",
-  "version": "0.1.33",
+  "version": "0.1.35",
   "summary": "Maksab reusable components.",
   "description": "Maksab reusable components.Components that are reused or used in both rider and driver side.",
   "homepage": "https://github.com/mansoor92/MaksabComponents",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/mansoor92/MaksabComponents.git",
-    "tag": "0.1.33"
+    "tag": "0.1.35"
   },
   "platforms": {
     "ios": "9.0"
@@ -28,7 +28,7 @@
   "requires_arc": true,
   "dependencies": {
     "StylingBoilerPlate": [
-
+      "0.1.23"
     ],
     "Cosmos": [
       "11.0.3"

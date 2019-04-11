@@ -873,7 +873,7 @@ public extension RegisterationTemplateViewController{
     public func getPhoneNo() -> String? {
         let phoneNo = RegisterationTemplateViewController.getValidPhoneNoFrom(fieldCode: fieldPhoneCode, fieldPhoneNo: fieldSecond)
         if phoneNo == nil{
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg:   Bundle.localizedStringFor(key: "auth-phone-must-be-twelve-digits"))
+			Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg:   Bundle.localizedStringFor(key: "auth-phone-must-be-twelve-digits"), dismissBtnTitle: Bundle.localizedStringFor(key: "Dismiss"))
         }else{
             self.view.endEditing(true)
         }
@@ -911,10 +911,10 @@ public extension RegisterationTemplateViewController{
 		let name = fieldFirst.text ?? ""
 		let gender = fieldSecond.text ?? ""
 		if name.isEmpty{
-			Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "auth-name-is-required"))
+			Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "auth-name-is-required"), dismissBtnTitle: Bundle.localizedStringFor(key: "Dismiss"))
 			return nil
 		}else if  gender.isEmpty {
-			Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "auth-fill-all-fields"))
+			Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "auth-fill-all-fields"), dismissBtnTitle: Bundle.localizedStringFor(key: "Dismiss"))
 			return nil
 		}else {
 			self.view.endEditing(true)
@@ -943,7 +943,7 @@ public extension RegisterationTemplateViewController{
             self.view.endEditing(true)
             return [pass,confirmPass]
         }else{
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: msg)
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: msg, dismissBtnTitle: Bundle.localizedStringFor(key: "Dismiss"))
             return nil
         }
     }
@@ -954,7 +954,7 @@ public extension RegisterationTemplateViewController{
             self.view.endEditing(true)
             return pin
         }else{
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Pin"), msg: Bundle.localizedStringFor(key: "Pin must have 4 digits"))
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Pin"), msg: Bundle.localizedStringFor(key: "Pin must have 4 digits"), dismissBtnTitle: Bundle.localizedStringFor(key: "Dismiss"))
             return nil
         }
     }
@@ -962,7 +962,7 @@ public extension RegisterationTemplateViewController{
     public func getPassword() -> String? {
         let pass = fieldSecond.text ?? ""
         if pass.count <= 5{
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "Password must be more than 5 characters"))
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "Password must be more than 5 characters"), dismissBtnTitle: Bundle.localizedStringFor(key: "Dismiss"))
             return nil
         }else{
             self.view.endEditing(true)
@@ -976,7 +976,7 @@ public extension RegisterationTemplateViewController{
         if passAndConfirmPass == nil{
             return nil
         }else if verificationCode.count != 4{
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Pin"), msg: Bundle.localizedStringFor(key: "Pin must have 4 digits"))
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Pin"), msg: Bundle.localizedStringFor(key: "Pin must have 4 digits"), dismissBtnTitle: Bundle.localizedStringFor(key: "Dismiss"))
             return nil
         }else{
             self.view.endEditing(true)
@@ -987,7 +987,7 @@ public extension RegisterationTemplateViewController{
     public func getInviteCode() -> String? {
         let pin = fieldSecond.text ?? ""
         if pin.count == 0 {
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key:"auth-invalid-invite-code-title"), msg: Bundle.localizedStringFor(key:"auth-invalid-invite-code-msg"))
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key:"auth-invalid-invite-code-title"), msg: Bundle.localizedStringFor(key:"auth-invalid-invite-code-msg"), dismissBtnTitle: Bundle.localizedStringFor(key: "Dismiss"))
             return nil
         }else{
             self.view.endEditing(true)
@@ -1002,10 +1002,10 @@ public extension RegisterationTemplateViewController{
 		}
 		let isSaudiNational = driverNationalitySwitch.isOn
 		if (fieldFirst.text ?? "").isEmpty || (fieldThird.text ?? "").isEmpty || (fieldFourth.text ?? "" ).isEmpty || driverDOB == nil  || (fieldSixth.text ?? "").count != 10 {
-			Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "auth-fill-all-fields"))
+			Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "auth-fill-all-fields"), dismissBtnTitle: Bundle.localizedStringFor(key: "Dismiss"))
 			return nil
 		}else if let emailString = email, !UITextField.isValid(text: emailString, forExp: .email){
-			Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "auth-fill-all-fields"))
+			Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "auth-fill-all-fields"), dismissBtnTitle: Bundle.localizedStringFor(key: "Dismiss"))
 			return nil
 		} else{
 			self.view.endEditing(true)
@@ -1031,16 +1031,16 @@ public extension RegisterationTemplateViewController{
 		let sequenceNo = fieldSixth.text ?? ""
         let currentYear = getCurrentYear()
         guard let year = Int(yearString),year <= currentYear  else {
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "auth-invalid-year"))
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "auth-invalid-year"), dismissBtnTitle: Bundle.localizedStringFor(key: "Dismiss"))
             return nil
         }
         if year < RegisterationTemplateViewController.minValidYear{
             let format = Bundle.localizedStringFor(key: "auth-year-must-be-greater-than")
             let minValue = RegisterationTemplateViewController.minValidYear - 1
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: String(format: format,minValue))
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: String(format: format,minValue), dismissBtnTitle: Bundle.localizedStringFor(key: "Dismiss"))
             return nil
         }else if make.isEmpty || model.isEmpty || plateType.isEmpty || sequenceNo.isEmpty || licensePlate.count != 10 {
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "auth-fill-all-fields"))
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "Invalid Input"), msg: Bundle.localizedStringFor(key: "auth-fill-all-fields"), dismissBtnTitle: Bundle.localizedStringFor(key: "Dismiss"))
             return nil
         }else{
             self.view.endEditing(true)

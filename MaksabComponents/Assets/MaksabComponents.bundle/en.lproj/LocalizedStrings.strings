@@ -74,6 +74,7 @@
 "auth-fill-all-fields" = "Please fill all the fields";
 "auth-invalid-year" = "Invalid Year";
 "auth-year-must-be-greater-than" = "Year must be greater than %d";
+"Dismiss" = "Dismiss";
 
 //MARK:- PhoneNumber Alert
 "phone-no-enter-number" = "Enter Phone Number";

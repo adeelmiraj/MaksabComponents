@@ -74,6 +74,7 @@
 "auth-year-must-be-greater-than" = "سنة الصنع لابد ان تكون اعلى من%d";
 
 //MARK:- PhoneNumber Alert
+"Dismiss" = "الغاء";
 "phone-no-enter-number" = "ادخل رقم هاتفك";
 "phone-no-country-code" = "+966";
 "phone-no-must-be-twelve-digits" = "رقم الجوال لابد ان يتكون من 10 ارقام";

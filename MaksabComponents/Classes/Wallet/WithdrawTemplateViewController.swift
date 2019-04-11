@@ -79,7 +79,7 @@ open class WithdrawTemplateViewController: UIViewController {
     
     public func getAccountInfo() -> (accTitle: String, accNo: String, bankName: String, branchName: String, amount: Double)? {
         guard currentBalance != nil else {
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key:"wallet-withdrawl-insufficient-funds-title"), msg: Bundle.localizedStringFor(key:"wallet-withdrawl-insufficient-funds-msg"))
+			Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key:"wallet-withdrawl-insufficient-funds-title"), msg: Bundle.localizedStringFor(key:"wallet-withdrawl-insufficient-funds-msg"), dismissBtnTitle: Bundle.localizedStringFor(key: "Dismiss"))
             return nil
         }
         var amount: Double = 0
@@ -88,7 +88,7 @@ open class WithdrawTemplateViewController: UIViewController {
             amount = a
         }else{
             msg = Bundle.localizedStringFor(key:"wallet-withdrawl-invalid-amount")
-            Alert.showMessage(viewController: self, title: "Inavlid Input", msg: msg)
+            Alert.showMessage(viewController: self, title: "Inavlid Input", msg: msg, dismissBtnTitle: Bundle.localizedStringFor(key: "Dismiss"))
             return nil
         }
         
@@ -105,7 +105,7 @@ open class WithdrawTemplateViewController: UIViewController {
         if msg.isEmpty{
             return (accountTitle.text!,accountNo.text!,bankName.text!,branchName.text!,amount)
         }else{
-            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "payment-add-error-invalid-input"), msg: msg)
+            Alert.showMessage(viewController: self, title: Bundle.localizedStringFor(key: "payment-add-error-invalid-input"), msg: msg, dismissBtnTitle: Bundle.localizedStringFor(key: "Dismiss"))
             return nil
         }
     }
