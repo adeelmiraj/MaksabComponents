@@ -48,7 +48,7 @@ Maksab reusable components.Components that are reused or used in both rider and 
     s.frameworks = 'UIKit'
     s.requires_arc     = true
     s.dependency 'StylingBoilerPlate', '0.1.23'
-    s.dependency 'Cosmos', '11.0.3'
+    s.dependency 'Cosmos'
     s.dependency 'KMPlaceholderTextView'
 
 end
